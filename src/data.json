@@ -1,0 +1,62 @@
+[
+    {
+    "token": "ordi",
+    "price": 16.1999,
+    "marketCap": 340197893.1427002,
+    "volume": 197880000
+    },
+    {
+    "token": "univ",
+    "price": 0.828576,
+    "marketCap": 82857602.83470154,
+    "volume": 322
+    },
+    {
+    "token": "vmpx",
+    "price": 0.219912,
+    "marketCap": 23887720.27873993,
+    "volume": 411648
+    },
+    {
+    "token": "pepe",
+    "price": 0.359097,
+    "marketCap": 15106851.858615875,
+    "volume": 620578
+    },
+    {
+    "token": "piza",
+    "price": 0.4896,
+    "marketCap": 10281600.058078766,
+    "volume": 799677
+    },
+    {
+    "token": "meme",
+    "price": 94.5014,
+    "marketCap": 9450045.879455566,
+    "volume": 628524
+    },
+    {
+    "token": "nals",
+    "price": 0.391499,
+    "marketCap": 8221479.266881943,
+    "volume": 930485
+    },
+    {
+    "token": "zbit",
+    "price": 0.347621,
+    "marketCap": 7300040.8709049225,
+    "volume": 195787
+    },
+    {
+    "token": "oshi",
+    "price": 477.499,
+    "marketCap": 6368404.068572998,
+    "volume": 275405
+    },
+    {
+    "token": "domo",
+    "price": 0.256499,
+    "marketCap": 5386478.841304779,
+    "volume": 188779
+    }
+]
