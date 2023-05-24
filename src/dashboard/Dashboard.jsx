@@ -66,6 +66,7 @@ function Dashboard() {
     setBox3Content("Default Token Content");
   };
 
+  
   return (
     <>
     <div className="max">
@@ -150,7 +151,6 @@ function Dashboard() {
               <nav className="topline">
                   <table>
                   <thead> 
-                  <tr>
                     <th>Name</th>
                     <th>Positions</th>
                     <th>Price</th>
@@ -158,11 +158,12 @@ function Dashboard() {
                     <th>Available</th>
                     <th>Transferable</th>
                     <th>Marketcap</th>
-                  </tr>
-                  </thead> 
+                  </thead>
+                  <tbody >
                     {data.map(token => (
                       <TickComponent tick={token.tick} />
                     ))}
+                    </tbody>
                 </table>
               </nav>
                  ) : (
@@ -225,7 +226,7 @@ function TickComponent({ tick }) {
   }
 
   return (
-    <tr>
+    <><><tr>
       <td>{tickData.tick.toUpperCase()}</td>
       <td>Positions</td>
       <td>Price</td>
@@ -233,7 +234,23 @@ function TickComponent({ tick }) {
       <td>Available</td>
       <td>Transferable</td>
       <td>{Number(tickData.max_supply).toLocaleString()}</td>
-    </tr>
+    </tr><tr>
+        <td>{tickData.tick.toUpperCase()}</td>
+        <td>Positions</td>
+        <td>Price</td>
+        <td>Change 24h</td>
+        <td>Available</td>
+        <td>Transferable</td>
+        <td>{Number(tickData.max_supply).toLocaleString()}</td>
+      </tr></><tr>
+        <td>{tickData.tick.toUpperCase()}</td>
+        <td>Positions</td>
+        <td>Price</td>
+        <td>Change 24h</td>
+        <td>Available</td>
+        <td>Transferable</td>
+        <td>{Number(tickData.max_supply).toLocaleString()}</td>
+      </tr></>
   );
 }
 
