@@ -1,56 +1,23 @@
-
 import './App.css';
 import React from 'react';
 import {TbShield} from 'react-icons/tb';
-import {MdOutlineDashboardCustomize} from 'react-icons/md';
 import{TbHandFinger} from 'react-icons/tb'
 import {SiTwitter} from 'react-icons/si'
 import {BsDiscord} from 'react-icons/bs'
 import {SiMedium} from 'react-icons/si'
-import Group427319728 from './img/Group427319728.svg';
-import Vector16 from './img/Vector16.svg'
 import vectormobile from './img/vectormobile.svg'
-import mobile from './img/mobile.svg'
 import Vector15 from './img/Vector 15.svg'
 import Vector4 from './img/Vector4.svg'
 import  v09 from './img/v09.svg'
 import blanc from './img/blanc.svg'
 import vert from './img/vert.svg'
 import orange from './img/orange.svg'
-import Group34054 from './img/Group34054.svg'
-import Frame427319940 from './img/Frame427319940.svg'
-import Frame427 from './img/Frame427.svg'
 import Group50 from './img/Group50.svg'
 import Roadmap from './img/Roadmap.svg'
 import Frame from './img/Frame.svg'
 import Logo from './img/Logo.svg'
 import DataDisplay from './bandeaudefilant';
-import { BrowserRouter as Router, Route, Routes, Link, useNavigate, Outlet,useMatch } from 'react-router-dom';
-import Dashboard from './dashboard/Dashboard';
 
-const NouvellePage = () => {
-  return (
-    <div>
-      <Dashboard/>
-    </div>
-  );
-};
-
-
-const BoutonPageSuivante = () => {
-  const match = useMatch('/dashboard');
-  const navigate = useNavigate();
-
-  const handleClick = () => {
-    if (!match) {
-    navigate ('/Dashboard');
-    }
-  };
-
-  return (
-    <button onClick={handleClick}>DAPP</button>
-  );
-};
 
 function App() {
   return (
@@ -59,10 +26,7 @@ function App() {
         <div className='nav'>
           <img src={Logo} alt="" className='logo'/>
           <DataDisplay/>
-          <BoutonPageSuivante />
-          <Routes>
-          <Route path="/Dashboard" element={<NouvellePage />} />
-        </Routes>
+          <button>DAPP</button>
         </div>
       <div className='placementorigin'>
       <div className="bloctext1">
