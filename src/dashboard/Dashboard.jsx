@@ -15,6 +15,8 @@ import notification from './notification.svg'
 import ouai from './ouai.svg'
 import search from './search.svg'
 import homme from './homme.svg'
+import { Doughnut } from 'react-chartjs-2';
+import Chart, { Chart as ChartJS,defaults} from 'chart.js/auto';
 
 const address = 'bc1p6ed8wca5sjmzvsf92uc2ak2egphj9zw59dghcup2ve95slpvcxlqynsk7j';
 
@@ -24,11 +26,12 @@ function Dashboard() {
   const [available_balance, setAvailableBalance] = useState(0);
   const [showNFTContent, setShowNFTContent] = useState(false);
   const [showTokenContent, setShowTokenContent] = useState(false);
-  const [box3Content, setBox3Content] = useState("Initial Content");
+  const [box3Content, setBox3Content] = useState("Token Content");
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchData();
+    setShowTokenContent(true);
   }, []);
 
   const fetchData = async () => {
@@ -63,9 +66,53 @@ function Dashboard() {
   const handleTokenButtonClick = () => {
     setShowNFTContent(false);
     setShowTokenContent(true);
-    setBox3Content("Default Token Content");
+    setBox3Content("Token Content");
   };
 
+  const donnees = {
+    labels: ['NALS $30,000 40%', 'PEPE $24,500 25%', 'PIZA $16,000 20%', 'ORDI $1853 15%'],
+    datasets: [
+      {
+        data: [12, 19, 3, 5],
+        borderWidth: 0.1,
+        backgroundColor: ['#C46161','#7AB75D','#C6C85C','#50439D']
+      },
+    ],
+  };
+  const options = {
+    responsive: true, 
+    maintainAspectRatio:false,
+    plugins: {
+      legend: {
+        position: 'left',
+        family:'MontRegular',
+        labels: {
+          color: 'white',
+          usePointStyle: true,
+          pointStyle: 'rect',
+          padding: 15, // Espacement entre les étiquettes
+          borderWidth: 40,
+          font: {
+            size: 16, // Changer la taille du texte des légendes
+            family: 'MontRegular',
+          },
+        },
+        },
+        layout: {
+          padding: {
+            left: 200, // Espacement à gauche du Doughnut
+          },
+        },
+    },
+    cutout:80,
+    hoverOffset: 40, // Surélévation au survol
+    elements: {
+      arc: {
+        borderWidth: 2, // Épaisseur de la bordure
+      },
+    },
+  };
+  
   
   return (
     <>
@@ -75,7 +122,7 @@ function Dashboard() {
         <header>
       <div className="top">
         <div className="style">
-          <h1>Welcome Back <span>Jhon!</span></h1>
+          <h1>Welcome Back <span>Jhon.LTC!</span></h1>
           <p>I hope everything is fine today...</p>
         </div>
         <div className="input">
@@ -96,13 +143,13 @@ function Dashboard() {
                 <h1>Total: ${overall_balance.toLocaleString()}</h1>
                 </div>
                 <div className='group2'>
-                  <p>Available</p>
-                  <p>${available_balance.toLocaleString()}</p>
+                  <p className='blanc'>Available</p>
+                  <p className='semi'>${available_balance.toLocaleString()}</p>
                   {/*données du montant du produit*/}
                 </div>
                 <div className='group3'>
-                  <p>Transferable</p>
-                  <p>${(overall_balance-available_balance).toLocaleString()}</p>
+                  <p className='blanc'>Transferable</p>
+                  <p className='semi'>${(overall_balance-available_balance).toLocaleString()}</p>
                   {/*données du montant du produit*/}
                 </div>
               </div>
@@ -112,14 +159,18 @@ function Dashboard() {
             </div>
             <div className="box2">
               <p>Average of your wallet</p>
-              {/*données du montant du produit*/}
-              {/*Graph qu'on va importer avec du chart.js*/}
+              <div className='donnees'>
+                
+              </div>
+              <div className='graph'>
+                <Doughnut data={donnees} options={options}/>
+              </div>
             </div>
           </div>
           <div className="groupe2">
             <div className="box3">
               <div className='topv1'>
-              <p>My Assets</p>
+              <p className='semi'>My Assets</p>
               <button type="button" onClick={handleTokenButtonClick}>Token</button>
               <button type="button" onClick={handleNFTButtonClick}>NFT</button>
               </div>
@@ -150,7 +201,7 @@ function Dashboard() {
               ) : showTokenContent ? (
               <nav className="topline">
                   <table>
-                  <thead> 
+                  <thead > 
                     <th>Name</th>
                     <th>Positions</th>
                     <th>Price</th>
@@ -159,7 +210,7 @@ function Dashboard() {
                     <th>Transferable</th>
                     <th>Marketcap</th>
                   </thead>
-                  <tbody >
+                  <tbody  className='semi'>
                     {data.map(token => (
                       <TickComponent tick={token.tick} />
                     ))}
@@ -185,13 +236,13 @@ function Dashboard() {
                 <button><img src={element3} alt=""/>Multicharts</button>
               </div>
               <div className='menuv1'>
-                <button className='BRC'>BRC-20</button>
-                <button className='LTC'>LTC-20</button>
-                <button className='DRC'>DRC-20</button>
+                <button className='BRC'>Bitcoin</button>
+                <button className='LTC'>Litecoin</button>
+                <button className='DRC'>Dogechain</button>
               </div>
             <div className="menufooter">
-              <button><img src={Footer} alt=""/>Setting</button>
-              <button><img src={footer2} alt=""/>Profile</button>
+              <button><img src={Footer} alt=""/>Profile</button>
+              <button><img src={footer2} alt=""/>Settings</button>
               <button><img src={footer3} alt=""/>Log Out</button>
           </div>
           </div>

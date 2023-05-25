@@ -2,6 +2,15 @@
   font-family: 'MontRegular';
   src: url('./Mont/Mont-Regular.otf');
 }
+@font-face {
+  font-family: 'Mont';
+  src: url('./fonts/Mont/Mont-Bold.otf');
+}
+@font-face{
+  font-family: 'Montsemi';
+  src: url('./Mont/Mont-SemiBold.otf');
+}
+
 
 .max{
   max-width: 1920px;
@@ -15,7 +24,9 @@ body {
 
 span {
 }
-
+.blanc{
+  color: rgba(255, 255, 255, 0.5);
+}
 .top {
   display: flex;
   justify-content: space-between;
@@ -59,6 +70,19 @@ width: 100%;
 margin-top: 16px;
 margin-bottom: 8px;
 }
+.group1 p{
+margin-bottom: 8px;
+font-family: MontRegular;
+}
+.group1 h1{
+font-family: Montsemi;
+}
+.style h1{
+font-family: Montsemi;
+}
+.semi{
+font-family: Montsemi;
+}
 .group2{
 margin-top: 16px;
 margin-bottom: 8px;
@@ -68,12 +92,10 @@ margin-top: 16px;
 margin-bottom: 8px;
 }
 .group2 p{
-color: rgba(255, 255, 255, 0.5);
 font-size: 14px;
 margin: 0;
 }
 .group3 p{
-color: rgba(255, 255, 255, 0.5);
 font-size: 14px;
 margin: 0;
 }
@@ -101,7 +123,7 @@ margin-left: 20px;
 .box2 p{
 margin-left: 32px;
 margin-top: 16px;
-font-size: 14px;
+font-size: 16px;
 }
 .groupe1 {
   display: flex;
@@ -136,6 +158,8 @@ table {
 border-collapse: collapse;
 min-width: 100%;
 margin-left: 20px;
+table-layout: fixed;
+
 }
 table td{
 text-align: center;
@@ -164,7 +188,7 @@ padding-bottom: 30px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.1) 0%, rgba(86, 58, 255, 0.1) 100%);
   border-radius: 10px;
   margin-right: 52px;
-  width: 150px;
+  width: 172px;
   display: flex;
   padding-top: 24px;
 }
@@ -276,6 +300,7 @@ color: white;
 }
 .formulaire_1::placeholder{
 color: white;
+font-size: 16px;
 }
 .loupe{
 display: flex;
@@ -430,7 +455,6 @@ color: #563AFF;
 .topline thead{
 position: sticky;
 top: 0;
-z-index: auto;
 background-color: inherit;
 }
 .topline{
@@ -438,5 +462,27 @@ background-color: inherit;
   height: 360px;
   overflow-y: auto;
   overflow-x: hidden;
-  z-index: 1;
+  margin-right: 20px  ;
+}
+.graph{
+width: 80%;
+height: 80%;
+margin-left: 20px;
+}
+.topline tbody{
+  position: sticky;
+  top: 400px; /* Ajustez cette valeur en fonction de la hauteur de votre en-tête */
+  z-index: -1;
+  background-color: inherit;
+}
+
+.topline::-webkit-scrollbar{
+width: 6px;
+}
+.topline::-webkit-scrollbar-thumb{
+background-image: rgba(86, 58, 255, 0.2);
+border: 0.7px solid #563AFF;
+border-radius: 100px;
+}
+.topline::-webkit-scrollbar-track{
 }
