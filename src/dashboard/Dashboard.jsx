@@ -144,10 +144,6 @@ function Dashboard() {
           <p>I hope everything is fine today...</p>
         </div>
         <div className="input">
-          <div className="loupe">
-            <img src={search} alt=""/>
-          </div>
-          <input type="text" placeholder="Search" className="formulaire_1" />
           <button>Connect your wallet</button>
           <div className="notif">
           </div>
