@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import logo from './logo.svg';
 import './Dashboard.css';
 import litoshi from './litoshi.svg'
 import cercle from './Cercle.svg'
-import { json } from 'react-router-dom';
 import Vector from './Vector.svg'
 import element3 from './element3.svg'
 import Footer from './Footer.svg'
@@ -15,14 +13,47 @@ import notification from './notification.svg'
 import ouai from './ouai.svg'
 import search from './search.svg'
 import homme from './homme.svg'
-import { Doughnut } from 'react-chartjs-2';
 import Chart, { Chart as ChartJS,defaults} from 'chart.js/auto';
 
 const address = 'bc1p6ed8wca5sjmzvsf92uc2ak2egphj9zw59dghcup2ve95slpvcxlqynsk7j';
 
+const chartOptions = {
+            responsive: true, 
+            maintainAspectRatio:false,
+            plugins: {
+              legend: {
+                position: 'left',
+                family:'MontRegular',
+                labels: {
+                  color: 'white',
+                  usePointStyle: true,
+                  pointStyle: 'rect',
+                  padding: 15, // Espacement entre les étiquettes
+                  borderWidth: 40,
+                  font: {
+                    size: 16, // Changer la taille du texte des légendes
+                    family: 'MontRegular',
+                  },
+                },
+                },
+                layout: {
+                  padding: {
+                    left: 200, // Espacement à gauche du Doughnut
+                  },
+                },
+            },
+            cutout:80,
+            hoverOffset: 40, // Surélévation au survol
+            elements: {
+              arc: {
+                borderWidth: 2, // Épaisseur de la bordure
+              },
+            },
+          };
+
 function Dashboard() {
   const [data, setData] = useState([]);
-  const [chartData, setChartData] = useState({});
+  const [chartData, setChartData] = useState(null);
   const [overall_balance, setOverallBalance] = useState(0);
   const [available_balance, setAvailableBalance] = useState(0);
   const [showNFTContent, setShowNFTContent] = useState(false);
@@ -31,62 +62,59 @@ function Dashboard() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    fetchData();
-    setShowTokenContent(true);
-  }, []);
+    const fetchData = async () => {
+        const response = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_balance/'+address); 
+        var jsonData = response.data;
+        // on récupère que les tokens qui ont une overall balance strictement positive
+        jsonData = jsonData.filter(token => token.overall_balance > 0)
+          .map(token => ({
+            ...token,
+            overall_balance: parseInt(token.overall_balance),
+            available_balance: parseInt(token.available_balance)
+        }));
+        setData(jsonData);
+        
+        // Formatage des données pour le graphique
+        const labels = jsonData.map(token => token.tick);
+        const overallBalances = jsonData.map(token => token.overall_balance);
+        const totalOverallBalance = overallBalances.reduce((acc, val) => acc+val, 0);
+        setOverallBalance(totalOverallBalance);
+        const availableBalances = jsonData.map(token => token.available_balance);
+        const totalAvailableBalance = availableBalances.reduce((acc, val) => acc+val, 0);
+        setAvailableBalance(totalAvailableBalance);
+        //const percentages = overallBalances.map(balance => parseInt((balance / totalOverallBalance) * 100, 10));
+  
+        const chartData = {
+          labels: labels,
+          datasets: [
+            {
+              data: availableBalances,
+              borderWidth: 0.1,
+              backgroundColor: ['#C46161','#7AB75D','#C6C85C','#50439D']
+            },
+          ],
+        };
+        // Création du graphique en forme de donut
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const chart = new Chart(ctx, {
+          type: 'doughnut',
+          data: chartData,
+          options: chartOptions,
+        });
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_balance/'+address); 
-      var jsonData = response.data;
-      jsonData = jsonData.filter(token => token.overall_balance > 0)
-        .map(token => ({
-          ...token,
-          overall_balance: parseInt(token.overall_balance),
-          available_balance: parseInt(token.available_balance)
-      }));
-      setData(jsonData);
-      // calculateSums(jsonData);
+        // Mise à jour de l'état du graphique
+        setChartData(chart);
 
-      const labels = jsonData.map(token => token.tick);
-      const overallBalances = jsonData.map(token => token.overall_balance);
-      const totalOverallBalance = overallBalances.reduce((acc, val) => acc+val, 0);
-      setOverallBalance(totalOverallBalance);
-      const availableBalances = jsonData.map(token => token.available_balance);
-      const totalAvailableBalance = availableBalances.reduce((acc, val) => acc+val, 0);
-      setAvailableBalance(totalAvailableBalance);
-      const percentages = overallBalances.map(balance => parseInt((balance / totalOverallBalance) * 100, 10));
+        setShowTokenContent(true);
 
-      const chartData = {
-        labels: labels,
-        datasets: [
-          {
-            data: availableBalances,
-            borderWidth: 0.1,
-            backgroundColor: ['#C46161','#7AB75D','#C6C85C','#50439D']
-          },
-        ],
+        // Nettoyage du graphique lors de la désactivation du composant
+        return () => {
+          chart.destroy();
+        };
       };
-      console.log(chartData);
-      setChartData(chartData);
 
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const calculateSums = (data) => {
-    let overallSum = 0;
-    let availableSum = 0;
-
-    data.forEach((item) => {
-      overallSum += parseInt(item.overall_balance, 10);
-      availableSum += parseInt(item.available_balance, 10);
-    });
-
-    setOverallBalance(Number(overallSum));
-    setAvailableBalance(Number(availableSum));
-  };
+      fetchData();
+    }, []);
 
   const handleNFTButtonClick = () => {
   setShowNFTContent(true);
@@ -97,51 +125,6 @@ function Dashboard() {
     setShowNFTContent(false);
     setShowTokenContent(true);
     setBox3Content("Token Content");
-  };
-
-  const options = {
-    responsive: true, 
-    maintainAspectRatio:false,
-    plugins: {
-      legend: {
-        position: 'left',
-        family:'MontRegular',
-        labels: {
-          color: 'white',
-          usePointStyle: true,
-          pointStyle: 'rect',
-          padding: 15, // Espacement entre les étiquettes
-          borderWidth: 40,
-          font: {
-            size: 16, // Changer la taille du texte des légendes
-            family: 'MontRegular',
-          },
-        },
-        },
-        layout: {
-          padding: {
-            left: 200, // Espacement à gauche du Doughnut
-          },
-        },
-    },
-    cutout:80,
-    hoverOffset: 40, // Surélévation au survol
-    elements: {
-      arc: {
-        borderWidth: 2, // Épaisseur de la bordure
-      },
-    },
-  };
-
-  const donnees = {
-    labels: ['NALS $30,000 40%', 'PEPE $24,500 25%', 'PIZA $16,000 20%', 'ORDI $1853 15%'],
-    datasets: [
-      {
-        data: [30000, 30000, 30000, 30000],
-        borderWidth: 0.1,
-        backgroundColor: ['#C46161','#7AB75D','#C6C85C','#50439D']
-      },
-    ],
   };
   
   return (
@@ -193,11 +176,7 @@ function Dashboard() {
                 
               </div>
               <div className='graph'>
-              {chartData ? (
-                <Doughnut data={chartData} options={options} />
-              ) : (
-                <div>Loading chart data...</div>
-              )}
+                <canvas id="myChart"></canvas>
               </div>
             </div>
           </div>
