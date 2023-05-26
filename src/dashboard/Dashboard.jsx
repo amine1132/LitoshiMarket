@@ -13,6 +13,7 @@ import notification from './notification.svg'
 import ouai from './ouai.svg'
 import search from './search.svg'
 import homme from './homme.svg'
+import chartcircle from './chartcircle.svg'
 import Chart, { Chart as ChartJS,defaults} from 'chart.js/auto';
 
 const address = 'bc1p6ed8wca5sjmzvsf92uc2ak2egphj9zw59dghcup2ve95slpvcxlqynsk7j';
@@ -171,9 +172,10 @@ function Dashboard() {
               </div>
             </div>
             <div className="box2">
-              <p>Average of your wallet</p>
+
               <div className='donnees'>
-                
+              <p>Average of your wallet</p>
+              <button><img src={chartcircle} alt=""/></button>
               </div>
               <div className='graph'>
                 <canvas id="myChart"></canvas>

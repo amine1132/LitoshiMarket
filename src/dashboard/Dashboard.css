@@ -295,7 +295,7 @@ border-right: 2px solid #563AFF;
 border-left: 0;
 border-radius: 0 5px 5px 0;
 height: 31px;
-width: 250px;
+width: 200px;
 color: white;
 }
 .formulaire_1::placeholder{
@@ -484,5 +484,16 @@ background-image: rgba(86, 58, 255, 0.2);
 border: 0.7px solid #563AFF;
 border-radius: 100px;
 }
-.topline::-webkit-scrollbar-track{
+
+.donnees{
+display: flex;
+justify-content: space-between;
+}
+.donnees button{
+margin-right: 40px;
+background: transparent;
+border: none;
+align-items: center;
+justify-content: center;
+display: flex;
 }
