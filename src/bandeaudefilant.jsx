@@ -2,23 +2,32 @@ import React, { useState, useEffect } from 'react';
 import './bandeaudefilant.css'
 import axios from 'axios';
 
-const apiKey = 'd5zQSpuvj2JO3vFD';
 
 const DataDisplay = () => {
-  const [data, setData] = useState([]);
-  const [price, setPrice] = useState(null);
+    const [data, setData] = useState([]);
   
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/0/1');
-          setData(response.data.items.slice(0, 10));
-          const change = await axios.get('https://api.coinbase.com/v2/prices/BTC-USD/spot', {
+          // Récupération du taux de change BTC/USDC
+          const changeData = await axios.get('https://api.coinbase.com/v2/prices/BTC-USD/spot', {
             headers: {
-                'Authorization': `Bearer ${apiKey}`,
+                'Authorization': `Bearer ${import.meta.env.VITE_PUBLIC_KEY}`,
             },
-            });
-          setPrice(change.data.data.amount);
+          });
+          const change = changeData.data.data.amount;
+          
+          // Récupération du top 10 des tokens classés par ordre décroissant des volumes sur les dernières 24h
+          const response = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/0/1');
+          var data = response.data.items.slice(0, 10);
+          const updatedData = await Promise.all(
+            data.map(async (token) => {
+              token['marketcap'] = parseFloat((token.marketcap)*Math.pow(10, -8)*change);
+              token['price'] = token.marketcap/token.max_supply;
+              return token;
+            })
+          );
+          setData(updatedData);
         } catch (error) {
           console.error(error);
         }
@@ -27,66 +36,46 @@ const DataDisplay = () => {
       fetchData();
     }, []);
   
-  return (
-    <div className='defilante'>
-      <ul className='slide'>
+    return (
+      <div className='defilante'>
+        <ul className='slide'>
         {data.map((item, index) => (
-          <li key={index}>
-            <span className='titre'>${item.tick}</span>
-            <ItemDetails tick={item.tick} marketcap={item.marketcap*Math.pow(10, -8)*price} />
-            ${Math.floor(item.marketcap*Math.pow(10, -8)*price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            <span className={parseFloat(item.change_24h).toFixed(2) < 0 ? 'red' : 'green'}>
-            <span className="arrow">
-            <p className="percentage">{Math.abs(parseFloat(item.change_24h)).toFixed(2)}%</p>
-            {parseFloat(item.change_24h).toFixed(2) < 0 ? (
-            <p className="arrow-down">&#9660;</p>
-            ) : (
-            <p className="arrow-up">&#9650;</p>
-              )}
-            </span>
-            </span>
-          </li>
-        ))}
+            <li key={index}>
+              <span className='titre'>${item.tick}</span>
+              <span>${parseFloat(item.price).toFixed(2)}</span>
+              ${Math.floor(item.marketcap).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              <span className={parseFloat(item.change_24h).toFixed(2) < 0 ? 'red' : 'green'}>
+              <span className="arrow">
+              <p className="percentage">{Math.abs(parseFloat(item.change_24h)).toFixed(2)}%</p>
+              {item.change_24h != undefined && parseFloat(item.change_24h).toFixed(2) < 0 ? (
+              <p className="arrow-down">&#9660;</p>
+              ) : (
+              <p className="arrow-up">&#9650;</p>
+                )}
+              </span>
+              </span>
+            </li>
+          ))}
         {data.map((item, index) => (
-          <li key={index}>
-            <span className='titre'>${item.tick}</span>
-            <ItemDetails tick={item.tick} marketcap={item.marketcap*Math.pow(10, -8)*price} />
-            ${Math.floor(item.marketcap*Math.pow(10, -8)*price).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-            <span className={parseFloat(item.change_24h).toFixed(2) < 0 ? 'red' : 'green'}>
-            <span className="arrow">
-            <p className="percentage">{Math.abs(parseFloat(item.change_24h)).toFixed(2)}%</p>
-            {parseFloat(item.change_24h).toFixed(2) < 0 ? (
-            <p className="arrow-down">&#9660;</p>
-            ) : (
-            <p className="arrow-up">&#9650;</p>
-              )}
-            </span>
-            </span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
-
-const ItemDetails = ({ tick, marketcap }) => {
-  const [price, setPrice] = useState(null);
-
-  useEffect(() => {
-    // Effectuer la requête pour obtenir les informations détaillées du token
-    axios.get(`https://brc20api.bestinslot.xyz/v1/get_brc20_ticker/${tick}`)  
-      .then(response => {
-        const maxSupplyValue = parseInt(response.data.ticker[0].max_supply, 10);
-        setPrice(marketcap/maxSupplyValue);
-      })
-      .catch(error => {
-        console.error(`Erreur lors de la requête pour obtenir les informations du token ${tick}:`, error);
-      });
-  }, [tick]);
-
-  return (
-    <span>${parseFloat(price).toFixed(2)}</span>
-  );
+            <li key={index}>
+              <span className='titre'>${item.tick}</span>
+              <span>${parseFloat(item.price).toFixed(2)}</span>
+              ${Math.floor(item.marketcap).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              <span className={parseFloat(item.change_24h).toFixed(2) < 0 ? 'red' : 'green'}>
+              <span className="arrow">
+              <p className="percentage">{Math.abs(parseFloat(item.change_24h)).toFixed(2)}%</p>
+              {parseFloat(item.change_24h).toFixed(2) < 0 ? (
+              <p className="arrow-down">&#9660;</p>
+              ) : (
+              <p className="arrow-up">&#9650;</p>
+                )}
+              </span>
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
 };
 
 export default DataDisplay;
