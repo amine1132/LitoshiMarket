@@ -70,8 +70,8 @@ function Dashboard() {
         jsonData = jsonData.filter(token => token.overall_balance > 0)
           .map(token => ({
             ...token,
-            overall_balance: parseInt(token.overall_balance),
-            available_balance: parseInt(token.available_balance)
+            overall_balance: parseFloat(token.overall_balance),
+            available_balance: parseFloat(token.available_balance)
         }));
         // on trie les tokens en fonction de leurs overall_balances
         jsonData = jsonData.sort((a, b) => {
@@ -231,7 +231,7 @@ function Dashboard() {
                   </thead>
                   <tbody  className='semi'>
                     {data.map(token => (
-                      <TickComponent tick={token.tick} overall_balance={parseInt(token.overall_balance, 10)} available_balance={parseInt(token.available_balance, 10)}/>
+                      <TickComponent tick={token.tick} overall_balance={token.overall_balance} available_balance={token.available_balance}/>
                     ))}
                   </tbody>
                 </table>
