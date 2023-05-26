@@ -16,7 +16,7 @@ import homme from './homme.svg'
 import chartcircle from './chartcircle.svg'
 import Chart, { Chart as ChartJS,defaults} from 'chart.js/auto';
 
-const address = 'bc1p6ed8wca5sjmzvsf92uc2ak2egphj9zw59dghcup2ve95slpvcxlqynsk7j';
+const address = 'bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv';
 
 const chartOptions = {
             responsive: true, 
@@ -73,6 +73,10 @@ function Dashboard() {
             overall_balance: parseInt(token.overall_balance),
             available_balance: parseInt(token.available_balance)
         }));
+        // on trie les tokens en fonction de leurs overall_balances
+        jsonData = jsonData.sort((a, b) => {
+          return b['overall_balance'] - a['overall_balance'];
+        });
         setData(jsonData);
         
         // Formatage des données pour le graphique
@@ -288,35 +292,19 @@ function TickComponent({ tick, overall_balance, available_balance }) {
   };
 
   if (!tickData) {
-    return <div>Loading tick data...</div>;
+    return ;
   }
 
   return (
-    <><><tr>
+    <><tr>
       <td>{tickData.tick.toUpperCase()}</td>
       <td>Positions</td>
       <td>Price</td>
       <td>Change 24h</td>
-      <td>${available_balance}</td>
-      <td>${overall_balance-available_balance}</td>
+      <td>{available_balance}</td>
+      <td>{overall_balance-available_balance}</td>
       <td>{Number(tickData.max_supply).toLocaleString()}</td>
-    </tr><tr>
-        <td>{tickData.tick.toUpperCase()}</td>
-        <td>Positions</td>
-        <td>Price</td>
-        <td>Change 24h</td>
-        <td>Available</td>
-        <td>Transferable</td>
-        <td>{Number(tickData.max_supply).toLocaleString()}</td>
-      </tr></><tr>
-        <td>{tickData.tick.toUpperCase()}</td>
-        <td>Positions</td>
-        <td>Price</td>
-        <td>Change 24h</td>
-        <td>Available</td>
-        <td>Transferable</td>
-        <td>{Number(tickData.max_supply).toLocaleString()}</td>
-      </tr></>
+    </tr></>
   );
 }
 
