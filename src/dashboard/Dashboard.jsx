@@ -22,6 +22,7 @@ const address = 'bc1p6ed8wca5sjmzvsf92uc2ak2egphj9zw59dghcup2ve95slpvcxlqynsk7j'
 
 function Dashboard() {
   const [data, setData] = useState([]);
+  const [chartData, setChartData] = useState({});
   const [overall_balance, setOverallBalance] = useState(0);
   const [available_balance, setAvailableBalance] = useState(0);
   const [showNFTContent, setShowNFTContent] = useState(false);
@@ -37,9 +38,38 @@ function Dashboard() {
   const fetchData = async () => {
     try {
       const response = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_balance/'+address); 
-      const jsonData = response.data;
+      var jsonData = response.data;
+      jsonData = jsonData.filter(token => token.overall_balance > 0)
+        .map(token => ({
+          ...token,
+          overall_balance: parseInt(token.overall_balance),
+          available_balance: parseInt(token.available_balance)
+      }));
       setData(jsonData);
-      calculateSums(jsonData);
+      // calculateSums(jsonData);
+
+      const labels = jsonData.map(token => token.tick);
+      const overallBalances = jsonData.map(token => token.overall_balance);
+      const totalOverallBalance = overallBalances.reduce((acc, val) => acc+val, 0);
+      setOverallBalance(totalOverallBalance);
+      const availableBalances = jsonData.map(token => token.available_balance);
+      const totalAvailableBalance = availableBalances.reduce((acc, val) => acc+val, 0);
+      setAvailableBalance(totalAvailableBalance);
+      const percentages = overallBalances.map(balance => parseInt((balance / totalOverallBalance) * 100, 10));
+
+      const chartData = {
+        labels: labels,
+        datasets: [
+          {
+            data: availableBalances,
+            borderWidth: 0.1,
+            backgroundColor: ['#C46161','#7AB75D','#C6C85C','#50439D']
+          },
+        ],
+      };
+      console.log(chartData);
+      setChartData(chartData);
+
     } catch (error) {
       console.log(error);
     }
@@ -69,16 +99,6 @@ function Dashboard() {
     setBox3Content("Token Content");
   };
 
-  const donnees = {
-    labels: ['NALS $30,000 40%', 'PEPE $24,500 25%', 'PIZA $16,000 20%', 'ORDI $1853 15%'],
-    datasets: [
-      {
-        data: [12, 19, 3, 5],
-        borderWidth: 0.1,
-        backgroundColor: ['#C46161','#7AB75D','#C6C85C','#50439D']
-      },
-    ],
-  };
   const options = {
     responsive: true, 
     maintainAspectRatio:false,
@@ -112,7 +132,17 @@ function Dashboard() {
       },
     },
   };
-  
+
+  const donnees = {
+    labels: ['NALS $30,000 40%', 'PEPE $24,500 25%', 'PIZA $16,000 20%', 'ORDI $1853 15%'],
+    datasets: [
+      {
+        data: [30000, 30000, 30000, 30000],
+        borderWidth: 0.1,
+        backgroundColor: ['#C46161','#7AB75D','#C6C85C','#50439D']
+      },
+    ],
+  };
   
   return (
     <>
@@ -163,7 +193,11 @@ function Dashboard() {
                 
               </div>
               <div className='graph'>
-                <Doughnut data={donnees} options={options}/>
+              {chartData ? (
+                <Doughnut data={chartData} options={options} />
+              ) : (
+                <div>Loading chart data...</div>
+              )}
               </div>
             </div>
           </div>
@@ -212,9 +246,9 @@ function Dashboard() {
                   </thead>
                   <tbody  className='semi'>
                     {data.map(token => (
-                      <TickComponent tick={token.tick} />
+                      <TickComponent tick={token.tick} overall_balance={parseInt(token.overall_balance, 10)} available_balance={parseInt(token.available_balance, 10)}/>
                     ))}
-                    </tbody>
+                  </tbody>
                 </table>
               </nav>
                  ) : (
@@ -255,7 +289,7 @@ function Dashboard() {
   );
 }
 
-function TickComponent({ tick }) {
+function TickComponent({ tick, overall_balance, available_balance }) {
   const [tickData, setTickData] = useState(null);
 
   useEffect(() => {
@@ -282,8 +316,8 @@ function TickComponent({ tick }) {
       <td>Positions</td>
       <td>Price</td>
       <td>Change 24h</td>
-      <td>Available</td>
-      <td>Transferable</td>
+      <td>${available_balance}</td>
+      <td>${overall_balance-available_balance}</td>
       <td>{Number(tickData.max_supply).toLocaleString()}</td>
     </tr><tr>
         <td>{tickData.tick.toUpperCase()}</td>
