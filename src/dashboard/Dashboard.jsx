@@ -131,6 +131,13 @@ function Dashboard() {
     setShowTokenContent(true);
     setBox3Content("Token Content");
   };
+
+  function formatAddress(address) {
+    const length = address.length;
+    const firstChars = address.substring(0, 8);
+    const lastChars = address.substring(length - 8, length);
+    return `${firstChars}...${lastChars}`;
+  }
   
   return (
     <>
@@ -140,7 +147,7 @@ function Dashboard() {
         <header>
       <div className="top">
         <div className="style">
-          <h1>Welcome Back <span>Jhon.LTC!</span></h1>
+          <h1>Welcome Back <span>{formatAddress(address)}!</span></h1>
           <p>I hope everything is fine today...</p>
         </div>
         <div className="input">
@@ -292,15 +299,24 @@ function TickComponent({ tick, overall_balance, available_balance }) {
     return ;
   }
 
+  const formatBalance = (balance) => {
+    if (balance >= 1000000) {
+      const millions = (balance / 1000000).toFixed(0);
+      return millions + 'M';
+    } else {
+      return balance.toString();
+    }
+  };
+
   return (
     <><tr>
       <td>{tickData.tick.toUpperCase()}</td>
-      <td>Positions</td>
+      <td>{formatBalance(overall_balance)}</td>
       <td>Price</td>
       <td>Change 24h</td>
-      <td>{available_balance}</td>
-      <td>{overall_balance-available_balance}</td>
-      <td>{Number(tickData.max_supply).toLocaleString()}</td>
+      <td>{formatBalance(available_balance)}</td>
+      <td>{formatBalance(overall_balance-available_balance)}</td>
+      <td>{formatBalance(Number(tickData.max_supply)).toLocaleString()}</td>
     </tr></>
   );
 }
