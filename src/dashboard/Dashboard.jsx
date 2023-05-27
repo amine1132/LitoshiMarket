@@ -55,8 +55,8 @@ const chartOptions = {
 function Dashboard() {
   const [data, setData] = useState([]);
   const [chartData, setChartData] = useState(null);
-  const [overall_balance, setOverallBalance] = useState(0);
-  const [available_balance, setAvailableBalance] = useState(0);
+  const [overall_balance, setOverallBalance] = useState(0.0);
+  const [available_balance, setAvailableBalance] = useState(0.0);
   const [showNFTContent, setShowNFTContent] = useState(false);
   const [showTokenContent, setShowTokenContent] = useState(false);
   const [box3Content, setBox3Content] = useState("Token Content");
@@ -73,19 +73,35 @@ function Dashboard() {
             overall_balance: parseFloat(token.overall_balance),
             available_balance: parseFloat(token.available_balance)
         }));
+
+        // Récupération des données étoffées pour chaque token
+        // const sortedData = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/1/1');
+        var tokenData = [];
+        try {
+          tokenData = await getTokenData(jsonData);
+        } catch (error) {
+          console.error('Error while requesting API', error);
+        }
+        console.log(tokenData);
         // on trie les tokens en fonction de leurs overall_balances
-        jsonData = jsonData.sort((a, b) => {
+        tokenData = tokenData.sort((a, b) => {
           return b['overall_balance'] - a['overall_balance'];
         });
-        setData(jsonData);
+        // Fusionner les données étoffées avec les données précédentes
+        setData(tokenData);
+
+        // Calculer la valeur possédée pour chaque token et la valeur totale
         
         // Formatage des données pour le graphique
-        const labels = jsonData.map(token => token.tick);
-        const overallBalances = jsonData.map(token => token.overall_balance);
-        const totalOverallBalance = overallBalances.reduce((acc, val) => acc+val, 0);
+        const labels = tokenData.map(token => token.tick);
+        const overallBalances = tokenData.map(token => token.overall_usdc_balance);
+        const numericOverallBalances = overallBalances.filter(balance => typeof balance === 'number');
+        const totalOverallBalance = numericOverallBalances.reduce((acc, val) => acc+val, 0);
+        console.log(totalOverallBalance);
         setOverallBalance(totalOverallBalance);
-        const availableBalances = jsonData.map(token => token.available_balance);
-        const totalAvailableBalance = availableBalances.reduce((acc, val) => acc+val, 0);
+        const availableBalances = tokenData.map(token => token.available_usdc_balance);
+        const numericAvailableBalances = availableBalances.filter(balance => typeof balance === 'number');
+        const totalAvailableBalance = numericAvailableBalances.reduce((acc, val) => acc+val, 0);
         setAvailableBalance(totalAvailableBalance);
         //const percentages = overallBalances.map(balance => parseInt((balance / totalOverallBalance) * 100, 10));
   
@@ -93,7 +109,7 @@ function Dashboard() {
           labels: labels,
           datasets: [
             {
-              data: availableBalances,
+              data: overallBalances,
               borderWidth: 0.1,
               backgroundColor: ['#C46161','#7AB75D','#C6C85C','#50439D']
             },
@@ -116,10 +132,64 @@ function Dashboard() {
         return () => {
           chart.destroy();
         };
-      };
+    };
 
       fetchData();
     }, []);
+
+  const getTokenData = async (jsonData) => {
+    var currentPage = 1;
+    const tokenData = new Set();
+
+    const tokens = jsonData.map(token => token.tick);
+    var remainingTokens = tokens;
+
+    const apiKey = 'd5zQSpuvj2JO3vFD';
+    const response = await axios.get('https://api.coinbase.com/v2/prices/BTC-USD/spot', {
+      headers: {
+          'Authorization': `Bearer ${apiKey}`,
+      },
+      });
+    const btc_price = response.data.data.amount;
+
+    while (true) {
+      try {
+        const sortedData = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/0/'+currentPage);
+
+        if (sortedData.length === 0){
+          break; // Sortir de la boucle while si on a atteint le nombre maximal de pages
+        }
+
+        // Récupération des data pour les tokens possédés
+        const filteredData = sortedData.data.items.filter(token => tokens.includes(token.tick));
+        filteredData.forEach(token => {
+          const tickData = jsonData.find(obj => obj.tick === token.tick)
+          token.overall_balance = tickData.overall_balance;
+          token.available_balance = tickData.available_balance;
+          token.market_cap = token.marketcap*Math.pow(10, -8)*btc_price;
+          token.price = token.market_cap/token.max_supply;
+          token.overall_usdc_balance = parseFloat(tickData.overall_balance)*token.price;
+          token.available_usdc_balance = parseFloat(tickData.available_balance)*token.price;
+          tokenData.add(token);
+        });
+
+        // Mise à jour de la liste de tokens manquants
+        const retrievedTokens = [...tokenData].map(token => token.tick);
+        remainingTokens = tokens.filter(token => !retrievedTokens.includes(token));
+
+        if (remainingTokens.length === 0) {
+          break; // Sortir de la boucle while si toutes les données ont été récupérées
+        }
+
+        currentPage += 1;
+      } catch (error) {
+        console.error('Error while requesting API', error);
+        break;
+      }
+    }
+
+    return [...tokenData, ...jsonData.filter(token => remainingTokens.includes(token.tick))]; // Conversion du set en tableau et ajout des tokens pour lesquels on n'a pas trouvé de data étoffé
+  }
 
   const handleNFTButtonClick = () => {
   setShowNFTContent(true);
@@ -147,7 +217,7 @@ function Dashboard() {
         <header>
       <div className="top">
         <div className="style">
-          <h1>Welcome Back <span>{formatAddress(address)}!</span></h1>
+          <h1>Welcome Back <span>{formatAddress(address)} !</span></h1>
           <p>I hope everything is fine today...</p>
         </div>
         <div className="input">
@@ -235,7 +305,7 @@ function Dashboard() {
                   </thead>
                   <tbody  className='semi'>
                     {data.map(token => (
-                      <TickComponent tick={token.tick} overall_balance={token.overall_balance} available_balance={token.available_balance}/>
+                      <TickComponent tokenData={token}/>
                     ))}
                   </tbody>
                 </table>
@@ -278,26 +348,7 @@ function Dashboard() {
   );
 }
 
-function TickComponent({ tick, overall_balance, available_balance }) {
-  const [tickData, setTickData] = useState(null);
-
-  useEffect(() => {
-    fetchTickData();
-  }, []);
-
-  const fetchTickData = async () => {
-    try {
-      const response = await axios.get(`https://brc20api.bestinslot.xyz/v1/get_brc20_ticker/${tick}`); // Remplacez l'URL par l'URL réelle de l'API pour récupérer les caractéristiques du tick
-      const tickData = response.data.ticker[0];
-      setTickData(tickData);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  if (!tickData) {
-    return ;
-  }
+function TickComponent({ tokenData }) {
 
   const formatBalance = (balance) => {
     if (balance >= 1000000) {
@@ -310,13 +361,13 @@ function TickComponent({ tick, overall_balance, available_balance }) {
 
   return (
     <><tr>
-      <td>{tickData.tick.toUpperCase()}</td>
-      <td>{formatBalance(overall_balance)}</td>
-      <td>Price</td>
-      <td>Change 24h</td>
-      <td>{formatBalance(available_balance)}</td>
-      <td>{formatBalance(overall_balance-available_balance)}</td>
-      <td>{formatBalance(Number(tickData.max_supply)).toLocaleString()}</td>
+      <td>{tokenData.tick.toUpperCase()}</td>
+      <td>{formatBalance(tokenData.overall_balance)}</td>
+      <td>${parseFloat(tokenData.price).toFixed(2)}</td>
+      <td>{parseFloat(tokenData.change_24h).toFixed(2)}%</td>
+      <td>{formatBalance(tokenData.available_balance)}</td>
+      <td>{formatBalance(tokenData.overall_balance-tokenData.available_balance)}</td>
+      <td>{Number(tokenData.marketcap)}</td>
     </tr></>
   );
 }
