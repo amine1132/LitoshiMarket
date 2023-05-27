@@ -392,7 +392,7 @@ flex-wrap: wrap;
 margin-top: 16px;
 margin-bottom: 38px;
 margin-left: 32px;
-width:120px;
+width:250px;
 }
 .topv1 button{
 width: min-content;
@@ -409,6 +409,28 @@ margin-right: 8px;
 }
 .topv1 p{
 margin-bottom: 20px;
+margin-right: 120px;
+}
+.graph533{
+position: relative;
+bottom: 105px;
+width: 100%;
+height: 100%;
+}
+.comingsoon{
+margin: auto;
+display: flex;
+justify-content: center;
+top: 70px;
+position: relative;
+font-size:30px;
+filter: blur(2px);
+}
+.argent{
+margin-left: 32px;
+}
+.blur{
+filter: blur(3px);
 }
 .nft{
 display: flex;

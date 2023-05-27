@@ -10,6 +10,7 @@ import footer2 from './footer2.svg'
 import footer3 from './footer3.svg'
 import globalsearch from './globalsearch.svg'
 import notification from './notification.svg' 
+import Group5333 from './Group5333.svg'
 import ouai from './ouai.svg'
 import search from './search.svg'
 import homme from './homme.svg'
@@ -59,6 +60,7 @@ function Dashboard() {
   const [available_balance, setAvailableBalance] = useState(0.0);
   const [showNFTContent, setShowNFTContent] = useState(false);
   const [showTokenContent, setShowTokenContent] = useState(false);
+  const [isGraphContent, setIsGraphContent] = useState(false);
   const [box3Content, setBox3Content] = useState("Token Content");
   const [loading, setLoading] = useState(false);
 
@@ -127,6 +129,8 @@ function Dashboard() {
         setChartData(chart);
 
         setShowTokenContent(true);
+
+        setInitialChartData(chart);
 
         // Nettoyage du graphique lors de la désactivation du composant
         return () => {
@@ -202,6 +206,10 @@ function Dashboard() {
     setBox3Content("Token Content");
   };
 
+  const handleGraphButtonClick = () => {
+    setIsGraphContent(!isGraphContent);
+  };
+
   function formatAddress(address) {
     const length = address.length;
     const firstChars = address.substring(0, 8);
@@ -250,14 +258,21 @@ function Dashboard() {
               </div>
             </div>
             <div className="box2">
-
               <div className='donnees'>
               <p>Average of your wallet</p>
-              <button><img src={chartcircle} alt=""/></button>
+              <button type='button' onClick={handleGraphButtonClick} ><img src={chartcircle} alt=""/></button>
               </div>
-              <div className='graph'>
+              {isGraphContent ? (
+              <><div className='comingsoon'> Coming Soon..</div>
+              <div className='blur'>
+                <div className='argent'>$243,600</div>
+              <img src={Group5333} alt="" className='graph533'/>
+              </div></>
+            ) : (
+              <div className="graph">
                 <canvas id="myChart"></canvas>
               </div>
+            )}
             </div>
           </div>
           <div className="groupe2">
@@ -266,6 +281,7 @@ function Dashboard() {
               <p className='semi'>My Assets</p>
               <button type="button" onClick={handleTokenButtonClick}>Token</button>
               <button type="button" onClick={handleNFTButtonClick}>NFT</button>
+              <button type='button' >Transaction</button>
               </div>
               {showNFTContent ? (
               <div className='nft'>
