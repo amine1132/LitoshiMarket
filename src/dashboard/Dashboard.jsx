@@ -240,16 +240,16 @@ function Dashboard() {
               <div className='groupv1'>
                 <div className='group1'>
                 <p>My Wallet</p>
-                <h1>Total: ${overall_balance.toLocaleString()}</h1>
+                <h1>Total: {overall_balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
                 </div>
                 <div className='group2'>
                   <p className='blanc'>Available</p>
-                  <p className='semi'>${available_balance.toLocaleString()}</p>
+                  <p className='semi'>{available_balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</p>
                   {/*données du montant du produit*/}
                 </div>
                 <div className='group3'>
                   <p className='blanc'>Transferable</p>
-                  <p className='semi'>${(overall_balance-available_balance).toLocaleString()}</p>
+                  <p className='semi'>{(overall_balance-available_balance).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</p>
                   {/*données du montant du produit*/}
                 </div>
               </div>
@@ -379,11 +379,11 @@ function TickComponent({ tokenData }) {
     <><tr>
       <td>{tokenData.tick.toUpperCase()}</td>
       <td>{formatBalance(tokenData.overall_balance)}</td>
-      <td>${parseFloat(tokenData.price).toFixed(2)}</td>
-      <td>{parseFloat(tokenData.change_24h).toFixed(2)}%</td>
+      <td>{tokenData.price ? parseFloat(tokenData.price).toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 8}) : 'N/A'}</td>
+      <td>{tokenData.change_24h ? parseFloat(tokenData.change_24h).toFixed(2)+'%' : 'N/A'}</td>
       <td>{formatBalance(tokenData.available_balance)}</td>
       <td>{formatBalance(tokenData.overall_balance-tokenData.available_balance)}</td>
-      <td>{Number(tokenData.marketcap)}</td>
+      <td>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD'}) : 'N/A'}</td>
     </tr></>
   );
 }
