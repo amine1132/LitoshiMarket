@@ -16,6 +16,8 @@ import search from './search.svg'
 import homme from './homme.svg'
 import chartcircle from './chartcircle.svg'
 import Chart, { Chart as ChartJS,defaults} from 'chart.js/auto';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 
 const address = 'bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv';
 
@@ -31,7 +33,7 @@ const chartOptions = {
                   usePointStyle: true,
                   pointStyle: 'rect',
                   padding: 15, // Espacement entre les étiquettes
-                  borderWidth: 40,
+                  borderWidth: 10,
                   font: {
                     size: 16, // Changer la taille du texte des légendes
                     family: 'MontRegular',
@@ -45,7 +47,6 @@ const chartOptions = {
                 },
             },
             cutout:80,
-            hoverOffset: 40, // Surélévation au survol
             elements: {
               arc: {
                 borderWidth: 2, // Épaisseur de la bordure
@@ -56,6 +57,7 @@ const chartOptions = {
 function Dashboard() {
   const [data, setData] = useState([]);
   const [chartData, setChartData] = useState(null);
+  const [copied, setCopied] = useState(false);
   const [overall_balance, setOverallBalance] = useState(0.0);
   const [available_balance, setAvailableBalance] = useState(0.0);
   const [showNFTContent, setShowNFTContent] = useState(false);
@@ -138,6 +140,36 @@ function Dashboard() {
         };
     };
 
+  
+      const handleCopyAddress = () => {
+        const addressElement = document.getElementById('address')
+        const MySwal = withReactContent(Swal);
+  
+        addressElement.addEventListener('click', () => {
+          // Sélectionne le contenu de l'élément <span>
+          const range = document.createRange();
+          range.selectNode(addressElement);
+          window.getSelection().removeAllRanges();
+          window.getSelection().addRange(range);
+        
+          // Copie le contenu sélectionné
+          document.execCommand('copy');
+        
+          // Désélectionne le contenu
+          window.getSelection().removeAllRanges();
+
+          const MySwal = withReactContent(Swal)
+          MySwal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Copy!',
+            showConfirmButton: false,
+          })
+        });
+      };
+  
+      handleCopyAddress();
+    
       fetchData();
     }, []);
 
@@ -225,7 +257,7 @@ function Dashboard() {
         <header>
       <div className="top">
         <div className="style">
-          <h1>Welcome Back <span>{formatAddress(address)} !</span></h1>
+          <h1>Welcome Back <span id="address">{formatAddress(address)} !</span></h1>
           <p>I hope everything is fine today...</p>
         </div>
         <div className="input">
@@ -350,7 +382,7 @@ function Dashboard() {
                 <button className='DRC'>Dogechain</button>
               </div>
             <div className="menufooter">
-              <button><img src={Footer} alt=""/>Profile</button>
+              <button className='profile'><img src={Footer} alt=""/>Profile</button>
               <button><img src={footer2} alt=""/>Settings</button>
               <button><img src={footer3} alt=""/>Log Out</button>
           </div>
@@ -380,7 +412,9 @@ function TickComponent({ tokenData }) {
       <td>{tokenData.tick.toUpperCase()}</td>
       <td>{formatBalance(tokenData.overall_balance)}</td>
       <td>{tokenData.price ? parseFloat(tokenData.price).toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 8}) : 'N/A'}</td>
-      <td>{tokenData.change_24h ? parseFloat(tokenData.change_24h).toFixed(2)+'%' : 'N/A'}</td>
+      <td className={tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h ? 'positive' : 'na')}>
+      {tokenData.change_24h ? parseFloat(tokenData.change_24h).toFixed(2) + '%' : 'N/A'}
+      </td>
       <td>{formatBalance(tokenData.available_balance)}</td>
       <td>{formatBalance(tokenData.overall_balance-tokenData.available_balance)}</td>
       <td>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD'}) : 'N/A'}</td>

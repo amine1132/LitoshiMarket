@@ -78,6 +78,7 @@ margin-top: 40px;
 .box1 img{
 position: relative;
 width: 100%;
+height: 100%;
 }
 .group1{
 margin-top: 16px;
@@ -255,7 +256,7 @@ width: 80%;
 align-items: flex-start;
 }
 .menu button{
-border: none;
+border: 1px solid transparent;
 margin-bottom: 10px;
 padding: 0;
 height: 31px;
@@ -276,19 +277,26 @@ margin-right: 10px;
 .menufooter{
 display: flex;
 flex-direction: column;
-width:100%;
-align-items: center;
+width:80%;
+align-items: start;
 }
 .menufooter button{
 background: rgba(255,255,255,0);
-border: none;
+border: 1px solid transparent;
 margin-bottom: 10px;
 padding: 0;
 height: 30px;
 color: white;
+width: 108px;
+align-items: center;
+display: flex;
 }
 .menufooter img{
-margin-right: 15px;
+margin-right: 10px;
+}
+.profile img{
+width: 20px;
+height: 20px;
 }
 .menufooter button:hover{
 background: rgba(86, 58, 255, 0.2);
@@ -357,31 +365,31 @@ margin: 8px;
 }
 .BRC:hover {
 background: rgba(253, 94, 83, 0.3);
-width: 80%;
+width: 100%;
 border: 1px solid #FD5E53; 
 align-items: center;
 display: flex;
-justify-content: center;
+justify-content: start;
 height: 31px;
 border-radius: 3px;
 }
 .LTC:hover {
 background: rgba(0, 108, 255, 0.3);
-width: 80%;
+width: 100%;
 border: 1px solid #006CFF;
 align-items: center;
 display: flex;
-justify-content: center;
+justify-content: start;
 height: 31px;
 border-radius: 3px;
 }
 .DRC:hover {
 background: rgba(248, 240, 96, 0.3);
-width: 80%;
+width: 100%;
 border: 1px solid #F8F060;
 align-items: center;
 display: flex;
-justify-content: center;
+justify-content: start;
 height: 31px;
 border-radius: 3px;
 }
@@ -424,7 +432,6 @@ justify-content: center;
 top: 70px;
 position: relative;
 font-size:30px;
-filter: blur(2px);
 }
 .argent{
 margin-left: 32px;
@@ -490,26 +497,22 @@ color: #563AFF;
 .topline thead{
 position: sticky;
 top: 0;
-background-color: inherit;
+z-index: 1000000;
 }
 .topline{
   position: sticky;
-  height: 360px;
+  margin-right: 20px ;
   overflow-y: auto;
   overflow-x: hidden;
-  margin-right: 20px  ;
+  height: 360px;
+  z-index: -1000000;
 }
 .graph{
-width: 80%;
-height: 80%;
+width: 95%;
 margin-left: 20px;
+height: 80%;
 }
-.topline tbody{
-  position: sticky;
-  top: 400px; /* Ajustez cette valeur en fonction de la hauteur de votre en-tête */
-  z-index: -1;
-  background-color: inherit;
-}
+
 
 .topline::-webkit-scrollbar{
 width: 6px;
@@ -531,4 +534,15 @@ border: none;
 align-items: center;
 justify-content: center;
 display: flex;
+}
+
+.negative {
+  color: red;
+}
+
+.positive {
+  color: green;
+}
+.na {
+  color: white;
 }
