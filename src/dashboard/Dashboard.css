@@ -267,6 +267,9 @@ font-size: 14px;
 align-items: center;
 display: flex;
 }
+.menu a {
+  text-decoration:none;
+}
 .menu i{
 margin-right: 15px;
 }
@@ -541,8 +544,31 @@ display: flex;
 }
 
 .positive {
-  color: green;
+  color: #4EEE16;
 }
 .na {
   color: white;
+}
+.chart-legend li span{
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  margin-right: 5px;
+}
+
+.chart-legend{
+height:250px;
+overflow:auto;
+}
+
+.chart-legend li{
+cursor:pointer;
+}
+
+.strike{
+   text-decoration: line-through !important;
+}
+
+.float-left{
+float:left;
 }

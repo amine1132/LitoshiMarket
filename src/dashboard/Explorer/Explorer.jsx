@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import './Dashboard.css';
+import './Explorer.css';
 import litoshi from './litoshi.svg'
 import cercle from './Cercle.svg'
 import Vector from './Vector.svg'
@@ -18,13 +18,10 @@ import chartcircle from './chartcircle.svg'
 import Chart, { Chart as ChartJS,defaults} from 'chart.js/auto';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
-import Explorer from './Explorer/Explorer'
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate, Outlet,useMatch } from 'react-router-dom';
 
-
-
-
 const address = 'bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv';
+
 
 const chartOptions = {
             responsive: true, 
@@ -147,26 +144,30 @@ function Dashboard() {
 
   
       const handleCopyAddress = () => {
+        const addressElement = document.getElementById('address')
         const MySwal = withReactContent(Swal);
+  
+        addressElement.addEventListener('click', () => {
+          // Sélectionne le contenu de l'élément <span>
+          const range = document.createRange();
+          range.selectNode(addressElement);
+          window.getSelection().removeAllRanges();
+          window.getSelection().addRange(range);
+        
+          // Copie le contenu sélectionné
+          document.execCommand('copy');
+        
+          // Désélectionne le contenu
+          window.getSelection().removeAllRanges();
 
-        const copyAddress = () => {
-          navigator.clipboard.writeText(address)
-            .then(() => {
-              MySwal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Copy!',
-                showConfirmButton: false,
-              });
-            })
-            .catch((error) => {
-              // Gérer les erreurs de copie
-              console.error('Copy failed:', error);
-            });
-        };
-      
-        const addressElement = document.getElementById('address');
-        addressElement.addEventListener('click', copyAddress);
+          const MySwal = withReactContent(Swal)
+          MySwal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Copy!',
+            showConfirmButton: false,
+          })
+        });
       };
   
       handleCopyAddress();
@@ -258,7 +259,7 @@ function Dashboard() {
         <header>
       <div className="top">
         <div className="style">
-          <h1>Welcome Back <span id="address" >{formatAddress(address)} !</span></h1>
+          <h1>Welcome Back <span id="address">{formatAddress(address)} !</span></h1>
           <p>I hope everything is fine today...</p>
         </div>
         <div className="input">
@@ -269,53 +270,29 @@ function Dashboard() {
       </div>
     </header>
           <div className="groupe1">
-            <div className="box1">
-              <div className='groupv1'>
-                <div className='group1'>
-                <p>My Wallet</p>
-                <h1>Total: {overall_balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
+            <div className="box_1">
+              <div className='group_v1'>
+                <div className='group1_'>
+                <p>Total</p>
+                <h1>Market Cap: {overall_balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
+                <button type="">Market cap</button>
+                <button type="">24h Vol</button>
+                <button type="">Dominance</button>
+                <button type="">Coins</button>
                 </div>
-                <div className='group2'>
-                  <p className='blanc'>Available</p>
-                  <p className='semi'>{available_balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</p>
-                  {/*données du montant du produit*/}
-                </div>
-                <div className='group3'>
-                  <p className='blanc'>Transferable</p>
-                  <p className='semi'>{(overall_balance-available_balance).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</p>
-                  {/*données du montant du produit*/}
+                <div className='group2_'>
                 </div>
               </div>
               <div>
-                <img src={cercle} alt=""/>
               </div>
-            </div>
-            <div className="box2">
-              <div className='donnees'>
-              <p>Average of your wallet</p>
-              <button type='button' onClick={handleGraphButtonClick} ><img src={chartcircle} alt=""/></button>
-              </div>
-              {isGraphContent ? (
-              <><div className='comingsoon'> Coming Soon..</div>
-              <div className='blur'>
-                <div className='argent'>$243,600</div>
-              <img src={Group5333} alt="" className='graph533'/>
-              </div></>
-            ) : (
-              <><div className="graph">
-                      <canvas id="myChart"></canvas>
-                      </div><div id="js-legend" class="chart-legend">
-                      </div></>
-            )}
             </div>
           </div>
           <div className="groupe2">
             <div className="box3">
-              <div className='topv1'>
-              <p className='semi'>My Assets</p>
-              <button type="button" onClick={handleTokenButtonClick}>Token</button>
-              <button type="button" onClick={handleNFTButtonClick}>NFT</button>
-              <button type='button' >Transaction</button>
+              <div className='topv1_'>
+              <p className='semi'>Top Market Cap / Cryptocurrency Prices</p>
+              <button type="button" onClick={handleTokenButtonClick}>Market Cap</button>
+              <button type="button" onClick={handleNFTButtonClick}>Mint</button>
               </div>
               {showNFTContent ? (
               <div className='nft'>
@@ -372,8 +349,8 @@ function Dashboard() {
           </div>
           <div className="menu">
               <div className='menu2'>
-              <button><img src={Vector} alt=""/>Dashboard</button>
-                <Link to="/Explorer"><button><img src={globalsearch} alt=""/>Explorer</button></Link>
+              <Link to="/Dashboard"><button><img src={Vector} alt=""/>Dashboard</button></Link>
+                <button><img src={globalsearch} alt=""/>Explorer</button>
                 <button><img src={ouai} alt=""/>Watchlist</button>
                 <button><img src={notification} alt=""/>Alerts</button>
                 <button><img src={element3} alt=""/>Multicharts</button>
