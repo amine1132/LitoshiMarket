@@ -27,7 +27,7 @@ span {
 .blanc{
   color: rgba(255, 255, 255, 0.5);
 }
-.top {
+.top{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -44,6 +44,7 @@ span {
   align-items: center;
   justify-content: center;
   margin-left: 40px;
+  cursor: pointer;
 }
 .top p{
 color: #626262;
@@ -173,14 +174,16 @@ border-collapse: collapse;
 min-width: 100%;
 margin-left: 20px;
 table-layout: fixed;
-
+}
+table thead{
+position: sticky;
+top: 0;
+background: #2a2353;
+height: 50px;
 }
 table td{
 text-align: center;
 padding-bottom: 15px;
-}
-table th{
-padding-bottom: 30px;
 }
 
 .select1 {
@@ -266,6 +269,7 @@ color: white;
 font-size: 14px;
 align-items: center;
 display: flex;
+cursor:pointer;
 }
 .menu a {
   text-decoration:none;
@@ -413,6 +417,7 @@ color: white;
 border: 1px solid rgba(255, 255, 255, 0.3);
 border-radius: 4px;
 margin-right: 8px;
+cursor:pointer;
 }
 .topv1 button:hover{
   background: rgba(86, 58, 255, 0.2);
@@ -435,6 +440,15 @@ justify-content: center;
 top: 70px;
 position: relative;
 font-size:30px;
+}
+.comingsoonv2{
+margin: auto;
+display: flex;
+justify-content: center;
+top: 70px;
+position: relative;
+font-size:30px;
+filter: blur(1px);
 }
 .argent{
 margin-left: 32px;
@@ -478,6 +492,7 @@ background: transparent;
 border: 1px solid transparent;
 color: white;
 font-size: 10px;
+cursor: pointer;
 }
 .nft .text_8 button:hover{
   background: rgba(86, 58, 255, 0.2);
@@ -495,20 +510,15 @@ display: block;
 
 .top span{
 color: #563AFF;
+cursor:pointer;
 }
 
-.topline thead{
-position: sticky;
-top: 0;
-z-index: 1000000;
-}
 .topline{
   position: sticky;
   margin-right: 20px ;
   overflow-y: auto;
   overflow-x: hidden;
   height: 360px;
-  z-index: -1000000;
 }
 .graph{
 width: 95%;
@@ -537,8 +547,8 @@ border: none;
 align-items: center;
 justify-content: center;
 display: flex;
+cursor:pointer;
 }
-
 .negative {
   color: red;
 }

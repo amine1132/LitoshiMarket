@@ -67,6 +67,7 @@ function Dashboard() {
   const [available_balance, setAvailableBalance] = useState(0.0);
   const [showNFTContent, setShowNFTContent] = useState(false);
   const [showTokenContent, setShowTokenContent] = useState(false);
+  const [showTransactionContent, setShowTransactionContent] = useState(false);
   const [isGraphContent, setIsGraphContent] = useState(false);
   const [box3Content, setBox3Content] = useState("Token Content");
   const [loading, setLoading] = useState(false);
@@ -243,6 +244,12 @@ function Dashboard() {
     setIsGraphContent(!isGraphContent);
   };
 
+  const handleTransactionButtonClick = () => {
+    setShowNFTContent(false);
+    setShowTokenContent(false);
+    setShowTransactionContent(true);
+  };
+
   function formatAddress(address) {
     const length = address.length;
     const firstChars = address.substring(0, 8);
@@ -315,7 +322,7 @@ function Dashboard() {
               <p className='semi'>My Assets</p>
               <button type="button" onClick={handleTokenButtonClick}>Token</button>
               <button type="button" onClick={handleNFTButtonClick}>NFT</button>
-              <button type='button' >Transaction</button>
+              <button type='button' onClick={handleTransactionButtonClick}>Transaction</button>
               </div>
               {showNFTContent ? (
               <div className='nft'>
@@ -359,7 +366,9 @@ function Dashboard() {
                     ))}
                   </tbody>
                 </table>
-              </nav>
+              </nav>   
+              ) : showTransactionContent ? (
+                <div className='comingsoonv2'> Coming Soon..</div>                 
                  ) : (
                   <div>{box3Content}</div>
                 )}
@@ -410,7 +419,8 @@ function TickComponent({ tokenData }) {
   };
 
   return (
-    <><tr>
+    <>
+    <tr>
       <td>{tokenData.tick.toUpperCase()}</td>
       <td>{formatBalance(tokenData.overall_balance)}</td>
       <td>{tokenData.price ? parseFloat(tokenData.price).toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 8}) : 'N/A'}</td>

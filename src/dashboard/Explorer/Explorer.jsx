@@ -19,6 +19,9 @@ import Chart, { Chart as ChartJS,defaults} from 'chart.js/auto';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate, Outlet,useMatch } from 'react-router-dom';
+import { BsStar } from 'react-icons/bs';
+
+
 
 const address = 'bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv';
 
@@ -56,7 +59,7 @@ const chartOptions = {
             },
           };
 
-function Dashboard() {
+function Explorer() {
   const [data, setData] = useState([]);
   const [chartData, setChartData] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -64,9 +67,14 @@ function Dashboard() {
   const [available_balance, setAvailableBalance] = useState(0.0);
   const [showNFTContent, setShowNFTContent] = useState(false);
   const [showTokenContent, setShowTokenContent] = useState(false);
+  const [showMarketCapContent, setShowMarketCapContent] = useState(true);
+  const [show24hVolContent, setShow24hVolContent] = useState(false);
+  const [box4Content, setBox4Content] = useState("Market Cap");
   const [isGraphContent, setIsGraphContent] = useState(false);
   const [box3Content, setBox3Content] = useState("Token Content");
   const [loading, setLoading] = useState(false);
+  const [isFilled, setIsFilled] = useState(false);
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -202,6 +210,7 @@ function Dashboard() {
         const filteredData = sortedData.data.items.filter(token => tokens.includes(token.tick));
         filteredData.forEach(token => {
           const tickData = jsonData.find(obj => obj.tick === token.tick)
+          token.star = <BsStar className='iconoutline'/>;
           token.overall_balance = tickData.overall_balance;
           token.available_balance = tickData.available_balance;
           token.market_cap = token.marketcap*Math.pow(10, -8)*btc_price;
@@ -239,11 +248,22 @@ function Dashboard() {
     setShowTokenContent(true);
     setBox3Content("Token Content");
   };
+  
 
   const handleGraphButtonClick = () => {
     setIsGraphContent(!isGraphContent);
   };
 
+  const handleMarketCapButtonClick = () => {
+    setShowMarketCapContent(true);
+    setShow24hVolContent(false);
+    };
+
+    const handle24hVolButtonClick = () => {
+      setShowMarketCapContent(false);
+      setShow24hVolContent(true);
+      };
+  
   function formatAddress(address) {
     const length = address.length;
     const firstChars = address.substring(0, 8);
@@ -251,8 +271,11 @@ function Dashboard() {
     return `${firstChars}...${lastChars}`;
   }
   
+  const handleClick = () => {
+    setIsFilled(!isFilled);
+  };
+
   return (
-    <>
     <div className="max">
       <div className="colone">
         <div className="idk">
@@ -274,13 +297,19 @@ function Dashboard() {
               <div className='group_v1'>
                 <div className='group1_'>
                 <p>Total</p>
-                <h1>Market Cap: {overall_balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
-                <button type="">Market cap</button>
-                <button type="">24h Vol</button>
-                <button type="">Dominance</button>
-                <button type="">Coins</button>
+                  {showMarketCapContent ? (
+                    <h1>Market Cap: {overall_balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
+                  ) : show24hVolContent ? (
+                    <h1>24h Vol : {overall_balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
+                  ) : null}
+                <button type="button" onClick={handleMarketCapButtonClick}>Market cap</button>
+                <button type="button" onClick={handle24hVolButtonClick}>24h Vol</button>
                 </div>
                 <div className='group2_'>
+                <div className='blur'>
+                <div className='argent_'>$243,600</div>
+              <img src={Group5333} alt="" className='graph533'/>
+              </div>
                 </div>
               </div>
               <div>
@@ -291,44 +320,22 @@ function Dashboard() {
             <div className="box3">
               <div className='topv1_'>
               <p className='semi'>Top Market Cap / Cryptocurrency Prices</p>
-              <button type="button" onClick={handleTokenButtonClick}>Market Cap</button>
-              <button type="button" onClick={handleNFTButtonClick}>Mint</button>
+              <button type="button" onClick={handleTokenButtonClick} className='tokens'>Tokens</button>
+              <button type="button" onClick={handleNFTButtonClick} className='mint'>Mint</button>
               </div>
               {showNFTContent ? (
-              <div className='nft'>
-                <div className='box'>
-                  <img src={homme} alt=""/>
-                  <div className='text_8'>
-                    <p className='desc'>#47856</p>
-                    <button type="button" className='buton'>Détails</button>
-                  </div>
-                </div>
-                <div className='box'>
-                  <img src={homme} alt=""/>
-                  <div className='text_8'>
-                    <p className='desc'>#47856</p>
-                    <button type="button" className='buton'>Détails</button>
-                  </div>
-                </div>
-                <div className='box'>
-                  <img src={homme} alt=""/>
-                  <div className='text_8'>
-                    <p className='desc'>#47856</p>
-                    <button type="button" className='buton'>Détails</button>
-                  </div>
-                </div>
-              </div>
-              ) : showTokenContent ? (
-              <nav className="topline">
+              <div className='comingsoon_'>Coming Soon..</div>
+              ) : data.length > 0  ? (
+              <nav className="topline_1">
                   <table>
-                  <thead > 
-                    <th>Name</th>
-                    <th>Positions</th>
+                  <thead >
+                    <th></th>
+                    <th className='super'>Token</th>
                     <th>Price</th>
                     <th>24h</th>
-                    <th>Available</th>
-                    <th>Transferable</th>
-                    <th>Marketcap</th>
+                    <th>24h Volume</th>
+                    <th>Market Cap</th>
+                    <th>Supply</th>
                   </thead>
                   <tbody  className='semi'>
                     {data.map(token => (
@@ -371,7 +378,6 @@ function Dashboard() {
         </div>
       </div>
     </div>
-  </>
   );
 }
 
@@ -388,17 +394,19 @@ function TickComponent({ tokenData }) {
 
   return (
     <><tr>
+      <td>{tokenData.star}</td>
+      <div className='super'>
       <td>{tokenData.tick.toUpperCase()}</td>
-      <td>{formatBalance(tokenData.overall_balance)}</td>
+      </div>
       <td>{tokenData.price ? parseFloat(tokenData.price).toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 8}) : 'N/A'}</td>
       <td className={tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h ? 'positive' : 'na')}>
       {tokenData.change_24h ? parseFloat(tokenData.change_24h).toFixed(2) + '%' : 'N/A'}
       </td>
       <td>{formatBalance(tokenData.available_balance)}</td>
-      <td>{formatBalance(tokenData.overall_balance-tokenData.available_balance)}</td>
       <td>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD'}) : 'N/A'}</td>
+      <td>{formatBalance(tokenData.overall_balance-tokenData.available_balance)}</td>
     </tr></>
   );
 }
 
-export default Dashboard;
+export default Explorer;

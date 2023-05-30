@@ -70,7 +70,7 @@ function App() {
         <p className= "taille">Manage yours assets</p>
         <span>in minutes</span>
         <p className='soustexte'>Litoshi aggregate all the data from the BRC20 and LTC20 market. Track, trade & transfer.</p>
-        <button type="button">Get started</button>
+        <Link to="/Dashboard"><button type="button">Get started</button></Link>
       </div>
         <div className='marketcap2'>
           <img src={Group50} alt=""/>
@@ -94,7 +94,7 @@ function App() {
             <p className='grisop2'>+8.32</p>
           </div>
           </div>
-          <img src={vectormobile} alt="" className="graph" />
+          <img src={vectormobile} alt="" className="graph_" />
           <img src={blanc} alt="" className='blurblanc'/>
       </div>
       <div className='placement'>
@@ -160,7 +160,7 @@ function App() {
           <p className='soustextev1'>Our mission is to enable our users to navigate through this torrent of financial data more intuitively. We want to save your time.</p>
           </div>
           <img src={v09} alt="" className="madame" />
-        <button className='button2'>Get started</button>
+          <Link to="/Dashboard"><button className='button2'>Get started</button></Link>
         </div>
       </div>
       <div className="bloctext4">

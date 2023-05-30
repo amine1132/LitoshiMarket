@@ -54,6 +54,7 @@ margin-right: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
 }
 .max{
 overflow-x: hidden;
@@ -101,6 +102,7 @@ margin: 0;
   width: 158px;
   margin-top: 30px;
   font-family: MontRegular;
+  cursor: pointer;
 }
 
 .bloctext2{
@@ -148,7 +150,7 @@ color: #C1C7CD;
 color: #C1C7CD;
 opacity: 0.5;
 }
-.graph{
+.graph_{
 width: 50%;
 }
 .bloc p{
@@ -654,6 +656,7 @@ color:white;
 display: flex;
 align-items: center;
 justify-content: center;
+cursor: pointer;
 }
 .ligne{
 max-width: 100%;
@@ -769,6 +772,10 @@ align-items: flex-start;
 .text6 .button2{
 margin: auto;
 border: none;
+cursor: pointer;
+}
+.text6 a{
+margin: auto;
 }
 .madame{
 width: 689px;
