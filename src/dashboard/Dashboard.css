@@ -46,6 +46,19 @@ span {
   margin-left: 40px;
   cursor: pointer;
 }
+.tooltip{
+position: absolute;
+left: 700px;
+transition: 3s;
+border: 1px solid grey;
+font-size: 16px;
+opacity: 0;
+transition: all 0.4s cubic-bezier(0.68,-0.55,0.265,1,55);
+}
+.stylev2:hover .tooltip{
+  opacity: 1;
+}
+
 .top p{
 color: #626262;
 }
@@ -68,7 +81,7 @@ margin-top: 40px;
 }
 
 .box1 {
-  background: linear-gradient(342.29deg, rgba(86, 58, 255, 0.35) 0%, rgba(128, 128, 128, 0.0735) 100%);
+  background: linear-gradient(0deg, rgba(86, 58, 255, 0.35) -30%, rgba(128, 128, 128, 0.0735) 100%);
   width: 60%;
   height: 267px;
   margin-right: 24px;
@@ -172,7 +185,6 @@ font-size: 16px;
 table {
 border-collapse: collapse;
 min-width: 100%;
-margin-left: 20px;
 table-layout: fixed;
 }
 table thead{
@@ -230,9 +242,13 @@ font-weight: bold;
   justify-content: space-between;
   border-radius: 0 10px 10px 0;
   margin-right: 52px;
-  width: 150px;
+  width: 180px;
   border:1px solid rgba(86, 58, 255, 0.56);
   height: 930px;
+}
+.legend-container {
+  max-height: 200px;
+  overflow-y: scroll;
 }
 .menu{
 display: flex;
@@ -441,6 +457,15 @@ top: 70px;
 position: relative;
 font-size:30px;
 }
+.comingsoon_v1{
+margin: auto;
+display: flex;
+justify-content: center;
+top: 70px;
+position: relative;
+font-size:30px;
+filter: blur(1px);
+}
 .comingsoonv2{
 margin: auto;
 display: flex;
@@ -515,7 +540,6 @@ cursor:pointer;
 
 .topline{
   position: sticky;
-  margin-right: 20px ;
   overflow-y: auto;
   overflow-x: hidden;
   height: 360px;
@@ -524,6 +548,8 @@ cursor:pointer;
 width: 95%;
 margin-left: 20px;
 height: 80%;
+max-height: 400px; /* Réglez la hauteur maximale selon vos besoins */
+  overflow-y: auto;
 }
 
 
@@ -550,11 +576,11 @@ display: flex;
 cursor:pointer;
 }
 .negative {
-  color: red;
+  color: #D84B4B;
 }
 
 .positive {
-  color: #4EEE16;
+  color: #53D258;
 }
 .na {
   color: white;

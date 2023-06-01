@@ -330,7 +330,7 @@ function Explorer() {
                   <table>
                   <thead >
                     <th></th>
-                    <th className='super'>Token</th>
+                    <th>Token</th>
                     <th>Price</th>
                     <th>24h</th>
                     <th>24h Volume</th>
@@ -395,9 +395,7 @@ function TickComponent({ tokenData }) {
   return (
     <><tr>
       <td>{tokenData.star}</td>
-      <div className='super'>
       <td>{tokenData.tick.toUpperCase()}</td>
-      </div>
       <td>{tokenData.price ? parseFloat(tokenData.price).toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 8}) : 'N/A'}</td>
       <td className={tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h ? 'positive' : 'na')}>
       {tokenData.change_24h ? parseFloat(tokenData.change_24h).toFixed(2) + '%' : 'N/A'}

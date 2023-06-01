@@ -9,9 +9,11 @@ import Footer from './Footer.svg'
 import footer2 from './footer2.svg'
 import footer3 from './footer3.svg'
 import globalsearch from './globalsearch.svg'
+import Group_427319828 from './Group_427319828.svg'
 import notification from './notification.svg' 
 import Group5333 from './Group5333.svg'
 import ouai from './ouai.svg'
+import newgraph from './newgraph.svg'
 import search from './search.svg'
 import homme from './homme.svg'
 import chartcircle from './chartcircle.svg'
@@ -25,6 +27,7 @@ import { BrowserRouter as Router, Route, Routes, Link, useNavigate, Outlet,useMa
 
 
 const address = 'bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv';
+
 
 const chartOptions = {
             responsive: true, 
@@ -57,8 +60,9 @@ const chartOptions = {
                 borderWidth: 2, // Épaisseur de la bordure
               },
             },
+            
           };
-
+          
 function Dashboard() {
   const [data, setData] = useState([]);
   const [chartData, setChartData] = useState(null);
@@ -169,9 +173,9 @@ function Dashboard() {
         const addressElement = document.getElementById('address');
         addressElement.addEventListener('click', copyAddress);
       };
-  
+      
       handleCopyAddress();
-    
+      
       fetchData();
     }, []);
 
@@ -265,7 +269,9 @@ function Dashboard() {
         <header>
       <div className="top">
         <div className="style">
-          <h1>Welcome Back <span id="address" >{formatAddress(address)} !</span></h1>
+          <div className='stylev2'>
+          <h1>Welcome Back <span id="address">{formatAddress(address)}!</span></h1>
+          </div>
           <p>I hope everything is fine today...</p>
         </div>
         <div className="input">
@@ -294,7 +300,7 @@ function Dashboard() {
                 </div>
               </div>
               <div>
-                <img src={cercle} alt=""/>
+                <img src={Group_427319828} alt=""/>
               </div>
             </div>
             <div className="box2">
@@ -306,12 +312,11 @@ function Dashboard() {
               <><div className='comingsoon'> Coming Soon..</div>
               <div className='blur'>
                 <div className='argent'>$243,600</div>
-              <img src={Group5333} alt="" className='graph533'/>
+              <img src={newgraph} alt="" className='graph533'/>
               </div></>
             ) : (
               <><div className="graph">
                       <canvas id="myChart"></canvas>
-                      </div><div id="js-legend" class="chart-legend">
                       </div></>
             )}
             </div>
@@ -325,33 +330,11 @@ function Dashboard() {
               <button type='button' onClick={handleTransactionButtonClick}>Transaction</button>
               </div>
               {showNFTContent ? (
-              <div className='nft'>
-                <div className='box'>
-                  <img src={homme} alt=""/>
-                  <div className='text_8'>
-                    <p className='desc'>#47856</p>
-                    <button type="button" className='buton'>Détails</button>
-                  </div>
-                </div>
-                <div className='box'>
-                  <img src={homme} alt=""/>
-                  <div className='text_8'>
-                    <p className='desc'>#47856</p>
-                    <button type="button" className='buton'>Détails</button>
-                  </div>
-                </div>
-                <div className='box'>
-                  <img src={homme} alt=""/>
-                  <div className='text_8'>
-                    <p className='desc'>#47856</p>
-                    <button type="button" className='buton'>Détails</button>
-                  </div>
-                </div>
-              </div>
+                <div className='comingsoon_v1'>Coming Soon..</div>
               ) : showTokenContent ? (
               <nav className="topline">
                   <table>
-                  <thead > 
+                  <thead> 
                     <th>Name</th>
                     <th>Positions</th>
                     <th>Price</th>
@@ -360,7 +343,7 @@ function Dashboard() {
                     <th>Transferable</th>
                     <th>Marketcap</th>
                   </thead>
-                  <tbody  className='semi'>
+                  <tbody className='semi'>
                     {data.map(token => (
                       <TickComponent tokenData={token}/>
                     ))}
