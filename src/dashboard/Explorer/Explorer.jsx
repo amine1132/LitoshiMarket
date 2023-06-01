@@ -345,7 +345,7 @@ function Explorer() {
                 </table>
               </nav>
                  ) : (
-                  <div>{box3Content}</div>
+                  <div></div>
                 )}
             </div>
           </div>

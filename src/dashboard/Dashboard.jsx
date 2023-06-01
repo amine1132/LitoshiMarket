@@ -353,7 +353,7 @@ function Dashboard() {
               ) : showTransactionContent ? (
                 <div className='comingsoonv2'> Coming Soon..</div>                 
                  ) : (
-                  <div>{box3Content}</div>
+                  <div></div>
                 )}
             </div>
           </div>
