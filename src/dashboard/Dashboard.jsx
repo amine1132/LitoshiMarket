@@ -96,7 +96,6 @@ function Dashboard() {
         } catch (error) {
           console.error('Error while requesting API', error);
         }
-        console.log(tokenData);
         // on trie les tokens en fonction de leurs overall_balances
         tokenData = tokenData.sort((a, b) => {
           return b['overall_balance'] - a['overall_balance'];
@@ -111,7 +110,6 @@ function Dashboard() {
         const overallBalances = tokenData.map(token => token.overall_usdc_balance);
         const numericOverallBalances = overallBalances.filter(balance => typeof balance === 'number');
         const totalOverallBalance = numericOverallBalances.reduce((acc, val) => acc+val, 0);
-        console.log(totalOverallBalance);
         setOverallBalance(totalOverallBalance);
         const availableBalances = tokenData.map(token => token.available_usdc_balance);
         const numericAvailableBalances = availableBalances.filter(balance => typeof balance === 'number');
@@ -186,10 +184,8 @@ function Dashboard() {
     const tokens = jsonData.map(token => token.tick);
     var remainingTokens = tokens;
 
-    const apiKey = 'd5zQSpuvj2JO3vFD';
     const response = await axios.get('https://api.coinbase.com/v2/prices/BTC-USD/spot', {
       headers: {
-          'Authorization': `Bearer ${apiKey}`,
       },
       });
     const btc_price = response.data.data.amount;
@@ -208,8 +204,8 @@ function Dashboard() {
           const tickData = jsonData.find(obj => obj.tick === token.tick)
           token.overall_balance = tickData.overall_balance;
           token.available_balance = tickData.available_balance;
-          token.market_cap = token.marketcap*Math.pow(10, -8)*btc_price;
-          token.price = token.market_cap/token.max_supply;
+          token.marketcap = token.marketcap*Math.pow(10, -8)*btc_price; // marketcap (en btc), martket_cap (en usdc)
+          token.price = token.marketcap/token.max_supply;
           token.overall_usdc_balance = parseFloat(tickData.overall_balance)*token.price;
           token.available_usdc_balance = parseFloat(tickData.available_balance)*token.price;
           tokenData.add(token);
@@ -401,18 +397,27 @@ function TickComponent({ tokenData }) {
     }
   };
 
+  function formatPrice(price) {  
+    // Vérifier si le prix est supérieur à 1
+    if (price > 1) {
+      return price.toFixed(2); // Afficher le prix avec 4 décimales
+    } else {
+      return price.toFixed(4); // Retourner le prix d'origine sans modification
+    }
+  }  
+
   return (
     <>
     <tr>
       <td>{tokenData.tick.toUpperCase()}</td>
       <td>{formatBalance(tokenData.overall_balance)}</td>
-      <td>{tokenData.price ? parseFloat(tokenData.price).toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 8}) : 'N/A'}</td>
+      <td>{tokenData.price ? '$'+formatPrice(tokenData.price) : 'N/A'}</td>
       <td className={tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h ? 'positive' : 'na')}>
       {tokenData.change_24h ? parseFloat(tokenData.change_24h).toFixed(2) + '%' : 'N/A'}
       </td>
       <td>{formatBalance(tokenData.available_balance)}</td>
       <td>{formatBalance(tokenData.overall_balance-tokenData.available_balance)}</td>
-      <td>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD'}) : 'N/A'}</td>
+      <td>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0}) : 'N/A'}</td>
     </tr></>
   );
 }

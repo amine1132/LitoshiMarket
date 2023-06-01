@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './bandeaudefilant.css'
 import axios from 'axios';
 
-const apiKey = 'd5zQSpuvj2JO3vFD';
 
 const DataDisplay = () => {
   const [data, setData] = useState([]);
@@ -15,7 +14,7 @@ const DataDisplay = () => {
           setData(response.data.items.slice(0, 10));
           const change = await axios.get('https://api.coinbase.com/v2/prices/BTC-USD/spot', {
             headers: {
-                'Authorization': `Bearer ${apiKey}`,
+                'Authorization': `Bearer ${import.meta.env.VITE_PUBLIC_KEY}`,
             },
             });
           setPrice(change.data.data.amount);
@@ -74,13 +73,13 @@ const ItemDetails = ({ tick, marketcap }) => {
 
   useEffect(() => {
     // Effectuer la requête pour obtenir les informations détaillées du token
-    axios.get(`https://brc20api.bestinslot.xyz/v1/get_brc20_ticker/${tick}`)  
+    axios.get("https://brc20api.bestinslot.xyz/v1/get_brc20_ticker/"+tick)  
       .then(response => {
         const maxSupplyValue = parseInt(response.data.ticker[0].max_supply, 10);
         setPrice(marketcap/maxSupplyValue);
       })
       .catch(error => {
-        console.error(`Erreur lors de la requête pour obtenir les informations du token ${tick}:`, error);
+        console.error("Erreur lors de la requête pour obtenir les informations du token "+tick, error);
       });
   }, [tick]);
 
