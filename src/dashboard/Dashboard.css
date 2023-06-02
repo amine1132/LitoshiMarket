@@ -15,6 +15,7 @@
 .max{
   max-width: 1920px;
   width: 100%;
+  overflow-y: hidden;
 }
 
 body {
@@ -195,7 +196,8 @@ height: 50px;
 }
 table td{
 text-align: center;
-padding-bottom: 15px;
+padding-bottom: 25px;
+padding-top: 25px;
 }
 
 .select1 {
@@ -265,6 +267,7 @@ align-items: start;
 width: 80%;
 border: 1px solid transparent;
 margin-bottom: 250px;
+margin-top: 40px;
 }
 .menu2{
 display: flex;
@@ -279,7 +282,7 @@ border: 1px solid transparent;
 margin-bottom: 10px;
 padding: 0;
 height: 31px;
-width: 108px;
+width: 120px;
 background: transparent;
 color: white;
 font-size: 14px;
@@ -295,6 +298,7 @@ margin-right: 15px;
 }
 .menu2 img{
 margin-right: 10px;
+padding-left: 10px;
 }
 
 .menufooter{
@@ -310,12 +314,13 @@ margin-bottom: 10px;
 padding: 0;
 height: 30px;
 color: white;
-width: 108px;
+width: 120px;
 align-items: center;
 display: flex;
 }
 .menufooter img{
 margin-right: 10px;
+padding-left: 10px;
 }
 .profile img{
 width: 20px;
@@ -396,6 +401,11 @@ justify-content: start;
 height: 31px;
 border-radius: 3px;
 }
+.BRC img{
+width: 20px;
+margin-right: 10px;
+padding-left: 10px;
+}
 .LTC:hover {
 background: rgba(0, 108, 255, 0.3);
 width: 100%;
@@ -416,7 +426,33 @@ justify-content: start;
 height: 31px;
 border-radius: 3px;
 }
+.DRC img{
+  width: 20px;
+  margin-right: 10px;
+  padding-left: 10px;
+}
+.LTC img{
+width: 20px;
+margin-right: 10px;
+padding-left: 10px;
+}
 
+.ethereum img{
+width: 20px;
+margin-right: 10px;
+height: 25px;
+padding-left: 10px;
+}
+.ethereum:hover {
+  background: grey;
+  width: 100%;
+  border: 1px solid white;
+  align-items: center;
+  display: flex;
+  justify-content: start;
+  height: 31px;
+  border-radius: 3px;
+  }
 .topv1{
 display: flex;
 flex-wrap: wrap;
@@ -574,16 +610,20 @@ align-items: center;
 justify-content: center;
 display: flex;
 cursor:pointer;
+z-index: 1;
 }
 .negative {
   color: #D84B4B;
+  border-bottom: 1px solid rgba(100, 115, 254, 0.3);
 }
 
 .positive {
   color: #53D258;
+  border-bottom: 1px solid rgba(100, 115, 254, 0.3);
 }
 .na {
   color: white;
+  border-bottom: 1px solid rgba(100, 115, 254, 0.3);
 }
 .chart-legend li span{
   display: inline-block;
@@ -607,4 +647,8 @@ cursor:pointer;
 
 .float-left{
 float:left;
+}
+
+.border_bottom{
+border-bottom: 1px solid rgba(100, 115, 254, 0.3);
 }

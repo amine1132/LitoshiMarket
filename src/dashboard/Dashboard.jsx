@@ -22,7 +22,10 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import Explorer from './Explorer/Explorer'
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate, Outlet,useMatch } from 'react-router-dom';
-
+import Bitcoin from './Bitcoin.svg'
+import litecoinltclogo from './litecoinltclogo.svg'
+import dogecoindogelogo from './dogecoindogelogo.svg'
+import Ethereum from './Ethereum.svg'
 
 
 
@@ -77,6 +80,7 @@ function Dashboard() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
+
     const fetchData = async () => {
         const response = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_balance/'+address); 
         var jsonData = response.data;
@@ -134,7 +138,7 @@ function Dashboard() {
           data: chartData,
           options: chartOptions,
         });
-
+        
         // Mise à jour de l'état du graphique
         setChartData(chart);
 
@@ -145,7 +149,8 @@ function Dashboard() {
         // Nettoyage du graphique lors de la désactivation du composant
         return () => {
           chart.destroy();
-        };
+        };  
+        
     };
 
   
@@ -176,6 +181,7 @@ function Dashboard() {
       
       fetchData();
     }, []);
+    
 
   const getTokenData = async (jsonData) => {
     var currentPage = 1;
@@ -225,6 +231,10 @@ function Dashboard() {
         break;
       }
     }
+    var chart = Chart.getChart('0'); // Récupérer le graphique existant avec l'ID '0'
+if (chart) {
+  chart.destroy(); // Détruire le graphique existant
+}
 
     return [...tokenData, ...jsonData.filter(token => remainingTokens.includes(token.tick))]; // Conversion du set en tableau et ajout des tokens pour lesquels on n'a pas trouvé de data étoffé
   }
@@ -367,9 +377,10 @@ function Dashboard() {
                 <button><img src={element3} alt=""/>Multicharts</button>
               </div>
               <div className='menuv1'>
-                <button className='BRC'>Bitcoin</button>
-                <button className='LTC'>Litecoin</button>
-                <button className='DRC'>Dogechain</button>
+                <button className='BRC'><img src={Bitcoin} alt=""/>Bitcoin</button>
+                <button className='LTC'><img src={litecoinltclogo} alt=""/>Litecoin</button>
+                <button className='DRC'><img src={dogecoindogelogo} alt=""/>Dogechain</button>
+                <button className='ethereum'><img src={Ethereum} alt=""/>Ethereum</button>
               </div>
             <div className="menufooter">
               <button className='profile'><img src={Footer} alt=""/>Profile</button>
@@ -409,15 +420,15 @@ function TickComponent({ tokenData }) {
   return (
     <>
     <tr>
-      <td>{tokenData.tick.toUpperCase()}</td>
-      <td>{formatBalance(tokenData.overall_balance)}</td>
-      <td>{tokenData.price ? '$'+formatPrice(tokenData.price) : 'N/A'}</td>
-      <td className={tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h ? 'positive' : 'na')}>
-      {tokenData.change_24h ? parseFloat(tokenData.change_24h).toFixed(2) + '%' : 'N/A'}
+      <td className='border_bottom'>{tokenData.tick.toUpperCase()}</td>
+      <td className='border_bottom'>{formatBalance(tokenData.overall_balance)}</td>
+      <td className='border_bottom'>{tokenData.price ? '$'+formatPrice(tokenData.price) : 'N/A'}</td>
+      <td className= {tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h && parseFloat(tokenData.change_24h) > 0 ? 'positive' : 'na')}>
+      {tokenData.change_24h ? (parseFloat(tokenData.change_24h) >= 0 ? '+' : '') + parseFloat(tokenData.change_24h).toFixed(2) + '%' : 'N/A'}
       </td>
-      <td>{formatBalance(tokenData.available_balance)}</td>
-      <td>{formatBalance(tokenData.overall_balance-tokenData.available_balance)}</td>
-      <td>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0}) : 'N/A'}</td>
+      <td className='border_bottom'>{formatBalance(tokenData.available_balance)}</td>
+      <td className='border_bottom'>{formatBalance(tokenData.overall_balance-tokenData.available_balance)}</td>
+      <td className='border_bottom'>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0}) : 'N/A'}</td>
     </tr></>
   );
 }

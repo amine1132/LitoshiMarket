@@ -394,15 +394,15 @@ function TickComponent({ tokenData }) {
 
   return (
     <><tr>
-      <td>{tokenData.star}</td>
-      <td>{tokenData.tick.toUpperCase()}</td>
-      <td>{tokenData.price ? parseFloat(tokenData.price).toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 8}) : 'N/A'}</td>
+      <td className='border_bottom'>{tokenData.star}</td>
+      <td className='border_bottom'>{tokenData.tick.toUpperCase()}</td>
+      <td className='border_bottom'>{tokenData.price ? parseFloat(tokenData.price).toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 8}) : 'N/A'}</td>
       <td className={tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h ? 'positive' : 'na')}>
       {tokenData.change_24h ? parseFloat(tokenData.change_24h).toFixed(2) + '%' : 'N/A'}
       </td>
-      <td>{formatBalance(tokenData.available_balance)}</td>
-      <td>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD'}) : 'N/A'}</td>
-      <td>{formatBalance(tokenData.overall_balance-tokenData.available_balance)}</td>
+      <td className='border_bottom'>{formatBalance(tokenData.available_balance)}</td>
+      <td className='border_bottom'>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD'}) : 'N/A'}</td>
+      <td className='border_bottom'>{formatBalance(tokenData.overall_balance-tokenData.available_balance)}</td>
     </tr></>
   );
 }

@@ -199,7 +199,8 @@
   }
   table td{
   text-align: center;
-  padding-bottom: 15px;
+  padding-bottom: 25px;
+  padding-top: 25px;
   }
 table th{
     
@@ -258,7 +259,7 @@ border-radius: 100px;
     justify-content: space-between;
     border-radius: 0 10px 10px 0;
     margin-right: 52px;
-    width: 150px;
+    width: 160px;
     border:1px solid rgba(86, 58, 255, 0.56);
     height: 930px;
   }
@@ -291,7 +292,7 @@ border-radius: 100px;
   margin-bottom: 10px;
   padding: 0;
   height: 31px;
-  width: 108px;
+  width: 120px;
   background: transparent;
   color: white;
   font-size: 14px;
@@ -303,6 +304,7 @@ border-radius: 100px;
   }
   .menu2 img{
   margin-right: 10px;
+  padding-left: 10px;
   }
   
   .menufooter{
@@ -318,12 +320,13 @@ border-radius: 100px;
   padding: 0;
   height: 30px;
   color: white;
-  width: 108px;
+  width: 120px;
   align-items: center;
   display: flex;
   }
   .menufooter img{
   margin-right: 10px;
+  padding-left: 10px;
   }
   .profile img{
   width: 20px;

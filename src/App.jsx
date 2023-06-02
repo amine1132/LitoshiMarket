@@ -163,31 +163,6 @@ function App() {
           <Link to="/Dashboard"><button className='button2'>Get started</button></Link>
         </div>
       </div>
-      <div className="bloctext4">
-        <div className='titre4'>
-          <p>Token mint <span>process?</span></p>
-        </div>
-        <div className='placementv3'>
-        <div className="textv1">
-          <div className="icone1">
-            <p>01</p>
-          </div>
-          <p className='soustexte'>5 minutes before public team & partners will mint a maximum of 10%. After this 5 minutes public launch start.</p>
-        </div>
-        <div className="textv2">
-          <div className="icone2">
-            <p>02</p>
-          </div>
-          <p className='soustexte'>Public launch will be announced on Discord first, then on Twitter.</p>
-        </div>
-        <div className="textv3">
-          <div className="icone3">
-            <p>03</p>
-          </div>
-          <p className='soustexte'>Airdrop. Tokens minted by the partners & team will be used for airdrop to the community and investment for Litoshi.</p>
-        </div>
-        </div>
-      </div>
       <p className="title">Roadmap</p>
       <div className="container">
         <img src={Roadmap} alt="" className='roadmap'/>
