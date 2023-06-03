@@ -22,10 +22,6 @@ import { BrowserRouter as Router, Route, Routes, Link, useNavigate, Outlet,useMa
 import { BsStar } from 'react-icons/bs';
 
 
-
-const address = 'bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv';
-
-
 const chartOptions = {
             responsive: true, 
             maintainAspectRatio:false,
@@ -61,15 +57,12 @@ const chartOptions = {
 
 function Explorer() {
   const [data, setData] = useState([]);
-  const [chartData, setChartData] = useState(null);
-  const [copied, setCopied] = useState(false);
-  const [overall_balance, setOverallBalance] = useState(0.0);
-  const [available_balance, setAvailableBalance] = useState(0.0);
+  const [totalMarketCap, setTotalMarketCap] = useState(0.0);
+  const [totalVols24h, setTotalVols24h] = useState(0.0);
   const [showNFTContent, setShowNFTContent] = useState(false);
   const [showTokenContent, setShowTokenContent] = useState(false);
   const [showMarketCapContent, setShowMarketCapContent] = useState(true);
   const [show24hVolContent, setShow24hVolContent] = useState(false);
-  const [box4Content, setBox4Content] = useState("Market Cap");
   const [isGraphContent, setIsGraphContent] = useState(false);
   const [box3Content, setBox3Content] = useState("Token Content");
   const [loading, setLoading] = useState(false);
@@ -77,166 +70,37 @@ function Explorer() {
 
 
   useEffect(() => {
-    const fetchData = async () => {
-        const response = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_balance/'+address); 
-        var jsonData = response.data;
-        // on récupère que les tokens qui ont une overall balance strictement positive
-        jsonData = jsonData.filter(token => token.overall_balance > 0)
-          .map(token => ({
-            ...token,
-            overall_balance: parseFloat(token.overall_balance),
-            available_balance: parseFloat(token.available_balance)
-        }));
 
-        // Récupération des données étoffées pour chaque token
-        // const sortedData = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/1/1');
-        var tokenData = [];
-        try {
-          tokenData = await getTokenData(jsonData);
-        } catch (error) {
-          console.error('Error while requesting API', error);
-        }
-        console.log(tokenData);
-        // on trie les tokens en fonction de leurs overall_balances
-        tokenData = tokenData.sort((a, b) => {
-          return b['overall_balance'] - a['overall_balance'];
+    const fetchData = async () => {
+        // Récupération du change BTC/USDC
+        const response = await axios.get('https://api.coinbase.com/v2/prices/BTC-USD/spot', {
+          headers: {
+          },
+          });
+        const btc_price = response.data.data.amount;
+
+        // Tri par vol_24h et Récupération des données étoffées pour chaque token
+        const sortedData = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/0/1');
+        const data = sortedData.data.items;
+        data.forEach(token => {
+          token.vol_24h = token.vol_24h*Math.pow(10, -8)*btc_price;
+          token.marketcap = token.marketcap*Math.pow(10, -8)*btc_price;
+          token.price = token.marketcap/token.max_supply;
         });
         // Fusionner les données étoffées avec les données précédentes
-        setData(tokenData);
+        setData(data);
 
-        // Calculer la valeur possédée pour chaque token et la valeur totale
-        
-        // Formatage des données pour le graphique
-        const labels = tokenData.map(token => token.tick);
-        const overallBalances = tokenData.map(token => token.overall_usdc_balance);
-        const numericOverallBalances = overallBalances.filter(balance => typeof balance === 'number');
-        const totalOverallBalance = numericOverallBalances.reduce((acc, val) => acc+val, 0);
-        console.log(totalOverallBalance);
-        setOverallBalance(totalOverallBalance);
-        const availableBalances = tokenData.map(token => token.available_usdc_balance);
-        const numericAvailableBalances = availableBalances.filter(balance => typeof balance === 'number');
-        const totalAvailableBalance = numericAvailableBalances.reduce((acc, val) => acc+val, 0);
-        setAvailableBalance(totalAvailableBalance);
-        //const percentages = overallBalances.map(balance => parseInt((balance / totalOverallBalance) * 100, 10));
-  
-        const chartData = {
-          labels: labels,
-          datasets: [
-            {
-              data: overallBalances,
-              borderWidth: 0.1,
-              backgroundColor: ['#C46161','#7AB75D','#C6C85C','#50439D']
-            },
-          ],
-        };
-        // Création du graphique en forme de donut
-        const ctx = document.getElementById('myChart').getContext('2d');
-        const chart = new Chart(ctx, {
-          type: 'doughnut',
-          data: chartData,
-          options: chartOptions,
-        });
+        const marketCaps = data.map(token => token.marketcap);
+        const totalMarketCap = marketCaps.reduce((acc, val) => acc+val, 0);
+        setTotalMarketCap(totalMarketCap);
 
-        // Mise à jour de l'état du graphique
-        setChartData(chart);
-
-        setShowTokenContent(true);
-
-        setInitialChartData(chart);
-
-        // Nettoyage du graphique lors de la désactivation du composant
-        return () => {
-          chart.destroy();
-        };
+        const vols24h = data.map(token => token.vol_24h);
+        const totalVols24h = vols24h.reduce((acc, val) => acc+val, 0);
+        setTotalVols24h(totalVols24h);
     };
-
-  
-      const handleCopyAddress = () => {
-        const addressElement = document.getElementById('address')
-        const MySwal = withReactContent(Swal);
-  
-        addressElement.addEventListener('click', () => {
-          // Sélectionne le contenu de l'élément <span>
-          const range = document.createRange();
-          range.selectNode(addressElement);
-          window.getSelection().removeAllRanges();
-          window.getSelection().addRange(range);
-        
-          // Copie le contenu sélectionné
-          document.execCommand('copy');
-        
-          // Désélectionne le contenu
-          window.getSelection().removeAllRanges();
-
-          const MySwal = withReactContent(Swal)
-          MySwal.fire({
-            position: 'center',
-            icon: 'success',
-            title: 'Copy!',
-            showConfirmButton: false,
-          })
-        });
-      };
-  
-      handleCopyAddress();
     
       fetchData();
     }, []);
-
-  const getTokenData = async (jsonData) => {
-    var currentPage = 1;
-    const tokenData = new Set();
-
-    const tokens = jsonData.map(token => token.tick);
-    var remainingTokens = tokens;
-
-    const apiKey = 'd5zQSpuvj2JO3vFD';
-    const response = await axios.get('https://api.coinbase.com/v2/prices/BTC-USD/spot', {
-      headers: {
-          'Authorization': `Bearer ${apiKey}`,
-      },
-      });
-    const btc_price = response.data.data.amount;
-
-    while (true) {
-      try {
-        const sortedData = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/0/'+currentPage);
-
-        if (sortedData.length === 0){
-          break; // Sortir de la boucle while si on a atteint le nombre maximal de pages
-        }
-
-        // Récupération des data pour les tokens possédés
-        const filteredData = sortedData.data.items.filter(token => tokens.includes(token.tick));
-        filteredData.forEach(token => {
-          const tickData = jsonData.find(obj => obj.tick === token.tick)
-          token.star = <BsStar className='iconoutline'/>;
-          token.overall_balance = tickData.overall_balance;
-          token.available_balance = tickData.available_balance;
-          token.market_cap = token.marketcap*Math.pow(10, -8)*btc_price;
-          token.price = token.market_cap/token.max_supply;
-          token.overall_usdc_balance = parseFloat(tickData.overall_balance)*token.price;
-          token.available_usdc_balance = parseFloat(tickData.available_balance)*token.price;
-          tokenData.add(token);
-        });
-
-        // Mise à jour de la liste de tokens manquants
-        const retrievedTokens = [...tokenData].map(token => token.tick);
-        remainingTokens = tokens.filter(token => !retrievedTokens.includes(token));
-
-        if (remainingTokens.length === 0) {
-          break; // Sortir de la boucle while si toutes les données ont été récupérées
-        }
-
-        currentPage += 1;
-      } catch (error) {
-        console.error('Error while requesting API', error);
-        break;
-      }
-    }
-
-    return [...tokenData, ...jsonData.filter(token => remainingTokens.includes(token.tick))]; // Conversion du set en tableau et ajout des tokens pour lesquels on n'a pas trouvé de data étoffé
-  }
 
   const handleNFTButtonClick = () => {
   setShowNFTContent(true);
@@ -282,8 +146,6 @@ function Explorer() {
         <header>
       <div className="top">
         <div className="style">
-          <h1>Welcome Back <span id="address">{formatAddress(address)} !</span></h1>
-          <p>I hope everything is fine today...</p>
         </div>
         <div className="input">
           <button>Connect your wallet</button>
@@ -298,9 +160,9 @@ function Explorer() {
                 <div className='group1_'>
                 <p>Total</p>
                   {showMarketCapContent ? (
-                    <h1>Market Cap: {overall_balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
+                    <h1>Market Cap : {Number(totalMarketCap).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0})}</h1>
                   ) : show24hVolContent ? (
-                    <h1>24h Vol : {overall_balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</h1>
+                    <h1>24h Vol : {Number(totalVols24h).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0})}</h1>
                   ) : null}
                 <button type="button" onClick={handleMarketCapButtonClick}>Market cap</button>
                 <button type="button" onClick={handle24hVolButtonClick}>24h Vol</button>
@@ -397,12 +259,12 @@ function TickComponent({ tokenData }) {
       <td className='border_bottom'>{tokenData.star}</td>
       <td className='border_bottom'>{tokenData.tick.toUpperCase()}</td>
       <td className='border_bottom'>{tokenData.price ? parseFloat(tokenData.price).toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 8}) : 'N/A'}</td>
-      <td className={tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h ? 'positive' : 'na')}>
-      {tokenData.change_24h ? parseFloat(tokenData.change_24h).toFixed(2) + '%' : 'N/A'}
+      <td className= {tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h && parseFloat(tokenData.change_24h) > 0 ? 'positive' : 'na')}>
+      {tokenData.change_24h ? (parseFloat(tokenData.change_24h) >= 0 ? '+' : '') + parseFloat(tokenData.change_24h).toFixed(2) + '%' : 'N/A'}
       </td>
-      <td className='border_bottom'>{formatBalance(tokenData.available_balance)}</td>
-      <td className='border_bottom'>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD'}) : 'N/A'}</td>
-      <td className='border_bottom'>{formatBalance(tokenData.overall_balance-tokenData.available_balance)}</td>
+      <td className='border_bottom'>{Number(tokenData.vol_24h).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0})}</td>
+      <td className='border_bottom'>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0}) : 'N/A'}</td>
+      <td className='border_bottom'>{formatBalance(tokenData.max_supply)}</td>
     </tr></>
   );
 }

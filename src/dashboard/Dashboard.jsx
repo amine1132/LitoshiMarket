@@ -415,14 +415,14 @@ function TickComponent({ tokenData }) {
     } else {
       return price.toFixed(4); // Retourner le prix d'origine sans modification
     }
-  }  
+  }
 
   return (
     <>
     <tr>
       <td className='border_bottom'>{tokenData.tick.toUpperCase()}</td>
       <td className='border_bottom'>{formatBalance(tokenData.overall_balance)}</td>
-      <td className='border_bottom'>{tokenData.price ? '$'+formatPrice(tokenData.price) : 'N/A'}</td>
+      <td className='border_bottom'>{tokenData.price ? '$'+formatPrice(parseFloat(tokenData.price)) : 'N/A'}</td>
       <td className= {tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h && parseFloat(tokenData.change_24h) > 0 ? 'positive' : 'na')}>
       {tokenData.change_24h ? (parseFloat(tokenData.change_24h) >= 0 ? '+' : '') + parseFloat(tokenData.change_24h).toFixed(2) + '%' : 'N/A'}
       </td>
