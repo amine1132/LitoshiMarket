@@ -1,14 +1,17 @@
 @font-face {
   font-family: 'MontRegular';
-  src: url('./Mont/Mont-Regular.otf');
+  src: url('./Mont/Mont-Regular.otf') format('opentype');
+  font-display: block;
 }
 @font-face {
   font-family: 'Mont';
-  src: url('./fonts/Mont/Mont-Bold.otf');
+  src: url('./fonts/Mont/Mont-Bold.otf') format('opentype');
+  font-display: block;
 }
 @font-face{
   font-family: 'Montsemi';
-  src: url('./Mont/Mont-SemiBold.otf');
+  src: url('./Mont/Mont-SemiBold.otf') format('opentype');
+  font-display: block;
 }
 
 
@@ -32,6 +35,9 @@ span {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 88%;
+  left: 200px;
+  position: relative;
 }
 .top button{
   border-radius: 12px;
@@ -59,7 +65,10 @@ transition: all 0.4s cubic-bezier(0.68,-0.55,0.265,1,55);
 .stylev2:hover .tooltip{
   opacity: 1;
 }
-
+.stylev2{
+display: flex;
+align-items: center;
+}
 .top p{
 color: #626262;
 }
@@ -166,11 +175,11 @@ font-size: 16px;
   margin-top: 24px;
   width: 100%;
 }
-.box3 {
+.box3_ {
   background: linear-gradient(342.29deg, rgba(86, 58, 255, 0.35) 0%, rgba(128, 128, 128, 0.0735) 100%);
   backdrop-filter: blur(30px);
   width: 100%;
-  height: 500px;
+  height: 700px;
   border-radius: 10px;
   margin-right: 32px;
 }
@@ -222,6 +231,7 @@ padding-top: 25px;
   width: 172px;
   display: flex;
   padding-top: 24px;
+  
 }
 
 .chain {
@@ -247,6 +257,11 @@ font-weight: bold;
   width: 180px;
   border:1px solid rgba(86, 58, 255, 0.56);
   height: 930px;
+  position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 1;
 }
 .legend-container {
   max-height: 200px;
@@ -571,14 +586,15 @@ display: block;
 
 .top span{
 color: #563AFF;
-cursor:pointer;
 }
-
+#address::before{
+content: attr(data-tooltip);
+}
 .topline{
   position: sticky;
   overflow-y: auto;
   overflow-x: hidden;
-  height: 360px;
+  height: 510px;
 }
 .graph{
 width: 95%;
@@ -651,4 +667,25 @@ float:left;
 
 .border_bottom{
 border-bottom: 1px solid rgba(100, 115, 254, 0.3);
+}
+
+.scroll_contenu{
+overflow-y: auto;
+    height: 1100px;
+    width: 88%;
+    left: 200px;
+    position: relative;
+}
+.copy{
+background-color: grey;
+width: 20px;
+height: 20px;
+border-radius: 50%;
+cursor: pointer;
+align-items: center;
+display: flex;
+justify-content: center;
+margin-left: 10px;
+font-size: 12px;
+padding: 2px;
 }

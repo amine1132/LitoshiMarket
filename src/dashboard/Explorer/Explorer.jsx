@@ -20,7 +20,10 @@ import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import { BrowserRouter as Router, Route, Routes, Link, useNavigate, Outlet,useMatch } from 'react-router-dom';
 import { BsStar } from 'react-icons/bs';
-
+import Bitcoin from './Bitcoin.svg'
+import litecoinltclogo from './litecoinltclogo.svg'
+import dogecoindogelogo from './dogecoindogelogo.svg'
+import Ethereum from './Ethereum.svg'
 
 const chartOptions = {
             responsive: true, 
@@ -67,7 +70,7 @@ function Explorer() {
   const [box3Content, setBox3Content] = useState("Token Content");
   const [loading, setLoading] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
-
+  const [uniSatAvailable, setUniSatAvailable] = useState(false);
 
   useEffect(() => {
 
@@ -83,6 +86,7 @@ function Explorer() {
         const sortedData = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/0/1');
         const data = sortedData.data.items;
         data.forEach(token => {
+          token.star= <BsStar/>;
           token.vol_24h = token.vol_24h*Math.pow(10, -8)*btc_price;
           token.marketcap = token.marketcap*Math.pow(10, -8)*btc_price;
           token.price = token.marketcap/token.max_supply;
@@ -98,9 +102,21 @@ function Explorer() {
         const totalVols24h = vols24h.reduce((acc, val) => acc+val, 0);
         setTotalVols24h(totalVols24h);
     };
-    
+
+    const checkUniSatAvailability = () => {
+      if (typeof window.unisat !== 'undefined') {
+        setUniSatAvailable(true);
+      } else {
+        setUniSatAvailable(false);
+      }
+    };
+      checkUniSatAvailability();
+      
+      
       fetchData();
     }, []);
+
+    
 
   const handleNFTButtonClick = () => {
   setShowNFTContent(true);
@@ -127,6 +143,17 @@ function Explorer() {
       setShowMarketCapContent(false);
       setShow24hVolContent(true);
       };
+
+
+      const requestAccounts = async () => {
+        try {
+          const accounts = await window.unisat.requestAccounts();
+          setAccounts(accounts);
+          console.log('Connect success', accounts);
+        } catch (e) {
+          console.log('Connect failed');
+        }
+      };
   
   function formatAddress(address) {
     const length = address.length;
@@ -148,12 +175,13 @@ function Explorer() {
         <div className="style">
         </div>
         <div className="input">
-          <button>Connect your wallet</button>
+          <button onClick={requestAccounts}>Connect your wallet</button>
           <div className="notif">
           </div>
         </div>
       </div>
     </header>
+    <div className='scroll_contenu'>
           <div className="groupe1">
             <div className="box_1">
               <div className='group_v1'>
@@ -185,6 +213,9 @@ function Explorer() {
               <button type="button" onClick={handleTokenButtonClick} className='tokens'>Tokens</button>
               <button type="button" onClick={handleNFTButtonClick} className='mint'>Mint</button>
               </div>
+              <div>
+                
+              </div>
               {showNFTContent ? (
               <div className='comingsoon_'>Coming Soon..</div>
               ) : data.length > 0  ? (
@@ -212,6 +243,7 @@ function Explorer() {
             </div>
           </div>
         </div>
+        </div>
         <div className="gauche">
           <div className="chain">
             <img src={litoshi} alt="" />
@@ -225,9 +257,10 @@ function Explorer() {
                 <button><img src={element3} alt=""/>Multicharts</button>
               </div>
               <div className='menuv1'>
-                <button className='BRC'>Bitcoin</button>
-                <button className='LTC'>Litecoin</button>
-                <button className='DRC'>Dogechain</button>
+              <button className='BRC'><img src={Bitcoin} alt=""/>Bitcoin</button>
+                <button className='LTC'><img src={litecoinltclogo} alt=""/>Litecoin</button>
+                <button className='DRC'><img src={dogecoindogelogo} alt=""/>Dogechain</button>
+                <button className='ethereum'><img src={Ethereum} alt=""/>Ethereum</button>
               </div>
             <div className="menufooter">
               <button className='profile'><img src={Footer} alt=""/>Profile</button>
@@ -256,7 +289,7 @@ function TickComponent({ tokenData }) {
 
   return (
     <><tr>
-      <td className='border_bottom'>{tokenData.star}</td>
+      <td className='iconoutline'>{tokenData.star}</td>
       <td className='border_bottom'>{tokenData.tick.toUpperCase()}</td>
       <td className='border_bottom'>{tokenData.price ? parseFloat(tokenData.price).toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 8}) : 'N/A'}</td>
       <td className= {tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h && parseFloat(tokenData.change_24h) > 0 ? 'positive' : 'na')}>

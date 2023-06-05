@@ -26,6 +26,8 @@ import Bitcoin from './Bitcoin.svg'
 import litecoinltclogo from './litecoinltclogo.svg'
 import dogecoindogelogo from './dogecoindogelogo.svg'
 import Ethereum from './Ethereum.svg'
+import {FaRegCopy} from 'react-icons/fa'
+import {Tooltip} from "@mui/material"
 
 
 
@@ -78,6 +80,7 @@ function Dashboard() {
   const [isGraphContent, setIsGraphContent] = useState(false);
   const [box3Content, setBox3Content] = useState("Token Content");
   const [loading, setLoading] = useState(false);
+  const [uniSatAvailable, setUniSatAvailable] = useState(false);
 
   useEffect(() => {
 
@@ -131,6 +134,7 @@ function Dashboard() {
             },
           ],
         };
+
         // Création du graphique en forme de donut
         const ctx = document.getElementById('myChart').getContext('2d');
         const chart = new Chart(ctx, {
@@ -141,19 +145,29 @@ function Dashboard() {
         
         // Mise à jour de l'état du graphique
         setChartData(chart);
-
+        setChart(newChart);
         setShowTokenContent(true);
-
-        setInitialChartData(chart);
 
         // Nettoyage du graphique lors de la désactivation du composant
         return () => {
           chart.destroy();
+          if (chart) {
+            chart.update();
+          }
         };  
         
     };
 
-  
+    const checkUniSatAvailability = () => {
+      if (typeof window.unisat !== 'undefined') {
+        setUniSatAvailable(true);
+      } else {
+        setUniSatAvailable(false);
+      }
+    };
+      checkUniSatAvailability();
+      
+
       const handleCopyAddress = () => {
         const MySwal = withReactContent(Swal);
 
@@ -161,10 +175,13 @@ function Dashboard() {
           navigator.clipboard.writeText(address)
             .then(() => {
               MySwal.fire({
-                position: 'center',
-                icon: 'success',
-                title: 'Copy!',
+                width: 200,
+                toast: true,
+                position: 'top',
                 showConfirmButton: false,
+                timer: 1500,
+                icon: 'success',
+                title: 'Copied'
               });
             })
             .catch((error) => {
@@ -173,15 +190,14 @@ function Dashboard() {
             });
         };
       
-        const addressElement = document.getElementById('address');
-        addressElement.addEventListener('click', copyAddress);
+        const copyButtonElement = document.getElementById('copyAddress');
+        copyButtonElement.addEventListener('click', copyAddress);
       };
       
       handleCopyAddress();
       
       fetchData();
     }, []);
-    
 
   const getTokenData = async (jsonData) => {
     var currentPage = 1;
@@ -252,12 +268,50 @@ if (chart) {
 
   const handleGraphButtonClick = () => {
     setIsGraphContent(!isGraphContent);
+    if (graphData) {
+      // Créer le graphique avec les données stockées dans graphData
+      const ctx = document.getElementById('myChart').getContext('2d');
+      const chart = new Chart(ctx, {
+        type: 'doughnut',
+        data: graphData,
+        options: chartOptions,
+      });
+    }
   };
 
   const handleTransactionButtonClick = () => {
     setShowNFTContent(false);
     setShowTokenContent(false);
     setShowTransactionContent(true);
+  };
+  
+  const toggleGraphDisplay = (display) => {
+    if (display) {
+      // Afficher le graphique
+      const ctx = document.getElementById('myChart').getContext('2d');
+      const chart = new Chart(ctx, {
+        type: 'doughnut',
+        data: chartData,
+        options: chartOptions,
+      });
+      setChartData(chart);
+    } else {
+      // Cacher le graphique
+      const chart = Chart.getChart("myChart");
+      if (chart) {
+        chart.destroy();
+      }
+      setChartData(null);
+    }
+  };
+
+  const requestAccounts = async () => {
+    try {
+      const accounts = await window.unisat.requestAccounts();
+      console.log('connect success', accounts);
+    } catch (e) {
+      console.log('connect failed');
+    }
   };
 
   function formatAddress(address) {
@@ -277,16 +331,18 @@ if (chart) {
         <div className="style">
           <div className='stylev2'>
           <h1>Welcome Back <span id="address">{formatAddress(address)}!</span></h1>
+          <Tooltip title="Copy adress"><div className='copy' id='copyAddress'><FaRegCopy/></div></Tooltip>
           </div>
           <p>I hope everything is fine today...</p>
         </div>
         <div className="input">
-          <button>Connect your wallet</button>
+          <button onClick={requestAccounts}>Connect your wallet</button>
           <div className="notif">
           </div>
         </div>
       </div>
     </header>
+        <div className='scroll_contenu'>
           <div className="groupe1">
             <div className="box1">
               <div className='groupv1'>
@@ -328,7 +384,7 @@ if (chart) {
             </div>
           </div>
           <div className="groupe2">
-            <div className="box3">
+            <div className="box3_">
               <div className='topv1'>
               <p className='semi'>My Assets</p>
               <button type="button" onClick={handleTokenButtonClick}>Token</button>
@@ -363,6 +419,7 @@ if (chart) {
                 )}
             </div>
           </div>
+        </div>
         </div>
         <div className="gauche">
           <div className="chain">
@@ -415,14 +472,14 @@ function TickComponent({ tokenData }) {
     } else {
       return price.toFixed(4); // Retourner le prix d'origine sans modification
     }
-  }
+  }  
 
   return (
     <>
     <tr>
       <td className='border_bottom'>{tokenData.tick.toUpperCase()}</td>
       <td className='border_bottom'>{formatBalance(tokenData.overall_balance)}</td>
-      <td className='border_bottom'>{tokenData.price ? '$'+formatPrice(parseFloat(tokenData.price)) : 'N/A'}</td>
+      <td className='border_bottom'>{tokenData.price ? '$'+formatPrice(tokenData.price) : 'N/A'}</td>
       <td className= {tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h && parseFloat(tokenData.change_24h) > 0 ? 'positive' : 'na')}>
       {tokenData.change_24h ? (parseFloat(tokenData.change_24h) >= 0 ? '+' : '') + parseFloat(tokenData.change_24h).toFixed(2) + '%' : 'N/A'}
       </td>
