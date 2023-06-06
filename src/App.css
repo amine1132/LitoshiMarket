@@ -15,7 +15,6 @@ box-shadow: 0 0 0 3px red inset;
 }
 
 body{
-  background: #151516;
   color: white;
   width: 100%;
   overflow-x: hidden;
@@ -24,6 +23,7 @@ body{
 }
 body p{
 margin: 0;
+color: white;
 }
 
 .soustexte{

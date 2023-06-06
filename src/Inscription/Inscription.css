@@ -1,0 +1,84 @@
+
+.inscription_{
+overflow-y: hidden;
+background-image: url(./g8.svg);
+background-size: cover;
+background-repeat: no-repeat;
+height: 100vh;
+}
+.inscription_center{
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin:auto;
+margin-top: 100px;
+}
+
+.inscription_text{
+display: flex;
+flex-direction: column;
+justify-content: center;
+max-width: 811px;
+}
+
+.inscription_imgbotttom{
+display: flex;
+justify-content: flex-end;
+margin-right: 120px;
+margin-top: 300px;
+}
+
+.inscription_center span{
+background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+font-size: 64px;
+font-family: 'Outfit';
+}
+.inscription_center p{
+color: #E4D1D6;
+font-size: 32px;
+font-family: 'Outfit';
+}
+
+.inscription_search{
+display: flex;
+flex-direction: row;
+justify-content: center;
+}
+
+.formulaire_insc{
+background-color: transparent;
+    border-bottom: 2px solid #E4D1D6;
+    border-top: 2px solid #E4D1D6;
+    border-right:2px solid #E4D1D6;
+    border-left: 0;
+    border-radius: 0 20px 20px 0;
+    height: 60px;
+    color: white;
+    width: 760px;
+}
+.loupe{
+display: flex;
+background-color: transparent;
+border-bottom: 2px solid #E4D1D6;
+border-top: 2px solid #E4D1D6;
+border-left:2px solid #E4D1D6;
+width: 30px;
+height: 62px;
+border-radius: 20px 0px 0px 20px;
+align-items: center;
+justify-content: center;
+}
+
+.imginscriptiontop {
+display: flex;
+justify-content: flex-start;
+margin-left: 60px;
+margin-top: 120px;
+}
+.imginscriptiontop img{
+max-width: 170px;
+}

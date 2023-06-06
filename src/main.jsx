@@ -4,6 +4,7 @@ import App from './App'
 import Dashboard from './dashboard/Dashboard.jsx'
 import Routerv2 from './Route';
 import Explorer from './dashboard/Explorer/Explorer'
+import Inscription from './Inscription/Inscription';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
