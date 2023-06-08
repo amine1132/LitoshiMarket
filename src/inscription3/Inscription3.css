@@ -1,0 +1,273 @@
+
+@font-face {
+    font-family: 'Outfit';
+    src: url('./Outfit/static/Outfit-Regular.ttf') format('opentype');
+    font-display: block;
+  }
+  @font-face {
+    font-family: 'Outfitbold';
+    src: url('./Outfit/static/Outfit-Medium.ttf') format('opentype');
+    font-display: block;
+  }
+  @font-face {
+    font-family: 'OutfitLight';
+    src: url('./Outfit/static/Outfit-Light.ttf') format('opentype');
+    font-display: block;
+  }
+
+
+.inscription_3{
+background-image: url(./g8.svg);
+background-size: cover;
+background-repeat: no-repeat;
+height: 100vh;
+}
+.inscription_center2{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin:auto;
+height: min-content;
+max-width: min-content;
+background-color: white;
+border-radius: 24px;
+}
+.inscription_text3{
+padding: 64px 92px 64px 92px;
+width: 792px;
+}
+.inscription_text2 input{
+display: flex;
+flex-direction: column;
+justify-content: center;
+height: 40px;
+width: 448px;
+margin-bottom: 10px;
+padding-left: 10px;
+}
+.inscription_text2 input::placeholder{
+color:#9B9BA6;
+font-size: 24px;
+font-family: 'Outfitbold';
+}
+
+.inscription_imgbotttom2{
+display: flex;
+justify-content: flex-end;
+margin-right: 120px;
+margin-top: 100px;
+}
+
+.inscription_center2 span{
+background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+font-size: 64px;
+font-family: 'Outfit';
+}
+.inscription_center2 p{
+color: #E4D1D6;
+font-size: 32px;
+font-family: 'Outfit';
+}
+
+.inscription_search2{
+display: flex;
+flex-direction: row;
+justify-content: center;
+margin-left: 32px;
+align-items: center;
+}
+
+.loupe{
+display: flex;
+background-color: transparent;
+border-bottom: 2px solid #E4D1D6;
+border-top: 2px solid #E4D1D6;
+border-left:2px solid #E4D1D6;
+width: 30px;
+height: 62px;
+border-radius: 20px 0px 0px 20px;
+align-items: center;
+justify-content: center;
+}
+
+.imginscriptiontop2 {
+display: flex;
+justify-content: flex-start;
+margin-left: 120px;
+margin-top: 60px;
+margin-bottom: 100px;
+}
+.imginscriptiontop2 img{
+max-width: 170px;
+}
+
+.inscription_groupe1{
+justify-content: center;
+display: flex;
+flex-direction: column;
+width: min-content;
+margin: auto;
+}
+
+.formulaire_insc2{
+background: rgba(228, 209, 214, 0.3);
+border-bottom: 2px solid #E4D1D6;
+border-top: 2px solid #E4D1D6;
+border-left: none;
+border-right: 2px solid #E4D1D6;
+height: 80px;
+color: #E4D1D6;
+font-size: 32px;
+width: 400px;
+font-family: 'Outfit';
+border-radius: 0px 20px 20px 0px;
+}
+
+.formulaire_insc2::placeholder{
+    font-size: 24px;
+    padding-left: 10px;
+    color: #E4D1D6;
+    font-family: 'OutfitLight';
+    }
+
+.inscription_groupe1 span{
+background: linear-gradient(90deg, #00C9FF 10%, #92FE9D 25%);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+font-size: 40px;
+font-family: 'Outfitbold';
+margin-bottom: 32px;
+margin-left: 20px;
+}
+
+.inscription_Icone2{
+    background: rgba(228, 209, 214, 0.3);
+    border-bottom: 2px solid #E4D1D6;
+    border-top: 2px solid #E4D1D6;
+    border-left: 2px solid #E4D1D6;
+    border-radius: 20px 0px 0px 20px;
+    height: 82px;
+    width: 60px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center
+}
+
+.inscription_available input{
+    border-width: 2px;
+    border-style: solid;
+    border-image: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+    border-image-slice: 1;
+    border-right: 0;
+}
+.inscription_notavailable input{
+    border: 2px solid #FF5F56;
+    border-right: none;
+}
+
+.inscription_submit button{
+    width: 516px;
+    height: 48px;
+    background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+    border: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inscription_availablev2 button{
+background: transparent;
+border: none;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.inscription_availablev2{
+display: flex;
+flex-direction: row;
+}
+
+.inscription_buttonavaible{
+border-top: 2px;
+border-bottom: 2px;
+border-right: 2px;
+border-style: solid;
+border-image: linear-gradient(90deg, #00C9FF 0%, #92FE9D 0%);;
+border-image-slice: 1;
+border-left: 0;
+height: 42px;
+width: 52px;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+.inscription_buttonnotavailable{
+display: flex;
+flex-direction: row;
+}
+
+.inscription_buttonnotavailablev2{
+    border-top: 2px solid #FF5F56;
+    border-bottom: 2px solid #FF5F56;
+    border-right: 2px solid #FF5F56;
+    height: 42px;
+    width: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.inscription_buttonnotavailablev2 button{
+background: transparent;
+border: none;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.inscription_buttonnotavailablev2 img{
+width: 35px;
+height: 35px;
+}
+
+.inscription3_groupe1text2{
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+}
+.inscription3_groupe1text2 button{
+    background: #F5F5F5;
+    border: none;
+    color: #9B9BA6;
+    font-size: 20px;
+    height: 49px;
+}
+
+.inscription3_group1text1{
+display: flex;
+justify-content: space-between;
+background: #F5F5F5;
+border-radius: 8px;
+margin-bottom: 16px;
+}
+
+.inscription3_group1text1button button{
+    width: 792px;
+    height: 72px;
+    background: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
+    border: none;
+    color: white;
+    font-size: 32px;
+    border-radius: 8px;
+}
+.inscription3_group1text1button{
+display: flex;
+justify-content: center;
+}
