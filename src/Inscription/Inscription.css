@@ -13,6 +13,8 @@
     src: url('./Outfit/static/Outfit-Light.ttf') format('opentype');
     font-display: block;
   }
+
+  
 .inscription_{
 overflow-y: hidden;
 background-image: url(./g8.svg);
@@ -40,7 +42,7 @@ max-width: 840px;
 display: flex;
 justify-content: flex-end;
 margin-right: 120px;
-margin-top: 250px;
+margin-top: 150px;
 }
 
 .inscription_center span{

@@ -273,7 +273,6 @@ border-radius: 100px;
   width:100%;
   align-items: center;
   height: 100%;
-  justify-content: space-between;
   }
   .menuv1{
   display: flex;
@@ -281,7 +280,7 @@ border-radius: 100px;
   align-items: start;
   width: 80%;
   border: 1px solid transparent;
-  margin-bottom: 250px;
+  margin-bottom: 200px;
   }
   .menu2{
   display: flex;

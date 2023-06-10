@@ -58,8 +58,8 @@ function Inscription2() {
                     <img src={Lunette} alt=""/>   
                 </div>
                 <div className='inscription_text4'>
-                    <p>Register yaugourt.ltc</p>
-                    <div className='inscription_available'>
+                    <p>Congratulations on being the only holder of this name!</p>
+                    <div className='inscription_available4'>
                     <div className='inscription_availablev2'>
                         <input type="input" readOnly placeholder="yaugourt.ltc" name="" value={text}/>
                         <div className='inscription_buttonavaible'>

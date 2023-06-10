@@ -368,7 +368,6 @@ if (chart) {
             <div className="box2">
               <div className='donnees'>
               <p>Average of your wallet</p>
-              <button type='button' onClick={handleGraphButtonClick} ><img src={chartcircle} alt=""/></button>
               </div>
               {isGraphContent ? (
               <><div className='comingsoon'> Coming Soon..</div>
@@ -437,7 +436,6 @@ if (chart) {
                 <button className='BRC'><img src={Bitcoin} alt=""/>Bitcoin</button>
                 <button className='LTC'><img src={litecoinltclogo} alt=""/>Litecoin</button>
                 <button className='DRC'><img src={dogecoindogelogo} alt=""/>Dogechain</button>
-                <button className='ethereum'><img src={Ethereum} alt=""/>Ethereum</button>
               </div>
             <div className="menufooter">
               <button className='profile'><img src={Footer} alt=""/>Profile</button>

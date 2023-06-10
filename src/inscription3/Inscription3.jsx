@@ -10,6 +10,7 @@ import Loupeinscription from './Loupeinscription.svg'
 import available from './available.svg'
 import notavailable from './notavailable.svg'
 import Cadi from './Cadi.svg'
+import gasstation from './gasstation.svg'
 
 
 
@@ -53,12 +54,12 @@ function Inscription2() {
             </div>
             <div className='inscription_groupe1'>
             <span>yaugourt.ltc</span>
-            <div className='inscription_center2'>
+            <div className='inscription_center3'>
                 <div className='inscription_text3'>
-                    <p>Register yaugourt.ltc</p>
+                    <p className='inscription_titre3'>Register yaugourt.ltc</p>
                     <div className='inscription3_groupe1text2'>
                         <div className='inscription3_groupv1'>
-                            <img src="" alt=""/>
+                            <img src={gasstation} alt=""/>
                             <p>20,6 Sats</p>
                         </div>
                         <div className='inscription3_groupv2'>
@@ -68,14 +69,14 @@ function Inscription2() {
                     </div>
                     <div className='inscription3_group1text1'>
                         <div>
-                            <p>Registration</p>
-                            <p>Est.network fee</p>
-                            <p>Esitmated total</p>
+                            <p className='inscription3_grey'>Registration</p>
+                            <p className='inscription3_grey'>Est.network fee</p>
+                            <p className='esitmatedtotal'>Esitmated total</p>
                         </div>
                         <div>
-                            <p>0,3 LTC</p>
-                            <p>0,01 LTC</p>
-                            <p>0,31 LTC</p>
+                            <p className='inscription3_greyend'>0,3 LTC</p>
+                            <p className='inscription3_grey'>0,01 LTC</p>
+                            <p className='esitmatedtotal'>0,31 LTC</p>
                         </div>
                     </div>
                     <div className='inscription3_group1text1button'>

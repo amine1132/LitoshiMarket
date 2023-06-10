@@ -33,13 +33,19 @@ max-width: min-content;
 border-radius: 24px;
 }
 .inscription_text4{
-padding: 64px 92px 64px 92px;
+padding: 32px 24px 118px 24px;
 background: white;
 border-radius: 24px;
 height: min-content;
 }
 .inscription_text4 p{
 color: black;
+margin-bottom: 40px;
+letter-spacing: 0.02em;
+max-width: 264px;
+font-family: 'Outfit';
+font-size: 20px;
+font-weight: bold;
 }
 .inscription_text2 input{
 display: flex;
@@ -162,18 +168,26 @@ margin-left: 20px;
     align-items: center
 }
 
-.inscription_available input{
+.inscription_available4 input{
     border-width: 2px;
     border-style: solid;
     border-image: linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);
     border-image-slice: 1;
     border-right: 0;
+    height: 40px;
+    width: 300px;
+    margin-bottom: 10px;
 }
 .inscription_notavailable input{
     border: 2px solid #FF5F56;
     border-right: none;
 }
 
+.inscription_available4 input::placeholder{
+    color:#9B9BA6;
+    font-size: 20px;
+    font-family: 'Outfitbold';
+}
 .inscription_submit button{
     width: 516px;
     height: 48px;
@@ -245,13 +259,6 @@ display: flex;
 flex-direction: row;
 align-items: center;
 justify-content: space-between;
-}
-.inscription3_groupe1text2 button{
-    background: #F5F5F5;
-    border: none;
-    color: #9B9BA6;
-    font-size: 20px;
-    height: 49px;
 }
 
 .inscription3_group1text1{

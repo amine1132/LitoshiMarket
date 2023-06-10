@@ -55,10 +55,10 @@ const BoutonPageSuivante = () => {
 function App() {
   return (
     <div className='max'>
+      <DataDisplay/>
       <div className='max2'>
         <div className='nav'>
           <img src={Logo} alt="" className='logo'/>
-          <DataDisplay/>
           <BoutonPageSuivante />
           <Routes>
           <Route path="/Dashboard" element={<NouvellePage />} />
