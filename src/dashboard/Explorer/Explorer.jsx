@@ -231,8 +231,8 @@ function Explorer() {
                     <th>Supply</th>
                   </thead>
                   <tbody  className='semi'>
-                    {data.map(token => (
-                      <TickComponent tokenData={token}/>
+                    {data.map((token, index) => (
+                      <TickComponent tokenData={token} index={index+1}/>
                     ))}
                   </tbody>
                 </table>
@@ -276,7 +276,7 @@ function Explorer() {
   );
 }
 
-function TickComponent({ tokenData }) {
+function TickComponent({ tokenData, index }) {
 
   const formatBalance = (balance) => {
     if (balance >= 1000000) {
@@ -289,7 +289,7 @@ function TickComponent({ tokenData }) {
 
   return (
     <><tr>
-      <td className='iconoutline'>{tokenData.star}</td>
+      <td className='iconoutline'>{tokenData.star}  {index}</td>
       <td className='border_bottom'>{tokenData.tick.toUpperCase()}</td>
       <td className='border_bottom'>{tokenData.price ? parseFloat(tokenData.price).toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 8}) : 'N/A'}</td>
       <td className= {tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h && parseFloat(tokenData.change_24h) > 0 ? 'positive' : 'na')}>

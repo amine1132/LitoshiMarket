@@ -330,8 +330,8 @@ if (chart) {
       <div className="top">
         <div className="style">
           <div className='stylev2'>
-          <h1>Welcome Back <span id="address">{formatAddress(address)}!</span></h1>
-          <Tooltip title="Copy adress"><div className='copy' id='copyAddress'><FaRegCopy/></div></Tooltip>
+          <h1>Welcome Back <span id="address">{formatAddress(address)} !</span></h1>
+          <Tooltip title="Copy address"><div className='copy' id='copyAddress'><FaRegCopy/></div></Tooltip>
           </div>
           <p>I hope everything is fine today...</p>
         </div>
