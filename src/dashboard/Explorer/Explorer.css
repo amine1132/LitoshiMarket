@@ -24,7 +24,6 @@
   body {
     color: #f5f5f5;
   }
-  
   span {
 
   }
@@ -125,7 +124,7 @@
   margin-top: 20px;
   }
   .group_v1 button {
-    width: 80px;
+    width: max-content;
     height: 26px;
     background: transparent;
     color: white;
@@ -274,14 +273,6 @@ border-radius: 100px;
   align-items: center;
   height: 100%;
   }
-  .menuv1{
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  width: 80%;
-  border: 1px solid transparent;
-  margin-bottom: 200px;
-  }
   .menu2{
   display: flex;
   flex-direction: column;
@@ -289,18 +280,6 @@ border-radius: 100px;
   border-bottom: 1px solid rgba(86, 58, 255, 0.56);
   width: 80%;
   align-items: flex-start;
-  }
-  .menu button{
-  border: 1px solid transparent;
-  margin-bottom: 10px;
-  padding: 0;
-  height: 31px;
-  width: 120px;
-  background: transparent;
-  color: white;
-  font-size: 14px;
-  align-items: center;
-  display: flex;
   }
   .menu i{
   margin-right: 15px;
@@ -400,16 +379,7 @@ border-radius: 100px;
   .button1 button{
   margin: 8px;
   }
-  .BRC:hover {
-  background: rgba(253, 94, 83, 0.3);
-  width: 100%;
-  border: 1px solid #FD5E53; 
-  align-items: center;
-  display: flex;
-  justify-content: start;
-  height: 31px;
-  border-radius: 3px;
-  }
+
   .LTC:hover {
   background: rgba(0, 108, 255, 0.3);
   width: 100%;
@@ -445,7 +415,6 @@ border-radius: 100px;
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 4px;
   margin-right: 8px;
-  width: 90px;
   }
   .topv1_ button:hover{
     background: rgba(86, 58, 255, 0.2);
@@ -476,48 +445,6 @@ border-radius: 100px;
   }
   .blur{
   filter: blur(3px);
-  }
-  .nft{
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 32px;
-  }
-  .nft img{
-  width: 100%;
-  border-radius: 6px;
-  object-fit: cover;
-  
-  }
-  .nft .box{
-  width: 100px;
-  height: 100px;
-  margin-left: 32px;
-  transition: transform 1s ease;
-  }
-  .nft .box:hover{
-    background: #151516;
-    transform: scale(1.2);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding-bottom: 23px;
-    border-radius: 6px;
-  }
-  .nft .text_8 {
-  display: flex;
-  flex-direction: row;
-  font-size: 10px;
-  justify-content: space-around;
-  align-items: center;
-  }
-  .nft .text_8 button{
-  background: transparent;
-  border: 1px solid transparent;
-  color: white;
-  font-size: 10px;
-  }
-  .nft .text_8 button:hover{
-    background: rgba(86, 58, 255, 0.2);
-    border: 1px solid #563AFF;
-    border-radius: 4px;
   }
   
   .desc,.buton{
@@ -612,7 +539,7 @@ border-radius: 100px;
 }
 .iconoutline {
  color: #563AFF;
- font-size: 25px;
+ font-size: 23px;
  border-bottom:1px solid rgba(100, 115, 254, 0.3);
 }
 
@@ -622,4 +549,11 @@ overflow-y: auto;
     width: 88%;
     left: 200px;
     position: relative;
+}
+
+.number_table{
+font-size: 24px;
+align-items: center;
+border-bottom:1px solid rgba(100, 115, 254, 0.3);
+color: #563AFF;
 }

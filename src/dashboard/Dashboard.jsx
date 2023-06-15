@@ -28,6 +28,7 @@ import dogecoindogelogo from './dogecoindogelogo.svg'
 import Ethereum from './Ethereum.svg'
 import {FaRegCopy} from 'react-icons/fa'
 import {Tooltip} from "@mui/material"
+import Agreecookies from './Cookies'
 
 
 
@@ -81,6 +82,9 @@ function Dashboard() {
   const [box3Content, setBox3Content] = useState("Token Content");
   const [loading, setLoading] = useState(false);
   const [uniSatAvailable, setUniSatAvailable] = useState(false);
+  const nftImageUrl = 'https://ordinalslite.com/content/e43b3f3f1c88468127196f46909b1be7fde7d3d173c4c4ceb94abcbceea542d7i0';
+  const nftImageUrl2 = 'https://ordinalslite.com/content/78e5fc19ef198cb37d430075fa226a11ed9df72a3513b262ddd8b07792725112i0';
+  const nftImageUrl3 = 'https://ordinalslite.com/content/a883bd5330b441d537deb4340431d37890425e38f1411c69a46b516eea8d0aa0i0';
 
   useEffect(() => {
 
@@ -145,7 +149,6 @@ function Dashboard() {
         
         // Mise à jour de l'état du graphique
         setChartData(chart);
-        setChart(newChart);
         setShowTokenContent(true);
 
         // Nettoyage du graphique lors de la désactivation du composant
@@ -266,45 +269,12 @@ if (chart) {
     setBox3Content("Token Content");
   };
 
-  const handleGraphButtonClick = () => {
-    setIsGraphContent(!isGraphContent);
-    if (graphData) {
-      // Créer le graphique avec les données stockées dans graphData
-      const ctx = document.getElementById('myChart').getContext('2d');
-      const chart = new Chart(ctx, {
-        type: 'doughnut',
-        data: graphData,
-        options: chartOptions,
-      });
-    }
-  };
-
   const handleTransactionButtonClick = () => {
     setShowNFTContent(false);
     setShowTokenContent(false);
     setShowTransactionContent(true);
   };
   
-  const toggleGraphDisplay = (display) => {
-    if (display) {
-      // Afficher le graphique
-      const ctx = document.getElementById('myChart').getContext('2d');
-      const chart = new Chart(ctx, {
-        type: 'doughnut',
-        data: chartData,
-        options: chartOptions,
-      });
-      setChartData(chart);
-    } else {
-      // Cacher le graphique
-      const chart = Chart.getChart("myChart");
-      if (chart) {
-        chart.destroy();
-      }
-      setChartData(null);
-    }
-  };
-
   const requestAccounts = async () => {
     try {
       const accounts = await window.unisat.requestAccounts();
@@ -391,11 +361,40 @@ if (chart) {
               <button type='button' onClick={handleTransactionButtonClick}>Transaction</button>
               </div>
               {showNFTContent ? (
-                <div className='comingsoon_v1'>Coming Soon..</div>
+                <div className='nft'>
+                <div className='box'>
+                  <div>
+                  <img src={nftImageUrl} alt=""/>
+                  </div>
+                  <div className='text_8'>
+                    <p className='desc'>Moonbird#3688</p>
+                    <p className='desc'>0,1 LTC</p>
+                  </div>
+                </div>
+                <div className='box'>
+                  <div>
+                    <img src={nftImageUrl2} alt=""/>
+                  </div>
+                  <div className='text_8'>
+                    <p className='desc'>Moonbird#3689</p>
+                    <p className='desc'>0,1 LTC</p>
+                  </div>
+                </div>
+                <div className='box'>
+                  <div>
+                  <img src={nftImageUrl3} alt=""/>
+                  </div>
+                  <div className='text_8'>
+                    <p className='desc'>Moonbird#3690</p>
+                    <p className='desc'>0,1 LTC</p>
+                  </div>
+                </div>
+              </div>
               ) : showTokenContent ? (
               <nav className="topline">
                   <table>
-                  <thead> 
+                  <thead>
+                    <tr>
                     <th>Name</th>
                     <th>Positions</th>
                     <th>Price</th>
@@ -403,10 +402,11 @@ if (chart) {
                     <th>Available</th>
                     <th>Transferable</th>
                     <th>Marketcap</th>
+                    </tr>
                   </thead>
                   <tbody className='semi'>
-                    {data.map(token => (
-                      <TickComponent tokenData={token}/>
+                    {data.map((token, index) => (
+                      <TickComponent key={index} tokenData={token}/>
                     ))}
                   </tbody>
                 </table>
@@ -427,7 +427,7 @@ if (chart) {
           <div className="menu">
               <div className='menu2'>
               <button><img src={Vector} alt=""/>Dashboard</button>
-                <Link to="/Explorer"><button><img src={globalsearch} alt=""/>Explorer</button></Link>
+                <Link to="/explorer"><button><img src={globalsearch} alt=""/>Explorer</button></Link>
                 <button><img src={ouai} alt=""/>Watchlist</button>
                 <button><img src={notification} alt=""/>Alerts</button>
                 <button><img src={element3} alt=""/>Multicharts</button>

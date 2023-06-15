@@ -223,6 +223,7 @@ function Explorer() {
                   <table>
                   <thead >
                     <th></th>
+                    <th></th>
                     <th>Token</th>
                     <th>Price</th>
                     <th>24h</th>
@@ -260,7 +261,6 @@ function Explorer() {
               <button className='BRC'><img src={Bitcoin} alt=""/>Bitcoin</button>
                 <button className='LTC'><img src={litecoinltclogo} alt=""/>Litecoin</button>
                 <button className='DRC'><img src={dogecoindogelogo} alt=""/>Dogechain</button>
-                <button className='ethereum'><img src={Ethereum} alt=""/>Ethereum</button>
               </div>
             <div className="menufooter">
               <button className='profile'><img src={Footer} alt=""/>Profile</button>
@@ -289,7 +289,8 @@ function TickComponent({ tokenData, index }) {
 
   return (
     <><tr>
-      <td className='iconoutline'>{tokenData.star}  {index}</td>
+      <td className='iconoutline'>{tokenData.star}</td>
+      <td className='number_table'>{index}</td>
       <td className='border_bottom'>{tokenData.tick.toUpperCase()}</td>
       <td className='border_bottom'>{tokenData.price ? parseFloat(tokenData.price).toLocaleString('en-US', {style: 'currency', currency: 'USD', minimumFractionDigits: 2, maximumFractionDigits: 8}) : 'N/A'}</td>
       <td className= {tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h && parseFloat(tokenData.change_24h) > 0 ? 'positive' : 'na')}>
