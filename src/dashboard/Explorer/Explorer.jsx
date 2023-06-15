@@ -64,6 +64,7 @@ function Explorer() {
   const [totalVols24h, setTotalVols24h] = useState(0.0);
   const [showNFTContent, setShowNFTContent] = useState(false);
   const [showTokenContent, setShowTokenContent] = useState(false);
+  const [showTransactionContent, setShowTransactionContent] = useState(false);
   const [showMarketCapContent, setShowMarketCapContent] = useState(true);
   const [show24hVolContent, setShow24hVolContent] = useState(false);
   const [isGraphContent, setIsGraphContent] = useState(false);
@@ -143,6 +144,11 @@ function Explorer() {
       setShowMarketCapContent(false);
       setShow24hVolContent(true);
       };
+      const handleTransactionButtonClick = () => {
+        setShowNFTContent(false);
+        setShowTokenContent(false);
+        setShowTransactionContent(true);
+      };
 
 
       const requestAccounts = async () => {
@@ -188,12 +194,11 @@ function Explorer() {
                 <div className='group1_'>
                 <p>Total</p>
                   {showMarketCapContent ? (
-                    <h1>Market Cap : {Number(totalMarketCap).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0})}</h1>
+                    <><h1>Market Cap : {Number(totalMarketCap).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })}</h1>
+                    <h1>24h Vol : {Number(totalVols24h).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0 })}</h1></>
                   ) : show24hVolContent ? (
-                    <h1>24h Vol : {Number(totalVols24h).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0})}</h1>
+                    <div></div>
                   ) : null}
-                <button type="button" onClick={handleMarketCapButtonClick}>Market cap</button>
-                <button type="button" onClick={handle24hVolButtonClick}>24h Vol</button>
                 </div>
                 <div className='group2_'>
                 <div className='blur'>
@@ -212,13 +217,29 @@ function Explorer() {
               <p className='semi'>Top Market Cap / Cryptocurrency Prices</p>
               <button type="button" onClick={handleTokenButtonClick} className='tokens'>Tokens</button>
               <button type="button" onClick={handleNFTButtonClick} className='mint'>Mint</button>
+              <button type='button' onClick={handleTransactionButtonClick}>Profile</button>
               </div>
               <div>
                 
               </div>
               {showNFTContent ? (
-              <div className='comingsoon_'>Coming Soon..</div>
-              ) : data.length > 0  ? (
+              <nav className="topline_1">
+              <table>
+              <thead >
+                <th>Token</th>
+                <th>Deploy Time</th>
+                <th>Holders</th>
+                <th>Transaction</th>
+                <th>Progress%</th>
+              </thead>
+              <tbody  className='semi'>
+                {data.map((token, index) => (
+                  <TickComponent2 tokenData={token} index={index+1}/>
+                ))}
+              </tbody>
+            </table>
+          </nav>
+            ) : showTokenContent ? (
               <nav className="topline_1">
                   <table>
                   <thead >
@@ -238,6 +259,23 @@ function Explorer() {
                   </tbody>
                 </table>
               </nav>
+                ) : showTransactionContent ? (
+                  <nav className="topline_1">
+                  <table>
+                  <thead>
+                    <tr>
+                    <th className='user'>User</th>
+                    <th>net worth</th>
+                    <th>Top token</th>
+                    </tr>
+                  </thead>
+                  <tbody className='semi'>
+                    {data.map((token, index) => (
+                      <TickComponent3 key={index} tokenData={token}/>
+                    ))}
+                  </tbody>
+                </table>
+              </nav>               
                  ) : (
                   <div></div>
                 )}
@@ -299,6 +337,50 @@ function TickComponent({ tokenData, index }) {
       <td className='border_bottom'>{Number(tokenData.vol_24h).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0})}</td>
       <td className='border_bottom'>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0}) : 'N/A'}</td>
       <td className='border_bottom'>{formatBalance(tokenData.max_supply)}</td>
+    </tr></>
+  );
+}
+
+function TickComponent2({ tokenData, index }) {
+
+  const formatBalance = (balance) => {
+    if (balance >= 1000000) {
+      const millions = (balance / 1000000).toFixed(0);
+      return millions + 'M';
+    } else {
+      return balance.toString();
+    }
+  };
+
+  return (
+    <><tr>
+      <td className='border_bottom'>{tokenData.tick.toUpperCase()}</td>
+      <td className='border_bottom'>25 May 2023 22:38:40</td>
+      <td className= {tokenData.change_24h && parseFloat(tokenData.change_24h) < 0 ? 'negative' : (tokenData.change_24h && parseFloat(tokenData.change_24h) > 0 ? 'positive' : 'na')}>
+      {tokenData.change_24h ? (parseFloat(tokenData.change_24h) >= 0 ? '+' : '') + parseFloat(tokenData.change_24h).toFixed(2) + '%' : 'N/A'}
+      </td>
+      <td className='border_bottom'>{Number(tokenData.vol_24h).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0})}</td>
+      <td className='border_bottombar'><div>100%</div><div className='progressbar'></div></td>
+    </tr></>
+  );
+}
+
+function TickComponent3({ tokenData, index }) {
+
+  const formatBalance = (balance) => {
+    if (balance >= 1000000) {
+      const millions = (balance / 1000000).toFixed(0);
+      return millions + 'M';
+    } else {
+      return balance.toString();
+    }
+  };
+
+  return (
+    <><tr>
+      <td className='border_bottomprofil'> <img src={homme} alt=""/><span>bc1pq4es...4skewgrv</span></td>
+      <td className='border_bottom'>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0}) : 'N/A'}</td>
+      <td className='border_bottomtoptoken'> <img src={Ethereum} alt=""/>99% </td>
     </tr></>
   );
 }

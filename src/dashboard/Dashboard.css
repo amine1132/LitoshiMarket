@@ -616,7 +616,7 @@ content: attr(data-tooltip);
   height: 510px;
 }
 .graph{
-width: 95%;
+width: 100%;
 margin-left: 20px;
 height: 80%;
 max-height: 400px; /* Réglez la hauteur maximale selon vos besoins */
@@ -706,4 +706,38 @@ justify-content: center;
 margin-left: 10px;
 font-size: 12px;
 padding: 2px;
+}
+.nfttable{
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: center;
+}
+.nfttable img{
+width: 20px;
+height: 20px;
+cursor: pointer;
+image-rendering: pixelated;
+}
+
+.nfttable img:hover {
+  transform: scale(1.2);
+}
+
+.nfttable .enlarged-image {
+  position: absolute;
+  top: 270px;
+  left: 522px;
+  right: 20px;
+  width: 300px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.nfttable:hover .enlarged-image {
+  visibility: visible;
+  opacity: 1;
+  transform: scale(10);
+  z-index: 1;
 }

@@ -557,3 +557,48 @@ align-items: center;
 border-bottom:1px solid rgba(100, 115, 254, 0.3);
 color: #563AFF;
 }
+.border_bottombar{
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+border-bottom:1px solid rgba(100, 115, 254, 0.3);
+}
+.progressbar{
+background-color: #198754;
+width: 80%;
+height: 20px;
+border-radius: 8px;
+}
+
+.border_bottomprofil img{
+width: 50px;
+height: 50px;
+border-radius: 50%;
+margin-right: 10px;
+}
+.border_bottomprofil{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-bottom:1px solid rgba(100, 115, 254, 0.3); 
+}
+.border_bottomtoptoken{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-bottom:1px solid rgba(100, 115, 254, 0.3); 
+}
+.border_bottomtoptoken img{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  margin-right: 10px;
+  background: white;
+  }
+
+.user{
+width: 500px;
+}

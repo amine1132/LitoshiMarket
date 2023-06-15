@@ -29,7 +29,7 @@ import Ethereum from './Ethereum.svg'
 import {FaRegCopy} from 'react-icons/fa'
 import {Tooltip} from "@mui/material"
 import Agreecookies from './Cookies'
-
+import NFT from './Nft.png'
 
 
 const address = 'bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv';
@@ -46,7 +46,7 @@ const chartOptions = {
                   color: 'white',
                   usePointStyle: true,
                   pointStyle: 'rect',
-                  padding: 15, // Espacement entre les étiquettes
+                  padding: 17, // Espacement entre les étiquettes
                   borderWidth: 10,
                   font: {
                     size: 16, // Changer la taille du texte des légendes
@@ -85,6 +85,8 @@ function Dashboard() {
   const nftImageUrl = 'https://ordinalslite.com/content/e43b3f3f1c88468127196f46909b1be7fde7d3d173c4c4ceb94abcbceea542d7i0';
   const nftImageUrl2 = 'https://ordinalslite.com/content/78e5fc19ef198cb37d430075fa226a11ed9df72a3513b262ddd8b07792725112i0';
   const nftImageUrl3 = 'https://ordinalslite.com/content/a883bd5330b441d537deb4340431d37890425e38f1411c69a46b516eea8d0aa0i0';
+  const nftImageUrl4 = 'https://ordinalslite.com/content/e43b3f3f1c88468127196f46909b1be7fde7d3d173c4c4ceb94abcbceea542d7i0';
+
 
   useEffect(() => {
 
@@ -290,7 +292,15 @@ if (chart) {
     const lastChars = address.substring(length - 8, length);
     return `${firstChars}...${lastChars}`;
   }
-  
+
+  const donnees = [
+    { chiffre: 1, image: 'chemin/image1.png' },
+    { chiffre: 2, image: 'chemin/image2.png' },
+    // Ajoutez d'autres entrées du tableau
+  ];
+  const moitieSuperieure = donnees.slice(0, Math.ceil(donnees.length / 2));
+const moitieInferieure = donnees.slice(Math.ceil(donnees.length / 2));
+
   return (
     <>
     <div className="max">
@@ -412,7 +422,24 @@ if (chart) {
                 </table>
               </nav>   
               ) : showTransactionContent ? (
-                <div className='comingsoonv2'> Coming Soon..</div>                 
+                <nav className="topline">
+                <table>
+                <thead>
+                  <tr>
+                  <th>Transaction ID</th>
+                  <th>Time</th>
+                  <th>Content</th>
+                  <th>From</th>
+                  <th>To</th>
+                  </tr>
+                </thead>
+                <tbody className='semi'>
+                  {data.map((token, index) => (
+                    <TickComponent3 key={index} tokenData={token}/>
+                  ))}
+                </tbody>
+              </table>
+            </nav>               
                  ) : (
                   <div></div>
                 )}
@@ -484,6 +511,64 @@ function TickComponent({ tokenData }) {
       <td className='border_bottom'>{formatBalance(tokenData.available_balance)}</td>
       <td className='border_bottom'>{formatBalance(tokenData.overall_balance-tokenData.available_balance)}</td>
       <td className='border_bottom'>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0}) : 'N/A'}</td>
+    </tr></>
+  );
+}
+
+function TickComponent3({ tokenData }) {
+
+  const formatBalance = (balance) => {
+    if (balance >= 1000000) {
+      const millions = (balance / 1000000).toFixed(0);
+      return millions + 'M';
+    } else {
+      return balance.toString();
+    }
+  };
+
+
+  function formatPrice(price) {
+    if (price > 1) {
+      const formattedPrice = price.toFixed(2);
+      return (
+        <>
+          {formattedPrice}
+        </>
+      );
+    } else {
+      return (
+        <>
+          {price.toFixed(4)}
+        </>
+      );
+    }
+  }
+
+
+  return (
+    <>
+    <tr>
+      <td className='border_bottom'><span>bc1pq4es...4skewgrv</span></td>
+      <td className='border_bottom'>25 May 2023 22:38:40</td>
+      <td className='border_bottom'>
+          {tokenData.price ? (
+            <>
+              <span className='green'>+1 HOGS</span><span className='green'> ($</span>
+              <span className='green'> {formatPrice(tokenData.price)}) </span>
+            </>
+          ) : (
+            <><div className='nfttable'>
+            <img src={NFT} alt=""/>
+            <p className='green'> +1 Orbiter Trainee Pilot NFT</p>
+            <div className='enlarged-image'>
+              <img src={NFT} alt=""/>
+            </div>
+            </div>
+              </>
+          )}
+        </td>
+      <td className='border_bottom'>bc1pq4es...4skewgrv </td>
+      <td className='border_bottom'>bc1pq4es...4skewgrv </td>
     </tr></>
   );
 }
