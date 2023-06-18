@@ -30,6 +30,9 @@ import {FaRegCopy} from 'react-icons/fa'
 import {Tooltip} from "@mui/material"
 import Agreecookies from './Cookies'
 import NFT from './Nft.png'
+import "./Mont/Mont-Bold.otf"
+import "./Mont/Mont-Regular.otf"
+import "./Mont/Mont-SemiBold.otf"
 
 
 const address = 'bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv';

@@ -3,11 +3,6 @@
   src: url('./Mont/Mont-Regular.otf') format('opentype');
   font-display: block;
 }
-@font-face {
-  font-family: 'Mont';
-  src: url('./fonts/Mont/Mont-Bold.otf') format('opentype');
-  font-display: block;
-}
 @font-face{
   font-family: 'Montsemi';
   src: url('./Mont/Mont-SemiBold.otf') format('opentype');
