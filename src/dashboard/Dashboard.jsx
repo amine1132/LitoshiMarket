@@ -171,6 +171,16 @@ function Dashboard() {
       }
     };
       checkUniSatAvailability();
+
+
+      const checklitescribeAvailability = () => {
+        if (typeof window.litescribe !== 'undefined') {
+          setUniSatAvailable(true);
+        } else {
+          setUniSatAvailable(false);
+        }
+      };
+        checklitescribeAvailability();
       
 
       const handleCopyAddress = () => {
