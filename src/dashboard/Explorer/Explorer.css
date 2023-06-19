@@ -11,9 +11,11 @@
   
   
   .max{
-    max-width: 1920px;
     width: 100%;
     background-color: #151516;
+    height: 100%;
+    background: #151516;
+    overflow-x: hidden;
   }
   
   body {
@@ -62,6 +64,7 @@
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 1900px;
   }
   
   .box_1 {
@@ -259,7 +262,7 @@ border-radius: 100px;
     margin-right: 52px;
     width: 160px;
     border:1px solid rgba(86, 58, 255, 0.56);
-    height: 930px;
+    height: 100%;
   }
   .menu{
   display: flex;
@@ -544,6 +547,7 @@ overflow-y: auto;
     width: 88%;
     left: 200px;
     position: relative;
+    overflow-x: hidden;
 }
 
 .number_table{
@@ -596,4 +600,50 @@ margin-right: 10px;
 
 .user{
 width: 500px;
+}
+
+@media screen and (max-height: 900px){
+ 
+  .menuv1{
+    margin-bottom: 100px;
+  }
+  
+}
+
+@media screen and (min-width: 1930px){
+ 
+  .scroll_contenu{
+    width: 92%;
+  }
+  .top{
+  width: 92%;
+  }
+  .box2_{
+  height: 360px;
+  }
+  .box1{
+  height: 360px;
+  }
+}
+
+@media screen and (max-width: 1430px){
+
+  .scroll_contenu{
+    width: 85%;
+  }
+  .top{
+  width: 85%;
+  }
+
+}
+
+@media screen and (max-width: 1150px){
+
+  .scroll_contenu{
+    width: 82%;
+  }
+  .top{
+  width: 82%;
+  }
+
 }

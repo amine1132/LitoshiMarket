@@ -316,9 +316,9 @@ const moitieInferieure = donnees.slice(Math.ceil(donnees.length / 2));
 
   return (
     <>
-    <div className="max">
+    <div className="max_1">
       <div className="colone">
-        <div className="idk">
+        <div className="idk_1">
         <header>
       <div className="top">
         <div className="style">
@@ -335,7 +335,7 @@ const moitieInferieure = donnees.slice(Math.ceil(donnees.length / 2));
         </div>
       </div>
     </header>
-        <div className='scroll_contenu'>
+        <div className='scroll_contenu_1'>
           <div className="groupe1">
             <div className="box1">
               <div className='groupv1'>
@@ -358,7 +358,7 @@ const moitieInferieure = donnees.slice(Math.ceil(donnees.length / 2));
                 <img src={Group_427319828} alt=""/>
               </div>
             </div>
-            <div className="box2">
+            <div className="box2_">
               <div className='donnees'>
               <p>Average of your wallet</p>
               </div>
@@ -465,6 +465,7 @@ const moitieInferieure = donnees.slice(Math.ceil(donnees.length / 2));
             <img src={litoshi} alt="" />
           </div>
           <div className="menu">
+            <div className='menutop'>
               <div className='menu2'>
               <button><img src={Vector} alt=""/>Dashboard</button>
                 <Link to="/explorer"><button><img src={globalsearch} alt=""/>Explorer</button></Link>
@@ -477,6 +478,7 @@ const moitieInferieure = donnees.slice(Math.ceil(donnees.length / 2));
                 <button className='LTC'><img src={litecoinltclogo} alt=""/>Litecoin</button>
                 <button className='DRC'><img src={dogecoindogelogo} alt=""/>Dogechain</button>
               </div>
+            </div>
             <div className="menufooter">
               <button className='profile'><img src={Footer} alt=""/>Profile</button>
               <button><img src={footer2} alt=""/>Settings</button>

@@ -113,6 +113,7 @@ function Explorer() {
     };
       checkUniSatAvailability();
       
+      setShowTokenContent(true);
       
       fetchData();
     }, []);
@@ -288,6 +289,7 @@ function Explorer() {
             <img src={litoshi} alt="" />
           </div>
           <div className="menu">
+          <div className='menutop'>
               <div className='menu2'>
               <Link to="/Dashboard"><button><img src={Vector} alt=""/>Dashboard</button></Link>
                 <button><img src={globalsearch} alt=""/>Explorer</button>
@@ -300,6 +302,7 @@ function Explorer() {
                 <button className='LTC'><img src={litecoinltclogo} alt=""/>Litecoin</button>
                 <button className='DRC'><img src={dogecoindogelogo} alt=""/>Dogechain</button>
               </div>
+          </div>
             <div className="menufooter">
               <button className='profile'><img src={Footer} alt=""/>Profile</button>
               <button><img src={footer2} alt=""/>Settings</button>

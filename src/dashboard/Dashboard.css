@@ -13,10 +13,12 @@
 }
 
 
-.max{
-  max-width: 1920px;
+.max_1{
   width: 100%;
   overflow-y: hidden;
+  height: 100%;
+  background: #151516;
+  overflow-x: hidden;
 }
 
 body {
@@ -83,10 +85,11 @@ margin: 0;
 margin-bottom: 29px;
 margin-top: 40px;
 }
-.idk {
+.idk_1 {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: 1900px;
 }
 
 .box1 {
@@ -150,7 +153,7 @@ margin-left: 20px;
   font-size: 24px;
 }
 
-.box2 {
+.box2_ {
   background: linear-gradient(342.29deg, rgba(86, 58, 255, 0.35) 0%, rgba(128, 128, 128, 0.0735) 100%);;
   width: 70%;
   height: 267px;
@@ -255,7 +258,7 @@ font-weight: bold;
   margin-right: 52px;
   width: 180px;
   border:1px solid rgba(86, 58, 255, 0.56);
-  height: 930px;
+  height: 100%;
   position: fixed;
     top: 0;
     left: 0;
@@ -272,6 +275,7 @@ flex-direction: column;
 width:100%;
 align-items: center;
 height: 100%;
+justify-content: space-between;
 }
 .menuv1{
 display: flex;
@@ -279,7 +283,6 @@ flex-direction: column;
 align-items: start;
 width: 80%;
 border: 1px solid transparent;
-margin-bottom: 250px;
 margin-top: 40px;
 }
 .menu2{
@@ -305,6 +308,13 @@ align-items: center;
 display: flex;
 cursor:pointer;
 }
+
+.menutop{
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
 .menu a {
   text-decoration:none;
 }
@@ -321,6 +331,7 @@ display: flex;
 flex-direction: column;
 width:80%;
 align-items: start;
+margin-bottom: 100px;
 }
 .menufooter button{
 background: rgba(255,255,255,0);
@@ -685,12 +696,13 @@ float:left;
 border-bottom: 1px solid rgba(100, 115, 254, 0.3);
 }
 
-.scroll_contenu{
+.scroll_contenu_1{
 overflow-y: auto;
     height: 1100px;
     width: 88%;
     left: 200px;
     position: relative;
+    overflow-x: hidden;
 }
 .copy{
 background-color: grey;
@@ -739,3 +751,51 @@ image-rendering: pixelated;
   transform: scale(10);
   z-index: 1;
 }
+
+
+@media screen and (max-height: 900px){
+ 
+  .menuv1{
+    margin-bottom: 100px;
+  }
+  
+}
+
+@media screen and (min-width: 1930px){
+ 
+  .scroll_contenu_1{
+    width: 92%;
+  }
+  .top{
+  width: 92%;
+  }
+  .box2_{
+  height: 360px;
+  }
+  .box1{
+  height: 360px;
+  }
+}
+
+@media screen and (max-width: 1430px){
+
+  .scroll_contenu_1{
+    width: 85%;
+  }
+  .top{
+  width: 85%;
+  }
+
+}
+
+@media screen and (max-width: 1150px){
+
+  .scroll_contenu_1{
+    width: 82%;
+  }
+  .top{
+  width: 82%;
+  }
+
+}
+  
