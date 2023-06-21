@@ -293,8 +293,24 @@ border-bottom: 1px solid rgba(86, 58, 255, 0.56);
 width: 80%;
 align-items: flex-start;
 }
-.menu2 button{
-  background-color: transparent;
+.alerts{
+  background: transparent;
+  border: 1px solid transparent;
+}
+.dashboard{
+  background: rgba(86, 58, 255, 0.2);
+  border: 1px solid #563AFF;
+}
+.explorer{
+  background: transparent;
+  border: 1px solid transparent;
+}
+.watchlist{
+  background: transparent;
+  border: 1px solid transparent;
+}
+.multicharts{
+  background: transparent;
   border: 1px solid transparent;
 }
 .menu button{

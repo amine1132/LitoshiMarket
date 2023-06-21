@@ -85,6 +85,8 @@ function Dashboard() {
   const [box3Content, setBox3Content] = useState("Token Content");
   const [loading, setLoading] = useState(false);
   const [uniSatAvailable, setUniSatAvailable] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
+  const [isLoggedOut, setIsLoggedOut] = useState(false);
   const nftImageUrl = 'https://ordinalslite.com/content/e43b3f3f1c88468127196f46909b1be7fde7d3d173c4c4ceb94abcbceea542d7i0';
   const nftImageUrl2 = 'https://ordinalslite.com/content/78e5fc19ef198cb37d430075fa226a11ed9df72a3513b262ddd8b07792725112i0';
   const nftImageUrl3 = 'https://ordinalslite.com/content/a883bd5330b441d537deb4340431d37890425e38f1411c69a46b516eea8d0aa0i0';
@@ -294,8 +296,10 @@ if (chart) {
     try {
       const accounts = await window.unisat.requestAccounts();
       console.log('connect success', accounts);
+      setIsConnected(true);
     } catch (e) {
       console.log('connect failed');
+      setIsLoggedOut(true);
     }
   };
 
@@ -323,10 +327,14 @@ const moitieInferieure = donnees.slice(Math.ceil(donnees.length / 2));
       <div className="top">
         <div className="style">
           <div className='stylev2'>
-          <h1>Welcome Back <span id="address">{formatAddress(address)} !</span></h1>
+          {isConnected && ( 
+            <div>
+              <h1>Welcome Back <span id="address">{formatAddress(address)} !</span></h1>
+              <p>I hope everything is fine today...</p>
+            </div>
+          )}
           <Tooltip title="Copy address"><div className='copy' id='copyAddress'><FaRegCopy/></div></Tooltip>
           </div>
-          <p>I hope everything is fine today...</p>
         </div>
         <div className="input">
           <button onClick={requestAccounts}>Connect your wallet</button>
@@ -459,32 +467,6 @@ const moitieInferieure = donnees.slice(Math.ceil(donnees.length / 2));
             </div>
           </div>
         </div>
-        </div>
-        <div className="gauche">
-          <div className="chain">
-            <img src={litoshi} alt="" />
-          </div>
-          <div className="menu">
-            <div className='menutop'>
-              <div className='menu2'>
-              <button><img src={Vector} alt=""/>Dashboard</button>
-                <Link to="/explorer"><button><img src={globalsearch} alt=""/>Explorer</button></Link>
-                <button><img src={ouai} alt=""/>Watchlist</button>
-                <button><img src={notification} alt=""/>Alerts</button>
-                <button><img src={element3} alt=""/>Multicharts</button>
-              </div>
-              <div className='menuv1'>
-                <button className='BRC'><img src={Bitcoin} alt=""/>Bitcoin</button>
-                <button className='LTC'><img src={litecoinltclogo} alt=""/>Litecoin</button>
-                <button className='DRC'><img src={dogecoindogelogo} alt=""/>Dogechain</button>
-              </div>
-            </div>
-            <div className="menufooter">
-              <button className='profile'><img src={Footer} alt=""/>Profile</button>
-              <button><img src={footer2} alt=""/>Settings</button>
-              <button><img src={footer3} alt=""/>Log Out</button>
-          </div>
-          </div>
         </div>
         <div className="ellipse">
         </div>

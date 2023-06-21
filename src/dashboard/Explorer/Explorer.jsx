@@ -72,7 +72,9 @@ function Explorer() {
   const [loading, setLoading] = useState(false);
   const [isFilled, setIsFilled] = useState(false);
   const [uniSatAvailable, setUniSatAvailable] = useState(false);
-
+  const [isConnected, setIsConnected] = useState(false);
+  const [isLoggedOut, setIsLoggedOut] = useState(false);
+  
   useEffect(() => {
 
     const fetchData = async () => {
@@ -145,6 +147,7 @@ function Explorer() {
       setShowMarketCapContent(false);
       setShow24hVolContent(true);
       };
+    
       const handleTransactionButtonClick = () => {
         setShowNFTContent(false);
         setShowTokenContent(false);
@@ -157,8 +160,10 @@ function Explorer() {
           const accounts = await window.unisat.requestAccounts();
           setAccounts(accounts);
           console.log('Connect success', accounts);
+          setIsConnected(true);
         } catch (e) {
           console.log('Connect failed');
+          setIsLoggedOut(true);
         }
       };
   
@@ -266,7 +271,7 @@ function Explorer() {
                   <thead>
                     <tr>
                     <th className='user'>User</th>
-                    <th>net worth</th>
+                    <th>Net worth</th>
                     <th>Top token</th>
                     </tr>
                   </thead>
@@ -291,11 +296,11 @@ function Explorer() {
           <div className="menu">
           <div className='menutop'>
               <div className='menu2'>
-              <Link to="/Dashboard"><button><img src={Vector} alt=""/>Dashboard</button></Link>
-                <button><img src={globalsearch} alt=""/>Explorer</button>
-                <button><img src={ouai} alt=""/>Watchlist</button>
-                <button><img src={notification} alt=""/>Alerts</button>
-                <button><img src={element3} alt=""/>Multicharts</button>
+              <Link to="/dashboard"><button className='dashboard_'><img src={Vector} alt=""/>Dashboard</button></Link>
+                <button className='explorer_'><img src={globalsearch} alt=""/>Explorer</button>
+                <button className='watchlist'><img src={ouai} alt=""/>Watchlist</button>
+                <button className='alerts'><img src={notification} alt=""/>Alerts</button>
+                <button className='multicharts'><img src={element3} alt=""/>Multicharts</button>
               </div>
               <div className='menuv1'>
               <button className='BRC'><img src={Bitcoin} alt=""/>Bitcoin</button>
@@ -383,7 +388,7 @@ function TickComponent3({ tokenData, index }) {
     <><tr>
       <td className='border_bottomprofil'> <img src={homme} alt=""/><span>bc1pq4es...4skewgrv</span></td>
       <td className='border_bottom'>{tokenData.marketcap ? Number(tokenData.marketcap).toLocaleString('en-US', { style: 'currency', currency: 'USD', maximumFractionDigits: 0}) : 'N/A'}</td>
-      <td className='border_bottomtoptoken'> <img src={Ethereum} alt=""/>99% </td>
+      <td className='border_bottomtoptoken'> <img src={Bitcoin} alt=""/>99% </td>
     </tr></>
   );
 }

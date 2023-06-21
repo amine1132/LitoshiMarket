@@ -43,7 +43,7 @@ const BoutonPageSuivante = () => {
 
   const handleClick = () => {
     if (!match) {
-    navigate ('/Dashboard');
+    navigate ('/dashboard');
     }
   };
 
@@ -61,7 +61,7 @@ function App() {
           <img src={Logo} alt="" className='logo'/>
           <BoutonPageSuivante />
           <Routes>
-          <Route path="/Dashboard" element={<NouvellePage />} />
+          <Route path="/dashboard" element={<NouvellePage />} />
         </Routes>
         </div>
       <div className='placementorigin'>

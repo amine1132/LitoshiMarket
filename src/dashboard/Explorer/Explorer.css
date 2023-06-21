@@ -304,6 +304,14 @@ border-radius: 100px;
   align-items: center;
   display: flex;
   }
+  .dashboard_{
+    background: transparent;
+    border: 1px solid transparent;
+  }
+  .explorer_{
+    background: rgba(86, 58, 255, 0.2);
+    border: 1px solid #563AFF;
+  }
   .menufooter img{
   margin-right: 10px;
   padding-left: 10px;
@@ -599,7 +607,7 @@ margin-right: 10px;
   }
 
 .user{
-width: 500px;
+width: 400px;
 }
 
 @media screen and (max-height: 900px){
