@@ -291,7 +291,7 @@ function Explorer() {
         </div>
         <div className="gauche">
           <div className="chain">
-            <img src={litoshi} alt="" />
+            <img src={litoshi} alt=""/>
           </div>
           <div className="menu">
           <div className='menutop'>

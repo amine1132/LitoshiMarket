@@ -35,7 +35,7 @@ import NFT from './Nft.png'
 import "./Mont/Mont-Bold.otf"
 import "./Mont/Mont-Regular.otf"
 import "./Mont/Mont-SemiBold.otf"
-
+import Navgauche from './navgauche';
 
 const address = 'bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv';
 
@@ -74,7 +74,7 @@ const chartOptions = {
             
           };
           
-function Dashboard() {
+function Dashboardlitecoin() {
   const [data, setData] = useState([]);
   const [chartData, setChartData] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -169,7 +169,7 @@ function Dashboard() {
         };  
         
     };
-    
+
     const checkUniSatAvailability = () => {
       if (typeof window.unisat !== 'undefined') {
         setUniSatAvailable(true);
@@ -335,24 +335,23 @@ const moitieInferieure = donnees.slice(Math.ceil(donnees.length / 2));
       <div className="top">
         <div className="style">
           <div className='stylev2'>
-            <div className='filtre-dashboard'>
+          <div className='filtre-dashboard'>
               <p>Chains filter</p>
               <button>ALL</button>
               <button type="button" className='btc'><img src={Bitcoin} alt=""/>Bitcoin</button>
-              <Link to="/dashboard/litecoin"><button type="button"><img src={litecoinltclogo} alt=""/>Litecoin</button></Link>
+              <button type="button"><img src={litecoinltclogo} alt=""/>Litecoin</button>
               <button type="button"><img src={dogecoindogelogo} alt=""/>Dogechain</button>
             </div>
           <Tooltip title="Copy address"><div className='copy' id='copyAddress'><FaRegCopy/></div></Tooltip>
           </div>
         </div>
         <div className="input">
-        <div className="loupe_">
-            <img src={search} alt=""/>
-          </div>
-          <input type="text" placeholder="Token,pair,address..." className="formulaire_2" />
         {isConnected && (
           <>
-          <span id="address_"><img src={wallet} alt="" />
+          <div className="loupe_">
+            <img src={search} alt=""/>
+          </div>
+          <input type="text" placeholder="Token,pair,address..." className="formulaire_2" /><span id="address_"><img src={wallet} alt="" />
           {formatAddress_(address)} </span>
           <div className='profile-dashboard'>
             <img src={profile} alt=""/>
@@ -592,4 +591,4 @@ function TickComponent3({ tokenData }) {
   );
 }
 
-export default Dashboard;
+export default Dashboardlitecoin;

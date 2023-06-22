@@ -5,6 +5,7 @@ import Dashboard from './dashboard/Dashboard';
 import Explorer from './dashboard/Explorer/Explorer';
 import Navgauche from './dashboard/navgauche';
 import Dashboardv2 from './dashboard/Dashboardv2';
+import Dashboardlitecoin from './dashboard/Dashboardlitecoin'
 
 function Routerv2() {
   return (
@@ -14,6 +15,7 @@ function Routerv2() {
         <Route path="/" element={<App/>}/>
         <Route path='/dashboard' element={<Dashboardv2/>}/>
         <Route path='/explorer' element={<Explorer/>}/>
+        <Route path='/dashboard/litecoin' element={<Dashboardlitecoin/>}/>
     </Routes>
     </div>
     </BrowserRouter>

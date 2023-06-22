@@ -51,7 +51,6 @@ span {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-left: 40px;
   cursor: pointer;
 }
 .tooltip{
@@ -70,6 +69,7 @@ transition: all 0.4s cubic-bezier(0.68,-0.55,0.265,1,55);
 display: flex;
 align-items: center;
 }
+
 .top p{
 color: #626262;
 }
@@ -91,7 +91,16 @@ margin-top: 40px;
   width: 100%;
   height: 1900px;
 }
-
+.filtre-dashboard{
+  display: flex;
+  align-items: center;
+  }
+  .filtre-dashboard button{
+  margin-left: 10px;
+  }
+  .filtre-dashboard img{
+  margin-right: 10px;
+  }
 .box1 {
   background: linear-gradient(0deg, rgba(86, 58, 255, 0.35) -30%, rgba(128, 128, 128, 0.0735) 100%);
   width: 60%;
@@ -283,13 +292,10 @@ flex-direction: column;
 align-items: start;
 width: 80%;
 border: 1px solid transparent;
-margin-top: 40px;
 }
 .menu2{
 display: flex;
 flex-direction: column;
-padding-bottom: 25px;
-border-bottom: 1px solid rgba(86, 58, 255, 0.56);
 width: 80%;
 align-items: flex-start;
 }
@@ -360,10 +366,7 @@ width: 120px;
 align-items: center;
 display: flex;
 }
-.menufooter img{
-margin-right: 10px;
-padding-left: 10px;
-}
+
 .profile img{
 width: 20px;
 height: 20px;
@@ -378,32 +381,47 @@ background: rgba(86, 58, 255, 0.2);
 border: 1px solid #563AFF;
 border-radius: 3px;
 }
-.formulaire_1{
-background-color: rgba(86, 58, 255, 0.1) ;
-border-bottom: 2px solid #563AFF;
-border-top: 2px solid #563AFF;
-border-right: 2px solid #563AFF;
-border-left: 0;
-border-radius: 0 5px 5px 0;
+.formulaire_2{
+background-color:transparent;
+border-bottom: 2px solid #5B5B5C;
 height: 31px;
-width: 200px;
+width: 159px;
+border-top: none;
+border-left: none;
+border-right: none;
 color: white;
+outline: none;
+margin-right: 15px;
 }
-.formulaire_1::placeholder{
-color: white;
+.formulaire_2::placeholder{
+color: #5B5B5C;
 font-size: 16px;
 }
-.loupe{
+.profile-dashboard img{
+width: 40px;
+border-radius: 50%;
+margin-left: 8px;
+}
+.loupe_{
 display: flex;
-background-color:rgba(86, 58, 255, 0.1) ;
-border-bottom: 2px solid #563AFF;
-border-top:2px solid #563AFF;
-border-left:2px solid #563AFF;
+background-color:transparent ;
 width: 30px;
 height: 33px;
 border-radius: 10px 0px 0px 10px;
 align-items: center;
 justify-content: center;
+}
+
+.section {
+display: flex;
+align-items: center;
+border-bottom: 1px solid #5B5B5C;
+color: #6B6A6D;
+font-size: 12px;
+width: 90%;
+margin-bottom: 10px;
+margin-top: 10px;
+justify-content: flex-start;
 }
 .notif{
 display: flex;
@@ -414,6 +432,7 @@ margin-left: 10px;
 .input{
 display: flex;
 margin-right: 20px;
+align-items: center;
 }
 .gauche h1{
 font-size: 14px;
@@ -434,9 +453,9 @@ width: 70%;
 margin: 8px;
 }
 .BRC {
-background: #bd671769;
+background: transparent;
 width: 100%;
-border: 1px solid orange; 
+border: none;
 align-items: center;
 display: flex;
 justify-content: start;
@@ -634,6 +653,15 @@ color: #563AFF;
 #address::before{
 content: attr(data-tooltip);
 }
+#address_{
+border: 1px solid var(--stroke-1, rgba(255, 255, 255, 0.30));
+border-radius: 3px;
+display: flex;
+align-items: center;
+width: max-content;
+font-size: 14px;
+height: 36px;
+}
 .topline{
   position: sticky;
   overflow-y: auto;
@@ -768,6 +796,34 @@ image-rendering: pixelated;
   z-index: 1;
 }
 
+.ltsi{
+display: flex;
+justify-content: flex-start;
+align-items: center;
+border-bottom: 1px solid rgba(86, 58, 255, 0.56);;
+padding-bottom: 26px;
+width: 100%;
+}
+.ltsi p{
+width: max-content;
+}
+.ltsi img{
+width: 25px;
+margin-right: 10px;
+}
+.Logoicon{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+width: 100%;
+margin-top: 20px;
+}
+.Logoicon a{
+color: white;
+}
+.btc{
+background-color: #563AFF;
+}
 
 @media screen and (max-height: 900px){
  
