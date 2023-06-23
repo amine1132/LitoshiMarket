@@ -592,7 +592,7 @@ margin-top: 220px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 20px; /* Marge autour des balises <p> */
+  margin: 0 20px; /* Margin around beacons <p> */
 }
 
 .content-left {

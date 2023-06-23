@@ -72,7 +72,7 @@ const ItemDetails = ({ tick, marketcap }) => {
   const [price, setPrice] = useState(null);
 
   useEffect(() => {
-    // Effectuer la requête pour obtenir les informations détaillées du token
+    // Perform the query to obtain detailed token information
     axios.get("https://brc20api.bestinslot.xyz/v1/get_brc20_ticker/"+tick)  
       .then(response => {
         const maxSupplyValue = parseInt(response.data.ticker[0].max_supply, 10);

@@ -51,24 +51,24 @@ const chartOptions = {
                   color: 'white',
                   usePointStyle: true,
                   pointStyle: 'rect',
-                  padding: 17, // Espacement entre les étiquettes
+                  padding: 17, // Spacing between labels
                   borderWidth: 10,
                   font: {
-                    size: 16, // Changer la taille du texte des légendes
+                    size: 16, // Change the size of caption text
                     family: 'MontRegular',
                   },
                 },
                 },
                 layout: {
                   padding: {
-                    left: 200, // Espacement à gauche du Doughnut
+                    left: 200, // Doughnut left spacing
                   },
                 },
             },
             cutout:80,
             elements: {
               arc: {
-                borderWidth: 2, // Épaisseur de la bordure
+                borderWidth: 2, // Edge thickness
               },
             },
             
@@ -100,7 +100,7 @@ function Dashboard() {
     const fetchData = async () => {
         const response = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_balance/'+address); 
         var jsonData = response.data;
-        // on récupère que les tokens qui ont une overall balance strictement positive
+        // only tokens with a strictly positive overall balance are recovered
         jsonData = jsonData.filter(token => token.overall_balance > 0)
           .map(token => ({
             ...token,
@@ -108,7 +108,7 @@ function Dashboard() {
             available_balance: parseFloat(token.available_balance)
         }));
 
-        // Récupération des données étoffées pour chaque token
+        // Extensive data recovery for each token
         // const sortedData = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/1/1');
         var tokenData = [];
         try {
@@ -116,16 +116,16 @@ function Dashboard() {
         } catch (error) {
           console.error('Error while requesting API', error);
         }
-        // on trie les tokens en fonction de leurs overall_balances
+        // tokens are sorted according to their overall_balances
         tokenData = tokenData.sort((a, b) => {
           return b['overall_balance'] - a['overall_balance'];
         });
-        // Fusionner les données étoffées avec les données précédentes
+        // Merge enhanced data with previous data
         setData(tokenData);
 
-        // Calculer la valeur possédée pour chaque token et la valeur totale
+        // Calculate the value owned for each token and the total value
         
-        // Formatage des données pour le graphique
+        // Formatting data for graphics
         const labels = tokenData.map(token => token.tick);
         const overallBalances = tokenData.map(token => token.overall_usdc_balance);
         const numericOverallBalances = overallBalances.filter(balance => typeof balance === 'number');
@@ -148,7 +148,7 @@ function Dashboard() {
           ],
         };
 
-        // Création du graphique en forme de donut
+        // Creating the doughnut graphic
         const ctx = document.getElementById('myChart').getContext('2d');
         const chart = new Chart(ctx, {
           type: 'doughnut',
@@ -156,11 +156,11 @@ function Dashboard() {
           options: chartOptions,
         });
         
-        // Mise à jour de l'état du graphique
+        // Chart status update
         setChartData(chart);
         setShowTokenContent(true);
 
-        // Nettoyage du graphique lors de la désactivation du composant
+        // Cleans up graphics when component is deactivated
         return () => {
           chart.destroy();
           if (chart) {
@@ -207,7 +207,7 @@ function Dashboard() {
               });
             })
             .catch((error) => {
-              // Gérer les erreurs de copie
+              // Managing copy errors
               console.error('Copy failed:', error);
             });
         };
@@ -239,10 +239,10 @@ function Dashboard() {
         const sortedData = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/0/'+currentPage);
 
         if (sortedData.length === 0){
-          break; // Sortir de la boucle while si on a atteint le nombre maximal de pages
+          break; // Exit the while loop if the maximum number of pages has been reached
         }
 
-        // Récupération des data pour les tokens possédés
+        // Data recovery for owned tokens
         const filteredData = sortedData.data.items.filter(token => tokens.includes(token.tick));
         filteredData.forEach(token => {
           const tickData = jsonData.find(obj => obj.tick === token.tick)
@@ -255,12 +255,12 @@ function Dashboard() {
           tokenData.add(token);
         });
 
-        // Mise à jour de la liste de tokens manquants
+        // Update list of missing tokens
         const retrievedTokens = [...tokenData].map(token => token.tick);
         remainingTokens = tokens.filter(token => !retrievedTokens.includes(token));
 
         if (remainingTokens.length === 0) {
-          break; // Sortir de la boucle while si toutes les données ont été récupérées
+          break; // Exit while loop if all data has been retrieved
         }
 
         currentPage += 1;
@@ -269,12 +269,12 @@ function Dashboard() {
         break;
       }
     }
-    var chart = Chart.getChart('0'); // Récupérer le graphique existant avec l'ID '0'
+    var chart = Chart.getChart('0'); // Retrieve existing graphic with ID '0
 if (chart) {
-  chart.destroy(); // Détruire le graphique existant
+  chart.destroy(); // Destroy existing graphics
 }
 
-    return [...tokenData, ...jsonData.filter(token => remainingTokens.includes(token.tick))]; // Conversion du set en tableau et ajout des tokens pour lesquels on n'a pas trouvé de data étoffé
+    return [...tokenData, ...jsonData.filter(token => remainingTokens.includes(token.tick))]; // Convert set to array and add tokens for which no data has been found
   }
 
   const handleNFTButtonClick = () => {
@@ -321,7 +321,7 @@ if (chart) {
   const donnees = [
     { chiffre: 1, image: 'chemin/image1.png' },
     { chiffre: 2, image: 'chemin/image2.png' },
-    // Ajoutez d'autres entrées du tableau
+    // Add more table entries
   ];
   const moitieSuperieure = donnees.slice(0, Math.ceil(donnees.length / 2));
 const moitieInferieure = donnees.slice(Math.ceil(donnees.length / 2));
@@ -376,12 +376,12 @@ const moitieInferieure = donnees.slice(Math.ceil(donnees.length / 2));
                 <div className='group2'>
                   <p className='blanc'>Available</p>
                   <p className='semi'>{available_balance.toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</p>
-                  {/*données du montant du produit*/}
+                  {/*product amount data*/}
                 </div>
                 <div className='group3'>
                   <p className='blanc'>Transferable</p>
                   <p className='semi'>{(overall_balance-available_balance).toLocaleString('en-US', { style: 'currency', currency: 'USD' })}</p>
-                  {/*données du montant du produit*/}
+                  {/*product amount data*/}
                 </div>
               </div>
               <div>
@@ -510,11 +510,11 @@ function TickComponent({ tokenData }) {
   };
 
   function formatPrice(price) {  
-    // Vérifier si le prix est supérieur à 1
+    // Check if the price is greater than 1
     if (price > 1) {
-      return price.toFixed(2); // Afficher le prix avec 4 décimales
+      return price.toFixed(2); // Display price to 4 decimal places
     } else {
-      return price.toFixed(4); // Retourner le prix d'origine sans modification
+      return price.toFixed(4); // Return the original price unchanged
     }
   }  
 

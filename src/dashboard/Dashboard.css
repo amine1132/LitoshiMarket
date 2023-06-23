@@ -261,7 +261,7 @@ font-weight: bold;
 .gauche {
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* aligner les éléments sur la gauche */
+  align-items: flex-start; /* align elements on the left */
   justify-content: space-between;
   border-radius: 0 10px 10px 0;
   margin-right: 52px;
@@ -672,7 +672,7 @@ height: 36px;
 width: 100%;
 margin-left: 20px;
 height: 80%;
-max-height: 400px; /* Réglez la hauteur maximale selon vos besoins */
+max-height: 400px; /* Set the maximum height to suit your needs */
   overflow-y: auto;
 }
 

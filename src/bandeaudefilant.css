@@ -1,5 +1,5 @@
 .defilante li{
-    /* Styles de votre bandeau */
+    /* Headband styles */
     max-width:195px;
     display: flex;
     flex-direction: row;
@@ -60,7 +60,7 @@ text-shadow:0 0 800px #ff7733,
 .arrow {
   display: flex;
   align-items: center;
-  margin-left: 5px; /* Ajustez la valeur selon vos besoins */
+  margin-left: 5px; /* Adjust the value to suit your needs */
   width: 200px;
 }
 .arrow-down{

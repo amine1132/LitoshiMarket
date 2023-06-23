@@ -36,24 +36,24 @@ const chartOptions = {
                   color: 'white',
                   usePointStyle: true,
                   pointStyle: 'rect',
-                  padding: 15, // Espacement entre les étiquettes
+                  padding: 15, // Spacing between labels
                   borderWidth: 10,
                   font: {
-                    size: 16, // Changer la taille du texte des légendes
+                    size: 16, // Change the size of caption text
                     family: 'MontRegular',
                   },
                 },
                 },
                 layout: {
                   padding: {
-                    left: 200, // Espacement à gauche du Doughnut
+                    left: 200, // Doughnut left spacing
                   },
                 },
             },
             cutout:80,
             elements: {
               arc: {
-                borderWidth: 2, // Épaisseur de la bordure
+                borderWidth: 2, // Edge thickness
               },
             },
           };
@@ -78,14 +78,14 @@ function Explorer() {
   useEffect(() => {
 
     const fetchData = async () => {
-        // Récupération du change BTC/USDC
+        // BTC/USDC exchange recovery
         const response = await axios.get('https://api.coinbase.com/v2/prices/BTC-USD/spot', {
           headers: {
           },
           });
         const btc_price = response.data.data.amount;
 
-        // Tri par vol_24h et Récupération des données étoffées pour chaque token
+        // Sort by flight_24h and retrieve extended data for each token
         const sortedData = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/0/1');
         const data = sortedData.data.items;
         data.forEach(token => {
@@ -94,7 +94,7 @@ function Explorer() {
           token.marketcap = token.marketcap*Math.pow(10, -8)*btc_price;
           token.price = token.marketcap/token.max_supply;
         });
-        // Fusionner les données étoffées avec les données précédentes
+        // Merge enhanced data with previous data
         setData(data);
 
         const marketCaps = data.map(token => token.marketcap);
