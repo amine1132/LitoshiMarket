@@ -1,0 +1,31 @@
+.groupe_watchlisttotal {
+  display: flex;
+}
+.watchlist-flexbutton {
+  display: flex;
+  width: 98%;
+  justify-content: space-between;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.watchlist-flexbutton button {
+  border-radius: 16px;
+  border: 1px solid #6129ff;
+  background: rgba(86, 58, 255, 0.2);
+  color: white;
+  border-radius: 6px;
+  padding: 10px;
+  width: max-content;
+}
+
+.watchlist-buttontop {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+.watchlist-buttontop2 {
+  display: flex;
+  justify-content: space-between;
+  width: 280px;
+}

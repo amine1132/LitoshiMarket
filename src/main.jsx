@@ -11,6 +11,6 @@ import Inscription4 from "./inscription4/Inscription4";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <Routerv2/>
+    <Routerv2 />
   </React.StrictMode>
 );
