@@ -402,7 +402,6 @@ function Explorer() {
             </div>
           </div>
         </div>
-        <div className="ellipse"></div>
       </div>
     </div>
   );

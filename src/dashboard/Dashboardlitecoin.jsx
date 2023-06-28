@@ -575,7 +575,6 @@ function Dashboardlitecoin() {
               </div>
             </div>
           </div>
-          <div className="ellipse"></div>
         </div>
       </div>
     </>
