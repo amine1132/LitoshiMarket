@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import "./bandeaudefilant.css";
+import "./index.css";
 import axios from "axios";
 
-const DataDisplay = () => {
+export const DataDisplay = () => {
   const [data, setData] = useState([]);
   const [price, setPrice] = useState(null);
 
@@ -118,5 +118,3 @@ const ItemDetails = ({ tick, marketcap }) => {
 
   return <span>${parseFloat(price).toFixed(2)}</span>;
 };
-
-export default DataDisplay;
