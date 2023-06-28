@@ -1,0 +1,188 @@
+.box_1tokens {
+  background: linear-gradient(
+    0deg,
+    rgba(86, 58, 255, 0.35) -30%,
+    rgba(128, 128, 128, 0.0735) 100%
+  );
+  width: 100%;
+  height: 500px;
+  margin-right: 24px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.box3tokens {
+  background: linear-gradient(
+    0deg,
+    rgba(86, 58, 255, 0.35) -30%,
+    rgba(128, 128, 128, 0.0735) 100%
+  );
+  backdrop-filter: blur(30px);
+  width: 100%;
+  height: 300px;
+  border-radius: 10px;
+  margin-right: 32px;
+}
+
+.groupe3tokens {
+  background: linear-gradient(
+    0deg,
+    rgba(86, 58, 255, 0.35) -30%,
+    rgba(128, 128, 128, 0.0735) 100%
+  );
+  width: 30%;
+  height: 700px;
+  border-radius: 10px;
+}
+.groupeflextokens {
+  display: flex;
+  align-items: flex-end;
+}
+
+.groupetotaltokens {
+  width: 100%;
+}
+
+.topline_1tokens {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 300px;
+}
+
+.iconoutlinetokens {
+  padding: 0;
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-bottom: 1px solid rgba(100, 115, 254, 0.3);
+}
+
+.number_tabletokens {
+  padding: 0;
+  border-bottom: 1px solid rgba(100, 115, 254, 0.3);
+}
+
+.positivetokens {
+  padding: 0;
+  border-bottom: 1px solid rgba(100, 115, 254, 0.3);
+  color: green;
+}
+.negativetokens {
+  padding: 0;
+  border-bottom: 1px solid rgba(100, 115, 254, 0.3);
+  color: red;
+}
+.natokens {
+  padding: 0;
+  border-bottom: 1px solid rgba(100, 115, 254, 0.3);
+}
+.border_bottomtokens {
+  padding: 0;
+  border-bottom: 1px solid rgba(100, 115, 254, 0.3);
+}
+
+.donneestokens {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 12px;
+}
+.donneestokens p {
+  color: blue;
+  width: max-content;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.donneestokensbutton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.donneestokensbutton button {
+  width: 80%;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  height: 32px;
+  margin-bottom: 10px;
+}
+
+.groupedonnee_tokens {
+  width: 80%;
+  height: 163px;
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.groupedonnee_tokensflex {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.groupe3tokens_title p {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  width: 80%;
+  display: flex;
+  align-items: center;
+  padding-bottom: 6px;
+  margin-bottom: 10px;
+}
+.groupe3tokens_title {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.day_tokens {
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  gap: 30px;
+  width: 100%;
+}
+.day_tokens p {
+  width: max-content;
+}
+.tokens_input {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  margin-top: 10px;
+}
+.tokens_input img {
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+.tokens_input input {
+  width: 80%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  height: 32px;
+  border-radius: 4px;
+}
+.tokens_button {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+  gap: 20px;
+}
+
+.tokens_button button {
+  width: 30px;
+  height: 30px;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
