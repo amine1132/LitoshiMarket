@@ -8,6 +8,7 @@ import Watchlist from "./dashboard/Watchlist/Watchlist";
 import Tokens from "./dashboard/Tokens/Tokens";
 import Explorer from "./dashboard/Explorer/Explorer";
 import Nouvellelanding from "./Nouvellelanding/Nouvellelanding";
+import Nouvellelanding2 from "./Nouvellelanding/Nouvellelanding2";
 
 function App() {
   return (
@@ -19,6 +20,14 @@ function App() {
           element={
             <DashboardLayout>
               <Nouvellelanding />
+            </DashboardLayout>
+          }
+        />
+        <Route
+          path="/nouvellelanding2"
+          element={
+            <DashboardLayout>
+              <Nouvellelanding2 />
             </DashboardLayout>
           }
         />
