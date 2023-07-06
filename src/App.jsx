@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { RoutesLogged } from "#routes/RoutesLogged";
 import LandingPage from "./pages/LandingPage";
 import { DashboardLayout } from "./layouts";
 import Dashboardv2 from "./dashboard/Dashboardv2";
@@ -7,27 +8,16 @@ import Dashboardlitecoin from "./dashboard/Dashboardlitecoin";
 import Watchlist from "./dashboard/Watchlist/Watchlist";
 import Tokens from "./dashboard/Tokens/Tokens";
 import Explorer from "./dashboard/Explorer/Explorer";
-import Nouvellelanding from "./Nouvellelanding/Nouvellelanding";
-import Nouvellelanding2 from "./Nouvellelanding/Nouvellelanding2";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
         <Route
-          path="/nouvellelanding"
+          path="/"
           element={
             <DashboardLayout>
-              <Nouvellelanding />
-            </DashboardLayout>
-          }
-        />
-        <Route
-          path="/nouvellelanding2"
-          element={
-            <DashboardLayout>
-              <Nouvellelanding2 />
+              <Dashboardv2 />
             </DashboardLayout>
           }
         />

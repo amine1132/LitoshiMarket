@@ -33,15 +33,15 @@ span {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 88%;
+  width: 100%;
   left: 200px;
-  position: relative;
+  margin-left: 32px;
 }
 .top button {
   border-radius: 12px;
-  background-color: #563aff;
+  background-color: transparent;
   border-radius: 4px;
-  border: none;
+  border: 1px solid grey;
   color: white;
   padding: 18px 10px;
   height: 31px;
@@ -826,10 +826,10 @@ table td {
 .scroll_contenu_1 {
   overflow-y: auto;
   height: 1300px;
-  width: 88%;
+  width: 100%;
   left: 200px;
-  position: relative;
   overflow-x: hidden;
+  margin-left: 32px;
 }
 .copy {
   background-color: transparent;
@@ -929,34 +929,10 @@ table td {
 }
 
 @media screen and (min-width: 1930px) {
-  .scroll_contenu_1 {
-    width: 92%;
-  }
-  .top {
-    width: 92%;
-  }
   .box2_ {
     height: 360px;
   }
   .box1 {
     height: 360px;
-  }
-}
-
-@media screen and (max-width: 1430px) {
-  .scroll_contenu_1 {
-    width: 85%;
-  }
-  .top {
-    width: 85%;
-  }
-}
-
-@media screen and (max-width: 1150px) {
-  .scroll_contenu_1 {
-    width: 82%;
-  }
-  .top {
-    width: 82%;
   }
 }

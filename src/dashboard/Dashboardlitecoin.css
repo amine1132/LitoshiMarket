@@ -39,9 +39,9 @@ span {
 }
 .top button {
   border-radius: 12px;
-  background-color: #563aff;
+  background-color: transparent;
   border-radius: 4px;
-  border: none;
+  border: 1px solid grey;
   color: white;
   padding: 18px 10px;
   height: 31px;
