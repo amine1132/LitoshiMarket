@@ -22,14 +22,6 @@ function App() {
           }
         />
         <Route
-          path="/dashboard"
-          element={
-            <DashboardLayout>
-              <Dashboardv2 />
-            </DashboardLayout>
-          }
-        />
-        <Route
           path="/explorer"
           element={
             <DashboardLayout>
@@ -42,14 +34,6 @@ function App() {
           element={
             <DashboardLayout>
               <Dashboardlitecoin />
-            </DashboardLayout>
-          }
-        />
-        <Route
-          path="/watchlist"
-          element={
-            <DashboardLayout>
-              <Watchlist />
             </DashboardLayout>
           }
         />

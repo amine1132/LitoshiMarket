@@ -561,10 +561,10 @@ table th {
 .scroll_contenu {
   overflow-y: auto;
   height: 1200px;
-  width: 88%;
+  width: 100%;
   left: 200px;
-  position: relative;
   overflow-x: hidden;
+  margin-left: 32px;
 }
 
 .number_table {
@@ -627,10 +627,10 @@ table th {
 
 @media screen and (min-width: 1930px) {
   .scroll_contenu {
-    width: 92%;
+    width: 100%;
   }
   .top {
-    width: 92%;
+    width: 100%;
   }
   .box2_ {
     height: 360px;
@@ -642,18 +642,18 @@ table th {
 
 @media screen and (max-width: 1430px) {
   .scroll_contenu {
-    width: 85%;
+    width: 100%;
   }
   .top {
-    width: 85%;
+    width: 100%;
   }
 }
 
 @media screen and (max-width: 1150px) {
   .scroll_contenu {
-    width: 82%;
+    width: 100%;
   }
   .top {
-    width: 82%;
+    width: 100%;
   }
 }

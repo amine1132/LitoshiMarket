@@ -7,6 +7,7 @@ import {
   useNavigate,
   Outlet,
   useMatch,
+  BrowserRouter,
 } from "react-router-dom";
 import { NavbarApp } from "#components/Navbars";
 import Explorer from "./Explorer/Explorer";
@@ -18,16 +19,15 @@ import { RoutesLogged } from "#routes/RoutesLogged";
 export default function Dashboardv2() {
   return (
     <>
-      <div className="w-screen h-screen">
+      <BrowserRouter>
         <Routes>
           <Route element={<RoutesLogged />}>
             <Route path="/" element={<Dashboard />} />
-            <Route path="/dashboard" element={<Dashboard />}></Route>
-            <Route path="/explorer2" element={<Explorer />} />
+            <Route path="/explorer" element={<Explorer />} />
             <Route path="/watchlist" element={<Watchlist />} />
           </Route>
         </Routes>
-      </div>
+      </BrowserRouter>
     </>
   );
 }

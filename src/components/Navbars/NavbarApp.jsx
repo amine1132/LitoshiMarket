@@ -1,7 +1,7 @@
 //  Dependencies
 // ===========================================================
 
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { MenuLink } from "#components/Elements";
 import "./NavbarApp.css";
@@ -28,12 +28,39 @@ import DRC from "#assets/DogecoinDRC.svg";
 // ===========================================================
 
 function Wallet() {
+  const [isConnected, setIsConnected] = useState(false);
+  const [uniSatAvailable, setUniSatAvailable] = useState(false);
+
+  useEffect(() => {
+    const checkUniSatAvailability = () => {
+      if (typeof window.unisat !== "undefined") {
+        setUniSatAvailable(true);
+      } else {
+        setUniSatAvailable(false);
+      }
+    };
+    checkUniSatAvailability();
+  }, []);
+
+  const requestAccounts = async () => {
+    try {
+      const accounts = await window.unisat.requestAccounts();
+      console.log("connect success", accounts);
+      setIsConnected(true);
+    } catch (e) {
+      console.log("connect failed");
+      setIsLoggedOut(true);
+    }
+  };
   return (
-    <div className="w-full flex flex-col justify-center items-center">
+    <div className="w-full flex flex-col gap-3 justify-center items-center">
       <div className="w-full h-1/2 flex justify-center items-center">
         <img src={logo} alt="Logo" className="w-[60%] h-full" />
       </div>
-      <button className="flex justify-center items-center gap-3 rounded-full border py-1 px-3 text-[#fff]">
+      <button
+        onClick={requestAccounts}
+        className="flex justify-center items-center gap-3 border py-1 px-3 text-[#fff]"
+      >
         <img src={FooterLogo} alt="" />
         Wallet login
       </button>
@@ -53,7 +80,7 @@ function Profile() {
       img: vector,
     },
     {
-      url: "",
+      url: "watchlist",
       text: "Watchlist",
       img: star,
     },
@@ -78,7 +105,7 @@ function Profile() {
       </div>
       <ul className="w-full flex flex-col justfy-center items-center gap-2">
         {links.map((item, index) => (
-          <MenuLink onClick={() => navigate(item?.url)}>
+          <MenuLink url={item?.url}>
             <img src={item?.img} alt="" />
             {item?.text}
           </MenuLink>
@@ -92,7 +119,7 @@ function Tokens() {
   // Constants
   const links = [
     {
-      url: "/explorer",
+      url: "explorer",
       text: "Explorer",
       img: explorer,
     },
@@ -122,7 +149,7 @@ function Tokens() {
       </div>
       <ul className="w-full flex flex-col justfy-center items-center gap-2">
         {links.map((item, index) => (
-          <MenuLink onClick={() => navigate(item?.url)}>
+          <MenuLink url={item?.url}>
             <img src={item?.img} alt="" />
             {item?.text}
           </MenuLink>
@@ -151,8 +178,8 @@ function Footer() {
 
   return (
     <div className="w-full flex flex-col gap-3 p-4">
-      <div className="w-full flex justify-center items-center gap-3 cursor-pointer">
-        <img src={logofooter} alt="" />
+      <div className="w-5/6 flex justify-center items-center gap-3 cursor-pointer ">
+        <img src={logofooter} alt="" className="logofooter" />
         <p className="text-[#ffffffc0] text-lg font-semibold">Buy $LTSI</p>
       </div>
       <ul className="w-full flex justify-evenly items-center gap-2">
@@ -184,13 +211,15 @@ function Footer() {
 
 export function NavbarApp() {
   return (
-    <div className="w-full h-full flex flex-col overflow-y-auto">
-      <div className="w-full h-full flex flex-col justify-evenly">
-        <Wallet />
-        <Profile />
-        <Tokens />
+    <div className="w-scree h-screen fixed bg-gradient-to-t from-[rgba(86,58,255,0.1)] to-[rgba(255,255,255,0.2)] border-2 border-solid border-indigo-600 rounded-tl-none rounded-tr-2xl rounded-br-2xl rounded-bl-none">
+      <div className="w-full h-full flex flex-col overflow-y-auto">
+        <div className="w-full h-full flex flex-col justify-evenly">
+          <Wallet />
+          <Profile />
+          <Tokens />
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

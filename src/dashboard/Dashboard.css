@@ -184,6 +184,7 @@ p {
   display: flex;
   flex-direction: row;
   width: 100%;
+  margin-bottom: 30px;
 }
 
 .groupe2 {
@@ -618,6 +619,8 @@ table td {
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 4px;
   margin-right: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   cursor: pointer;
 }
 .topv1 button:hover {
