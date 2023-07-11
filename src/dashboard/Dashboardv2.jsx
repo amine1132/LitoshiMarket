@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -17,12 +17,21 @@ import Watchlist from "./Watchlist/Watchlist";
 import { RoutesLogged } from "#routes/RoutesLogged";
 
 export default function Dashboardv2() {
+  const [wallet, setWallet] = useState();
+
+  useEffect(() => {
+    console.log("wallet");
+    console.log(wallet);
+  }, [wallet]);
+
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route element={<RoutesLogged />}>
-            <Route path="/" element={<Dashboard />} />
+          <Route
+            element={<RoutesLogged wallet={wallet} setWallet={setWallet} />}
+          >
+            <Route path="/" element={<Dashboard wallet={wallet} />} />
             <Route path="/explorer" element={<Explorer />} />
             <Route path="/watchlist" element={<Watchlist />} />
           </Route>

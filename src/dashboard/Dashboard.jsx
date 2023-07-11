@@ -55,6 +55,7 @@ const chartOptions = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
+      // display: false,
       position: "left",
       family: "MontRegular",
       labels: {
@@ -83,7 +84,7 @@ const chartOptions = {
   },
 };
 
-function Dashboard() {
+function Dashboard({ wallet }) {
   const [data, setData] = useState([]);
   const [chartData, setChartData] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -98,6 +99,17 @@ function Dashboard() {
   const [uniSatAvailable, setUniSatAvailable] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [isLoggedOut, setIsLoggedOut] = useState(false);
+
+  // const [wallet, setWallet] = useState(false);
+  const [dataFetched, setDataFetched] = useState();
+  const [filteredBlockchain, setFilteredBlockchain] = useState();
+
+  useEffect(() => {
+    setFilteredBlockchain(dataFetched);
+    console.log("filter");
+    console.log(filteredBlockchain);
+  }, [dataFetched]);
+
   const nftImageUrl =
     "https://ordinalslite.com/content/e43b3f3f1c88468127196f46909b1be7fde7d3d173c4c4ceb94abcbceea542d7i0";
   const nftImageUrl2 =
@@ -120,8 +132,10 @@ function Dashboard() {
           ...token,
           overall_balance: parseFloat(token.overall_balance),
           available_balance: parseFloat(token.available_balance),
+          blockchain: "litecoin",
         }));
-
+      console.log(jsonData);
+      setDataFetched(jsonData);
       // Extensive data recovery for each token
       // const sortedData = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/1/1');
       var tokenData = [];
@@ -135,7 +149,8 @@ function Dashboard() {
         return b["overall_balance"] - a["overall_balance"];
       });
       // Merge enhanced data with previous data
-      setData(tokenData);
+      // setData(tokenData);
+      console.log(data);
 
       // Calculate the value owned for each token and the total value
 
@@ -339,23 +354,14 @@ function Dashboard() {
       const accounts = await window.unisat.requestAccounts();
       console.log("connect success", accounts);
       setIsConnected(true);
+      // setWallet(accounts);
     } catch (e) {
       console.log("connect failed");
       setIsLoggedOut(true);
     }
   };
-
   function formatAddress(address) {
-    const length = address.length;
-    const firstChars = address.substring(0, 8);
-    const lastChars = address.substring(length - 8, length);
-    return `${firstChars}...${lastChars}`;
-  }
-  function formatAddress_(address) {
-    const length = address.length;
-    const firstChars = address.substring(0, 8);
-    const lastChars = address.substring(length - 2, length);
-    return address;
+    return address.substr(0, 5) + "..." + address.substr(address.length - 3);
   }
 
   const donnees = [
@@ -365,6 +371,21 @@ function Dashboard() {
   ];
   const moitieSuperieure = donnees.slice(0, Math.ceil(donnees.length / 2));
   const moitieInferieure = donnees.slice(Math.ceil(donnees.length / 2));
+
+  function handleFilterClick(blockchain) {
+    // console.log("dataFetched");
+    console.log(blockchain);
+    console.log(dataFetched);
+    if (blockchain === "") {
+      setFilteredBlockchain(dataFetched);
+    } else {
+      const filteredData = dataFetched.filter(
+        (token) => token.blockchain === blockchain
+      );
+      setFilteredBlockchain(filteredData);
+    }
+    console.log(filteredBlockchain);
+  }
 
   return (
     <>
@@ -377,18 +398,26 @@ function Dashboard() {
                   <div className="stylev2">
                     <div className="filtre-dashboard">
                       <p>Chains filter</p>
-                      <button>ALL</button>
-                      <button type="button" className="btc">
+                      <button onClick={() => handleFilterClick("")}>ALL</button>
+                      <button
+                        type="button"
+                        className="btc"
+                        onClick={() => handleFilterClick("bitcoin")}
+                      >
                         <img src={Bitcoin} alt="" />
                         Bitcoin
                       </button>
-                      <Link to="/dashboard/litecoin">
-                        <button type="button">
-                          <img src={litecoinltclogo} alt="" />
-                          Litecoin
-                        </button>
-                      </Link>
-                      <button type="button">
+                      <button
+                        type="button"
+                        onClick={() => handleFilterClick("litecoin")}
+                      >
+                        <img src={litecoinltclogo} alt="" />
+                        Litecoine
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleFilterClick("dogechain")}
+                      >
                         <img src={dogecoindogelogo} alt="" />
                         Dogechain
                       </button>
@@ -406,21 +435,21 @@ function Dashboard() {
                   </div>
                   <input
                     type="text"
-                    placeholder="Token,pair,address..."
+                    placeholder="Token, pair, address..."
                     className="formulaire_2"
                   />
-                  <button onClick={requestAccounts}>Connect your wallet</button>
+                  {/* <button onClick={requestAccounts}>Connect your wallet</button> */}
                   <div className="notif"></div>
                 </div>
               </div>
             </header>
             <div className="scroll_contenu_1">
-              {isConnected && (
+              {wallet && (
                 <div className="groupe_profile">
                   <img src={profile} alt="" className="profile-image" />
                   <div className="groupe2_profile">
                     <div className="profile_adress">
-                      <p>{formatAddress_(address)}</p>
+                      <p>{formatAddress(wallet)}</p>
                     </div>
                     <div className="profile_button">
                       <button type="button">
@@ -495,6 +524,12 @@ function Dashboard() {
                   ) : (
                     <>
                       <div className="graph">
+                        {/* <div className="legendChart">
+                          {filteredBlockchain &&
+                            filteredBlockchain.map((e) => (
+                              <div className="itemLegendChart">{e.tick}</div>
+                            ))}
+                        </div> */}
                         <canvas id="myChart"></canvas>
                       </div>
                     </>
@@ -563,7 +598,7 @@ function Dashboard() {
                           </tr>
                         </thead>
                         <tbody className="semi">
-                          {data.map((token, index) => (
+                          {filteredBlockchain.map((token, index) => (
                             <TickComponent key={index} tokenData={token} />
                           ))}
                         </tbody>
@@ -582,7 +617,7 @@ function Dashboard() {
                           </tr>
                         </thead>
                         <tbody className="semi">
-                          {data.map((token, index) => (
+                          {filteredBlockchain.map((token, index) => (
                             <TickComponent3 key={index} tokenData={token} />
                           ))}
                         </tbody>
