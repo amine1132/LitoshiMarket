@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+
 import axios from "axios";
 import "./Dashboard.css";
 import litoshi from "./litoshi.svg";
@@ -103,12 +104,27 @@ function Dashboard({ wallet }) {
   // const [wallet, setWallet] = useState(false);
   const [dataFetched, setDataFetched] = useState();
   const [filteredBlockchain, setFilteredBlockchain] = useState();
+  const [isOver1000Px, setIsOver1000Px] = useState(true);
 
   useEffect(() => {
     setFilteredBlockchain(dataFetched);
     console.log("filter");
     console.log(filteredBlockchain);
   }, [dataFetched]);
+
+  //choose the screen size
+  const handleResize = () => {
+    if (window.innerWidth > 1000) {
+      setIsOver1000Px(true);
+    } else {
+      setIsOver1000Px(false);
+    }
+  };
+
+  // create an event listener
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  });
 
   const nftImageUrl =
     "https://ordinalslite.com/content/e43b3f3f1c88468127196f46909b1be7fde7d3d173c4c4ceb94abcbceea542d7i0";
@@ -405,21 +421,21 @@ function Dashboard({ wallet }) {
                         onClick={() => handleFilterClick("bitcoin")}
                       >
                         <img src={Bitcoin} alt="" />
-                        Bitcoin
+                        {isOver1000Px && <div>Bitcoin</div>}
                       </button>
                       <button
                         type="button"
                         onClick={() => handleFilterClick("litecoin")}
                       >
                         <img src={litecoinltclogo} alt="" />
-                        Litecoine
+                        {isOver1000Px && <div>Litecoin</div>}
                       </button>
                       <button
                         type="button"
                         onClick={() => handleFilterClick("dogechain")}
                       >
                         <img src={dogecoindogelogo} alt="" />
-                        Dogechain
+                        {isOver1000Px && <div>Dogechain</div>}
                       </button>
                       <Tooltip title="Copy address">
                         <div className="copy" id="copyAddress">

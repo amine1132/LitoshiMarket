@@ -189,6 +189,22 @@ function Explorer() {
     setIsFilled(!isFilled);
   };
 
+  const [isOver1000Px, setIsOver1000Px] = useState(true);
+
+  //choose the screen size
+  const handleResize = () => {
+    if (window.innerWidth > 1000) {
+      setIsOver1000Px(true);
+    } else {
+      setIsOver1000Px(false);
+    }
+  };
+
+  // create an event listener
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+  });
+
   return (
     <div className="max">
       <div className="colone">
@@ -199,27 +215,35 @@ function Explorer() {
                 <div className="stylev2">
                   <div className="filtre-dashboard">
                     <p>Chains filter</p>
-                    <button>ALL</button>
-                    <button type="button" className="btc">
+                    <button onClick={() => handleFilterClick("")}>ALL</button>
+                    <button
+                      type="button"
+                      className="btc"
+                      onClick={() => handleFilterClick("bitcoin")}
+                    >
                       <img src={Bitcoin} alt="" />
-                      Bitcoin
+                      {isOver1000Px && <div>Bitcoin</div>}
                     </button>
-                    <Link to="/dashboard/litecoin">
-                      <button type="button">
-                        <img src={litecoinltclogo} alt="" />
-                        Litecoin
-                      </button>
-                    </Link>
-                    <button type="button">
+                    <button
+                      type="button"
+                      onClick={() => handleFilterClick("litecoin")}
+                    >
+                      <img src={litecoinltclogo} alt="" />
+                      {isOver1000Px && <div>Litecoin</div>}
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => handleFilterClick("dogechain")}
+                    >
                       <img src={dogecoindogelogo} alt="" />
-                      Dogechain
+                      {isOver1000Px && <div>Dogechain</div>}
                     </button>
                   </div>
                 </div>
               </div>
               <div className="style"></div>
               <div className="input">
-                <button onClick={requestAccounts}>Connect your wallet</button>
+                {/* <button onClick={requestAccounts}>Connect your wallet</button> */}
                 <div className="notif"></div>
               </div>
             </div>
