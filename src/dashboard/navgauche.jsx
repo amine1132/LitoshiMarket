@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import Bitcoin from "./BitcoinBTC.svg";
-import litecoinltclogo from "./litecoinLTC.svg";
 import litoshi from "./litoshi.svg";
 import dogecoindogelogo from "./DogecoinDRC.svg";
 import ouai from "./ouai.svg";

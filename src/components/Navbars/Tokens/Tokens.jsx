@@ -2,7 +2,6 @@ import { MenuLink } from "#components/Elements";
 
 import explorer from "#assets/globalsearch.svg";
 import BTC from "#assets/BitcoinBTC.svg";
-import LTC from "#assets/LitecoinLTC.svg";
 import DRC from "#assets/DogecoinDRC.svg";
 
 export function Tokens() {

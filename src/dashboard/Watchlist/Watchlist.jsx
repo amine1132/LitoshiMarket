@@ -33,7 +33,6 @@ import {
 } from "react-router-dom";
 import { BsStar } from "react-icons/bs";
 import Bitcoin from "./BitcoinBTC.svg";
-import litecoinltclogo from "./litecoinLTC.svg";
 import dogecoindogelogo from "./DogecoinDRC.svg";
 import Ethereum from "./Ethereum.svg";
 

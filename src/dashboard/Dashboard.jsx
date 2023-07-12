@@ -36,7 +36,6 @@ import {
   useMatch,
 } from "react-router-dom";
 import Bitcoin from "./BitcoinBTC.svg";
-import litecoinltclogo from "./litecoinLTC.svg";
 import dogecoindogelogo from "./DogecoinDRC.svg";
 import Ethereum from "./Ethereum.svg";
 import { FaRegCopy } from "react-icons/fa";
