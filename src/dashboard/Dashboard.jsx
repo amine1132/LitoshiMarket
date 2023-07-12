@@ -137,8 +137,30 @@ function Dashboard({ wallet }) {
 
   useEffect(() => {
 
-
     const fetchData = async () => {
+      const sortedWalletBalances = [{
+        'ticker': "$dog",
+        'available_balance': 500000000,
+        'available_usdc_balance': 1.0862646368,
+        'blockchain': "bitcoin",
+        'marketcap': 217252.92736,
+        'overall_balance': 500000000,
+        'overall_usdc_balance': 1.0862646368,
+        'price': 0.23,
+        'transferrable_balance': "100",
+        'vol_24h': 1714.30
+      }];
+
+      console.log(sortedWalletBalances);
+      setDataFetched(sortedWalletBalances);
+
+      setFilteredBlockchain(sortedWalletBalances);
+      console.log(filteredBlockchain);
+
+    }
+
+
+    /*const fetchData = async () => {
       const response = await axios.get(
           "http://162.254.37.66:5000/brc20/wallet_balances?address=bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv"
         );
@@ -228,7 +250,7 @@ function Dashboard({ wallet }) {
           chart.update();
         }
       };
-    };
+    };*/
 
     const checkUniSatAvailability = () => {
       if (typeof window.unisat !== "undefined") {
