@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-
 import axios from "axios";
 import "./Dashboard.css";
 import litoshi from "./litoshi.svg";
@@ -48,8 +47,9 @@ import "./Mont/Mont-Bold.otf";
 import "./Mont/Mont-Regular.otf";
 import "./Mont/Mont-SemiBold.otf";
 
-const address =
-  "bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv";
+
+const address = "bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv";
+
 
 const chartOptions = {
   responsive: true,
@@ -136,43 +136,45 @@ function Dashboard({ wallet }) {
     "https://ordinalslite.com/content/e43b3f3f1c88468127196f46909b1be7fde7d3d173c4c4ceb94abcbceea542d7i0";
 
   useEffect(() => {
+
+
     const fetchData = async () => {
       const response = await axios.get(
-        "https://brc20api.bestinslot.xyz/v1/get_brc20_balance/" + address
-      );
-      var jsonData = response.data;
+          "http://162.254.37.66:5000/brc20/wallet_balances?address=bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv"
+        );
+      var walletBalances = response.data.data;
+
       // only tokens with a strictly positive overall balance are recovered
-      jsonData = jsonData
-        .filter((token) => token.overall_balance > 0)
+      walletBalances = walletBalances
+        .filter((token) => parseFloat(token.overall_balance) > 0)
         .map((token) => ({
           ...token,
           overall_balance: parseFloat(token.overall_balance),
           available_balance: parseFloat(token.available_balance),
-          blockchain: "litecoin",
+          blockchain: "bitcoin",
         }));
-      console.log(jsonData);
-      setDataFetched(jsonData);
+
       // Extensive data recovery for each token
-      // const sortedData = await axios.get('https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/1/1');
-      var tokenData = [];
-      try {
-        tokenData = await getTokenData(jsonData);
-      } catch (error) {
-        console.error("Error while requesting API", error);
-      }
+      //try {
+      walletBalances = await getTokenData(walletBalances);
+      //} catch (error) {
+        //console.error("Error while requesting API", error);
+      //}
+
       // tokens are sorted according to their overall_balances
-      tokenData = tokenData.sort((a, b) => {
+      let sortedWalletBalances = walletBalances.sort((a, b) => {
         return b["overall_balance"] - a["overall_balance"];
       });
-      // Merge enhanced data with previous data
-      // setData(tokenData);
-      console.log(data);
 
-      // Calculate the value owned for each token and the total value
+      console.log(sortedWalletBalances);
+      setDataFetched(sortedWalletBalances);
+
+      setFilteredBlockchain(sortedWalletBalances);
+      console.log(filteredBlockchain);
 
       // Formatting data for graphics
-      const labels = tokenData.map((token) => token.tick);
-      const overallBalances = tokenData.map(
+      const labels = sortedWalletBalances.map((token) => token.ticker);
+      const overallBalances = sortedWalletBalances.map(
         (token) => token.overall_usdc_balance
       );
       const numericOverallBalances = overallBalances.filter(
@@ -183,7 +185,7 @@ function Dashboard({ wallet }) {
         0
       );
       setOverallBalance(totalOverallBalance);
-      const availableBalances = tokenData.map(
+      const availableBalances = sortedWalletBalances.map(
         (token) => token.available_usdc_balance
       );
       const numericAvailableBalances = availableBalances.filter(
@@ -278,13 +280,7 @@ function Dashboard({ wallet }) {
     fetchData();
   }, []);
 
-  const getTokenData = async (jsonData) => {
-    var currentPage = 1;
-    const tokenData = new Set();
-
-    const tokens = jsonData.map((token) => token.tick);
-    var remainingTokens = tokens;
-
+  const getTokenData = async (walletBalances) => {
     const response = await axios.get(
       "https://api.coinbase.com/v2/prices/BTC-USD/spot",
       {
@@ -293,59 +289,32 @@ function Dashboard({ wallet }) {
     );
     const btc_price = response.data.data.amount;
 
-    while (true) {
-      try {
-        const sortedData = await axios.get(
-          "https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/0/" +
-            currentPage
-        );
 
-        if (sortedData.length === 0) {
-          break; // Exit the while loop if the maximum number of pages has been reached
+    walletBalances.forEach(async (token) => {
+      const responseMarketData = await axios.get(
+        "http://162.254.37.66:5000/brc20/market_info?ticker="+token.ticker
+      );
+      const tokenMarketData = responseMarketData.data.data;
+      const responseSalesData = await axios.get(
+        "http://162.254.37.66:5000/brc20/sales_info?ticker="+token.ticker
+      );
+      const tokenSalesData = responseSalesData.data.data;
+      const responseInfoData = await axios.get(
+        "http://162.254.37.66:5000/brc20/ticker_info?ticker="+token.ticker
+      );
+      const tokenData = responseInfoData.data.data;
+      
+      if (tokenMarketData !== undefined && tokenMarketData.marketcap !== undefined) {
+        token.marketcap = tokenMarketData.marketcap * Math.pow(10, -8) * btc_price; // marketcap (en btc)
+        token.price = token.marketcap / tokenData.max_supply;
+        token.vol_24h = tokenSalesData.vol_1d * Math.pow(10, -8) * btc_price;
+        token.overall_usdc_balance = parseFloat(token.overall_balance) * token.price;
+        token.available_usdc_balance = parseFloat(token.available_balance) * token.price;
         }
 
-        // Data recovery for owned tokens
-        const filteredData = sortedData.data.items.filter((token) =>
-          tokens.includes(token.tick)
-        );
-        filteredData.forEach((token) => {
-          const tickData = jsonData.find((obj) => obj.tick === token.tick);
-          token.overall_balance = tickData.overall_balance;
-          token.available_balance = tickData.available_balance;
-          token.marketcap = token.marketcap * Math.pow(10, -8) * btc_price; // marketcap (en btc), martket_cap (en usdc)
-          token.price = token.marketcap / token.max_supply;
-          token.overall_usdc_balance =
-            parseFloat(tickData.overall_balance) * token.price;
-          token.available_usdc_balance =
-            parseFloat(tickData.available_balance) * token.price;
-          tokenData.add(token);
-        });
+    })
 
-        // Update list of missing tokens
-        const retrievedTokens = [...tokenData].map((token) => token.tick);
-        remainingTokens = tokens.filter(
-          (token) => !retrievedTokens.includes(token)
-        );
-
-        if (remainingTokens.length === 0) {
-          break; // Exit while loop if all data has been retrieved
-        }
-
-        currentPage += 1;
-      } catch (error) {
-        console.error("Error while requesting API", error);
-        break;
-      }
-    }
-    var chart = Chart.getChart("0"); // Retrieve existing graphic with ID '0
-    if (chart) {
-      chart.destroy(); // Destroy existing graphics
-    }
-
-    return [
-      ...tokenData,
-      ...jsonData.filter((token) => remainingTokens.includes(token.tick)),
-    ]; // Convert set to array and add tokens for which no data has been found
+    return walletBalances;
   };
 
   const handleNFTButtonClick = () => {
@@ -674,7 +643,7 @@ function TickComponent({ tokenData }) {
   return (
     <>
       <tr>
-        <td className="border_bottom">{tokenData.tick.toUpperCase()}</td>
+        <td className="border_bottom">{tokenData.ticker.toUpperCase()}</td>
         <td className="border_bottom">
           {formatBalance(tokenData.overall_balance)}
         </td>
