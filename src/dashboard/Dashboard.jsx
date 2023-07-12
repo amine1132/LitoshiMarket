@@ -137,7 +137,7 @@ function Dashboard({ wallet }) {
 
   useEffect(() => {
 
-    const fetchData = async () => {
+    /*const fetchData = async () => {
       const sortedWalletBalances = [{
         'ticker': "$dog",
         'available_balance': 500000000,
@@ -157,10 +157,10 @@ function Dashboard({ wallet }) {
       setFilteredBlockchain(sortedWalletBalances);
       console.log(filteredBlockchain);
 
-    }
+    }*/
 
 
-    /*const fetchData = async () => {
+    const fetchData = async () => {
       const response = await axios.get(
           "http://162.254.37.66:5000/brc20/wallet_balances?address=bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv"
         );
@@ -232,7 +232,7 @@ function Dashboard({ wallet }) {
       };
 
       // Creating the doughnut graphic
-      const ctx = document.getElementById("myChart").getContext("2d");
+      /*const ctx = document.getElementById("myChart").getContext("2d");
       const chart = new Chart(ctx, {
         type: "doughnut",
         data: chartData,
@@ -249,8 +249,8 @@ function Dashboard({ wallet }) {
         if (chart) {
           chart.update();
         }
-      };
-    };*/
+      };*/
+    };
 
     const checkUniSatAvailability = () => {
       if (typeof window.unisat !== "undefined") {
@@ -537,7 +537,6 @@ function Dashboard({ wallet }) {
                               <div className="itemLegendChart">{e.tick}</div>
                             ))}
                         </div> */}
-                        <canvas id="myChart"></canvas>
                       </div>
                     </>
                   )}
