@@ -10,7 +10,6 @@ import notification from "./notification.svg";
 import Footer from "./Footer.svg";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
-import logo from "./logo.svg";
 import { SiTwitter } from "react-icons/si";
 import { BsDiscord } from "react-icons/bs";
 import { SiMedium } from "react-icons/si";
