@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 
 import { MenuLink } from "#components/Elements";
 
-import vector from "#assets/vector.svg";
+import vector from "#assets/Vector.svg";
 import star from "#assets/ouai.svg";
 import FooterLogo from "#assets/Footer.svg";
 import notification from "#assets/notification.svg";
