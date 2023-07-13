@@ -37,6 +37,7 @@ import {
 } from "react-router-dom";
 import Bitcoin from "./BitcoinBTC.svg";
 import dogecoindogelogo from "./DogecoinDRC.svg";
+import litecoinltclogo from "./LitecoinLTC.svg";
 import Ethereum from "./Ethereum.svg";
 import { FaRegCopy } from "react-icons/fa";
 import { Tooltip } from "@mui/material";
@@ -157,7 +158,7 @@ function Dashboard({ wallet }) {
       console.log(filteredBlockchain);
     };
 
-    const fetchData = async () => {
+    /*const fetchData = async () => {
       const response = await axios.get(
         "http://localhost:5000/brc20/wallet_balances?address=bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv"
       );
@@ -247,7 +248,6 @@ function Dashboard({ wallet }) {
           chart.update();
         }
       };*/
-    };
 
     const checkUniSatAvailability = () => {
       if (typeof window.unisat !== "undefined") {
