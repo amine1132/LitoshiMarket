@@ -660,7 +660,14 @@ table td {
   background: transparent;
   border: 1px solid transparent;
 }
-
+.ltc {
+  filter: blur(2px);
+  opacity: 0.4;
+}
+.drc {
+  filter: blur(2px);
+  opacity: 0.4;
+}
 .DRC {
   background: transparent;
   border: 1px solid transparent;
@@ -962,6 +969,7 @@ table td {
   margin-left: 10px;
   font-size: 12px;
   padding: 2px;
+  display: none;
 }
 
 .nfttable {

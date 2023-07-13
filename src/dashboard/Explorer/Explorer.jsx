@@ -52,7 +52,7 @@ const chartOptions = {
   },
 };
 
-function Explorer() {
+function Explorer({}) {
   const [data, setData] = useState([]);
   const [totalMarketCap, setTotalMarketCap] = useState(0.0);
   const [totalVols24h, setTotalVols24h] = useState(0.0);
@@ -179,7 +179,6 @@ function Explorer() {
             <div className="top">
               <div className="style"></div>
               <div className="input">
-                <button onClick={requestAccounts}>Connect your wallet</button>
                 <div className="notif"></div>
               </div>
             </div>

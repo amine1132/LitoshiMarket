@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 
-import logo from "#assets/logo.svg";
+import logo from "#assets/Calque_1.svg";
 import FooterLogo from "#assets/Footer.svg";
 
 export function Wallet({ wallet, setWallet }) {
@@ -35,13 +35,13 @@ export function Wallet({ wallet, setWallet }) {
     return address.substr(0, 5) + "..." + address.substr(address.length - 3);
   }
   return (
-    <div className="w-full flex flex-col gap-3 justify-center items-center">
+    <div className="w-full flex flex-col gap-8 justify-center items-center">
       <div className="w-full h-1/2 flex justify-center items-center mb-10">
-        <img src={logo} alt="Logo" className="w-[60%] h-full" />
+        <img src={logo} alt="Logo" className="w-[80%] absolute" />
       </div>
       <button
         onClick={requestAccounts}
-        className="flex justify-center items-center gap-3 border py-1 px-3 text-[#fff]"
+        className="flex justify-center items-center gap-3 border py-3 px-4 text-[#fff]"
       >
         <img src={FooterLogo} alt="" />
         {wallet ? formatAddress(wallet) : <div>Wallet login</div>}

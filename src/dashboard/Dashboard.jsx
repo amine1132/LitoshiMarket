@@ -416,6 +416,7 @@ function Dashboard({ wallet }) {
                       </button>
                       <button
                         type="button"
+                        className="ltc"
                         onClick={() => handleFilterClick("litecoin")}
                       >
                         <img src={litecoinltclogo} alt="" />
@@ -423,6 +424,7 @@ function Dashboard({ wallet }) {
                       </button>
                       <button
                         type="button"
+                        className="drc"
                         onClick={() => handleFilterClick("dogechain")}
                       >
                         <img src={dogecoindogelogo} alt="" />
@@ -484,29 +486,43 @@ function Dashboard({ wallet }) {
                     <div className="group1">
                       <p>My Wallet</p>
                       <h1>
-                        Total:{" "}
-                        {overall_balance.toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                        })}
+                        {wallet && (
+                          <>
+                            Total:{" "}
+                            {overall_balance.toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                            })}
+                          </>
+                        )}
                       </h1>
                     </div>
                     <div className="group2">
                       <p className="blanc">Available</p>
                       <p className="semi">
-                        {available_balance.toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                        })}
+                        {wallet && (
+                          <>
+                            {available_balance.toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                            })}
+                          </>
+                        )}
                       </p>
                       {/*product amount data*/}
                     </div>
                     <div className="group3">
                       <p className="blanc">Transferable</p>
                       <p className="semi">
-                        {(overall_balance - available_balance).toLocaleString(
-                          "en-US",
-                          { style: "currency", currency: "USD" }
+                        {wallet && (
+                          <>
+                            {(
+                              overall_balance - available_balance
+                            ).toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                            })}
+                          </>
                         )}
                       </p>
                       {/*product amount data*/}
@@ -559,78 +575,82 @@ function Dashboard({ wallet }) {
                       Transaction
                     </button>
                   </div>
-                  {showNFTContent ? (
-                    <div className="nft">
-                      <div className="box">
-                        <div>
-                          <img src={nftImageUrl} alt="" />
+                  {wallet && (
+                    <>
+                      {showNFTContent ? (
+                        <div className="nft">
+                          <div className="box">
+                            <div>
+                              <img src={nftImageUrl} alt="" />
+                            </div>
+                            <div className="text_8">
+                              <p className="desc">Moonbird#3688</p>
+                              <p className="desc">0,1 LTC</p>
+                            </div>
+                          </div>
+                          <div className="box">
+                            <div>
+                              <img src={nftImageUrl2} alt="" />
+                            </div>
+                            <div className="text_8">
+                              <p className="desc">Moonbird#3689</p>
+                              <p className="desc">0,1 LTC</p>
+                            </div>
+                          </div>
+                          <div className="box">
+                            <div>
+                              <img src={nftImageUrl3} alt="" />
+                            </div>
+                            <div className="text_8">
+                              <p className="desc">Moonbird#3690</p>
+                              <p className="desc">0,1 LTC</p>
+                            </div>
+                          </div>
                         </div>
-                        <div className="text_8">
-                          <p className="desc">Moonbird#3688</p>
-                          <p className="desc">0,1 LTC</p>
-                        </div>
-                      </div>
-                      <div className="box">
-                        <div>
-                          <img src={nftImageUrl2} alt="" />
-                        </div>
-                        <div className="text_8">
-                          <p className="desc">Moonbird#3689</p>
-                          <p className="desc">0,1 LTC</p>
-                        </div>
-                      </div>
-                      <div className="box">
-                        <div>
-                          <img src={nftImageUrl3} alt="" />
-                        </div>
-                        <div className="text_8">
-                          <p className="desc">Moonbird#3690</p>
-                          <p className="desc">0,1 LTC</p>
-                        </div>
-                      </div>
-                    </div>
-                  ) : showTokenContent ? (
-                    <nav className="topline">
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>Name</th>
-                            <th>Positions</th>
-                            <th>Price</th>
-                            <th>24h</th>
-                            <th>Available</th>
-                            <th>Transferable</th>
-                            <th>Marketcap</th>
-                          </tr>
-                        </thead>
-                        <tbody className="semi">
-                          {filteredBlockchain.map((token, index) => (
-                            <TickComponent key={index} tokenData={token} />
-                          ))}
-                        </tbody>
-                      </table>
-                    </nav>
-                  ) : showTransactionContent ? (
-                    <nav className="topline">
-                      <table>
-                        <thead>
-                          <tr>
-                            <th>Transaction ID</th>
-                            <th>Time</th>
-                            <th>Content</th>
-                            <th>From</th>
-                            <th>To</th>
-                          </tr>
-                        </thead>
-                        <tbody className="semi">
-                          {filteredBlockchain.map((token, index) => (
-                            <TickComponent3 key={index} tokenData={token} />
-                          ))}
-                        </tbody>
-                      </table>
-                    </nav>
-                  ) : (
-                    <div></div>
+                      ) : showTokenContent ? (
+                        <nav className="topline">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Name</th>
+                                <th>Positions</th>
+                                <th>Price</th>
+                                <th>24h</th>
+                                <th>Available</th>
+                                <th>Transferable</th>
+                                <th>Marketcap</th>
+                              </tr>
+                            </thead>
+                            <tbody className="semi">
+                              {filteredBlockchain.map((token, index) => (
+                                <TickComponent key={index} tokenData={token} />
+                              ))}
+                            </tbody>
+                          </table>
+                        </nav>
+                      ) : showTransactionContent ? (
+                        <nav className="topline">
+                          <table>
+                            <thead>
+                              <tr>
+                                <th>Transaction ID</th>
+                                <th>Time</th>
+                                <th>Content</th>
+                                <th>From</th>
+                                <th>To</th>
+                              </tr>
+                            </thead>
+                            <tbody className="semi">
+                              {filteredBlockchain.map((token, index) => (
+                                <TickComponent3 key={index} tokenData={token} />
+                              ))}
+                            </tbody>
+                          </table>
+                        </nav>
+                      ) : (
+                        <div></div>
+                      )}
+                    </>
                   )}
                 </div>
               </div>
