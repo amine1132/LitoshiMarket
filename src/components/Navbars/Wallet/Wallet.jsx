@@ -36,7 +36,7 @@ export function Wallet({ wallet, setWallet }) {
   }
   return (
     <div className="w-full flex flex-col gap-3 justify-center items-center">
-      <div className="w-full h-1/2 flex justify-center items-center">
+      <div className="w-full h-1/2 flex justify-center items-center mb-10">
         <img src={logo} alt="Logo" className="w-[60%] h-full" />
       </div>
       <button

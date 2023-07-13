@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { RoutesLogged } from "#routes/RoutesLogged";
-import LandingPage from "./pages/LandingPage";
 import { DashboardLayout } from "./layouts";
 import Dashboardv2 from "./dashboard/Dashboardv2";
 import Dashboardlitecoin from "./dashboard/Dashboardlitecoin";

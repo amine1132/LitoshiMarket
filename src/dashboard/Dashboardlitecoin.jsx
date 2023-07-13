@@ -375,7 +375,6 @@ function Dashboardlitecoin() {
                   <div className="stylev2">
                     <div className="filtre-dashboard">
                       <p>Chains filter</p>
-                      <button>ALL</button>
                       <button type="button" className="btc">
                         <img src={Bitcoin} alt="" />
                         Bitcoin

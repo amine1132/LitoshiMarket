@@ -47,9 +47,8 @@ import "./Mont/Mont-Bold.otf";
 import "./Mont/Mont-Regular.otf";
 import "./Mont/Mont-SemiBold.otf";
 
-
-const address = "bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv";
-
+const address =
+  "bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv";
 
 const chartOptions = {
   responsive: true,
@@ -136,29 +135,28 @@ function Dashboard({ wallet }) {
     "https://ordinalslite.com/content/e43b3f3f1c88468127196f46909b1be7fde7d3d173c4c4ceb94abcbceea542d7i0";
 
   useEffect(() => {
-
     const fetchData = async () => {
-      const sortedWalletBalances = [{
-        'ticker': "$dog",
-        'available_balance': 500000000,
-        'available_usdc_balance': 1.0862646368,
-        'blockchain': "bitcoin",
-        'marketcap': 217252.92736,
-        'overall_balance': 500000000,
-        'overall_usdc_balance': 1.0862646368,
-        'price': 0.23,
-        'transferrable_balance': "100",
-        'vol_24h': 1714.30
-      }];
+      const sortedWalletBalances = [
+        {
+          ticker: "$dog",
+          available_balance: 500000000,
+          available_usdc_balance: 1.0862646368,
+          blockchain: "bitcoin",
+          marketcap: 217252.92736,
+          overall_balance: 500000000,
+          overall_usdc_balance: 1.0862646368,
+          price: 0.23,
+          transferrable_balance: "100",
+          vol_24h: 1714.3,
+        },
+      ];
 
       console.log(sortedWalletBalances);
       setDataFetched(sortedWalletBalances);
 
       setFilteredBlockchain(sortedWalletBalances);
       console.log(filteredBlockchain);
-
-    }
-
+    };
 
     /*const fetchData = async () => {
       const response = await axios.get(
@@ -311,30 +309,34 @@ function Dashboard({ wallet }) {
     );
     const btc_price = response.data.data.amount;
 
-
     walletBalances.forEach(async (token) => {
       const responseMarketData = await axios.get(
-        "http://162.254.37.66:5000/brc20/market_info?ticker="+token.ticker
+        "http://162.254.37.66:5000/brc20/market_info?ticker=" + token.ticker
       );
       const tokenMarketData = responseMarketData.data.data;
       const responseSalesData = await axios.get(
-        "http://162.254.37.66:5000/brc20/sales_info?ticker="+token.ticker
+        "http://162.254.37.66:5000/brc20/sales_info?ticker=" + token.ticker
       );
       const tokenSalesData = responseSalesData.data.data;
       const responseInfoData = await axios.get(
-        "http://162.254.37.66:5000/brc20/ticker_info?ticker="+token.ticker
+        "http://162.254.37.66:5000/brc20/ticker_info?ticker=" + token.ticker
       );
       const tokenData = responseInfoData.data.data;
-      
-      if (tokenMarketData !== undefined && tokenMarketData.marketcap !== undefined) {
-        token.marketcap = tokenMarketData.marketcap * Math.pow(10, -8) * btc_price; // marketcap (en btc)
+
+      if (
+        tokenMarketData !== undefined &&
+        tokenMarketData.marketcap !== undefined
+      ) {
+        token.marketcap =
+          tokenMarketData.marketcap * Math.pow(10, -8) * btc_price; // marketcap (en btc)
         token.price = token.marketcap / tokenData.max_supply;
         token.vol_24h = tokenSalesData.vol_1d * Math.pow(10, -8) * btc_price;
-        token.overall_usdc_balance = parseFloat(token.overall_balance) * token.price;
-        token.available_usdc_balance = parseFloat(token.available_balance) * token.price;
-        }
-
-    })
+        token.overall_usdc_balance =
+          parseFloat(token.overall_balance) * token.price;
+        token.available_usdc_balance =
+          parseFloat(token.available_balance) * token.price;
+      }
+    });
 
     return walletBalances;
   };
@@ -405,7 +407,6 @@ function Dashboard({ wallet }) {
                   <div className="stylev2">
                     <div className="filtre-dashboard">
                       <p>Chains filter</p>
-                      <button onClick={() => handleFilterClick("")}>ALL</button>
                       <button
                         type="button"
                         className="btc"

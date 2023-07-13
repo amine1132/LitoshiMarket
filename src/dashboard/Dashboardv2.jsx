@@ -31,7 +31,7 @@ export default function Dashboardv2() {
           <Route
             element={<RoutesLogged wallet={wallet} setWallet={setWallet} />}
           >
-            <Route path="/" element={<Dashboard wallet={wallet} />} />
+            <Route path="/*" element={<Dashboard wallet={wallet} />} />
             <Route path="/explorer" element={<Explorer />} />
             <Route path="/watchlist" element={<Watchlist />} />
           </Route>

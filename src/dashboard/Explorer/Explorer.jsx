@@ -1,22 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Explorer.css";
-import litoshi from "./litoshi.svg";
-import cercle from "./Cercle.svg";
-import Vector from "./Vector.svg";
-import element3 from "./element3.svg";
-import Footer from "./Footer.svg";
-import footer2 from "./footer2.svg";
-import footer3 from "./footer3.svg";
-import globalsearch from "./globalsearch.svg";
-import logofooter from "./logofooter.svg";
-import notification from "./notification.svg";
 import Group5333 from "./Group5333.svg";
-import test1 from "./test1.svg";
-import test2 from "./test2.svg";
-import test3 from "./test3.svg";
-import ouai from "./ouai.svg";
-import search from "./search.svg";
 import homme from "./homme.svg";
 import chartcircle from "./chartcircle.svg";
 import Chart, { Chart as ChartJS, defaults } from "chart.js/auto";
@@ -33,9 +18,6 @@ import {
 } from "react-router-dom";
 import { BsStar } from "react-icons/bs";
 import Bitcoin from "./Bitcoin.svg";
-import litecoinltclogo from "./litecoinltclogo.svg";
-import dogecoindogelogo from "./dogecoindogelogo.svg";
-import Ethereum from "./Ethereum.svg";
 
 const chartOptions = {
   responsive: true,

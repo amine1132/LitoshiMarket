@@ -22,7 +22,7 @@ export function Profile({ wallet }) {
       img: vector,
     },
     {
-      url: "watchlist",
+      url: "",
       text: "Watchlist",
       img: star,
     },

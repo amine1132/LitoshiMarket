@@ -13,21 +13,6 @@ export function Tokens() {
       text: "Explorer",
       img: explorer,
     },
-    {
-      url: "",
-      text: "BRC-20",
-      img: BTC,
-    },
-    {
-      url: "",
-      text: "LTC-20",
-      img: LTC,
-    },
-    {
-      url: "",
-      text: "DRC-20",
-      img: DRC,
-    },
   ];
 
   return (
