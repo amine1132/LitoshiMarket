@@ -387,8 +387,10 @@ function Explorer() {
             </div>
             <div className="menufooter">
               <div className="ltsi">
-                <img src={logofooter} alt="" />
-                <p>Buy $LTSI</p>
+                <a href="https://sale.litoshi.app">
+                  <img src={logofooter} alt="" />
+                  <p>Buy $LTSI</p>
+                </a>
               </div>
               <div className="Logoicon">
                 <a href="https://twitter.com/Litoshimarket">

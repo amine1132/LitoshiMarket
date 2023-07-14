@@ -135,7 +135,7 @@ function Dashboard({ wallet }) {
     "https://ordinalslite.com/content/e43b3f3f1c88468127196f46909b1be7fde7d3d173c4c4ceb94abcbceea542d7i0";
 
   useEffect(() => {
-    const fetchData = async () => {
+    /*const fetchData = async () => {
       const sortedWalletBalances = [
         {
           ticker: "$dog",
@@ -156,9 +156,9 @@ function Dashboard({ wallet }) {
 
       setFilteredBlockchain(sortedWalletBalances);
       console.log(filteredBlockchain);
-    };
+    };*/
 
-    /*const fetchData = async () => {
+    const fetchData = async () => {
       const response = await axios.get(
         "http://localhost:5000/brc20/wallet_balances?address=bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv"
       );
@@ -230,7 +230,7 @@ function Dashboard({ wallet }) {
       };
 
       // Creating the doughnut graphic
-      /*const ctx = document.getElementById("myChart").getContext("2d");
+      const ctx = document.getElementById("myChart").getContext("2d");
       const chart = new Chart(ctx, {
         type: "doughnut",
         data: chartData,
@@ -247,7 +247,8 @@ function Dashboard({ wallet }) {
         if (chart) {
           chart.update();
         }
-      };*/
+      }
+    };
 
     const checkUniSatAvailability = () => {
       if (typeof window.unisat !== "undefined") {
@@ -310,15 +311,15 @@ function Dashboard({ wallet }) {
 
     walletBalances.forEach(async (token) => {
       const responseMarketData = await axios.get(
-        "http://162.254.37.66:5000/brc20/market_info?ticker=" + token.ticker
+        "http://localhost:5000/brc20/market_info?ticker=" + token.ticker
       );
       const tokenMarketData = responseMarketData.data.data;
       const responseSalesData = await axios.get(
-        "http://162.254.37.66:5000/brc20/sales_info?ticker=" + token.ticker
+        "http://localhost:5000/brc20/sales_info?ticker=" + token.ticker
       );
       const tokenSalesData = responseSalesData.data.data;
       const responseInfoData = await axios.get(
-        "http://162.254.37.66:5000/brc20/ticker_info?ticker=" + token.ticker
+        "http://localhost:5000/brc20/ticker_info?ticker=" + token.ticker
       );
       const tokenData = responseInfoData.data.data;
 
