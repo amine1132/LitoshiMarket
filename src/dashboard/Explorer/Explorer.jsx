@@ -233,7 +233,7 @@ function Explorer({}) {
                   >
                     Tokens
                   </button>
-                  <button
+                  {/*<button
                     type="button"
                     onClick={handleNFTButtonClick}
                     className="mint"
@@ -242,7 +242,7 @@ function Explorer({}) {
                   </button>
                   <button type="button" onClick={handleTransactionButtonClick}>
                     Profile
-                  </button>
+                  </button>*/}
                 </div>
                 <div></div>
                 {showNFTContent ? (

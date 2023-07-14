@@ -23,10 +23,12 @@ export function Footer() {
 
   return (
     <div className="w-full flex flex-col gap-3 p-4">
-      <div className="w-5/6 flex justify-center items-center gap-3 cursor-pointer ">
-        <img src={logofooter} alt="" className="logofooter" />
-        <p className="text-[#ffffffc0] text-lg font-semibold">Buy $LTSI</p>
-      </div>
+      <a href="https://sale.litoshi.app/" target="_blank">
+        <div className="w-5/6 flex justify-center items-center gap-3 cursor-pointer ">
+          <img src={logofooter} alt="" className="logofooter" />
+          <p className="text-[#ffffffc0] text-lg font-semibold">Buy $LTSI</p>
+        </div>
+      </a>
       <ul className="w-full flex justify-evenly items-center gap-2">
         {links.map((item, index) => (
           <li

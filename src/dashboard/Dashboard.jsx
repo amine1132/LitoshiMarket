@@ -47,9 +47,8 @@ import "./Mont/Mont-Bold.otf";
 import "./Mont/Mont-Regular.otf";
 import "./Mont/Mont-SemiBold.otf";
 
-
-const address = "bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv";
-
+const address =
+  "bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv";
 
 const chartOptions = {
   responsive: true,
@@ -248,7 +247,7 @@ function Dashboard({ wallet }) {
         if (chart) {
           chart.update();
         }
-      }
+      };
     };
 
     const checkUniSatAvailability = () => {
@@ -567,7 +566,7 @@ function Dashboard({ wallet }) {
                     <button type="button" onClick={handleTokenButtonClick}>
                       Token
                     </button>
-                    <button type="button" onClick={handleNFTButtonClick}>
+                    {/*<button type="button" onClick={handleNFTButtonClick}>
                       NFT
                     </button>
                     <button
@@ -575,7 +574,7 @@ function Dashboard({ wallet }) {
                       onClick={handleTransactionButtonClick}
                     >
                       Transaction
-                    </button>
+                    </button>*/}
                   </div>
                   {wallet && (
                     <>
