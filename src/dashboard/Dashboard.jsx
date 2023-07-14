@@ -47,8 +47,9 @@ import "./Mont/Mont-Bold.otf";
 import "./Mont/Mont-Regular.otf";
 import "./Mont/Mont-SemiBold.otf";
 
-const address =
-  "bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv";
+
+const address = "bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv";
+
 
 const chartOptions = {
   responsive: true,
@@ -160,7 +161,7 @@ function Dashboard({ wallet }) {
 
     const fetchData = async () => {
       const response = await axios.get(
-        "http://localhost:5000/brc20/wallet_balances?address=bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv"
+        "https://162.254.37.66:5000/brc20/wallet_balances?address=bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv"
       );
       var walletBalances = response.data.data;
 
@@ -311,15 +312,15 @@ function Dashboard({ wallet }) {
 
     walletBalances.forEach(async (token) => {
       const responseMarketData = await axios.get(
-        "http://localhost:5000/brc20/market_info?ticker=" + token.ticker
+        "http://162.254.37.66:5000/brc20/market_info?ticker=" + token.ticker
       );
       const tokenMarketData = responseMarketData.data.data;
       const responseSalesData = await axios.get(
-        "http://localhost:5000/brc20/sales_info?ticker=" + token.ticker
+        "http://162.254.37.66:5000/brc20/sales_info?ticker=" + token.ticker
       );
       const tokenSalesData = responseSalesData.data.data;
       const responseInfoData = await axios.get(
-        "http://localhost:5000/brc20/ticker_info?ticker=" + token.ticker
+        "http://162.254.37.66:5000/brc20/ticker_info?ticker=" + token.ticker
       );
       const tokenData = responseInfoData.data.data;
 
