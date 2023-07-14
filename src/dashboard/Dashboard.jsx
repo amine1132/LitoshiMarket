@@ -55,7 +55,7 @@ const chartOptions = {
   maintainAspectRatio: false,
   plugins: {
     legend: {
-      // display: false,
+      display: true,
       position: "left",
       family: "MontRegular",
       labels: {
@@ -135,29 +135,6 @@ function Dashboard({ wallet }) {
     "https://ordinalslite.com/content/e43b3f3f1c88468127196f46909b1be7fde7d3d173c4c4ceb94abcbceea542d7i0";
 
   useEffect(() => {
-    /*const fetchData = async () => {
-      const sortedWalletBalances = [
-        {
-          ticker: "$dog",
-          available_balance: 500000000,
-          available_usdc_balance: 1.0862646368,
-          blockchain: "bitcoin",
-          marketcap: 217252.92736,
-          overall_balance: 500000000,
-          overall_usdc_balance: 1.0862646368,
-          price: 0.23,
-          transferrable_balance: "100",
-          vol_24h: 1714.3,
-        },
-      ];
-
-      console.log(sortedWalletBalances);
-      setDataFetched(sortedWalletBalances);
-
-      setFilteredBlockchain(sortedWalletBalances);
-      console.log(filteredBlockchain);
-    };*/
-
     const fetchData = async () => {
       const response = await axios.get(
         "https://brc20.litoshi.app/brc20/wallet_balances?address=bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv"
@@ -216,7 +193,9 @@ function Dashboard({ wallet }) {
         0
       );
       setAvailableBalance(totalAvailableBalance);
-      //const percentages = overallBalances.map(balance => parseInt((balance / totalOverallBalance) * 100, 10));
+      const percentages = overallBalances.map((balance) =>
+        parseInt((balance / totalOverallBalance) * 100, 10)
+      );
 
       const chartData = {
         labels: labels,
@@ -297,6 +276,32 @@ function Dashboard({ wallet }) {
 
     handleCopyAddress();
 
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const sortedWalletBalances = [
+        {
+          ticker: "$dog",
+          available_balance: 500000000,
+          available_usdc_balance: 1.0862646368,
+          blockchain: "bitcoin",
+          marketcap: 217252.92736,
+          overall_balance: 500000000,
+          overall_usdc_balance: 1.0862646368,
+          price: 0.23,
+          transferrable_balance: "100",
+          vol_24h: 1714.3,
+        },
+      ];
+
+      console.log(sortedWalletBalances);
+      setDataFetched(sortedWalletBalances);
+
+      setFilteredBlockchain(sortedWalletBalances);
+      console.log(filteredBlockchain);
+    };
     fetchData();
   }, []);
 
@@ -548,12 +553,13 @@ function Dashboard({ wallet }) {
                   ) : (
                     <>
                       <div className="graph">
-                        {/* <div className="legendChart">
+                        <canvas id="myChart"></canvas>
+                        <div className="legendChart">
                           {filteredBlockchain &&
                             filteredBlockchain.map((e) => (
                               <div className="itemLegendChart">{e.tick}</div>
                             ))}
-                        </div> */}
+                        </div>
                       </div>
                     </>
                   )}
