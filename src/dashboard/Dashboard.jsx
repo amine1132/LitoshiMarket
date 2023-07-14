@@ -312,15 +312,15 @@ function Dashboard({ wallet }) {
 
     walletBalances.forEach(async (token) => {
       const responseMarketData = await axios.get(
-        "http://brc20.litoshi.app/brc20/market_info?ticker=" + token.ticker
+        "https://brc20.litoshi.app/brc20/market_info?ticker=" + token.ticker
       );
       const tokenMarketData = responseMarketData.data.data;
       const responseSalesData = await axios.get(
-        "http://brc20.litoshi.app/brc20/sales_info?ticker=" + token.ticker
+        "https://brc20.litoshi.app/brc20/sales_info?ticker=" + token.ticker
       );
       const tokenSalesData = responseSalesData.data.data;
       const responseInfoData = await axios.get(
-        "http://brc20.litoshi.app/brc20/ticker_info?ticker=" + token.ticker
+        "https://brc20.litoshi.app/brc20/ticker_info?ticker=" + token.ticker
       );
       const tokenData = responseInfoData.data.data;
 
