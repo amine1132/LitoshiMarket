@@ -99,7 +99,7 @@ export default function navgauche() {
         </div>
         <div className="menufooter">
           <div className="ltsi">
-            <a href="https://sale.litoshi.app">
+            <a href="https://mint.litoshi.app">
               <img src={logofooter} alt="" />
               <p>Buy $LTSI</p>
             </a>

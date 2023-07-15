@@ -95,7 +95,7 @@ function Dashboard({ wallet }) {
   const [showTransactionContent, setShowTransactionContent] = useState(false);
   const [isGraphContent, setIsGraphContent] = useState(false);
   const [box3Content, setBox3Content] = useState("Token Content");
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [uniSatAvailable, setUniSatAvailable] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [isLoggedOut, setIsLoggedOut] = useState(false);
@@ -154,6 +154,7 @@ function Dashboard({ wallet }) {
       // Extensive data recovery for each token
       //try {
       walletBalances = await getTokenData(walletBalances);
+      setIsLoading(false);
       //} catch (error) {
       //console.error("Error while requesting API", error);
       //}
@@ -163,17 +164,25 @@ function Dashboard({ wallet }) {
         return b["overall_balance"] - a["overall_balance"];
       });
 
-      console.log(sortedWalletBalances);
       setDataFetched(sortedWalletBalances);
 
       setFilteredBlockchain(sortedWalletBalances);
-      console.log(filteredBlockchain);
 
       // Formatting data for graphics
-      const labels = sortedWalletBalances.map((token) => token.ticker);
-      const overallBalances = sortedWalletBalances.map(
-        (token) => token.overall_usdc_balance
-      );
+      // Sorting balances for the doughnut
+      /*sortedWalletBalances = walletBalances.sort((a, b) => {
+        return b["overall_usdc_balance"] - a["overall_usdc_balance"];
+      });*/
+      console.log(sortedWalletBalances);
+      //const definedWalletBalances = sortedWalletBalances.filter(token => token.overall_usdc_balance !== undefined);
+      //console.log(definedWalletBalances);
+
+      const labels = sortedWalletBalances.map(token => token.ticker);
+      console.log('AAAAAAA');
+      console.log(labels);
+      sortedWalletBalances.forEach( token => {console.log(token.price);console.log(token.overall_usdc_balance);});
+      const overallBalances = sortedWalletBalances.map(token => token.overall_usdc_balance);
+      console.log(overallBalances);
       const numericOverallBalances = overallBalances.filter(
         (balance) => typeof balance === "number"
       );
@@ -279,32 +288,6 @@ function Dashboard({ wallet }) {
     fetchData();
   }, []);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const sortedWalletBalances = [
-        {
-          ticker: "$dog",
-          available_balance: 500000000,
-          available_usdc_balance: 1.0862646368,
-          blockchain: "bitcoin",
-          marketcap: 217252.92736,
-          overall_balance: 500000000,
-          overall_usdc_balance: 1.0862646368,
-          price: 0.23,
-          transferrable_balance: "100",
-          vol_24h: 1714.3,
-        },
-      ];
-
-      console.log(sortedWalletBalances);
-      setDataFetched(sortedWalletBalances);
-
-      setFilteredBlockchain(sortedWalletBalances);
-      console.log(filteredBlockchain);
-    };
-    fetchData();
-  }, []);
-
   const getTokenData = async (walletBalances) => {
     const response = await axios.get(
       "https://api.coinbase.com/v2/prices/BTC-USD/spot",
@@ -314,7 +297,48 @@ function Dashboard({ wallet }) {
     );
     const btc_price = response.data.data.amount;
 
-    walletBalances.forEach(async (token) => {
+    //let totalOverallBalance = 0;
+    //let totalAvailableBalance = 0;
+
+    let newWalletBalances = [];
+    for (let i = 0; i < walletBalances.length; i++) {
+      let token = walletBalances[i];
+
+      const responseMarketData = await axios.get(
+        "https://brc20.litoshi.app/brc20/market_info?ticker=" + token.ticker
+      );
+      const tokenMarketData = responseMarketData.data.data;
+
+      const responseSalesData = await axios.get(
+        "https://brc20.litoshi.app/brc20/sales_info?ticker=" + token.ticker
+      );
+      const tokenSalesData = responseSalesData.data.data;
+
+      const responseInfoData = await axios.get(
+        "https://brc20.litoshi.app/brc20/ticker_info?ticker=" + token.ticker
+      );
+      const tokenData = responseInfoData.data.data;
+
+      if (
+        tokenMarketData !== undefined &&
+        tokenMarketData.marketcap !== undefined
+      ) {
+        token.marketcap = tokenMarketData.marketcap * Math.pow(10, -8) * btc_price;
+        token.price = token.marketcap / tokenData.max_supply;
+        token.vol_24h = tokenSalesData.vol_1d * Math.pow(10, -8) * btc_price;
+        token.overall_usdc_balance = parseFloat(token.overall_balance) * token.price;
+        //totalOverallBalance += token.overall_usdc_balance;
+        token.available_usdc_balance = parseFloat(token.available_balance) * token.price;
+        //totalAvailableBalance += parseFloat(token.available_balance);
+      } else {
+        token.overall_usdc_balance = 0;
+        token.available_usdc_balance = 0;
+      }
+      newWalletBalances.push(token);
+    }
+
+
+    /*walletBalances.forEach(async (token) => {
       const responseMarketData = await axios.get(
         "https://brc20.litoshi.app/brc20/market_info?ticker=" + token.ticker
       );
@@ -336,14 +360,19 @@ function Dashboard({ wallet }) {
           tokenMarketData.marketcap * Math.pow(10, -8) * btc_price; // marketcap (en btc)
         token.price = token.marketcap / tokenData.max_supply;
         token.vol_24h = tokenSalesData.vol_1d * Math.pow(10, -8) * btc_price;
-        token.overall_usdc_balance =
-          parseFloat(token.overall_balance) * token.price;
-        token.available_usdc_balance =
-          parseFloat(token.available_balance) * token.price;
+        token.overall_usdc_balance = parseFloat(token.overall_balance) * token.price;
+        totalOverallBalance += token.overall_usdc_balance;
+        token.available_usdc_balance = parseFloat(token.available_balance) * token.price;
+        totalAvailableBalance += token.available_balance;
+      } else {
+        token.overall_usdc_balance = 0;
+        token.available_usdc_balance = 0;
       }
-    });
+    });*/
+    //setOverallBalance(totalOverallBalance);
+    //setAvailableBalance(totalAvailableBalance);
 
-    return walletBalances;
+    return newWalletBalances;
   };
 
   const handleNFTButtonClick = () => {
@@ -622,17 +651,31 @@ function Dashboard({ wallet }) {
                                 <th>Name</th>
                                 <th>Positions</th>
                                 <th>Price</th>
-                                <th>24h</th>
+                                <th>Vol. 24h</th>
                                 <th>Available</th>
                                 <th>Transferable</th>
                                 <th>Marketcap</th>
                               </tr>
                             </thead>
                             <tbody className="semi">
-                              {filteredBlockchain.map((token, index) => (
-                                <TickComponent key={index} tokenData={token} />
-                              ))}
-                            </tbody>
+                              {isLoading ? (
+                                <div
+                                  style={{
+                                    position: "absolute",
+                                    top: "50%",
+                                    left: "50%",
+                                    transform: "translate(-50%, -50%)",
+                                  }}
+                                >
+                                Loading ...</div>
+                              ) : (  
+                                  <>
+                                    {filteredBlockchain.map((token, index) => (
+                                      <TickComponent key={index} tokenData={token} />
+                                    ))};
+                                  </>
+                              )}
+                             </tbody>
                           </table>
                         </nav>
                       ) : showTransactionContent ? (
@@ -698,20 +741,8 @@ function TickComponent({ tokenData }) {
         <td className="border_bottom">
           {tokenData.price ? "$" + formatPrice(tokenData.price) : "N/A"}
         </td>
-        <td
-          className={
-            tokenData.change_24h && parseFloat(tokenData.change_24h) < 0
-              ? "negative"
-              : tokenData.change_24h && parseFloat(tokenData.change_24h) > 0
-              ? "positive"
-              : "na"
-          }
-        >
-          {tokenData.change_24h
-            ? (parseFloat(tokenData.change_24h) >= 0 ? "+" : "") +
-              parseFloat(tokenData.change_24h).toFixed(2) +
-              "%"
-            : "N/A"}
+        <td className="border_bottom">
+          {tokenData.vol_24h ? "$" + formatPrice(tokenData.vol_24h) : "N/A"}
         </td>
         <td className="border_bottom">
           {formatBalance(tokenData.available_balance)}
