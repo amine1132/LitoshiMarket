@@ -16,17 +16,14 @@ export function Tokens() {
       img: explorer,
     },
     {
-      url: "",
       text: "Trade",
       img: bitcoinconvert,
     },
     {
-      url: "",
       text: "Inscription",
       img: directinbox,
     },
     {
-      url: "",
       text: "Domaine Name",
       img: textblock,
     },

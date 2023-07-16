@@ -3,7 +3,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate, Outlet } from "react-router-dom";
-// import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 import { NavbarApp } from "#components/Navbars";
 
 //  Route
@@ -11,9 +11,14 @@ import { NavbarApp } from "#components/Navbars";
 
 export const RoutesLogged = ({ wallet, setWallet }) => {
   // Hooks
-  // const navigate = useNavigate();
-  // const location  = useLocation();
-  const user = null;
+  const navigate = useNavigate();
+  const location = useLocation();
+  const user = useSelector((state) => state.settings.user);
+
+  useEffect(() => {
+    // User is not connected
+    if (!user?.address) navigate("");
+  }, [user]);
 
   return (
     <div className="w-full h-full flex overflow-hidden">
