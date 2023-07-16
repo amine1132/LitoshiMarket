@@ -151,10 +151,12 @@ function Dashboard({ wallet }) {
           blockchain: "bitcoin",
         }));
 
+      setDataFetched(walletBalances);
+      setFilteredBlockchain(walletBalances);
+
       // Extensive data recovery for each token
       //try {
       walletBalances = await getTokenData(walletBalances);
-      setIsLoading(false);
       //} catch (error) {
       //console.error("Error while requesting API", error);
       //}
@@ -165,7 +167,6 @@ function Dashboard({ wallet }) {
       });
 
       setDataFetched(sortedWalletBalances);
-
       setFilteredBlockchain(sortedWalletBalances);
 
       // Formatting data for graphics
@@ -233,6 +234,7 @@ function Dashboard({ wallet }) {
       // Chart status update
       setChartData(chart);
       setShowTokenContent(true);
+      setIsLoading(false);
 
       // Cleans up graphics when component is deactivated
       return () => {
