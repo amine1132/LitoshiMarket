@@ -168,6 +168,7 @@ function Dashboard({ wallet }) {
 
       setDataFetched(sortedWalletBalances);
       setFilteredBlockchain(sortedWalletBalances);
+      setIsLoading(false);
 
       // Formatting data for graphics
       // Sorting balances for the doughnut
@@ -229,7 +230,6 @@ function Dashboard({ wallet }) {
       // Chart status update
       setChartData(chart);
       setShowTokenContent(true);
-      setIsLoading(false);
 
       // Cleans up graphics when component is deactivated
       return () => {
