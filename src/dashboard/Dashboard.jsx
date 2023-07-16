@@ -153,6 +153,7 @@ function Dashboard({ wallet }) {
 
       setDataFetched(walletBalances);
       setFilteredBlockchain(walletBalances);
+      setIsLoading(false);
 
       // Extensive data recovery for each token
       //try {
@@ -234,7 +235,6 @@ function Dashboard({ wallet }) {
       // Chart status update
       setChartData(chart);
       setShowTokenContent(true);
-      setIsLoading(false);
 
       // Cleans up graphics when component is deactivated
       return () => {
