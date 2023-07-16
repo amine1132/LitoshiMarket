@@ -47,9 +47,6 @@ import "./Mont/Mont-Bold.otf";
 import "./Mont/Mont-Regular.otf";
 import "./Mont/Mont-SemiBold.otf";
 
-const address =
-  "bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv";
-
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -100,7 +97,7 @@ function Dashboard({ wallet }) {
   const [isConnected, setIsConnected] = useState(false);
   const [isLoggedOut, setIsLoggedOut] = useState(false);
 
-  // const [wallet, setWallet] = useState(false);
+  const [address, setAddress] = useState(false);
   const [dataFetched, setDataFetched] = useState();
   const [filteredBlockchain, setFilteredBlockchain] = useState();
   const [isOver1000Px, setIsOver1000Px] = useState(true);
@@ -137,9 +134,10 @@ function Dashboard({ wallet }) {
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        "https://brc20.litoshi.app/brc20/wallet_balances?address=bc1pq4esrv5qkfpxahw8789j0yz2ymfzkq63qd4dluq2j08exca6um4skewgrv"
+        "https://brc20.litoshi.app/brc20/wallet_balances?address="+address
       );
       var walletBalances = response.data.data;
+      console.log(walletBalances);
 
       // only tokens with a strictly positive overall balance are recovered
       walletBalances = walletBalances
@@ -175,21 +173,13 @@ function Dashboard({ wallet }) {
       /*sortedWalletBalances = walletBalances.sort((a, b) => {
         return b["overall_usdc_balance"] - a["overall_usdc_balance"];
       });*/
-      console.log(sortedWalletBalances);
       //const definedWalletBalances = sortedWalletBalances.filter(token => token.overall_usdc_balance !== undefined);
       //console.log(definedWalletBalances);
 
       const labels = sortedWalletBalances.map((token) => token.ticker);
-      console.log("AAAAAAA");
-      console.log(labels);
-      sortedWalletBalances.forEach((token) => {
-        console.log(token.price);
-        console.log(token.overall_usdc_balance);
-      });
       const overallBalances = sortedWalletBalances.map(
         (token) => token.overall_usdc_balance
       );
-      console.log(overallBalances);
       const numericOverallBalances = overallBalances.filter(
         (balance) => typeof balance === "number"
       );
@@ -406,7 +396,7 @@ function Dashboard({ wallet }) {
       const accounts = await window.unisat.requestAccounts();
       console.log("connect success", accounts);
       setIsConnected(true);
-      // setWallet(accounts);
+      setAddress(accounts[0]);
     } catch (e) {
       console.log("connect failed");
       setIsLoggedOut(true);
@@ -686,7 +676,6 @@ function Dashboard({ wallet }) {
                                       tokenData={token}
                                     />
                                   ))}
-                                  ;
                                 </>
                               )}
                             </tbody>
