@@ -26,7 +26,7 @@ export function Footer() {
       <a href="https://mint.litoshi.app/" target="_blank">
         <div className="w-5/6 flex justify-center items-center gap-3 cursor-pointer ">
           <img src={logofooter} alt="" className="logofooter" />
-          <p className="text-[#ffffffc0] text-lg font-semibold">Buy $LTSI</p>
+          <p className="text-[#ffffffc0] text-lg font-semibold">Mint $LTSI</p>
         </div>
       </a>
       <ul className="w-full flex justify-evenly items-center gap-2">
@@ -44,7 +44,7 @@ export function Footer() {
             key={index}
             onClick={() => navigate(item?.url)}
           >
-            <a href={item?.url}>
+            <a href={item?.url} target="_blank">
               <img src={item?.img} alt="" />
             </a>
           </li>

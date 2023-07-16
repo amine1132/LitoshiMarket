@@ -177,11 +177,16 @@ function Dashboard({ wallet }) {
       //const definedWalletBalances = sortedWalletBalances.filter(token => token.overall_usdc_balance !== undefined);
       //console.log(definedWalletBalances);
 
-      const labels = sortedWalletBalances.map(token => token.ticker);
-      console.log('AAAAAAA');
+      const labels = sortedWalletBalances.map((token) => token.ticker);
+      console.log("AAAAAAA");
       console.log(labels);
-      sortedWalletBalances.forEach( token => {console.log(token.price);console.log(token.overall_usdc_balance);});
-      const overallBalances = sortedWalletBalances.map(token => token.overall_usdc_balance);
+      sortedWalletBalances.forEach((token) => {
+        console.log(token.price);
+        console.log(token.overall_usdc_balance);
+      });
+      const overallBalances = sortedWalletBalances.map(
+        (token) => token.overall_usdc_balance
+      );
       console.log(overallBalances);
       const numericOverallBalances = overallBalances.filter(
         (balance) => typeof balance === "number"
@@ -323,12 +328,15 @@ function Dashboard({ wallet }) {
         tokenMarketData !== undefined &&
         tokenMarketData.marketcap !== undefined
       ) {
-        token.marketcap = tokenMarketData.marketcap * Math.pow(10, -8) * btc_price;
+        token.marketcap =
+          tokenMarketData.marketcap * Math.pow(10, -8) * btc_price;
         token.price = token.marketcap / tokenData.max_supply;
         token.vol_24h = tokenSalesData.vol_1d * Math.pow(10, -8) * btc_price;
-        token.overall_usdc_balance = parseFloat(token.overall_balance) * token.price;
+        token.overall_usdc_balance =
+          parseFloat(token.overall_balance) * token.price;
         //totalOverallBalance += token.overall_usdc_balance;
-        token.available_usdc_balance = parseFloat(token.available_balance) * token.price;
+        token.available_usdc_balance =
+          parseFloat(token.available_balance) * token.price;
         //totalAvailableBalance += parseFloat(token.available_balance);
       } else {
         token.overall_usdc_balance = 0;
@@ -336,7 +344,6 @@ function Dashboard({ wallet }) {
       }
       newWalletBalances.push(token);
     }
-
 
     /*walletBalances.forEach(async (token) => {
       const responseMarketData = await axios.get(
@@ -667,15 +674,20 @@ function Dashboard({ wallet }) {
                                     transform: "translate(-50%, -50%)",
                                   }}
                                 >
-                                Loading ...</div>
-                              ) : (  
-                                  <>
-                                    {filteredBlockchain.map((token, index) => (
-                                      <TickComponent key={index} tokenData={token} />
-                                    ))};
-                                  </>
+                                  Loading ...
+                                </div>
+                              ) : (
+                                <>
+                                  {filteredBlockchain.map((token, index) => (
+                                    <TickComponent
+                                      key={index}
+                                      tokenData={token}
+                                    />
+                                  ))}
+                                  ;
+                                </>
                               )}
-                             </tbody>
+                            </tbody>
                           </table>
                         </nav>
                       ) : showTransactionContent ? (

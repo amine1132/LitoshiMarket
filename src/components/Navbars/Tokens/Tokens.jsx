@@ -3,6 +3,9 @@ import { MenuLink } from "#components/Elements";
 import explorer from "#assets/globalsearch.svg";
 import BTC from "#assets/BitcoinBTC.svg";
 import DRC from "#assets/DogecoinDRC.svg";
+import bitcoinconvert from "#assets/bitcoin-convert.png";
+import directinbox from "#assets/direct-inbox.png";
+import textblock from "#assets/text-block.png";
 
 export function Tokens() {
   // Constants
@@ -11,6 +14,21 @@ export function Tokens() {
       url: "explorer",
       text: "Explorer",
       img: explorer,
+    },
+    {
+      url: "",
+      text: "Trade",
+      img: bitcoinconvert,
+    },
+    {
+      url: "",
+      text: "Inscription",
+      img: directinbox,
+    },
+    {
+      url: "",
+      text: "Domaine Name",
+      img: textblock,
     },
   ];
 
