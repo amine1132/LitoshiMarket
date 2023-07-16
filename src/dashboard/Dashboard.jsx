@@ -153,6 +153,7 @@ function Dashboard({ wallet }) {
 
       setDataFetched(walletBalances);
       setFilteredBlockchain(walletBalances);
+      setIsLoading(false);
 
       // Extensive data recovery for each token
       //try {
@@ -168,7 +169,6 @@ function Dashboard({ wallet }) {
 
       setDataFetched(sortedWalletBalances);
       setFilteredBlockchain(sortedWalletBalances);
-      setIsLoading(false);
 
       // Formatting data for graphics
       // Sorting balances for the doughnut
