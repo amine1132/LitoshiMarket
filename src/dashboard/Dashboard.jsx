@@ -97,7 +97,7 @@ function Dashboard({ wallet }) {
   const [isConnected, setIsConnected] = useState(false);
   const [isLoggedOut, setIsLoggedOut] = useState(false);
 
-  const [address, setAddress] = useState(false);
+  const [address, setAddress] = useState(null);
   const [dataFetched, setDataFetched] = useState();
   const [filteredBlockchain, setFilteredBlockchain] = useState();
   const [isOver1000Px, setIsOver1000Px] = useState(true);
@@ -132,108 +132,6 @@ function Dashboard({ wallet }) {
     "https://ordinalslite.com/content/e43b3f3f1c88468127196f46909b1be7fde7d3d173c4c4ceb94abcbceea542d7i0";
 
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(
-        "https://brc20.litoshi.app/brc20/wallet_balances?address="+address
-      );
-      var walletBalances = response.data.data;
-      console.log(walletBalances);
-
-      // only tokens with a strictly positive overall balance are recovered
-      walletBalances = walletBalances
-        .filter((token) => parseFloat(token.overall_balance) > 0)
-        .map((token) => ({
-          ...token,
-          overall_balance: parseFloat(token.overall_balance),
-          available_balance: parseFloat(token.available_balance),
-          blockchain: "bitcoin",
-        }));
-
-      setDataFetched(walletBalances);
-      setFilteredBlockchain(walletBalances);
-      setIsLoading(false);
-
-      // Extensive data recovery for each token
-      //try {
-      walletBalances = await getTokenData(walletBalances);
-      //} catch (error) {
-      //console.error("Error while requesting API", error);
-      //}
-
-      // tokens are sorted according to their overall_balances
-      let sortedWalletBalances = walletBalances.sort((a, b) => {
-        return b["overall_balance"] - a["overall_balance"];
-      });
-
-      setDataFetched(sortedWalletBalances);
-      setFilteredBlockchain(sortedWalletBalances);
-
-      // Formatting data for graphics
-      // Sorting balances for the doughnut
-      /*sortedWalletBalances = walletBalances.sort((a, b) => {
-        return b["overall_usdc_balance"] - a["overall_usdc_balance"];
-      });*/
-      //const definedWalletBalances = sortedWalletBalances.filter(token => token.overall_usdc_balance !== undefined);
-      //console.log(definedWalletBalances);
-
-      const labels = sortedWalletBalances.map((token) => token.ticker);
-      const overallBalances = sortedWalletBalances.map(
-        (token) => token.overall_usdc_balance
-      );
-      const numericOverallBalances = overallBalances.filter(
-        (balance) => typeof balance === "number"
-      );
-      const totalOverallBalance = numericOverallBalances.reduce(
-        (acc, val) => acc + val,
-        0
-      );
-      setOverallBalance(totalOverallBalance);
-      const availableBalances = sortedWalletBalances.map(
-        (token) => token.available_usdc_balance
-      );
-      const numericAvailableBalances = availableBalances.filter(
-        (balance) => typeof balance === "number"
-      );
-      const totalAvailableBalance = numericAvailableBalances.reduce(
-        (acc, val) => acc + val,
-        0
-      );
-      setAvailableBalance(totalAvailableBalance);
-      const percentages = overallBalances.map((balance) =>
-        parseInt((balance / totalOverallBalance) * 100, 10)
-      );
-
-      const chartData = {
-        labels: labels,
-        datasets: [
-          {
-            data: overallBalances,
-            borderWidth: 0.1,
-            backgroundColor: ["#C46161", "#7AB75D", "#C6C85C", "#50439D"],
-          },
-        ],
-      };
-
-      // Creating the doughnut graphic
-      const ctx = document.getElementById("myChart").getContext("2d");
-      const chart = new Chart(ctx, {
-        type: "doughnut",
-        data: chartData,
-        options: chartOptions,
-      });
-
-      // Chart status update
-      setChartData(chart);
-      setShowTokenContent(true);
-
-      // Cleans up graphics when component is deactivated
-      return () => {
-        chart.destroy();
-        if (chart) {
-          chart.update();
-        }
-      };
-    };
 
     const checkUniSatAvailability = () => {
       if (typeof window.unisat !== "undefined") {
@@ -282,7 +180,7 @@ function Dashboard({ wallet }) {
 
     handleCopyAddress();
 
-    fetchData();
+    //fetchData();
   }, []);
 
   const getTokenData = async (walletBalances) => {
@@ -374,6 +272,111 @@ function Dashboard({ wallet }) {
     return newWalletBalances;
   };
 
+  const fetchData = async () => {
+    const walletAddress = await requestAccounts();
+    console.log(walletAddress);
+    const response = await axios.get(
+      "https://brc20.litoshi.app/brc20/wallet_balances?address="+walletAddress
+    );
+    var walletBalances = response.data.data;
+    console.log(walletBalances);
+
+    // only tokens with a strictly positive overall balance are recovered
+    walletBalances = walletBalances
+      .filter((token) => parseFloat(token.overall_balance) > 0)
+      .map((token) => ({
+        ...token,
+        overall_balance: parseFloat(token.overall_balance),
+        available_balance: parseFloat(token.available_balance),
+        blockchain: "bitcoin",
+      }));
+
+    setDataFetched(walletBalances);
+    setFilteredBlockchain(walletBalances);
+    setIsLoading(false);
+
+    // Extensive data recovery for each token
+    //try {
+    walletBalances = await getTokenData(walletBalances);
+    //} catch (error) {
+    //console.error("Error while requesting API", error);
+    //}
+
+    // tokens are sorted according to their overall_balances
+    let sortedWalletBalances = walletBalances.sort((a, b) => {
+      return b["overall_balance"] - a["overall_balance"];
+    });
+
+    setDataFetched(sortedWalletBalances);
+    setFilteredBlockchain(sortedWalletBalances);
+
+    // Formatting data for graphics
+    // Sorting balances for the doughnut
+    /*sortedWalletBalances = walletBalances.sort((a, b) => {
+      return b["overall_usdc_balance"] - a["overall_usdc_balance"];
+    });*/
+    //const definedWalletBalances = sortedWalletBalances.filter(token => token.overall_usdc_balance !== undefined);
+    //console.log(definedWalletBalances);
+
+    const labels = sortedWalletBalances.map((token) => token.ticker);
+    const overallBalances = sortedWalletBalances.map(
+      (token) => token.overall_usdc_balance
+    );
+    const numericOverallBalances = overallBalances.filter(
+      (balance) => typeof balance === "number"
+    );
+    const totalOverallBalance = numericOverallBalances.reduce(
+      (acc, val) => acc + val,
+      0
+    );
+    setOverallBalance(totalOverallBalance);
+    const availableBalances = sortedWalletBalances.map(
+      (token) => token.available_usdc_balance
+    );
+    const numericAvailableBalances = availableBalances.filter(
+      (balance) => typeof balance === "number"
+    );
+    const totalAvailableBalance = numericAvailableBalances.reduce(
+      (acc, val) => acc + val,
+      0
+    );
+    setAvailableBalance(totalAvailableBalance);
+    const percentages = overallBalances.map((balance) =>
+      parseInt((balance / totalOverallBalance) * 100, 10)
+    );
+
+    const chartData = {
+      labels: labels,
+      datasets: [
+        {
+          data: overallBalances,
+          borderWidth: 0.1,
+          backgroundColor: ["#C46161", "#7AB75D", "#C6C85C", "#50439D"],
+        },
+      ],
+    };
+
+    // Creating the doughnut graphic
+    const ctx = document.getElementById("myChart").getContext("2d");
+    const chart = new Chart(ctx, {
+      type: "doughnut",
+      data: chartData,
+      options: chartOptions,
+    });
+
+    // Chart status update
+    setChartData(chart);
+    setShowTokenContent(true);
+
+    // Cleans up graphics when component is deactivated
+    return () => {
+      chart.destroy();
+      if (chart) {
+        chart.update();
+      }
+    };
+  };
+
   const handleNFTButtonClick = () => {
     setShowNFTContent(true);
     setBox3Content("Initial Content");
@@ -382,6 +385,7 @@ function Dashboard({ wallet }) {
   const handleTokenButtonClick = () => {
     setShowNFTContent(false);
     setShowTokenContent(true);
+    fetchData();
     setBox3Content("Token Content");
   };
 
@@ -397,6 +401,7 @@ function Dashboard({ wallet }) {
       console.log("connect success", accounts);
       setIsConnected(true);
       setAddress(accounts[0]);
+      return accounts[0];
     } catch (e) {
       console.log("connect failed");
       setIsLoggedOut(true);
