@@ -151,10 +151,12 @@ function Dashboard({ wallet }) {
           blockchain: "bitcoin",
         }));
 
+      setDataFetched(walletBalances);
+      setFilteredBlockchain(walletBalances);
+
       // Extensive data recovery for each token
       //try {
       walletBalances = await getTokenData(walletBalances);
-      setIsLoading(false);
       //} catch (error) {
       //console.error("Error while requesting API", error);
       //}
@@ -165,7 +167,6 @@ function Dashboard({ wallet }) {
       });
 
       setDataFetched(sortedWalletBalances);
-
       setFilteredBlockchain(sortedWalletBalances);
 
       // Formatting data for graphics
@@ -180,7 +181,7 @@ function Dashboard({ wallet }) {
       const labels = sortedWalletBalances.map(token => token.ticker);
       console.log('AAAAAAA');
       console.log(labels);
-      sortedWalletBalances.forEach( token => {console.log(token.price);console.log(token.overall_usdc_balance);});
+      sortedWalletBalances.forEach(token => { console.log(token.price); console.log(token.overall_usdc_balance); });
       const overallBalances = sortedWalletBalances.map(token => token.overall_usdc_balance);
       console.log(overallBalances);
       const numericOverallBalances = overallBalances.filter(
@@ -228,6 +229,7 @@ function Dashboard({ wallet }) {
       // Chart status update
       setChartData(chart);
       setShowTokenContent(true);
+      setIsLoading(false);
 
       // Cleans up graphics when component is deactivated
       return () => {
@@ -658,24 +660,10 @@ function Dashboard({ wallet }) {
                               </tr>
                             </thead>
                             <tbody className="semi">
-                              {isLoading ? (
-                                <div
-                                  style={{
-                                    position: "absolute",
-                                    top: "50%",
-                                    left: "50%",
-                                    transform: "translate(-50%, -50%)",
-                                  }}
-                                >
-                                Loading ...</div>
-                              ) : (  
-                                  <>
-                                    {filteredBlockchain.map((token, index) => (
-                                      <TickComponent key={index} tokenData={token} />
-                                    ))};
-                                  </>
-                              )}
-                             </tbody>
+                              {filteredBlockchain.map((token, index) => (
+                                <TickComponent key={index} tokenData={token} />
+                              ))};
+                            </tbody>
                           </table>
                         </nav>
                       ) : showTransactionContent ? (
@@ -755,10 +743,10 @@ function TickComponent({ tokenData }) {
         <td className="border_bottom">
           {tokenData.marketcap
             ? Number(tokenData.marketcap).toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-                maximumFractionDigits: 0,
-              })
+              style: "currency",
+              currency: "USD",
+              maximumFractionDigits: 0,
+            })
             : "N/A"}
         </td>
       </tr>
