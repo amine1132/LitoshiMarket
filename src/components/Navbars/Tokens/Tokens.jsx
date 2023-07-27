@@ -7,7 +7,7 @@ import bitcoinconvert from "#assets/bitcoin-convert.png";
 import directinbox from "#assets/direct-inbox.png";
 import textblock from "#assets/text-block.png";
 
-export function Tokens() {
+export function Tokens({ wallet }) {
   // Constants
   const links = [
     {
@@ -38,7 +38,7 @@ export function Tokens() {
       </div>
       <ul className="w-full flex flex-col justfy-center items-center gap-2">
         {links.map((item, index) => (
-          <MenuLink url={item?.url} active={true} key={index}>
+          <MenuLink url={item?.url} active={wallet} key={index}>
             <img src={item?.img} alt="" />
             {item?.text}
           </MenuLink>

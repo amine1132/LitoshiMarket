@@ -22,6 +22,7 @@ export function Profile({ wallet }) {
       img: vector,
     },
     {
+      url: "watchlist",
       text: "Watchlist",
       img: star,
     },
@@ -30,6 +31,7 @@ export function Profile({ wallet }) {
       img: notification,
     },
     {
+      url: "multicharts",
       text: "Multicharts",
       img: multichart,
     },

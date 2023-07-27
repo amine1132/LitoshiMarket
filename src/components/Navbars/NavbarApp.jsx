@@ -30,7 +30,7 @@ export function NavbarApp({ wallet, setWallet }) {
         <div className="w-full h-full flex flex-col justify-evenly">
           <Wallet wallet={wallet} setWallet={setWallet} />
           <Profile wallet={wallet} />
-          <Tokens />
+          <Tokens wallet={wallet} />
         </div>
         <Footer />
       </div>
