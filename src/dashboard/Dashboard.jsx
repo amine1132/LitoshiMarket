@@ -200,17 +200,17 @@ function Dashboard({ wallet }) {
       let token = walletBalances[i];
 
       const responseMarketData = await axios.get(
-        "https://brc20.litoshi.app/brc20/market_info?ticker=" + token.ticker
+        "https://tokensapi.litoshi.app/brc20/market_info?ticker=" + token.ticker
       );
       const tokenMarketData = responseMarketData.data.data;
 
       const responseSalesData = await axios.get(
-        "https://brc20.litoshi.app/brc20/sales_info?ticker=" + token.ticker
+        "https://tokensapi.litoshi.app/brc20/sales_info?ticker=" + token.ticker
       );
       const tokenSalesData = responseSalesData.data.data;
 
       const responseInfoData = await axios.get(
-        "https://brc20.litoshi.app/brc20/ticker_info?ticker=" + token.ticker
+        "https://tokensapi.litoshi.app/brc20/ticker_info?ticker=" + token.ticker
       );
       const tokenData = responseInfoData.data.data;
 
@@ -276,7 +276,7 @@ function Dashboard({ wallet }) {
     const walletAddress = await requestAccounts();
     console.log(walletAddress);
     const response = await axios.get(
-      "https://brc20.litoshi.app/brc20/wallet_balances?address="+walletAddress
+      "https://tokensapi.litoshi.app/brc20/wallet_balances?address="+walletAddress
     );
     var walletBalances = response.data.data;
     console.log(walletBalances);
