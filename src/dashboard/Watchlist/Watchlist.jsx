@@ -1,27 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import litoshi from "./litoshi.svg";
-import cercle from "./Cercle.svg";
-import Vector from "./Vector.svg";
-import element3 from "./element3.svg";
-import Footer from "./Footer.svg";
-import "./Watchlist.css";
-import footer2 from "./footer2.svg";
-import footer3 from "./footer3.svg";
-import globalsearch from "./globalsearch.svg";
-import logofooter from "./logofooter.svg";
-import notification from "./notification.svg";
-import Group5333 from "./Group5333.svg";
-import test1 from "./test1.svg";
-import test2 from "./test2.svg";
-import test3 from "./test3.svg";
-import ouai from "./ouai.svg";
+import additem from "#assets/watchlist1.svg";
+import Share from "#assets/watchlist2.svg";
+import arrowright from "#assets/arrowright2.svg";
+import addwatch from "#assets/additem.svg";
+import notification from "#assets/notification.svg";
 import search from "./search.svg";
+
+import "./Watchlist.css";
+
 import homme from "./homme.svg";
-import chartcircle from "./chartcircle.svg";
-import Chart, { Chart as ChartJS, defaults } from "chart.js/auto";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
 import {
   BrowserRouter as Router,
   Route,
@@ -33,8 +21,8 @@ import {
 } from "react-router-dom";
 import { BsStar } from "react-icons/bs";
 import Bitcoin from "./BitcoinBTC.svg";
+import litecoinltclogo from "./LitecoinLTC.svg";
 import dogecoindogelogo from "./DogecoinDRC.svg";
-import Ethereum from "./Ethereum.svg";
 
 const chartOptions = {
   responsive: true,
@@ -214,7 +202,6 @@ function Explorer() {
                 <div className="stylev2">
                   <div className="filtre-dashboard">
                     <p>Chains filter</p>
-                    <button onClick={() => handleFilterClick("")}>ALL</button>
                     <button
                       type="button"
                       className="btc"
@@ -225,6 +212,7 @@ function Explorer() {
                     </button>
                     <button
                       type="button"
+                      className="ltc"
                       onClick={() => handleFilterClick("litecoin")}
                     >
                       <img src={litecoinltclogo} alt="" />
@@ -232,6 +220,7 @@ function Explorer() {
                     </button>
                     <button
                       type="button"
+                      className="drc"
                       onClick={() => handleFilterClick("dogechain")}
                     >
                       <img src={dogecoindogelogo} alt="" />
@@ -242,6 +231,14 @@ function Explorer() {
               </div>
               <div className="style"></div>
               <div className="input">
+                <div className="loupe_">
+                  <img src={search} alt="" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Token, pair, address..."
+                  className="formulaire_2"
+                />
                 {/* <button onClick={requestAccounts}>Connect your wallet</button> */}
                 <div className="notif"></div>
               </div>
@@ -249,15 +246,15 @@ function Explorer() {
           </header>
           <div className="scroll_contenu">
             <div className="groupe_watchlisttotal">
-              <div className="groupe1">
-                <div className="box_1">
-                  <div className="group_v1">
-                    <div className="group1_">
-                      <p>Total</p>
+              <div className="groupe1_watchlist">
+                <div className="box_1_watchlist">
+                  <div className="group_v1_watchlist">
+                    <div className="group1_watchlist">
+                      <p>24h Volume</p>
                       {showMarketCapContent ? (
                         <>
                           <h1>
-                            24h Vol :{" "}
+                            {" "}
                             {Number(totalVols24h).toLocaleString("en-US", {
                               style: "currency",
                               currency: "USD",
@@ -273,15 +270,15 @@ function Explorer() {
                   <div></div>
                 </div>
               </div>
-              <div className="groupe2">
-                <div className="box_1">
-                  <div className="group_v1">
-                    <div className="group1_">
-                      <p>Total</p>
+              <div className="groupe2_watchlist">
+                <div className="box_1_watchlist">
+                  <div className="group_v1_watchlist">
+                    <div className="group1_watchlist">
+                      <p>Marketcap</p>
                       {showMarketCapContent ? (
                         <>
                           <h1>
-                            Market Cap :{" "}
+                            {" "}
                             {Number(totalMarketCap).toLocaleString("en-US", {
                               style: "currency",
                               currency: "USD",
@@ -300,13 +297,28 @@ function Explorer() {
             </div>
             <div className="watchlist-flexbutton">
               <div className="watchlist-buttontop">
-                <button type="">My BRC</button>
-                <button type="">New Watchlist</button>
-                <button type="">Add pair</button>
+                <button type="">
+                  <img src={arrowright} alt="" />
+                  My BRC
+                </button>
+                <button type="">
+                  <img src={addwatch} alt="" />
+                  New Watchlist
+                </button>
+                <button type="">
+                  <img src={additem} alt="" />
+                  Add pair
+                </button>
               </div>
               <div className="watchlist-buttontop2">
-                <button type="">Add an alert</button>
-                <button type="">Share this watchlist</button>
+                <button type="">
+                  <img src={notification} alt="" />
+                  Add an alert
+                </button>
+                <button type="">
+                  <img src={Share} alt="" />
+                  Share this watchlist
+                </button>
               </div>
             </div>
             <div className="groupe2">

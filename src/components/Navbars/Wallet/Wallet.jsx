@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 import logo from "#assets/Calque_1.svg";
 import FooterLogo from "#assets/Footer.svg";
+import Modal from "#components/Modal/Modal";
 
 export function Wallet({ wallet, setWallet }) {
   const [isConnected, setIsConnected] = useState(false);
@@ -44,7 +45,8 @@ export function Wallet({ wallet, setWallet }) {
         className="flex justify-center items-center gap-3 border py-3 px-4 text-[#fff]"
       >
         <img src={FooterLogo} alt="" />
-        {wallet ? formatAddress(wallet) : <div>Wallet login</div>}
+        <Modal />
+        {wallet ? formatAddress(wallet) : <div></div>}
       </button>
     </div>
   );

@@ -22,17 +22,16 @@ export function Profile({ wallet }) {
       img: vector,
     },
     {
-      url: "",
+      url: "watchlist",
       text: "Watchlist",
       img: star,
     },
     {
-      url: "",
       text: "Alerts",
       img: notification,
     },
     {
-      url: "",
+      url: "multicharts",
       text: "Multicharts",
       img: multichart,
     },

@@ -14,6 +14,7 @@ import Explorer from "./Explorer/Explorer";
 import Dashboard from "./Dashboard";
 import Dashboardlitcoin from "./Dashboardlitecoin";
 import Watchlist from "./Watchlist/Watchlist";
+import Multicharts from "./Multicharts/Multicharts";
 import { RoutesLogged } from "#routes/RoutesLogged";
 
 export default function Dashboardv2() {
@@ -34,6 +35,7 @@ export default function Dashboardv2() {
             <Route path="/*" element={<Dashboard wallet={wallet} />} />
             <Route path="/explorer" element={<Explorer />} />
             <Route path="/watchlist" element={<Watchlist />} />
+            <Route path="/multicharts" element={<Multicharts />} />
           </Route>
         </Routes>
       </BrowserRouter>

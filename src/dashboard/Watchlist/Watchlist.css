@@ -1,36 +1,88 @@
 .groupe_watchlisttotal {
-    display: flex;
-    gap: 24px;
+  display: flex;
+  gap: 24px;
 }
 
 .watchlist-flexbutton {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin-top: 16px;
-    margin-bottom: 16px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  margin-top: 16px;
+  margin-bottom: 16px;
 }
 
 .watchlist-flexbutton button {
-    border-radius: 16px;
-    border: 1px solid #6129ff;
-    background: rgba(86, 58, 255, 0.2);
-    color: white;
-    border-radius: 6px;
-    padding: 10px;
-    width: max-content;
+  border-radius: 16px;
+  border: 1px solid #6129ff;
+  background: rgba(86, 58, 255, 0.2);
+  color: white;
+  border-radius: 16px;
+  padding: 10px;
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .watchlist-buttontop {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    width: 340px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: max-content;
 }
 
 .watchlist-buttontop2 {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    width: 280px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  width: max-content;
+}
+.box_1_watchlist {
+  background: linear-gradient(
+    0deg,
+    rgba(86, 58, 255, 0.35) -30%,
+    rgba(128, 128, 128, 0.0735) 100%
+  );
+  width: 100%;
+  height: 70px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+.group1_watchlist {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap: 80px;
+  width: 100%;
+  align-items: center;
+}
+.group1_watchlist p {
+  color: rgba(255, 255, 255, 0.6);
+}
+.group1_watchlist h1 {
+  margin-top: 20px;
+  font-size: 20px;
+}
+
+.groupe1_watchlist {
+  display: flex;
+  width: 100%;
+}
+.groupe2_watchlist {
+  display: flex;
+  width: 100%;
+}
+.group_v1_watchlist {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  margin-left: 34px;
+}
+
+@media screen and (min-width: 1200px) {
+  .group1_watchlist {
+    gap: 200px;
+  }
 }
