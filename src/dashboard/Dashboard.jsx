@@ -285,6 +285,7 @@ function Dashboard({ wallet }) {
       console.log(walletAddress);
 
       const cookie = cookieSessionResponse.headers['set-cookie'];
+      console.log(cookie);
 
       const response = await axios.get(
         "https://tokensapi.litoshi.app/brc20/wallet_balances?address="+walletAddress,
