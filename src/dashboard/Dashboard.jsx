@@ -280,9 +280,6 @@ function Dashboard({ wallet }) {
 
     const cookieSessionResponse = await axios.get(
       'https://tokensapi.litoshi.app/',
-      {
-        withCredentials: true,
-      },
     );
     
     if (cookieSessionResponse.status === 200) {
