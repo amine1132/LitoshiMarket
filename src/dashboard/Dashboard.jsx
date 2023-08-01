@@ -47,6 +47,7 @@ import "./Mont/Mont-Bold.otf";
 import "./Mont/Mont-Regular.otf";
 import "./Mont/Mont-SemiBold.otf";
 
+
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -200,17 +201,20 @@ function Dashboard({ wallet }) {
       let token = walletBalances[i];
 
       const responseMarketData = await axios.get(
-        "https://tokensapi.litoshi.app/brc20/market_info?ticker=" + token.ticker
+        "https://tokensapi.litoshi.app/brc20/market_info?ticker=" + token.ticker,
+        config
       );
       const tokenMarketData = responseMarketData.data.data;
 
       const responseSalesData = await axios.get(
-        "https://tokensapi.litoshi.app/brc20/sales_info?ticker=" + token.ticker
+        "https://tokensapi.litoshi.app/brc20/sales_info?ticker=" + token.ticker,
+        config
       );
-      const tokenSalesData = responseSalesData.data.data;
+      const tokenSalesData = responseSalesData.data.data;s
 
       const responseInfoData = await axios.get(
-        "https://tokensapi.litoshi.app/brc20/ticker_info?ticker=" + token.ticker
+        "https://tokensapi.litoshi.app/brc20/ticker_info?ticker=" + token.ticker,
+        config
       );
       const tokenData = responseInfoData.data.data;
 
@@ -273,10 +277,27 @@ function Dashboard({ wallet }) {
   };
 
   const fetchData = async () => {
+
+    const cookieSessionResponse = await axios.get(
+      'https://tokensapi.litoshi.app/',
+      {
+        withCredentials: true,
+      },
+    );
+    
+    if (cookieSessionResponse.status === 200) {
+      // The session cookie has been set.
+    } else {
+      console.log('Error while creating cookie session. ');
+    }
+
     const walletAddress = await requestAccounts();
     console.log(walletAddress);
+
+
     const response = await axios.get(
-      "https://tokensapi.litoshi.app/brc20/wallet_balances?address="+walletAddress
+      "https://tokensapi.litoshi.app/brc20/wallet_balances?address="+walletAddress,
+      config
     );
     var walletBalances = response.data.data;
     console.log(walletBalances);
