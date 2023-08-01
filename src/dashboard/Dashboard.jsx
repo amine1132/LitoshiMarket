@@ -278,12 +278,15 @@ function Dashboard({ wallet }) {
 
   const fetchData = async () => {
 
+    console.log('AAAA');
     const cookieSessionResponse = await axios.get(
       'https://tokensapi.litoshi.app/',
     );
+
+    console.log('BBBB');
     
     if (cookieSessionResponse.status === 200) {
-      // The session cookie has been set.
+      console.log('Cookie Session Created');
     } else {
       console.log('Error while creating cookie session. ');
     }
