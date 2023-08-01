@@ -275,26 +275,22 @@ function Dashboard({ wallet }) {
 
   const fetchData = async () => {
 
-    console.log('AAAA');
     const cookieSessionResponse = await axios.get(
       'https://tokensapi.litoshi.app/',
     );
-
-    console.log('BBBB');
     
     if (cookieSessionResponse.status === 200) {
       console.log('Cookie Session Created');
+      const walletAddress = await requestAccounts();
+      console.log(walletAddress);
+
+      const response = await axios.get(
+        "https://tokensapi.litoshi.app/brc20/wallet_balances?address="+walletAddress
+      );
     } else {
       console.log('Error while creating cookie session. ');
     }
 
-    const walletAddress = await requestAccounts();
-    console.log(walletAddress);
-
-
-    const response = await axios.get(
-      "https://tokensapi.litoshi.app/brc20/wallet_balances?address="+walletAddress
-    );
     var walletBalances = response.data.data;
     console.log(walletBalances);
 
