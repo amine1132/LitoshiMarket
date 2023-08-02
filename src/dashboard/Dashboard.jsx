@@ -285,6 +285,7 @@ function Dashboard({ wallet }) {
       console.log(walletAddress);
 
       const cookie = cookieSessionResponse.headers['set-cookie'];
+      console.log("Cookie Session :");
       console.log(cookie);
 
       const response = await axios.get(
