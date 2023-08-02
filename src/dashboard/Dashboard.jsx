@@ -285,7 +285,7 @@ function Dashboard({ wallet }) {
       console.log(walletAddress);
 
       const cookie = cookieSessionResponse.headers['set-cookie'];
-      console.log(cookieSessionResponse);
+      console.log(cookieSessionResponse.headers);
       console.log("Cookie Session :");
       console.log(cookie);
 
