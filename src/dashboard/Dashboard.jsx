@@ -47,7 +47,6 @@ import "./Mont/Mont-Bold.otf";
 import "./Mont/Mont-Regular.otf";
 import "./Mont/Mont-SemiBold.otf";
 
-
 const chartOptions = {
   responsive: true,
   maintainAspectRatio: false,
@@ -133,7 +132,6 @@ function Dashboard({ wallet }) {
     "https://ordinalslite.com/content/e43b3f3f1c88468127196f46909b1be7fde7d3d173c4c4ceb94abcbceea542d7i0";
 
   useEffect(() => {
-
     const checkUniSatAvailability = () => {
       if (typeof window.unisat !== "undefined") {
         setUniSatAvailable(true);
@@ -208,7 +206,8 @@ function Dashboard({ wallet }) {
       const responseSalesData = await axios.get(
         "https://tokensapi.litoshi.app/brc20/sales_info?ticker=" + token.ticker
       );
-      const tokenSalesData = responseSalesData.data.data;s
+      const tokenSalesData = responseSalesData.data.data;
+      s;
 
       const responseInfoData = await axios.get(
         "https://tokensapi.litoshi.app/brc20/ticker_info?ticker=" + token.ticker
@@ -274,23 +273,23 @@ function Dashboard({ wallet }) {
   };
 
   const fetchData = async () => {
-
     const cookieSessionResponse = await axios.get(
-      'https://tokensapi.litoshi.app/',
+      "https://tokensapi.litoshi.app/"
     );
-    
+
     if (cookieSessionResponse.status === 200) {
-      console.log('Cookie Session Created');
+      console.log("Cookie Session Created");
       const walletAddress = await requestAccounts();
       console.log(walletAddress);
 
-      const cookie = cookieSessionResponse.headers['set-cookie'];
+      const cookie = cookieSessionResponse.headers["set-cookie"];
       console.log(cookieSessionResponse.headers);
       console.log("Cookie Session :");
       console.log(cookie);
 
       const response = await axios.get(
-        "https://tokensapi.litoshi.app/brc20/wallet_balances?address="+walletAddress,
+        "https://tokensapi.litoshi.app/brc20/wallet_balances?address=" +
+          walletAddress,
         {
           headers: {
             // Ajout du cookie à l'en-tête de la deuxième requête
@@ -299,7 +298,7 @@ function Dashboard({ wallet }) {
         }
       );
     } else {
-      console.log('Error while creating cookie session. ');
+      console.log("Error while creating cookie session. ");
     }
 
     var walletBalances = response.data.data;
