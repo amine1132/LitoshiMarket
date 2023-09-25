@@ -17,6 +17,7 @@ import Bitcoin from "#assets/BitcoinBTC.svg";
 import dogecoindogelogo from "#assets/DogecoinDRC.svg";
 import litecoinltclogo from "#assets/LitecoinLTC.svg";
 import search from "#assets/search.svg";
+import Modal from "../../components/Multicharts/Modal";
 import { FaRegCopy } from "react-icons/fa";
 import { Tooltip } from "@mui/material";
 
@@ -56,6 +57,9 @@ const chartOptions = {
 
 function Multicharts({ wallet }) {
   const [data, setData] = useState([]);
+  const [dataType, setDataType] = useState("");
+  const [isSelectorVisible, setIsSelectorVisible] = useState(false);
+  const [tokenNames, setTokenNames] = useState([]);
   const [chartData, setChartData] = useState(null);
   const [copied, setCopied] = useState(false);
   const [overall_balance, setOverallBalance] = useState(0.0);
@@ -69,7 +73,6 @@ function Multicharts({ wallet }) {
   const [uniSatAvailable, setUniSatAvailable] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [isLoggedOut, setIsLoggedOut] = useState(false);
-
   const [address, setAddress] = useState(null);
   const [dataFetched, setDataFetched] = useState();
   const [filteredBlockchain, setFilteredBlockchain] = useState();
@@ -154,6 +157,27 @@ function Multicharts({ wallet }) {
 
     //fetchData();
   }, []);
+
+  useEffect(() => {
+    if (dataType) {
+      // Construisez l'URL de votre API en fonction du type sélectionné
+      const apiUrl = `https://tokensapi.litoshi.app/brc20/market_info?ticker=`;
+
+      fetch(apiUrl)
+        .then((response) => response.json())
+        .then((responseData) => {
+          setData(responseData);
+        })
+        .catch((error) => {
+          console.error("Erreur lors de la récupération des données : ", error);
+        });
+    }
+  }, [dataType]);
+
+  const handleTypeChange = (newType) => {
+    setDataType(newType);
+    setIsSelectorVisible(false);
+  };
 
   const getTokenData = async (walletBalances) => {
     const response = await axios.get(
@@ -354,6 +378,10 @@ function Multicharts({ wallet }) {
     setBox3Content("Initial Content");
   };
 
+  const toggleSelector = () => {
+    setIsSelectorVisible(!isSelectorVisible); // Inverser la visibilité du composant DataSelector
+  };
+
   const handleTokenButtonClick = () => {
     setShowNFTContent(false);
     setShowTokenContent(true);
@@ -463,6 +491,7 @@ function Multicharts({ wallet }) {
         <div>dqsdqs</div>
         <div>dqdqs</div>
         <div>dsqdqs</div>
+        <Modal />
       </div>
     </>
   );
