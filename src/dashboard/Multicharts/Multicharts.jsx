@@ -59,6 +59,7 @@ function Multicharts({ wallet }) {
   const [data, setData] = useState([]);
   const [dataType, setDataType] = useState("");
   const [isSelectorVisible, setIsSelectorVisible] = useState(false);
+  const [selectedResult, setSelectedResult] = useState("");
   const [tokenNames, setTokenNames] = useState([]);
   const [chartData, setChartData] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -91,6 +92,10 @@ function Multicharts({ wallet }) {
     } else {
       setIsOver1000Px(false);
     }
+  };
+  const handleSelectResult = (result) => {
+    // Faites quelque chose avec le résultat sélectionné, par exemple :
+    setSelectedResult(result);
   };
 
   // create an event listener
@@ -488,10 +493,15 @@ function Multicharts({ wallet }) {
         </div>
       </header>
       <div className="mutlichart_add_flex">
+        {selectedResult && (
+          <div className="selected-result-display">
+            Vous avez sélectionné : {selectedResult}
+          </div>
+        )}
         <div>dqsdqs</div>
         <div>dqdqs</div>
         <div>dsqdqs</div>
-        <Modal />
+        <Modal setSelectedResult={setSelectedResult} />
       </div>
     </>
   );

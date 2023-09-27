@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Modal from "react-modal"; // Assurez-vous d'installer le package react-modal
 import "../../dashboard/Multicharts/Multicharts.css";
+import { SearchBar } from "./SearchBar";
+import { SearchResultsList } from "./SearchResultsList";
 
 function TokenSelector() {
   const [tokens, setTokens] = useState([]);
+  const [results, setResults] = useState([]);
   const [selectedTokens, setSelectedTokens] = useState([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
@@ -42,27 +45,14 @@ function TokenSelector() {
   return (
     <div>
       <button onClick={handleOpenModal}>Ouvrir la boîte de dialogue</button>
-      <Modal
-        isOpen={modalIsOpen}
-        onRequestClose={handleCloseModal}
-        style={overlay}
-        style=
-            overlay: {
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: 'rgba(255, 255, 255, 0.75)'
-            },
-      >
+      <Modal isOpen={modalIsOpen} onRequestClose={handleCloseModal}>
         <h2>Token</h2>
-        <input
-          type="text"
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="recherche-modal"
-        />
+        <div className="search-bar-container">
+          <SearchBar setResults={setResults} />
+          {results && results.length > 0 && (
+            <SearchResultsList results={results} />
+          )}
+        </div>
         <button onClick={handleSearch}>Rechercher</button>
         <ul>
           {searchResults.map((token) => (
