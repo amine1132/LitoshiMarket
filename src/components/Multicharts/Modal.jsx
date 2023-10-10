@@ -1,71 +1,111 @@
 import React, { useState, useEffect } from "react";
-import Modal from "react-modal"; // Assurez-vous d'installer le package react-modal
-import "../../dashboard/Multicharts/Multicharts.css";
-import { SearchBar } from "./SearchBar";
-import { SearchResultsList } from "./SearchResultsList";
+import ModalSearchBar from "./SearchBar";
+import Modal from "react-modal";
+import Croix from "#assets/Croix.svg";
 
-function TokenSelector() {
-  const [tokens, setTokens] = useState([]);
-  const [results, setResults] = useState([]);
-  const [selectedTokens, setSelectedTokens] = useState([]);
-  const [modalIsOpen, setModalIsOpen] = useState(false);
+Modal.setAppElement("#root");
+
+const UserList = () => {
+  const [users, setUsers] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [searchResults, setSearchResults] = useState([]);
+  const [selectedUser, setSelectedUser] = useState(null);
+  const [addedUsers, setAddedUsers] = useState([]);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    // Utilisez une API pour récupérer la liste des tokens disponibles
-    // et mettez-les à jour dans l'état "tokens"
-    // Exemple de requête avec fetch :
+    // Utilisez l'API JSONPlaceholder pour récupérer la liste des utilisateurs
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
-      .then((json) => console.log(json));
+      .then((data) => setUsers(data))
+      .catch((error) =>
+        console.error("Erreur lors de la récupération des données : ", error)
+      );
   }, []);
 
-  const handleOpenModal = () => {
-    setModalIsOpen(true);
+  const handleUserSelect = (user) => {
+    if (addedUsers.some((addedUser) => addedUser.id === user.id)) {
+      // Si l'utilisateur est déjà ajouté, supprimez-le
+      const updatedUsers = addedUsers.filter(
+        (addedUser) => addedUser.id !== user.id
+      );
+      setAddedUsers(updatedUsers);
+    } else {
+      // Sinon, ajoutez-le
+      setAddedUsers([...addedUsers, user]);
+    }
+
+    // Fermez le modal après la sélection
+    setIsModalOpen(false);
   };
 
-  const handleCloseModal = () => {
-    setModalIsOpen(false);
+  const openModal = () => {
+    setIsModalOpen(true);
   };
 
-  const handleSearch = () => {
-    // Effectuez la recherche parmi les tokens disponibles en utilisant "searchTerm"
-    // Mettez les résultats dans un état "searchResults"
-    const searchResults = tokens.filter((token) => token.includes(searchTerm));
-    // Mettez à jour l'état "searchResults"
-    setSearchResults(searchResults);
+  const handleAddUser = () => {
+    if (selectedUser) {
+      setAddedUsers([...addedUsers, selectedUser]);
+    }
   };
 
-  const handleAddToken = (token) => {
-    // Ajoutez le token sélectionné à la liste des tokens sélectionnés
-    setSelectedTokens([...selectedTokens, token]);
+  const handleRemoveUser = (userToRemove) => {
+    const updatedUsers = addedUsers.filter(
+      (user) => user.id !== userToRemove.id
+    );
+    setAddedUsers(updatedUsers);
   };
 
   return (
-    <div>
-      <button onClick={handleOpenModal}>Ouvrir la boîte de dialogue</button>
-      <Modal isOpen={modalIsOpen} onRequestClose={handleCloseModal}>
-        <h2>Token</h2>
-        <div className="search-bar-container">
-          <SearchBar setResults={setResults} />
-          {results && results.length > 0 && (
-            <SearchResultsList results={results} />
-          )}
-        </div>
-        <button onClick={handleSearch}>Rechercher</button>
+    <div className="w-full h-full">
+      <button onClick={() => setIsModalOpen(true)} className="w-full h-full">
+        <p>Add a new chart</p>
+        <img src={Croix} alt="" className="m-auto" />
+      </button>
+      <Modal
+        className="modal_searchbar"
+        isOpen={isModalOpen}
+        onRequestClose={() => setIsModalOpen(false)}
+        contentLabel="Rechercher un utilisateur"
+      >
+        <ModalSearchBar
+          searchTerm={searchTerm}
+          onSearch={(term) => setSearchTerm(term)}
+          onSelectUser={handleUserSelect}
+          addedUsers={addedUsers}
+          isModalOpen={isModalOpen} // Passer l'état du modal
+        />
         <ul>
-          {searchResults.map((token) => (
-            <li key={token}>
-              {token}
-              <button onClick={() => handleAddToken(token)}>Ajouter</button>
-            </li>
-          ))}
+          {users
+            .filter((user) =>
+              user.name.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+            .map((user) => (
+              <li onClick={() => handleUserSelect(user)} key={user.id}>
+                {user.name} <button>Sélectionner</button>
+              </li>
+            ))}
         </ul>
-        <button onClick={handleCloseModal}>Fermer</button>
       </Modal>
+
+      {selectedUser && (
+        <div>
+          <h2>Détails de l'utilisateur</h2>
+          <p>Nom : {selectedUser.name}</p>
+          <p>Email : {selectedUser.email}</p>
+          <p>Téléphone : {selectedUser.phone}</p>
+          <button onClick={handleAddUser}>Ajouter l'utilisateur</button>
+        </div>
+      )}
+      {addedUsers.map((user) => (
+        <div>
+          <li key={user.id}>
+            {user.name}{" "}
+            <button onClick={() => handleRemoveUser(user)}>Supprimer</button>
+          </li>
+        </div>
+      ))}
     </div>
   );
-}
+};
 
-export default TokenSelector;
+export default UserList;

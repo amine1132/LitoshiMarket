@@ -16,7 +16,7 @@ export const SearchResultsList = ({ results, onSelect }) => {
           <SearchResult
             result={result.name}
             key={id}
-            onSelect={handleResultSelect} // Passez la fonction addSelectedResult ici
+            onSelect={onSelect} // Passez la fonction addSelectedResult ici
           />
         );
       })}

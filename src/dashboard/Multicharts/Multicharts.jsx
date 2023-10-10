@@ -3,6 +3,7 @@ import axios from "axios";
 import "./Multicharts.css";
 import Chart, { Chart as ChartJS, defaults } from "chart.js/auto";
 import Swal from "sweetalert2";
+import Modal from "react-modal";
 import withReactContent from "sweetalert2-react-content";
 import {
   BrowserRouter as Router,
@@ -17,7 +18,7 @@ import Bitcoin from "#assets/BitcoinBTC.svg";
 import dogecoindogelogo from "#assets/DogecoinDRC.svg";
 import litecoinltclogo from "#assets/LitecoinLTC.svg";
 import search from "#assets/search.svg";
-import Modal from "../../components/Multicharts/Modal";
+import Addchart from "../../components/Multicharts/Modal";
 import { FaRegCopy } from "react-icons/fa";
 import { Tooltip } from "@mui/material";
 
@@ -60,6 +61,9 @@ function Multicharts({ wallet }) {
   const [dataType, setDataType] = useState("");
   const [isSelectorVisible, setIsSelectorVisible] = useState(false);
   const [selectedResult, setSelectedResult] = useState("");
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [selectedToken, setSelectedToken] = useState(null);
+  const [selectedUser, setSelectedUser] = useState(null);
   const [tokenNames, setTokenNames] = useState([]);
   const [chartData, setChartData] = useState(null);
   const [copied, setCopied] = useState(false);
@@ -92,6 +96,10 @@ function Multicharts({ wallet }) {
     } else {
       setIsOver1000Px(false);
     }
+  };
+
+  const handleTokenSelect = (token) => {
+    setSelectedToken(token); // Mettez à jour l'état avec le token sélectionné
   };
   const handleSelectResult = (result) => {
     // Faites quelque chose avec le résultat sélectionné, par exemple :
@@ -493,15 +501,9 @@ function Multicharts({ wallet }) {
         </div>
       </header>
       <div className="mutlichart_add_flex">
-        {selectedResult && (
-          <div className="selected-result-display">
-            Vous avez sélectionné : {selectedResult}
-          </div>
-        )}
-        <div>dqsdqs</div>
-        <div>dqdqs</div>
-        <div>dsqdqs</div>
-        <Modal setSelectedResult={setSelectedResult} />
+        <div className="mutlichart_add_flex_div">
+          <Addchart setSelectedResult={setSelectedResult} />
+        </div>
       </div>
     </>
   );
