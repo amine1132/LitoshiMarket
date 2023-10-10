@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./SearchBar.css";
+import { FaSearch } from "react-icons/fa";
 
 const ModalSearchBar = ({ searchTerm, onSearch, onSelectUser, onAddUser }) => {
   const [modalUsers, setModalUsers] = useState([]);
@@ -19,13 +20,16 @@ const ModalSearchBar = ({ searchTerm, onSearch, onSelectUser, onAddUser }) => {
 
   return (
     <div>
-      <input
-        type="text"
-        placeholder="Token, pair or adress"
-        value={searchTerm}
-        className="input_searchbar"
-        onChange={(e) => onSearch(e.target.value)}
-      />
+      <div className="input_style">
+        <FaSearch />
+        <input
+          type="text"
+          placeholder="Token, pair or adress"
+          value={searchTerm}
+          className="input_searchbar"
+          onChange={(e) => onSearch(e.target.value)}
+        />
+      </div>
       <ul>
         {modalUsers.map((user) => (
           <li

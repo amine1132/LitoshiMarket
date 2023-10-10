@@ -80,8 +80,12 @@ const UserList = () => {
               user.name.toLowerCase().includes(searchTerm.toLowerCase())
             )
             .map((user) => (
-              <li onClick={() => handleUserSelect(user)} key={user.id}>
-                {user.name} <button>Sélectionner</button>
+              <li
+                className="filter_searchbar"
+                onClick={() => handleUserSelect(user)}
+                key={user.id}
+              >
+                {user.name}
               </li>
             ))}
         </ul>

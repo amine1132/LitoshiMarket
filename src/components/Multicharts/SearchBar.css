@@ -27,13 +27,27 @@ input:focus {
   color: royalblue;
 }
 .input_searchbar {
-  background-color: grey;
+  background-color: #5e636e;
+  height: 50px;
 }
 .modal_searchbar {
   background-color: #1d1d22;
   position: absolute;
-  top: 100px;
-  left: 100px;
-  right: 100px;
-  bottom: 100px;
+  top: 10%;
+  left: 25%;
+  width: 50%;
+}
+.filter_searchbar {
+  padding: 20px;
+  background-color: #1d1e20;
+  margin-top: 10px;
+}
+.filter_searchbar:hover {
+  background-color: #28282d;
+}
+.input_style {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5e636e;
 }
