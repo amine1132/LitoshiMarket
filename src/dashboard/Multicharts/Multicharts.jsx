@@ -21,6 +21,7 @@ import search from "#assets/search.svg";
 import Addchart from "../../components/Multicharts/Modal";
 import { FaRegCopy } from "react-icons/fa";
 import { Tooltip } from "@mui/material";
+import Modalchart from "../../components/Multicharts/Modal";
 
 const chartOptions = {
   responsive: true,

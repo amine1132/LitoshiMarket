@@ -100,14 +100,16 @@ const UserList = () => {
           <button onClick={handleAddUser}>Ajouter l'utilisateur</button>
         </div>
       )}
-      {addedUsers.map((user) => (
-        <div>
-          <li key={user.id}>
-            {user.name}{" "}
-            <button onClick={() => handleRemoveUser(user)}>Supprimer</button>
-          </li>
-        </div>
-      ))}
+      <div>
+        {addedUsers.map((user) => (
+          <div>
+            <li key={user.id}>
+              {user.name}{" "}
+              <button onClick={() => handleRemoveUser(user)}>Supprimer</button>
+            </li>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
