@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import ModalSearchBar from "./SearchBar";
 import Modal from "react-modal";
 import Croix from "#assets/Croix.svg";
+import "./Modal.css";
 
 Modal.setAppElement("#root");
 
@@ -56,10 +57,10 @@ const UserList = () => {
   };
 
   return (
-    <div className="w-full h-full">
-      <button onClick={() => setIsModalOpen(true)} className="w-full h-full">
+    <div className="w-full h-full flex gap-2.5 flex-wrap">
+      <button onClick={() => setIsModalOpen(true)} className="addanewchart">
         <p>Add a new chart</p>
-        <img src={Croix} alt="" className="m-auto" />
+        <img src={Croix} alt="" />
       </button>
       <Modal
         className="modal_searchbar"
@@ -100,7 +101,7 @@ const UserList = () => {
           <button onClick={handleAddUser}>Ajouter l'utilisateur</button>
         </div>
       )}
-      <div>
+      <div className="chart_flex">
         {addedUsers.map((user) => (
           <div>
             <li key={user.id}>

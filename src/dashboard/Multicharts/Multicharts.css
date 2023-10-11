@@ -6,6 +6,7 @@
   margin-left: 20px;
   height: 100vh;
 }
+
 .mutlichart_add_flex_div {
   border-radius: 16px;
   background: linear-gradient(
@@ -18,6 +19,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.multichart_addchart {
+  width: 390px;
+  height: 332px;
 }
 .recherche-modal {
   width: 100%;
