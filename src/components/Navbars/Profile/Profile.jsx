@@ -27,6 +27,7 @@ export function Profile({ wallet }) {
       img: star,
     },
     {
+      url: "alerts",
       text: "Alerts",
       img: notification,
     },

@@ -15,6 +15,7 @@ import Dashboard from "./Dashboard";
 import Dashboardlitcoin from "./Dashboardlitecoin";
 import Watchlist from "./Watchlist/Watchlist";
 import Multicharts from "./Multicharts/Multicharts";
+import Alerts from "./Alerts/Alerts";
 import { RoutesLogged } from "#routes/RoutesLogged";
 
 export default function Dashboardv2() {
@@ -36,6 +37,7 @@ export default function Dashboardv2() {
             <Route path="/explorer" element={<Explorer />} />
             <Route path="/watchlist" element={<Watchlist />} />
             <Route path="/multicharts" element={<Multicharts />} />
+            <Route path="/alerts" element={<Alerts />} />
           </Route>
         </Routes>
       </BrowserRouter>
