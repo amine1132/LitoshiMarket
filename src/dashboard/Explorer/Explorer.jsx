@@ -18,6 +18,7 @@ import {
 } from "react-router-dom";
 import { BsStar } from "react-icons/bs";
 import Bitcoin from "./Bitcoin.svg";
+import Explorerjs from "../../components/Explorer_yanis/Explorer";
 
 const chartOptions = {
   responsive: true,
@@ -307,6 +308,7 @@ function Explorer({}) {
           </div>
         </div>
       </div>
+      <Explorerjs />
     </div>
   );
 }
