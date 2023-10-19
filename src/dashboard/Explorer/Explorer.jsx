@@ -59,6 +59,8 @@ function Explorer({}) {
   const [totalVols24h, setTotalVols24h] = useState(0.0);
   const [showNFTContent, setShowNFTContent] = useState(false);
   const [showTokenContent, setShowTokenContent] = useState(false);
+  const [isContentCleared, setIsContentCleared] = useState(false);
+  const [selectedTokenName, setSelectedTokenName] = useState("");
   const [showTransactionContent, setShowTransactionContent] = useState(false);
   const [showMarketCapContent, setShowMarketCapContent] = useState(true);
   const [show24hVolContent, setShow24hVolContent] = useState(false);
@@ -143,6 +145,11 @@ function Explorer({}) {
     setShow24hVolContent(true);
   };
 
+  function handleTableRowClick(tokenName) {
+    setSelectedTokenName(tokenName);
+    setIsContentCleared(true);
+  }
+
   const handleTransactionButtonClick = () => {
     setShowNFTContent(false);
     setShowTokenContent(false);
@@ -174,67 +181,79 @@ function Explorer({}) {
 
   return (
     <div className="max">
-      <div className="colone">
-        <div className="idk">
-          <header>
-            <div className="top">
-              <div className="style"></div>
-              <div className="input">
-                <div className="notif"></div>
+      {isContentCleared ? (
+        selectedTokenName ? (
+          <>
+            <div>Nom du token sélectionné : {selectedTokenName}</div>
+            <button onClick={() => setIsContentCleared("")}>Explorer</button>
+          </>
+        ) : (
+          <div>Contenu vide</div>
+        )
+      ) : (
+        <div className="colone">
+          <div className="idk">
+            <header>
+              <div className="top">
+                <div className="style"></div>
+                <div className="input">
+                  <div className="notif"></div>
+                </div>
               </div>
-            </div>
-          </header>
-          <div className="scroll_contenu">
-            <div className="groupe1">
-              <div className="box_1">
-                <div className="group_v1">
-                  <div className="group1_">
-                    <p>Total</p>
-                    {showMarketCapContent ? (
-                      <>
-                        <h1>
-                          Market Cap :{" "}
-                          {Number(totalMarketCap).toLocaleString("en-US", {
-                            style: "currency",
-                            currency: "USD",
-                            maximumFractionDigits: 0,
-                          })}
-                        </h1>
-                        <h1>
-                          24h Vol :{" "}
-                          {Number(totalVols24h).toLocaleString("en-US", {
-                            style: "currency",
-                            currency: "USD",
-                            maximumFractionDigits: 0,
-                          })}
-                        </h1>
-                      </>
-                    ) : show24hVolContent ? (
-                      <div></div>
-                    ) : null}
-                  </div>
-                  <div className="group2_">
-                    <div className="blur">
-                      <div className="argent_">$243,600</div>
-                      <img src={Group5333} alt="" className="graph533" />
+            </header>
+            <div className="scroll_contenu">
+              <div className="groupe1">
+                <div className="box_1">
+                  <div className="group_v1">
+                    <div className="group1_">
+                      <p>Total</p>
+                      {showMarketCapContent ? (
+                        <>
+                          <h1>
+                            Market Cap :{" "}
+                            {Number(totalMarketCap).toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                              maximumFractionDigits: 0,
+                            })}
+                          </h1>
+                          <h1>
+                            24h Vol :{" "}
+                            {Number(totalVols24h).toLocaleString("en-US", {
+                              style: "currency",
+                              currency: "USD",
+                              maximumFractionDigits: 0,
+                            })}
+                          </h1>
+                        </>
+                      ) : show24hVolContent ? (
+                        <div></div>
+                      ) : null}
+                    </div>
+                    <div className="group2_">
+                      <div className="blur">
+                        <div className="argent_">$243,600</div>
+                        <img src={Group5333} alt="" className="graph533" />
+                      </div>
                     </div>
                   </div>
+                  <div></div>
                 </div>
-                <div></div>
               </div>
-            </div>
-            <div className="groupe2">
-              <div className="box3">
-                <div className="topv1_">
-                  <p className="semi">Top Market Cap / Cryptocurrency Prices</p>
-                  <button
-                    type="button"
-                    onClick={handleTokenButtonClick}
-                    className="tokens"
-                  >
-                    Tokens
-                  </button>
-                  {/*<button
+              <div className="groupe2">
+                <div className="box3">
+                  <div className="topv1_">
+                    <p className="semi">
+                      Top Market Cap / Cryptocurrency Prices
+                    </p>
+                    <button
+                      type="button"
+                      onClick={handleTokenButtonClick}
+                      className="tokens"
+                    >
+                      Tokens
+                    </button>
+                    {/*<button
                     type="button"
                     onClick={handleNFTButtonClick}
                     className="mint"
@@ -244,76 +263,84 @@ function Explorer({}) {
                   <button type="button" onClick={handleTransactionButtonClick}>
                     Profile
                   </button>*/}
-                </div>
-                <div></div>
-                {showNFTContent ? (
-                  <nav className="topline_1">
-                    <table>
-                      <thead>
-                        <th>Token</th>
-                        <th>Deploy Time</th>
-                        <th>Holders</th>
-                        <th>Transaction</th>
-                        <th>Progress%</th>
-                      </thead>
-                      <tbody className="semi">
-                        {data.map((token, index) => (
-                          <TickComponent2 tokenData={token} index={index + 1} />
-                        ))}
-                      </tbody>
-                    </table>
-                  </nav>
-                ) : showTokenContent ? (
-                  <nav className="topline_1">
-                    <table>
-                      <thead>
-                        <th></th>
-                        <th></th>
-                        <th>Token</th>
-                        <th>Price</th>
-                        <th>24h</th>
-                        <th>24h Volume</th>
-                        <th>Market Cap</th>
-                        <th>Supply</th>
-                      </thead>
-                      <tbody className="semi">
-                        {data.map((token, index) => (
-                          <TickComponent tokenData={token} index={index + 1} />
-                        ))}
-                      </tbody>
-                    </table>
-                  </nav>
-                ) : showTransactionContent ? (
-                  <nav className="topline_1">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th className="user">User</th>
-                          <th>Net worth</th>
-                          <th>Top token</th>
-                        </tr>
-                      </thead>
-                      <tbody className="semi">
-                        {data.map((token, index) => (
-                          <TickComponent3 key={index} tokenData={token} />
-                        ))}
-                      </tbody>
-                    </table>
-                  </nav>
-                ) : (
+                  </div>
                   <div></div>
-                )}
+                  {showNFTContent ? (
+                    <nav className="topline_1">
+                      <table>
+                        <thead>
+                          <th>Token</th>
+                          <th>Deploy Time</th>
+                          <th>Holders</th>
+                          <th>Transaction</th>
+                          <th>Progress%</th>
+                        </thead>
+                        <tbody className="semi">
+                          {data.map((token, index) => (
+                            <TickComponent2
+                              tokenData={token}
+                              index={index + 1}
+                            />
+                          ))}
+                        </tbody>
+                      </table>
+                    </nav>
+                  ) : showTokenContent ? (
+                    <nav className="topline_1">
+                      <table>
+                        <thead>
+                          <th></th>
+                          <th></th>
+                          <th>Token</th>
+                          <th>Price</th>
+                          <th>24h</th>
+                          <th>24h Volume</th>
+                          <th>Market Cap</th>
+                          <th>Supply</th>
+                        </thead>
+                        <tbody className="semi">
+                          {data.map((token, index) => (
+                            <TickComponent
+                              onTableRowClick={handleTableRowClick}
+                              tokenData={token}
+                              index={index + 1}
+                            />
+                          ))}
+                        </tbody>
+                      </table>
+                    </nav>
+                  ) : showTransactionContent ? (
+                    <nav className="topline_1">
+                      <table>
+                        <thead>
+                          <tr>
+                            <th className="user">User</th>
+                            <th>Net worth</th>
+                            <th>Top token</th>
+                          </tr>
+                        </thead>
+                        <tbody className="semi">
+                          {data.map((token, index) => (
+                            <TickComponent3 key={index} tokenData={token} />
+                          ))}
+                        </tbody>
+                      </table>
+                    </nav>
+                  ) : (
+                    <div></div>
+                  )}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
       <Explorerjs />
     </div>
   );
 }
 
-function TickComponent({ tokenData, index }) {
+function TickComponent({ tokenData, index, onTableRowClick }) {
   const formatBalance = (balance) => {
     if (balance >= 1000000) {
       const millions = (balance / 1000000).toFixed(0);
@@ -325,7 +352,7 @@ function TickComponent({ tokenData, index }) {
 
   return (
     <>
-      <tr>
+      <tr onClick={() => onTableRowClick(tokenData.tick)}>
         <td className="iconoutline">{tokenData.star}</td>
         <td className="number_table">{index}</td>
         <td className="border_bottom">{tokenData.tick.toUpperCase()}</td>
