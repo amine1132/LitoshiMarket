@@ -19,6 +19,8 @@ import {
 import { BsStar } from "react-icons/bs";
 import Bitcoin from "./Bitcoin.svg";
 import Explorerjs from "../../components/Explorer_yanis/Explorer";
+import { BsArrowRightShort } from "react-icons/bs";
+import { BsArrowLeftShort } from "react-icons/bs";
 
 const chartOptions = {
   responsive: true,
@@ -184,11 +186,52 @@ function Explorer({}) {
       {isContentCleared ? (
         selectedTokenName ? (
           <>
-            <div>Nom du token sélectionné : {selectedTokenName}</div>
-            <button onClick={() => setIsContentCleared("")}>Explorer</button>
+            <div className="hidden">
+              Nom du token sélectionné : {selectedTokenName.toUpperCase()}
+            </div>
+            <div className="flex gap-1 items-center mt-2.5">
+              <BsArrowLeftShort
+                className="text-2xl cursor-pointer"
+                onClick={() => setIsContentCleared("")}
+              />
+              <p>Bitcoin</p>
+              <BsArrowRightShort className="text-2xl" />
+              <p>Explorer</p>
+              <BsArrowRightShort className="text-2xl" />
+              {selectedTokenName.toUpperCase()}
+            </div>
+            <div className="w-full flex gap-6">
+              <div className="flex flex-col w-3/4 gap-10">
+                <div className="explorer_token_charts"></div>
+                <div className="explorer_token_data"></div>
+              </div>
+              <div className="explorer_token_table">
+                <p>LITS/LITE</p>
+                <div>
+                  <p>Price USD</p>
+                  <p>Marketcap</p>
+                  <p>5M</p>
+                  <p>1H</p>
+                  <p>24H</p>
+                </div>
+                <div>
+                  <p>TXNS</p>
+                  <p>Volume</p>
+                  <p>Buys</p>
+                  <p>SELLS</p>
+                  <p>BUY VOL</p>
+                  <p>SELL VOL</p>
+                </div>
+                <div>
+                  <button>Watchlist</button>
+                  <button>Alerts</button>
+                  <button>Trade on unilit</button>
+                </div>
+              </div>
+            </div>
           </>
         ) : (
-          <div>Contenu vide</div>
+          <></>
         )
       ) : (
         <div className="colone">
@@ -335,7 +378,6 @@ function Explorer({}) {
           </div>
         </div>
       )}
-      <Explorerjs />
     </div>
   );
 }
