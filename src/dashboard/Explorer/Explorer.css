@@ -753,3 +753,23 @@ table th {
   );
   margin-right: 32px;
 }
+.explorer_token_flex1 {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-around;
+}
+.explorer_token_flex2 {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.flex_justify-content button {
+  border-radius: 4px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  width: 80%;
+  padding: 10px;
+}
