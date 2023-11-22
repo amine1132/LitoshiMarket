@@ -20,6 +20,7 @@ import { BsStar } from "react-icons/bs";
 import Bitcoin from "#assets/BitcoinBTC.svg";
 import litecoinltclogo from "#assets/LitecoinLTC.svg";
 import dogecoindogelogo from "#assets/DogecoinDRC.svg";
+import AlertsPage from "../../components/Explorer_yanis/AlertsPage";
 
 export default function Alerts({ wallet }) {
   const [isOver1000Px, setIsOver1000Px] = useState(true);
@@ -107,6 +108,7 @@ export default function Alerts({ wallet }) {
                     <p>ORDI/BRC20</p>
                   </div>
                   <div className="flex justify-between items-center">
+                    <AlertsPage />
                     <div className="alert_text">
                       <p className="text-green-500 text-xs font-normal font-semibold leading-normal tracking-tighter flex gap-2">
                         <img src={notification} alt="" />

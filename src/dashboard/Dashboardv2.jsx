@@ -16,6 +16,7 @@ import Dashboardlitcoin from "./Dashboardlitecoin";
 import Watchlist from "./Watchlist/Watchlist";
 import Multicharts from "./Multicharts/Multicharts";
 import Alerts from "./Alerts/Alerts";
+import { AlertProvider } from "../components/Explorer_yanis/AlertContext";
 import { RoutesLogged } from "#routes/RoutesLogged";
 
 export default function Dashboardv2() {
@@ -28,19 +29,21 @@ export default function Dashboardv2() {
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route
-            element={<RoutesLogged wallet={wallet} setWallet={setWallet} />}
-          >
-            <Route path="/*" element={<Dashboard wallet={wallet} />} />
-            <Route path="/explorer" element={<Explorer />} />
-            <Route path="/watchlist" element={<Watchlist />} />
-            <Route path="/multicharts" element={<Multicharts />} />
-            <Route path="/alerts" element={<Alerts />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <AlertProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              element={<RoutesLogged wallet={wallet} setWallet={setWallet} />}
+            >
+              <Route path="/*" element={<Dashboard wallet={wallet} />} />
+              <Route path="/explorer" element={<Explorer />} />
+              <Route path="/watchlist" element={<Watchlist />} />
+              <Route path="/multicharts" element={<Multicharts />} />
+              <Route path="/alerts" element={<Alerts />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </AlertProvider>
     </>
   );
 }

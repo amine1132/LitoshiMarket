@@ -18,9 +18,11 @@ import {
 } from "react-router-dom";
 import { BsStar } from "react-icons/bs";
 import Bitcoin from "./Bitcoin.svg";
-import Explorerjs from "../../components/Explorer_yanis/Explorer";
 import { BsArrowRightShort } from "react-icons/bs";
 import { BsArrowLeftShort } from "react-icons/bs";
+import Explorer_chart from "../../components/Explorer_yanis/Explorer_chart";
+import Modalv2 from "../../components/Explorer_yanis/Modalv2";
+import AlertsPage from "../../components/Explorer_yanis/AlertsPage";
 
 const chartOptions = {
   responsive: true,
@@ -297,7 +299,7 @@ function Explorer({ tokenData }) {
                 <div className="flex_justify-content">
                   <div className="flex flex-col w-full items-center gap-2">
                     <button>Watchlist</button>
-                    <button>Alerts</button>
+                    <Modalv2 />
                     <button>Trade on unilit</button>
                   </div>
                 </div>
