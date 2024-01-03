@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { BsArrowRightShort } from "react-icons/bs";
 import { BsArrowLeftShort } from "react-icons/bs";
-import Explorer_chart from "../../components/Explorer_yanis/Explorer_chart";
-import Modalv2 from "../../components/Explorer_yanis/Modalv2";
+import Explorer_chart from "../../components/Explorer/Explorer_chart";
+import Modalv2 from "../../components/Explorer/Modalv2";
 
 export default function Condition_explorer({ Explorer }) {
   const [selectedTokenName, setSelectedTokenName] = useState("");

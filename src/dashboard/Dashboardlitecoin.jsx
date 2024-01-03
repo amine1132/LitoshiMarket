@@ -1,24 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Dashboard.css";
-import litoshi from "./litoshi.svg";
-import cercle from "./Cercle.svg";
-import Vector from "./Vector.svg";
-import element3 from "./element3.svg";
-import Footer from "./Footer.svg";
-import footer2 from "./footer2.svg";
-import footer3 from "./footer3.svg";
-import globalsearch from "./globalsearch.svg";
-import Group_427319828 from "./Group_427319828.svg";
-import notification from "./notification.svg";
-import Group5333 from "./Group5333.svg";
-import ouai from "./ouai.svg";
-import wallet from "./wallet.svg";
-import newgraph from "./newgraph.svg";
-import search from "./search.svg";
-import homme from "./homme.svg";
-import profile from "./Profile.svg";
-import chartcircle from "./chartcircle.svg";
+import Group_427319828 from "#assets/dashboard/Group_427319828.svg";
+import wallet from "#assets/dashboard/wallet.svg";
+import newgraph from "#assets/dashboard/newgraph.svg";
+import search from "#assets/dashboard/search.svg";
+import profile from "#assets/dashboard/Profile.svg";
 import Chart, { Chart as ChartJS, defaults } from "chart.js/auto";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -32,13 +19,12 @@ import {
   Outlet,
   useMatch,
 } from "react-router-dom";
-import Bitcoin from "./BitcoinBTC.svg";
-import dogecoindogelogo from "./DogecoinDRC.svg";
-import Ethereum from "./Ethereum.svg";
+import Bitcoin from "#assets/dashboard/BitcoinBTC.svg";
+import dogecoindogelogo from "#assets/dashboard/DogecoinDRC.svg";
 import { FaRegCopy } from "react-icons/fa";
 import { Tooltip } from "@mui/material";
 import Agreecookies from "./Cookies";
-import NFT from "./Nft.png";
+import NFT from "#assets/dashboard/Nft.png";
 import "./Mont/Mont-Bold.otf";
 import "./Mont/Mont-Regular.otf";
 import "./Mont/Mont-SemiBold.otf";

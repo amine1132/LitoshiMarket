@@ -1,28 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Explorer.css";
-import Group5333 from "./Group5333.svg";
-import homme from "./homme.svg";
-import chartcircle from "./chartcircle.svg";
-import Chart, { Chart as ChartJS, defaults } from "chart.js/auto";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-import {
-  BrowserRouter as Router,
-  Route,
-  Routes,
-  Link,
-  useNavigate,
-  Outlet,
-  useMatch,
-} from "react-router-dom";
+import Group5333 from "#assets/explorer/Group5333.svg";
 import { BsStar } from "react-icons/bs";
-import Bitcoin from "./Bitcoin.svg";
-import { BsArrowRightShort } from "react-icons/bs";
-import { BsArrowLeftShort } from "react-icons/bs";
-import Explorer_chart from "../../components/Explorer_yanis/Explorer_chart";
-import Modalv2 from "../../components/Explorer_yanis/Modalv2";
-import AlertsPage from "../../components/Explorer_yanis/AlertsPage";
 import TickComponent from "./TickComponent";
 import TickComponent2 from "./TickComponent2";
 import TickComponent3 from "./TickComponent3";

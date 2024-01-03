@@ -16,7 +16,7 @@ import Dashboardlitcoin from "./Dashboardlitecoin";
 import Watchlist from "./Watchlist/Watchlist";
 import Multicharts from "./Multicharts/Multicharts";
 import Alerts from "./Alerts/Alerts";
-import { AlertProvider } from "../components/Explorer_yanis/AlertContext";
+import { AlertProvider } from "../components/Explorer/AlertContext";
 import { RoutesLogged } from "#routes/RoutesLogged";
 
 export default function Dashboardv2() {

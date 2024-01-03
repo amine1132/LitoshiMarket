@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
-import Bitcoin from "./BitcoinBTC.svg";
-import litoshi from "./litoshi.svg";
-import dogecoindogelogo from "./DogecoinDRC.svg";
-import ouai from "./ouai.svg";
-import Vector from "./Vector.svg";
-import globalsearch from "./globalsearch.svg";
-import element3 from "./element3.svg";
-import notification from "./notification.svg";
-import Footer from "./Footer.svg";
+import Bitcoin from "#assets/Navbar/BitcoinBTC.svg";
+import litoshi from "#assets/Navbar/litoshi.svg";
+import dogecoindogelogo from "#assets/Navbar/DogecoinDRC.svg";
+import ouai from "#assets/Navbar/ouai.svg";
+import Vector from "#assets/Navbar/Vector.svg";
+import globalsearch from "#assets/Navbar/globalsearch.svg";
+import element3 from "#assets/Navbar/element3.svg";
+import notification from "#assets/Navbar/notification.svg";
+import Footer from "#assets/Navbar/Footer.svg";
 import "./Dashboard.css";
 import { Link } from "react-router-dom";
 import { SiTwitter } from "react-icons/si";
 import { BsDiscord } from "react-icons/bs";
 import { SiMedium } from "react-icons/si";
-import explorer from "./globalsearch.svg";
-import logofooter from "./logofooter.svg";
-import test1 from "./test1.svg";
-import test2 from "./test2.svg";
-import test3 from "./test3.svg";
+import explorer from "#assets/Navbar/globalsearch.svg";
+import logofooter from "#assets/Navbar/logofooter.svg";
+import test1 from "#assets/Navbar/test1.svg";
+import test2 from "#assets/Navbar/test2.svg";
+import test3 from "#assets/Navbar/test3.svg";
 
 export default function navgauche() {
   const [isConnected, setIsConnected] = useState(false);

@@ -5,11 +5,11 @@ import Share from "#assets/watchlist2.svg";
 import arrowright from "#assets/arrowright2.svg";
 import addwatch from "#assets/additem.svg";
 import notification from "#assets/notification.svg";
-import search from "./search.svg";
+import search from "#assets/search.svg";
 
 import "./Watchlist.css";
 
-import homme from "./homme.svg";
+import homme from "#assets/homme.svg";
 import {
   BrowserRouter as Router,
   Route,
@@ -20,9 +20,9 @@ import {
   useMatch,
 } from "react-router-dom";
 import { BsStar } from "react-icons/bs";
-import Bitcoin from "./BitcoinBTC.svg";
-import litecoinltclogo from "./LitecoinLTC.svg";
-import dogecoindogelogo from "./DogecoinDRC.svg";
+import Bitcoin from "#assets/BitcoinBTC.svg";
+import litecoinltclogo from "#assets/LitecoinLTC.svg";
+import dogecoindogelogo from "#assets/DogecoinDRC.svg";
 
 const chartOptions = {
   responsive: true,

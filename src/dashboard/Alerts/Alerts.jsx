@@ -20,7 +20,7 @@ import { BsStar } from "react-icons/bs";
 import Bitcoin from "#assets/BitcoinBTC.svg";
 import litecoinltclogo from "#assets/LitecoinLTC.svg";
 import dogecoindogelogo from "#assets/DogecoinDRC.svg";
-import AlertsPage from "../../components/Explorer_yanis/AlertsPage";
+import AlertsPage from "../../components/Explorer/AlertsPage";
 
 export default function Alerts({ wallet }) {
   const [isOver1000Px, setIsOver1000Px] = useState(true);

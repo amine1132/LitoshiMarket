@@ -1,24 +1,19 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./Tokens.css";
-import litoshi from "./litoshi.svg";
-import cercle from "./Cercle.svg";
-import Vector from "./Vector.svg";
-import element3 from "./element3.svg";
-import Footer from "./Footer.svg";
-import footer2 from "./footer2.svg";
-import footer3 from "./footer3.svg";
-import globalsearch from "./globalsearch.svg";
-import logofooter from "./logofooter.svg";
-import notification from "./notification.svg";
-import Group5333 from "./Group5333.svg";
-import test1 from "./test1.svg";
-import test2 from "./test2.svg";
-import test3 from "./test3.svg";
-import ouai from "./ouai.svg";
-import search from "./search.svg";
-import homme from "./homme.svg";
-import chartcircle from "./chartcircle.svg";
+import litoshi from "#assets/Tokens/litoshi.svg";
+import Vector from "#assets/Tokens/Vector.svg";
+import element3 from "#assets/Tokens/element3.svg";
+import Footer from "#assets/Tokens/Footer.svg";
+import globalsearch from "#assets/Tokens/globalsearch.svg";
+import logofooter from "#assets/Tokens/logofooter.svg";
+import notification from "#assets/Tokens/notification.svg";
+import test1 from "#assets/Tokens/test1.svg";
+import test2 from "#assets/Tokens/test2.svg";
+import test3 from "#assets/Tokens/test3.svg";
+import ouai from "#assets/Tokens/ouai.svg";
+import homme from "#assets/Tokens/homme.svg";
+import chartcircle from "#assets/Tokens/chartcircle.svg";
 import Chart, { Chart as ChartJS, defaults } from "chart.js/auto";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -32,10 +27,9 @@ import {
   useMatch,
 } from "react-router-dom";
 import { BsStar } from "react-icons/bs";
-import Bitcoin from "./Bitcoin.svg";
-import litecoinltclogo from "./litecoinltclogo.svg";
-import dogecoindogelogo from "./dogecoindogelogo.svg";
-import Ethereum from "./Ethereum.svg";
+import Bitcoin from "#assets/Tokens/Bitcoin.svg";
+import litecoinltclogo from "#assets/Tokens/litecoinltclogo.svg";
+import dogecoindogelogo from "#assets/Tokens/dogecoindogelogo.svg";
 
 const chartOptions = {
   responsive: true,
