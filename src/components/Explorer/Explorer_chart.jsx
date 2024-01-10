@@ -12,7 +12,7 @@ const ChartComponent = () => {
         );
         const jsonData = await response.json();
         // Filtrer les données pour inclure uniquement deploy_ts et holder_cnt
-        const filteredData = jsonData.items.map((item) => ({
+        const filteredData = jsonData.map((item) => ({
           deploy_ts: item.deploy_ts,
           holder_cnt: item.holder_cnt,
         }));
