@@ -11,7 +11,7 @@ export default function TickComponent({ tokenData, index, onTableRowClick }) {
     }
   };
 
-  function CallFiltre(params) {
+  function CallFiltre() {
     
   }
 
