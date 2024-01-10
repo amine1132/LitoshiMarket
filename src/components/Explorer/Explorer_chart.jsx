@@ -1,43 +1,56 @@
-import React, { useEffect, useRef } from "react";
-import { ColorType, createChart } from "lightweight-charts";
+import React, { useEffect, useState } from "react";
+import { createChart, CrosshairMode } from "lightweight-charts";
 
-export default function Explorer() {
-  const chartcontainerRef = useRef();
+const ChartComponent = () => {
+  const [data, setData] = useState([]);
 
   useEffect(() => {
-    const initialData = [
-      { time: "2018-12-22", value: 32.51 },
-      { time: "2018-12-23", value: 31.11 },
-      { time: "2018-12-24", value: 27.02 },
-      { time: "2018-12-25", value: 27.32 },
-      { time: "2018-12-26", value: 25.17 },
-      { time: "2018-12-27", value: 28.89 },
-      { time: "2018-12-28", value: 25.46 },
-      { time: "2018-12-29", value: 23.92 },
-      { time: "2018-12-30", value: 22.68 },
-      { time: "2018-12-31", value: 22.67 },
-    ];
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          "https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/0/1"
+        );
+        const jsonData = await response.json();
+        // Filtrer les données pour inclure uniquement deploy_ts et holder_cnt
+        const filteredData = jsonData.items.map((item) => ({
+          deploy_ts: item.deploy_ts,
+          holder_cnt: item.holder_cnt,
+        }));
 
-    const chart = createChart(chartcontainerRef.current, {
-      layout: {
-        background: { type: ColorType.Solid, color: "transparent" },
-      },
-      width: 900,
-      height: 200,
-    });
+        setData(filteredData);
+      } catch (error) {
+        console.error(
+          "Erreur lors de la récupération des données de l'API",
+          error
+        );
+      }
+    };
 
-    const newSerie = chart.addAreaSeries({
-      lineColor: "#2962FF",
-      topColor: "#2962FF",
-      bottomColor: "rgba(41, 98, 255, 0.28)",
-    });
-
-    newSerie.setData(initialData);
+    fetchData();
   }, []);
 
-  return (
-    <>
-      <div ref={chartcontainerRef}></div>
-    </>
-  );
-}
+  useEffect(() => {
+    const container = document.getElementById("chart-container");
+
+    if (data.length > 0 && container) {
+      const chart = createChart(container, {
+        width: container.offsetWidth,
+        height: 300,
+        crosshair: {
+          mode: CrosshairMode.Normal,
+        },
+      });
+
+      const lineSeries = chart.addLineSeries();
+      lineSeries.setData(data);
+
+      return () => {
+        chart.remove();
+      };
+    }
+  }, [data]);
+
+  return <div id="chart-container" />;
+};
+
+export default ChartComponent;
