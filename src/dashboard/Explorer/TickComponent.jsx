@@ -1,4 +1,5 @@
 import React from "react";
+import Filtre from "#utils/Filtre.jsx"
 
 export default function TickComponent({ tokenData, index, onTableRowClick }) {
   const formatBalance = (balance) => {
@@ -10,16 +11,20 @@ export default function TickComponent({ tokenData, index, onTableRowClick }) {
     }
   };
 
+  function CallFiltre(params) {
+    
+  }
+
   return (
     <>
       <tr
         onClick={() => onTableRowClick(tokenData.tick)}
         className="cursor-pointer"
       >
-        <td className="iconoutline">{tokenData.star}</td>
+        <td className="iconoutline" >{tokenData.star}</td>
         <td className="number_table">{index}</td>
         <td className="border_bottom">{tokenData.tick.toUpperCase()}</td>
-        <td className="border_bottom">
+        <td  onClick={() => CallFiltre } className="border_bottom">
           {tokenData.price
             ? parseFloat(tokenData.price).toLocaleString("en-US", {
                 style: "currency",

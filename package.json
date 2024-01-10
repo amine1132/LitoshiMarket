@@ -58,6 +58,7 @@
     "#constants/*": "./src/constants/*.json",
     "#pages/*": "./src/pages/*.jsx",
     "#stores/*": "./src/stores/*",
-    "#services/*": "./src/services/*.js"
+    "#services/*": "./src/services/*.js",
+    "#utils/*": "./src/utils/*"
   }
 }
