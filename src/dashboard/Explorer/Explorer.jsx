@@ -277,7 +277,7 @@ function Explorer({ tokenData }) {
                       <table>
                         <thead>
                           <th></th>
-                          <th></th>
+                          <th>#</th>
                           <th>Token</th>
                           <th>Price</th>
                           <th>24h</th>
