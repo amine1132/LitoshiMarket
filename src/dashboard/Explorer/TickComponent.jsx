@@ -1,5 +1,4 @@
 import React from "react";
-import Filtre from "#utils/Filtre.jsx"
 
 export default function TickComponent({ tokenData, index, onTableRowClick }) {
   const formatBalance = (balance) => {
@@ -10,11 +9,6 @@ export default function TickComponent({ tokenData, index, onTableRowClick }) {
       return balance.toString();
     }
   };
-
-  function CallFiltre() {
-    
-  }
-
   return (
     <>
       <tr

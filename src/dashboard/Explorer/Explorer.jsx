@@ -7,6 +7,7 @@ import TickComponent from "./TickComponent";
 import TickComponent2 from "./TickComponent2";
 import TickComponent3 from "./TickComponent3";
 import Condition_explorer from "./Condition_explorer";
+import Filtre from '../../utils/Filtre';
 
 const chartOptions = {
   responsive: true,
@@ -167,6 +168,28 @@ function Explorer({ tokenData }) {
     setIsFilled(!isFilled);
   };
 
+  // FILTRE
+
+  const [sortOrder,setSortOrder] = useState(null);
+
+  let tokenName = "token";
+  let priceName = "price";
+  let marketCapName = "marketcap";
+  let volumeName = "vol_24h";
+  let supplyName = "max_supply";
+  let _24hName = "change_24h";
+
+  const [Arrows, setArrows] = useState([
+    { name: tokenName, arrow: "" },
+    { name: priceName, arrow: "" },
+    { name: marketCapName, arrow: "" },
+    { name: volumeName, arrow: "" },
+    { name: supplyName, arrow: "" },
+    { name: _24hName, arrow: "" },
+  ]);
+
+  // FIN FILTRE
+
   return (
     <div className="max">
       {isContentCleared ? (
@@ -278,12 +301,12 @@ function Explorer({ tokenData }) {
                         <thead>
                           <th></th>
                           <th>#</th>
-                          <th>Token</th>
-                          <th>Price</th>
-                          <th>24h</th>
-                          <th>24h Volume</th>
-                          <th>Market Cap</th>
-                          <th>Supply</th>
+                          <th className="hoverable" name={tokenName} onClick={() => Filtre(tokenName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>Token{Arrows[0].arrow}</th>
+                          <th className="hoverable" name={priceName} onClick={() => Filtre(priceName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>Price{Arrows[1].arrow}</th>
+                          <th className="hoverable" name={_24hName} onClick={() => Filtre(_24hName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>24h{Arrows[5].arrow}</th>
+                          <th className="hoverable" name={volumeName} onClick={() => Filtre(volumeName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>24h Volume{Arrows[3].arrow}</th>
+                          <th className="hoverable" name={marketCapName} onClick={() => Filtre(marketCapName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>Market Cap{Arrows[2].arrow}</th>
+                          <th className="hoverable" name={supplyName} onClick={() => Filtre(supplyName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>Supply{Arrows[4].arrow}</th>
                         </thead>
                         <tbody className="semi">
                           {data.map((token, index) => (

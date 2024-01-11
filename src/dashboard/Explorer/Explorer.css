@@ -773,3 +773,7 @@ table th {
   width: 80%;
   padding: 10px;
 }
+
+.hoverable {
+  cursor: pointer;
+}
