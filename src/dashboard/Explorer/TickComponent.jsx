@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TickComponent({ tokenData, index, onTableRowClick }) {
+export default function TickComponent({ tokenData, onTableRowClick }) {
   const formatBalance = (balance) => {
     if (balance >= 1000000) {
       const millions = (balance / 1000000).toFixed(0);
@@ -16,7 +16,7 @@ export default function TickComponent({ tokenData, index, onTableRowClick }) {
         className="cursor-pointer"
       >
         <td className="iconoutline" >{tokenData.star}</td>
-        <td className="number_table">{index}</td>
+        <td className="number_table">{tokenData.index}</td>
         <td className="border_bottom">{tokenData.tick.toUpperCase()}</td>
         <td  onClick={() => CallFiltre } className="border_bottom">
           {tokenData.price

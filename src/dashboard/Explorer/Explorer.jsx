@@ -77,11 +77,14 @@ function Explorer({ tokenData }) {
         "https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/0/1"
       );
       const data = sortedData.data.items;
+      let compteur = 1;
       data.forEach((token) => {
         token.star = <BsStar />;
         token.vol_24h = token.vol_24h * Math.pow(10, -8) * btc_price;
         token.marketcap = token.marketcap * Math.pow(10, -8) * btc_price;
         token.price = token.marketcap / token.max_supply;
+        token.index = compteur;
+        compteur += 1 ;
       });
       // Merge enhanced data with previous data
       setData(data);
@@ -300,7 +303,7 @@ function Explorer({ tokenData }) {
                       <table>
                         <thead>
                           <th></th>
-                          <th>#</th>
+                          <th className="hoverable" name={marketCapName} onClick={() => Filtre(marketCapName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[2].arrow}#</th>
                           <th className="hoverable" name={tokenName} onClick={() => Filtre(tokenName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[0].arrow}Token</th>
                           <th className="hoverable" name={priceName} onClick={() => Filtre(priceName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[1].arrow}Price</th>
                           <th className="hoverable" name={_24hName} onClick={() => Filtre(_24hName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[5].arrow}24h</th>
