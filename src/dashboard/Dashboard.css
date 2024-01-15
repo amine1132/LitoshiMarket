@@ -1,8 +1,6 @@
 :root {
-  --custom-color-sec: #573aff62; 
+  --custom-color-sec: #573aff62;
 }
-
-
 
 @font-face {
   font-family: "MontRegular";
@@ -282,7 +280,7 @@ table td {
   background-color: #1e1e1e;
   height: 40px;
   border-radius: 10px;
-  margin-bottom: 8px;
+  margin-bottom: 9px;
 }
 
 .groupe_profile {
