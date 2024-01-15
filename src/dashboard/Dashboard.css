@@ -1,3 +1,9 @@
+:root {
+  --custom-color-sec: #573aff62; 
+}
+
+
+
 @font-face {
   font-family: "MontRegular";
   src: local("MontRegular"), url("./Mont/Mont-Regular.otf") format("opentype");
@@ -122,7 +128,7 @@ p {
 .box1 {
   background: linear-gradient(
     0deg,
-    rgba(86, 58, 255, 0.35) -30%,
+    var(--custom-color-sec) -30%,
     rgba(128, 128, 128, 0.0735) 100%
   );
   width: 60%;
@@ -199,7 +205,7 @@ p {
 .box2_ {
   background: linear-gradient(
     342.29deg,
-    rgba(86, 58, 255, 0.35) 0%,
+    var(--custom-color-sec) -30%,
     rgba(128, 128, 128, 0.0735) 100%
   );
   width: 70%;
@@ -230,7 +236,7 @@ p {
 .box3_ {
   background: linear-gradient(
     342.29deg,
-    rgba(86, 58, 255, 0.35) 0%,
+    var(--custom-color-sec) -30%,
     rgba(128, 128, 128, 0.0735) 100%
   );
   width: 100%;
@@ -282,7 +288,7 @@ table td {
 .groupe_profile {
   background: linear-gradient(
     0deg,
-    rgba(86, 58, 255, 0.35) -30%,
+    var(--custom-color-sec) -30%,
     rgba(128, 128, 128, 0.0735) 100%
   );
   width: 100%;
@@ -341,7 +347,7 @@ table td {
   background: linear-gradient(
     180deg,
     rgba(255, 255, 255, 0.1) 0%,
-    rgba(86, 58, 255, 0.1) 100%
+    var(--custom-color-sec) 100%
   );
   border-radius: 10px;
   margin-right: 52px;
@@ -374,7 +380,7 @@ table td {
   border-radius: 0 10px 10px 0;
   margin-right: 52px;
   width: 180px;
-  border: 1px solid rgba(86, 58, 255, 0.56);
+  border: 1px solid var(--custom-color-sec);
   height: 100%;
   position: fixed;
   top: 0;
@@ -418,7 +424,7 @@ table td {
 }
 
 .dashboard {
-  background: rgba(86, 58, 255, 0.2);
+  background: var(--custom-color-sec);
   border: 1px solid #563aff;
 }
 
@@ -496,13 +502,13 @@ table td {
 
 .menufooter button:hover {
   background: rgba(86, 58, 255, 0.2);
-  border: 1px solid #563aff;
+  border: 1px solid var(--custom-color-sec);
   border-radius: 3px;
 }
 
 .menu2 button:hover {
   background: rgba(86, 58, 255, 0.2);
-  border: 1px solid #563aff;
+  border: 1px solid var(--custom-color-sec);
   border-radius: 3px;
 }
 

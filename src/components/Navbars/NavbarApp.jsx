@@ -24,15 +24,34 @@ export function NavbarApp({ wallet, setWallet }) {
   //   console.log("wallet");
   //   console.log(wallet);
   // }, [wallet]);
+
+  {/* BUTTON CHANGE SIZE */}
+  const [isCollapsed, setCollapsed] = useState(false);
+  const buttonText = isCollapsed ? "Déplier" : "Replier";
+
+  const toggleWidth = () => {
+      setCollapsed(!isCollapsed);
+  };
+  {/* END BUTTON CHANGE SIZE */}
+
   return (
-    <div className="w-scree h-screen fixed bg-gradient-to-t from-[rgba(86,58,255,0.1)] to-[rgba(255,255,255,0.2)] border-2 border-solid border-indigo-600 rounded-tl-none rounded-tr-2xl rounded-br-2xl rounded-bl-none">
-      <div className="w-full h-full flex flex-col overflow-y-auto">
-        <div className="w-full h-full flex flex-col justify-evenly">
-          <Wallet wallet={wallet} setWallet={setWallet} />
-          <Profile wallet={wallet} />
-          <Tokens wallet={wallet} />
+    /* BUTTON CHANGE SIZE */
+    <div className={`${isCollapsed ? 'collapsed w-[50px] transition-width duration-300 ease-in-out' : 'w-[240px] transition-width duration-300 ease-in-out'}
+     h-full bg-gradient-to-t from-[rgba(86,58,255,0.1)] to-[rgba(255,255,255,0.2)] border[0.5px-solid-blue] rounded-r-lg`}>
+      <div className={`${isCollapsed ? 'collapsed w-[50px] transition-width duration-300 ease-in-out' : 'w-[200px] transition-width duration-300 ease-in-out'} 
+      h-screen fixed bg-gradient-to-t from-[rgba(86,58,255,0.1)] to-[rgba(255,255,255,0.2)] border-2 border-solid border-indigo-600 rounded-tl-none rounded-tr-2xl rounded-br-2xl rounded-bl-none`}>
+    {/* END BUTTON CHANGE SIZE */}
+        <div className="h-full flex flex-col overflow-y-auto">
+          <div className="h-full flex flex-col justify-evenly">
+            {/* BUTTON CHANGE SIZE */}
+            <button onClick={toggleWidth}>{buttonText}</button>
+            {/* END BUTTON CHANGE SIZE */}
+            <Wallet wallet={wallet} setWallet={setWallet} />
+            <Profile wallet={wallet} />
+            <Tokens wallet={wallet} />
+          </div>
+          <Footer />
         </div>
-        <Footer />
       </div>
     </div>
   );

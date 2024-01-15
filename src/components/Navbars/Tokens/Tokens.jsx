@@ -11,11 +11,6 @@ export function Tokens({ wallet }) {
   // Constants
   const links = [
     {
-      url: "explorer",
-      text: "Explorer",
-      img: explorer,
-    },
-    {
       text: "Trade",
       img: bitcoinconvert,
     },

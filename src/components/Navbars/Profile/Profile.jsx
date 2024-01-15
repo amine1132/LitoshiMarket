@@ -9,6 +9,7 @@ import star from "#assets/ouai.svg";
 import FooterLogo from "#assets/Footer.svg";
 import notification from "#assets/notification.svg";
 import multichart from "#assets/element3.svg";
+import explorer from "#assets/globalsearch.svg";
 
 export function Profile({ wallet }) {
   // Hooks
@@ -20,6 +21,11 @@ export function Profile({ wallet }) {
       url: "",
       text: "Dashboard",
       img: vector,
+    },
+    {
+      url: "explorer",
+      text: "Explorer",
+      img: explorer,
     },
     {
       url: "watchlist",
