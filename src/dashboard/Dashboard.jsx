@@ -480,41 +480,49 @@ function Dashboard({ wallet }) {
             </header>
             <div className="scroll_contenu_1">
               {wallet && (
+
+                // Section profile 
+
+
                 <div className="groupe_profile">
                   <img src={profile} alt="" className="profile-image" />
                   <div className="groupe2_profile">
-                    <div className="profile_adress">
-                      <p>{formatAddress(wallet)}</p>
-                    </div>
-                    <div className="profile_button">
-                      <button type="button">
-                        {" "}
-                        <img src={test3} alt="" />
-                        Add Twitter
-                      </button>
-                      <button type="button">
-                        {" "}
-                        <img src={web} alt="" />
-                        Add website
-                      </button>
-                      <button type="button">
-                        {" "}
-                        <img src={map} alt="" />
-                        Add localisation
-                      </button>
-                    </div>
+                    <h1 className="text-2xl mb-0 ml-2">Name.surname</h1>
+                      <div className="profile_adress flex items-center">
+                        <p>{formatAddress(wallet)}</p>
+                        <button className="ml-3 flex items-center" type="button">
+                          "svg_img_copy"
+                          <img src={web} alt="" />
+                        </button>
+                      </div>
+                      <div className="profile_button">
+                        <button type="button">
+                          {" "}
+                          <img src={test3} alt="" />
+                          Add Twitter
+                        </button>
+                        <button type="button">
+                          {" "}
+                          <img src={web} alt="" />
+                          Add website
+                        </button>
+                        <button type="button">
+                          {" "}
+                          <img src={map} alt="" />
+                          Add localisation
+                        </button>
+                      </div>
                   </div>
-                </div>
-              )}
-              <div className="groupe1">
-                <div className="box1">
-                  <div className="groupv1">
-                    <div className="group1">
-                      <p>My Wallet</p>
-                      <h1>
+
+                  {/* split */}
+                  <div className="ml-auto border-r-2 h-[80%] mx-4"></div>
+                  {/* split */}
+                
+                  <div className="mr-[10%]">
+                      <h1 className="text-2xl mb-0">
                         {wallet && (
                           <>
-                            Total:{" "}
+                            {" "}
                             {overall_balance.toLocaleString("en-US", {
                               style: "currency",
                               currency: "USD",
@@ -522,10 +530,8 @@ function Dashboard({ wallet }) {
                           </>
                         )}
                       </h1>
-                    </div>
-                    <div className="group2">
-                      <p className="blanc">Available</p>
-                      <p className="semi">
+                      <p className="blanc text-sm">Available</p>
+                      <p className="semi text-sm">
                         {wallet && (
                           <>
                             {available_balance.toLocaleString("en-US", {
@@ -536,10 +542,8 @@ function Dashboard({ wallet }) {
                         )}
                       </p>
                       {/*product amount data*/}
-                    </div>
-                    <div className="group3">
-                      <p className="blanc">Transferable</p>
-                      <p className="semi">
+                      <p className="blanc text-sm">Transferable</p>
+                      <p className="semi text-sm">
                         {wallet && (
                           <>
                             {(
@@ -552,39 +556,13 @@ function Dashboard({ wallet }) {
                         )}
                       </p>
                       {/*product amount data*/}
-                    </div>
-                  </div>
-                  <div>
-                    <img src={Group_427319828} alt="" />
                   </div>
                 </div>
-                <div className="box2_">
-                  <div className="donnees">
-                    <p>Average of your wallet</p>
-                  </div>
-                  {isGraphContent ? (
-                    <>
-                      <div className="comingsoon"> Coming Soon..</div>
-                      <div className="blur">
-                        <div className="argent">$243,600</div>
-                        <img src={newgraph} alt="" className="graph533" />
-                      </div>
-                    </>
-                  ) : (
-                    <>
-                      <div className="graph">
-                        <canvas id="myChart"></canvas>
-                        <div className="legendChart">
-                          {filteredBlockchain &&
-                            filteredBlockchain.map((e) => (
-                              <div className="itemLegendChart">{e.tick}</div>
-                            ))}
-                        </div>
-                      </div>
-                    </>
-                  )}
-                </div>
-              </div>
+
+
+                // Section profile end
+
+              )}
               <div className="groupe2">
                 <div className="box3_">
                   <div className="topv1">
