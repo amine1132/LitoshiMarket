@@ -36,7 +36,7 @@ export function Wallet({ wallet, setWallet }) {
     return address.substr(0, 5) + "..." + address.substr(address.length - 3);
   }
   return (
-    <div className="w-full flex flex-col gap-8 justify-center items-center">
+    <div className="w-full flex flex-col gap-4 justify-center items-center">
       <div className="w-full h-1/2 flex justify-center items-center mb-10">
         <img src={logo} alt="Logo" className="w-[80%] absolute" />
       </div>

@@ -22,14 +22,19 @@ export function Footer() {
   ];
 
   return (
-    <div className="w-full flex flex-col gap-3 p-4">
+    <div className="w-[85%] mx-auto flex flex-col gap-3 h-[17%]">
+        <a className="w-[85%] mx-auto flex items-center">
+          <img className="mr-2" src="/src/assets/dashboard/BitcoinBTC.svg" /> Buy test
+        </a>
+      <div className="border-b border-[#5b5b5c]"></div>
       <ul className="w-full flex justify-evenly items-center gap-2">
         {links.map((item, index) => (
           <li
-            className={`
+            className={`      
+                              h-[10%]
                               text-white
                               cursor-pointer
-                              p-3
+                              p-0
                               border
                               border-[#00000000]
                               hover:bg-[#563aff33]

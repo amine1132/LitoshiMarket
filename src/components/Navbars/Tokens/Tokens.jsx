@@ -11,21 +11,21 @@ export function Tokens({ wallet }) {
   // Constants
   const links = [
     {
-      text: "Trade",
-      img: bitcoinconvert,
+      text: "BRC-20",
+      img: "/src/assets/dashboard/BitcoinBTC.svg",
     },
     {
-      text: "Inscription",
-      img: directinbox,
+      text: "LTC-20",
+      img: "/src/assets/dashboard/LitecoinLTC.svg",
     },
     {
-      text: "Domaine Name",
-      img: textblock,
+      text: "DRC-20",
+      img: "/src/assets/dashboard/DogecoinDRC.svg",
     },
   ];
 
   return (
-    <div className="w-full flex flex-col gap-3 px-3">
+    <div className="w-[85%] mx-auto flex flex-col gap-3">
       <div className="w-full border-b border-[#5b5b5c]">
         <p className="text-[#6b6a6d] text-xs font-bold uppercase">
           Tokens and chains

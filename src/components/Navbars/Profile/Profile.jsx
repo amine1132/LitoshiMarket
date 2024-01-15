@@ -45,7 +45,7 @@ export function Profile({ wallet }) {
   ];
 
   return (
-    <div className="w-full flex flex-col gap-3 px-3">
+    <div className="w-[85%] mx-auto flex flex-col gap-3">
       <div className="w-full border-b border-[#5b5b5c]">
         <p className="text-[#6b6a6d] text-xs font-bold uppercase">
           Your profile
