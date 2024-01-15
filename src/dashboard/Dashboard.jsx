@@ -452,10 +452,11 @@ function Dashboard({ wallet }) {
                 <div className="style">
                   <div className="stylev2">
                     <div className="filtre-dashboard">
+
                       {/* MESSAGE WELCOME BACK */}
+                      <h1 className="text-2xl">Welcome Back <span className="text-blue-500">xxxx</span></h1>
                       {/* MESSAGE WELCOME BACK */}
-                      {/* MESSAGE WELCOME BACK */}
-                      {/* MESSAGE WELCOME BACK */}
+
                       <Tooltip title="Copy address">
                         <div className="copy" id="copyAddress">
                           <FaRegCopy />
@@ -463,6 +464,11 @@ function Dashboard({ wallet }) {
                       </Tooltip>
                     </div>
                   </div>
+
+                  {/* MESSAGE WELCOME BACK */}
+                  <p className="mt-[2%] text-sm">We hope everything is fine today</p>
+                  {/* MESSAGE WELCOME BACK */}
+
                 </div>
                 <div className="input">
                   <div className="loupe_">
@@ -482,7 +488,6 @@ function Dashboard({ wallet }) {
               {wallet && (
 
                 // Section profile 
-
 
                 <div className="groupe_profile">
                   <img src={profile} alt="" className="profile-image" />
@@ -558,7 +563,6 @@ function Dashboard({ wallet }) {
                       {/*product amount data*/}
                   </div>
                 </div>
-
 
                 // Section profile end
 
