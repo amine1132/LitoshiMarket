@@ -48,7 +48,7 @@ export function NavbarApp({ wallet, setWallet }) {
             <Profile wallet={wallet} />
             <Tokens wallet={wallet} />
           </div>
-          <Footer />
+          <Footer isButtonActivated={isCollapsed}/>
         </div>
       </div>
     </div>
