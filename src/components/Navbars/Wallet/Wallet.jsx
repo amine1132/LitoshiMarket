@@ -3,10 +3,25 @@ import React, { useEffect, useState } from "react";
 import logo from "#assets/Calque_1.svg";
 import FooterLogo from "#assets/Footer.svg";
 import Modal from "#components/Modal/Modal";
+import { useSelector, useDispatch } from "react-redux";
+import { updateUser } from "#stores/components/settingsSlice";
 
 export function Wallet({ wallet, setWallet, isButtonActivated }) {
   const [isConnected, setIsConnected] = useState(false);
   const [uniSatAvailable, setUniSatAvailable] = useState(false);
+
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.settings.user);
+
+  const [modal, setModal] = useState(false);
+
+  const openModal = () => {
+    setModal(true);
+  };
+
+  const closeModal = () => {
+    setModal(false);
+  };
 
   useEffect(() => {
     const checkUniSatAvailability = () => {
@@ -19,16 +34,19 @@ export function Wallet({ wallet, setWallet, isButtonActivated }) {
     checkUniSatAvailability();
   }, []);
 
-  const requestAccounts = async () => {
+  const requestUnisatAccounts = async () => {
     try {
       const accounts = await window.unisat.requestAccounts();
       console.log("connect success", accounts);
       setWallet(accounts[0]);
       setIsConnected(true);
+      dispatch(updateUser({ address: accounts[0] }));
+      setModal(false);
     } catch (e) {
       console.log("connect failed");
       console.log(e);
       setIsLoggedOut(true);
+      dispatch(updateUser({}));
     }
   };
 
@@ -41,13 +59,21 @@ export function Wallet({ wallet, setWallet, isButtonActivated }) {
         <img src={logo} alt="Logo" className="w-[80%] absolute" />
       </div>
       <button
-        onClick={requestAccounts}
-        className={`${isButtonActivated ? null : "border"} flex justify-center items-center gap-3 py-3 px-4 text-[#fff]`}
+        onClick={openModal}
+        className={`${
+          isButtonActivated ? null : "border"
+        } flex justify-center items-center gap-3 py-3 px-4 text-[#fff]`}
       >
         <img src={FooterLogo} alt="" />
-        <Modal />
-       {isButtonActivated ? null : (wallet ? formatAddress(wallet) : <div></div>)}
-
+        <Modal
+          modalState={{ modal, setModal }}
+          requestUnisatAccounts={requestUnisatAccounts}
+        />
+        {isButtonActivated ? null : wallet ? (
+          formatAddress(wallet)
+        ) : (
+          <div></div>
+        )}
       </button>
     </div>
   );

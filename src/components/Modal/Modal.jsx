@@ -14,13 +14,13 @@ import unisat from "#assets/wallets/unisat.png";
 import litescribe from "#assets/wallets/litescribe.png";
 import dogchain from "#assets/wallets/dogchain.svg";
 
-export default function Modal() {
+export default function Modal({ modalState, requestUnisatAccounts }) {
   // Hooks
   const dispatch = useDispatch();
   const user = useSelector((state) => state.settings.user);
 
   // Variables
-  const [modal, setModal] = useState(false);
+  const { modal, setModal } = modalState;
 
   // Functions
 
@@ -37,7 +37,7 @@ export default function Modal() {
     }
   };
 
-  const requestUnisatAccounts = async () => {
+  const requestUnisatAccountsZ = async () => {
     try {
       const accounts = await window.unisat.requestAccounts();
       dispatch(updateUser({ address: accounts[0] }));
