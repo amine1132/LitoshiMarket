@@ -11,7 +11,7 @@ import notification from "#assets/notification.svg";
 import multichart from "#assets/element3.svg";
 import explorer from "#assets/globalsearch.svg";
 
-export function Profile({ wallet }) {
+export function Profile({ wallet, isButtonActivated }) {
   // Hooks
   const navigate = useNavigate();
 
@@ -48,14 +48,14 @@ export function Profile({ wallet }) {
     <div className="w-[85%] mx-auto flex flex-col gap-3">
       <div className="w-full border-b border-[#5b5b5c]">
         <p className="text-[#6b6a6d] text-xs font-bold uppercase">
-          Your profile
+          {isButtonActivated ? null : "Your profile"}
         </p>
       </div>
-      <ul className="w-full flex flex-col justfy-center items-center gap-2">
+      <ul className={`${isButtonActivated ? "ml-1.5" : "ml-0.5"} w-full flex flex-col justfy-center items-center gap-2`}>
         {links.map((item, index) => (
           <MenuLink url={item?.url} active={wallet} key={index}>
             <img src={item?.img} alt="" />
-            {item?.text}
+            {isButtonActivated ? null : item?.text}
           </MenuLink>
         ))}
       </ul>

@@ -7,7 +7,7 @@ import bitcoinconvert from "#assets/bitcoin-convert.png";
 import directinbox from "#assets/direct-inbox.png";
 import textblock from "#assets/text-block.png";
 
-export function Tokens({ wallet }) {
+export function Tokens({ wallet, isButtonActivated }) {
   // Constants
   const links = [
     {
@@ -28,17 +28,17 @@ export function Tokens({ wallet }) {
     <div className="w-[85%] mx-auto flex flex-col gap-3">
       <div className="w-full border-b border-[#5b5b5c]">
         <p className="text-[#6b6a6d] text-xs font-bold uppercase">
-          Tokens and chains
+        {isButtonActivated ? null : "Tokens and chains"}
         </p>
       </div>
-      <ul className="w-full flex flex-col justfy-center items-center gap-2">
-        {links.map((item, index) => (
-          <MenuLink url={item?.url} active={wallet} key={index}>
-            <img src={item?.img} alt="" />
-            {item?.text}
-          </MenuLink>
-        ))}
-      </ul>
-    </div>
-  );
+    <ul className="ml-0.5 w-full flex flex-col justfy-center items-center gap-2">
+      {links.map((item, index) => (
+        <MenuLink url={item?.url} active={wallet} key={index}>
+          <img src={item?.img} alt="" />
+          {isButtonActivated ? null : item?.text}
+        </MenuLink>
+      ))}
+    </ul>
+  </div>
+);
 }

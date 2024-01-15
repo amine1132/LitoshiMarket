@@ -4,7 +4,7 @@ import logo from "#assets/Calque_1.svg";
 import FooterLogo from "#assets/Footer.svg";
 import Modal from "#components/Modal/Modal";
 
-export function Wallet({ wallet, setWallet }) {
+export function Wallet({ wallet, setWallet, isButtonActivated }) {
   const [isConnected, setIsConnected] = useState(false);
   const [uniSatAvailable, setUniSatAvailable] = useState(false);
 
@@ -42,11 +42,12 @@ export function Wallet({ wallet, setWallet }) {
       </div>
       <button
         onClick={requestAccounts}
-        className="flex justify-center items-center gap-3 border py-3 px-4 text-[#fff]"
+        className={`${isButtonActivated ? null : "border"} flex justify-center items-center gap-3 py-3 px-4 text-[#fff]`}
       >
         <img src={FooterLogo} alt="" />
         <Modal />
-        {wallet ? formatAddress(wallet) : <div></div>}
+       {isButtonActivated ? null : (wallet ? formatAddress(wallet) : <div></div>)}
+
       </button>
     </div>
   );

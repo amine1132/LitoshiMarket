@@ -22,17 +22,16 @@ export function  Footer({ isButtonActivated }) {
   ];
 
   return (
-    <div className="w-[85%] mx-auto flex flex-col gap-3 h-[17%]">
+    <div className={`w-[85%] mx-auto flex flex-col gap-3 ${isButtonActivated ? 'h-[25%]' : 'h-[17%]'}`}>
       <a className="w-[85%] mx-auto flex items-center">
-        <img className="mr-2" src="/src/assets/dashboard/BitcoinBTC.svg" />
+        <img className={`${isButtonActivated ? 'ml-1' : 'mr-2'}`} src="/src/assets/dashboard/BitcoinBTC.svg" />
         {isButtonActivated ? null : 'Buy test'}
       </a>
       <div className="border-b border-[#5b5b5c]"></div>
-      <ul className="w-full flex justify-evenly items-center gap-2">
+      <ul className={`${isButtonActivated ? 'flex-wrap gap-2' : 'gap-2'} flex justify-evenly items-center`}>
         {links.map((item, index) => (
           <li
             className={`      
-              h-[10%]
               text-white
               cursor-pointer
               p-0
@@ -40,6 +39,7 @@ export function  Footer({ isButtonActivated }) {
               border-[#00000000]
               hover:bg-[#563aff33]
               hover:border-[#563aff]
+              ${isButtonActivated ? 'mb-2' : ''}
             `}
             key={index}
             onClick={() => navigate(item?.url)}
