@@ -3,6 +3,7 @@ import { BsArrowRightShort } from "react-icons/bs";
 import { BsArrowLeftShort } from "react-icons/bs";
 import Explorer_chart from "../../components/Explorer/Explorer_chart";
 import Modalv2 from "../../components/Explorer/Modalv2";
+import DataToken from "./DataTokenComponent"
 
 export default function Condition_explorer({ Explorer }) {
   const [selectedTokenName, setSelectedTokenName] = useState("");
@@ -100,52 +101,13 @@ export default function Condition_explorer({ Explorer }) {
             )}
           </div>
         </div>
-        <div className="explorer_token_table">
-          <p>LITS/LITE</p>
-          <div className="explorer_token_flex1">
-            <p>Price USD</p>
-            <p>Marketcap{totalMarketCap}</p>
-          </div>
-          <div className="explorer_token_flex1">
-            <p>5M</p>
-            <p>1H</p>
-            <p>24H</p>
-          </div>
-          <div className="explorer_token_flex2">
-            <div className="flex justify-around	">
-              <p>TXNS</p>
-              <p>Volume</p>
-            </div>
-            <div className="flex justify-around">
-              <p>Buys</p>
-              <p>SELLS</p>
-            </div>
-            <div className="flex justify-around">
-              <p>BUY VOL</p>
-              <p>SELL VOL</p>
-            </div>
-          </div>
-          <div className="flex_justify-content">
-            <div className="flex flex-col w-full items-center gap-2">
-              <button>Watchlist</button>
-              <Modalv2 />
-              <button>Trade on unilit</button>
-            </div>
-          </div>
-          <div className="token_created">
-            <p>Token created</p>
-          </div>
-          <div className="flex flex-col gap-5">
-            <input type="text" className="border-solid border-3" />
-            <input type="text" className="border-solid" />
-          </div>
-          <div className="flex justify-around">
-            <button>discord</button>
-            <button>twitter</button>
-            <button>github</button>
-            <button>medium</button>
-          </div>
-        </div>
+
+        {/* DataToken */}
+
+          <DataToken/>
+
+        {/* DataToken end*/}
+
       </div>
     </>
   );
