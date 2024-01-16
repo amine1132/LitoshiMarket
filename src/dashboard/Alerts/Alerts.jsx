@@ -21,6 +21,7 @@ import Bitcoin from "#assets/BitcoinBTC.svg";
 import litecoinltclogo from "#assets/LitecoinLTC.svg";
 import dogecoindogelogo from "#assets/DogecoinDRC.svg";
 import AlertsPage from "../../components/Explorer/AlertsPage";
+import WelcomeBack from "../../components/Elements/WelcomeBack";
 
 export default function Alerts({ wallet }) {
   const [isOver1000Px, setIsOver1000Px] = useState(true);
@@ -48,33 +49,7 @@ export default function Alerts({ wallet }) {
               <div className="top">
                 <div className="style">
                   <div className="stylev2">
-                    <div className="filtre-dashboard">
-                      <p>Chains filter</p>
-                      <button
-                        type="button"
-                        className="btc"
-                        onClick={() => handleFilterClick("bitcoin")}
-                      >
-                        <img src={Bitcoin} alt="" />
-                        {isOver1000Px && <div>Bitcoin</div>}
-                      </button>
-                      <button
-                        type="button"
-                        className="ltc"
-                        onClick={() => handleFilterClick("litecoin")}
-                      >
-                        <img src={litecoinltclogo} alt="" />
-                        {isOver1000Px && <div>Litecoin</div>}
-                      </button>
-                      <button
-                        type="button"
-                        className="drc"
-                        onClick={() => handleFilterClick("dogechain")}
-                      >
-                        <img src={dogecoindogelogo} alt="" />
-                        {isOver1000Px && <div>Dogechain</div>}
-                      </button>
-                    </div>
+                    <WelcomeBack/>
                   </div>
                 </div>
                 <div className="style"></div>

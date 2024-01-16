@@ -31,6 +31,7 @@ import NFT from "#assets/dashboard/Nft.png";
 import "./Mont/Mont-Bold.otf";
 import "./Mont/Mont-Regular.otf";
 import "./Mont/Mont-SemiBold.otf";
+import WelcomeMessage from "../components/Elements/WelcomeBack";
 
 const chartOptions = {
   responsive: true,
@@ -453,9 +454,7 @@ function Dashboard({ wallet }) {
                   <div className="stylev2">
                     <div className="filtre-dashboard">
 
-                      {/* MESSAGE WELCOME BACK */}
-                      <h1 className="text-2xl">Welcome Back <span className="text-blue-500">xxxx</span></h1>
-                      {/* MESSAGE WELCOME BACK */}
+                      <WelcomeMessage/>
 
                       <Tooltip title="Copy address">
                         <div className="copy" id="copyAddress">
@@ -464,10 +463,6 @@ function Dashboard({ wallet }) {
                       </Tooltip>
                     </div>
                   </div>
-
-                  {/* MESSAGE WELCOME BACK */}
-                  <p className="mt-[2%] text-sm">We hope everything is fine today...</p>
-                  {/* MESSAGE WELCOME BACK */}
 
                 </div>
                 <div className="input">

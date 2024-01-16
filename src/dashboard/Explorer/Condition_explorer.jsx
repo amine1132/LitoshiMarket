@@ -22,11 +22,11 @@ export default function Condition_explorer({ Explorer }) {
   }
   return (
     <>
-      <div className="hidden">
+      {/* <div className="hidden">
         Nom du token sélectionné : {selectedTokenName.toUpperCase()}
-      </div>
-      <div className="flex gap-1 items-center mt-2.5">
-        <BsArrowLeftShort
+      </div> */}
+      <div className="flex gap-1 items-center mt-2.5 pt-[3%]">
+        {/* <BsArrowLeftShort
           className="text-2xl cursor-pointer"
           onClick={() => setIsContentCleared("")}
         />
@@ -34,7 +34,7 @@ export default function Condition_explorer({ Explorer }) {
         <BsArrowRightShort className="text-2xl" />
         <p>Explorer</p>
         <BsArrowRightShort className="text-2xl" />
-        {selectedTokenName.toUpperCase()}
+        {selectedTokenName.toUpperCase()} */}
       </div>
       <div className="w-full flex gap-6">
         <div className="flex flex-col w-3/4 gap-10">
@@ -101,13 +101,20 @@ export default function Condition_explorer({ Explorer }) {
             )}
           </div>
         </div>
-
+        <div className="flex flex-col w-[40%]">
+        <div className="w-[25%] mb-[5%] ml-[70%] border bg-[#2F207C] justify-items-end border-[#2F207C] p-[1%] rounded">
+          <input
+            type="text"
+            placeholder="Search"
+            className="text-right pr-[5%]"
+          />
+        </div>
         {/* DataToken */}
 
           <DataToken/>
 
         {/* DataToken end*/}
-
+        </div>
       </div>
     </>
   );

@@ -8,6 +8,7 @@ import TickComponent2 from "./TickComponent2";
 import TickComponent3 from "./TickComponent3";
 import Condition_explorer from "./Condition_explorer";
 import Filtre from '../../utils/Filtre';
+import WelcomeMessage from '../../components/Elements/WelcomeBack'
 
 const chartOptions = {
   responsive: true,
@@ -210,8 +211,11 @@ function Explorer({ tokenData }) {
           <div className="idk">
             <header>
               <div className="top">
-                <div className="style"></div>
+                <div className="style">
+                  <WelcomeMessage/>
+                </div>
                 <div className="input">
+
                   <div className="notif"></div>
                 </div>
               </div>

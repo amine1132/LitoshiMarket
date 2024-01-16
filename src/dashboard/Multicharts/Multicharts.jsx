@@ -22,6 +22,7 @@ import Addchart from "../../components/Multicharts/Modal";
 import { FaRegCopy } from "react-icons/fa";
 import { Tooltip } from "@mui/material";
 import Modalchart from "../../components/Multicharts/Modal";
+import WelcomeBack from "../../components/Elements/WelcomeBack";
 
 const chartOptions = {
   responsive: true,
@@ -453,33 +454,12 @@ function Multicharts({ wallet }) {
       <header>
         <div className="top">
           <div className="style">
+          <div className="flex w-full ml-[10%]">
+                  <WelcomeBack/>
+          </div>
             <div className="stylev2">
               <div className="filtre-dashboard">
-                <p>Chains filter</p>
-                <button
-                  type="button"
-                  className="btc"
-                  onClick={() => handleFilterClick("bitcoin")}
-                >
-                  <img src={Bitcoin} alt="" />
-                  {isOver1000Px && <div>Bitcoin</div>}
-                </button>
-                <button
-                  type="button"
-                  className="ltc"
-                  onClick={() => handleFilterClick("litecoin")}
-                >
-                  <img src={litecoinltclogo} alt="" />
-                  {isOver1000Px && <div>Litecoin</div>}
-                </button>
-                <button
-                  type="button"
-                  className="drc"
-                  onClick={() => handleFilterClick("dogechain")}
-                >
-                  <img src={dogecoindogelogo} alt="" />
-                  {isOver1000Px && <div>Dogechain</div>}
-                </button>
+                
                 <Tooltip title="Copy address">
                   <div className="copy" id="copyAddress">
                     <FaRegCopy />

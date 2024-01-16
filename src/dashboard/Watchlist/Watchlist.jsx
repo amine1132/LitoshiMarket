@@ -6,6 +6,7 @@ import arrowright from "#assets/arrowright2.svg";
 import addwatch from "#assets/additem.svg";
 import notification from "#assets/notification.svg";
 import search from "#assets/search.svg";
+import WelcomeBack from "../../components/Elements/WelcomeBack"
 
 import "./Watchlist.css";
 
@@ -200,33 +201,7 @@ function Explorer() {
             <div className="top">
               <div className="style">
                 <div className="stylev2">
-                  <div className="filtre-dashboard">
-                    <p>Chains filter</p>
-                    <button
-                      type="button"
-                      className="btc"
-                      onClick={() => handleFilterClick("bitcoin")}
-                    >
-                      <img src={Bitcoin} alt="" />
-                      {isOver1000Px && <div>Bitcoin</div>}
-                    </button>
-                    <button
-                      type="button"
-                      className="ltc"
-                      onClick={() => handleFilterClick("litecoin")}
-                    >
-                      <img src={litecoinltclogo} alt="" />
-                      {isOver1000Px && <div>Litecoin</div>}
-                    </button>
-                    <button
-                      type="button"
-                      className="drc"
-                      onClick={() => handleFilterClick("dogechain")}
-                    >
-                      <img src={dogecoindogelogo} alt="" />
-                      {isOver1000Px && <div>Dogechain</div>}
-                    </button>
-                  </div>
+                  <WelcomeBack/>
                 </div>
               </div>
               <div className="style"></div>
