@@ -196,6 +196,9 @@ function Explorer({ tokenData }) {
 
   // FIN FILTRE
 
+  const buttonsTailWindCssTOP = "tokens p-[2%] pb-[9%] pl-[5%] pr-[5%] whitespace-nowrap"
+  const buttonsTailWindCss2ND = "tokens p-[0.5%] pb-[2%] pl-[1%] pr-[1%]"
+
   return (
     <div className="max">
       {isContentCleared ? (
@@ -228,17 +231,9 @@ function Explorer({ tokenData }) {
                       <p>Total</p>
                       {showMarketCapContent ? (
                         <>
-                          <h1>
+                          <h1 className="text-2xl">
                             Market Cap :{" "}
                             {Number(totalMarketCap).toLocaleString("en-US", {
-                              style: "currency",
-                              currency: "USD",
-                              maximumFractionDigits: 0,
-                            })}
-                          </h1>
-                          <h1>
-                            24h Vol :{" "}
-                            {Number(totalVols24h).toLocaleString("en-US", {
                               style: "currency",
                               currency: "USD",
                               maximumFractionDigits: 0,
@@ -248,6 +243,38 @@ function Explorer({ tokenData }) {
                       ) : show24hVolContent ? (
                         <div></div>
                       ) : null}
+                      
+                        <div className="flex pt-[2%]">
+                          <button
+                            type="button"
+                            onClick={handleTokenButtonClick}
+                            className={buttonsTailWindCssTOP}
+                          >
+                            Market Cap
+                          </button>
+                          <button
+                            type="button"
+                            onClick={handleTokenButtonClick}
+                            className={buttonsTailWindCssTOP}
+                          >
+                            24h Vol
+                          </button>
+                          <button
+                            type="button"
+                            onClick={handleTokenButtonClick}
+                            className={buttonsTailWindCssTOP}
+                          >
+                            Dominance
+                          </button>
+                          <button
+                            type="button"
+                            onClick={handleTokenButtonClick}
+                            className={buttonsTailWindCssTOP}
+                          >
+                            Coins
+                          </button>
+                        </div>
+
                     </div>
                     <div className="group2_">
                       <div className="blur">
@@ -268,9 +295,16 @@ function Explorer({ tokenData }) {
                     <button
                       type="button"
                       onClick={handleTokenButtonClick}
-                      className="tokens"
+                      className={buttonsTailWindCss2ND}
                     >
-                      Tokens
+                      Market Cap
+                    </button>
+                    <button
+                      type="button"
+                      onClick={handleTokenButtonClick}
+                      className={buttonsTailWindCss2ND}
+                    >
+                      Mint
                     </button>
                     {/*<button
                     type="button"
