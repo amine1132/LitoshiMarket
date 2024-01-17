@@ -3,7 +3,8 @@ import { BsArrowRightShort } from "react-icons/bs";
 import { BsArrowLeftShort } from "react-icons/bs";
 import Explorer_chart from "../../components/Explorer/Explorer_chart";
 import Modalv2 from "../../components/Explorer/Modalv2";
-import DataToken from "./DataTokenComponent"
+import DataToken from "./DataTokenComponent";
+import Charts_Tradingview from "../../components/Chart/Charts_Tradingview";
 
 export default function Condition_explorer({ Explorer }) {
   const [selectedTokenName, setSelectedTokenName] = useState("");
@@ -39,7 +40,7 @@ export default function Condition_explorer({ Explorer }) {
       <div className="w-full flex gap-6">
         <div className="flex flex-col w-3/4 gap-10">
           <div className="explorer_token_charts">
-            <Explorer_chart />
+            <Charts_Tradingview />
           </div>
           <div className="explorer_token_data">
             {showNFTContent ? (
@@ -102,18 +103,18 @@ export default function Condition_explorer({ Explorer }) {
           </div>
         </div>
         <div className="flex flex-col w-[40%]">
-        <div className="w-[25%] mb-[5%] ml-[70%] border bg-[#2F207C] justify-items-end border-[#2F207C] p-[1%] rounded">
-          <input
-            type="text"
-            placeholder="Search"
-            className="text-right pr-[5%]"
-          />
-        </div>
-        {/* DataToken */}
+          <div className="w-[25%] mb-[5%] ml-[70%] border bg-[#2F207C] justify-items-end border-[#2F207C] p-[1%] rounded">
+            <input
+              type="text"
+              placeholder="Search"
+              className="text-right pr-[5%]"
+            />
+          </div>
+          {/* DataToken */}
 
-          <DataToken/>
+          <DataToken />
 
-        {/* DataToken end*/}
+          {/* DataToken end*/}
         </div>
       </div>
     </>
