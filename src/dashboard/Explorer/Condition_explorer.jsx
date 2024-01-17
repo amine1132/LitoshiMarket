@@ -37,12 +37,12 @@ export default function Condition_explorer({ Explorer }) {
         <BsArrowRightShort className="text-2xl" />
         {selectedTokenName.toUpperCase()} */}
       </div>
-      <div className="w-full flex gap-6">
-        <div className="flex flex-col w-3/4 gap-10">
-          <div className="explorer_token_charts">
+      <div className="w-full ml-[1%] flex h-full gap-6">
+        <div className="flex flex-col w-3/4 gap-5">
+          <div className="explorer_token_charts rounded-lg h-[610px]">
             <Charts_Tradingview />
           </div>
-          <div className="explorer_token_data">
+          <div className="explorer_token_data rounded-lg h-[210px]">
             {showNFTContent ? (
               <nav className="topline_1">
                 <table>
@@ -102,8 +102,8 @@ export default function Condition_explorer({ Explorer }) {
             )}
           </div>
         </div>
-        <div className="flex flex-col w-[40%]">
-          <div className="w-[25%] mb-[5%] ml-[70%] border bg-[#2F207C] justify-items-end border-[#2F207C] p-[1%] rounded">
+        <div className="flex flex-col w-[35%]">
+          <div className="w-[25%] mb-[15px] ml-[70%] border bg-[#2F207C] justify-items-end border-[#2F207C] p-[5px] rounded">
             <input
               type="text"
               placeholder="Search"

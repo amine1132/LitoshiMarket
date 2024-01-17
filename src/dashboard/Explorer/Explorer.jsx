@@ -196,7 +196,7 @@ function Explorer({ tokenData }) {
 
   // FIN FILTRE
 
-  const buttonsTailWindCssTOP = "tokens p-[2%] pb-[9%] pl-[5%] pr-[5%] whitespace-nowrap"
+  const buttonsTailWindCssTOP = "tokens p-[2%] pb-[8%] pl-[5%] pr-[5%] whitespace-nowrap"
   const buttonsTailWindCss2ND = "tokens p-[0.5%] pb-[2%] pl-[1%] pr-[1%]"
 
   return (
@@ -225,10 +225,13 @@ function Explorer({ tokenData }) {
             </header>
             <div className="scroll_contenu">
               <div className="groupe1">
-                <div className="box_1">
+                <div className="box_1 ">
                   <div className="group_v1">
                     <div className="group1_">
                       <p>Total</p>
+
+                      <div className="flex">
+
                       {showMarketCapContent ? (
                         <>
                           <h1 className="text-2xl">
@@ -244,6 +247,9 @@ function Explorer({ tokenData }) {
                         <div></div>
                       ) : null}
                       
+                      {/* <h1 className="text-xl">$250,000</h1> */}
+                      </div>
+
                         <div className="flex pt-[2%]">
                           <button
                             type="button"

@@ -9,6 +9,8 @@ export default function TickComponent({ tokenData, onTableRowClick }) {
       return balance.toString();
     }
   };
+  
+
   return (
     <>
       <tr
@@ -17,8 +19,8 @@ export default function TickComponent({ tokenData, onTableRowClick }) {
       >
         <td className="iconoutline" >{tokenData.star}</td>
         <td className="number_table">{tokenData.index}</td>
-        <td className="border_bottom">{tokenData.tick.toUpperCase()}</td>
-        <td  onClick={() => CallFiltre } className="border_bottom">
+        <td className="">{tokenData.tick.toUpperCase()}</td>
+        <td  onClick={() => CallFiltre } className={tokenData.price ? "text-white-500" : "text-gray-500"}>
           {tokenData.price
             ? parseFloat(tokenData.price).toLocaleString("en-US", {
                 style: "currency",
@@ -31,10 +33,10 @@ export default function TickComponent({ tokenData, onTableRowClick }) {
         <td
           className={
             tokenData.change_24h && parseFloat(tokenData.change_24h) < 0
-              ? "negative"
+              ? "text-red-500"
               : tokenData.change_24h && parseFloat(tokenData.change_24h) > 0
-              ? "positive"
-              : "na"
+              ? "text-green-500"
+              : "text-gray-500"
           }
         >
           {tokenData.change_24h
@@ -43,14 +45,14 @@ export default function TickComponent({ tokenData, onTableRowClick }) {
               "%"
             : "N/A"}
         </td>
-        <td className="border_bottom">
+        <td className={tokenData.vol_24h ? "text-white-500" : "text-gray-500"}>
           {Number(tokenData.vol_24h).toLocaleString("en-US", {
             style: "currency",
             currency: "USD",
             maximumFractionDigits: 0,
           })}
         </td>
-        <td className="border_bottom">
+        <td className={tokenData.marketcap ? "text-white-500" : "text-gray-500"}>
           {tokenData.marketcap
             ? Number(tokenData.marketcap).toLocaleString("en-US", {
                 style: "currency",
@@ -59,7 +61,7 @@ export default function TickComponent({ tokenData, onTableRowClick }) {
               })
             : "N/A"}
         </td>
-        <td className="border_bottom">{formatBalance(tokenData.max_supply)}</td>
+        <td className="">{formatBalance(tokenData.max_supply)}</td>
       </tr>
     </>
   );

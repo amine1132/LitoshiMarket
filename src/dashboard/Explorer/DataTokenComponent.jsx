@@ -2,7 +2,7 @@ export default function DataToken(){
     return(
         <>
 
-          <div className="pl-[2%] mr-[5%] pr-[2%] h-[100%] bg-gradient-to-b from-[rgba(86,58,255,0.35)] via-transparent to-[rgba(128,128,128,0.0735)] rounded-lg">
+          <div className="pl-[5%] mr-[5%] pr-[5%] h-[789px] bg-gradient-to-b from-[rgba(86,58,255,0.35)] via-transparent to-[rgba(128,128,128,0.0735)] rounded-lg overflow-y-auto">
 
           <h1 className="pt-[5%]">LITS/LITE</h1>
           <div className="border mt-[1%]"></div>
@@ -45,23 +45,23 @@ export default function DataToken(){
 
 
           <div className="flex justify-between mt-[3%]">
-            <div className="border rounded-lg pl-[2%] w-full pr-[8%] py-[2%]">
-              <small className="text-[#563AFF]">Holders</small>
-              <p>4500</p>
-            </div>
+              <div className="border rounded-lg pl-[2%] w-full pr-[8%] py-[2%]">
+                <small className="text-[#563AFF]">Holders</small>
+                <p>4500</p>
+              </div>
+              <div className="border rounded-lg pl-[2%] w-full pr-[8%] py-[2%] mx-[4%]">
+                <small className="text-[#563AFF]">TXNS</small>
+                <p>2.50</p>
+              </div>
+              <div className="border rounded-lg pl-[2%] w-full pr-[8%] py-[2%]">
+                <small className="text-[#563AFF]">Volume</small>
+                <p>$2.50M</p>
+              </div>
           </div>
 
 
           <div className="border rounded-lg px-[5%] w-full py-[2%] mt-[3%]">
-            <div className="flex justify-between pt-[5%]">
-              <div>
-                <small className="text-[#563AFF]">TXNS</small>
-                <p>2.50</p>
-              </div>
-              <div className="text-end">
-                <small className="text-[#563AFF]">Volume</small>
-                <p>$2.50M</p>
-              </div>
+            <div className="flex justify-between">
             </div>
 
             <div className="flex justify-between pt-[2%]">
@@ -100,12 +100,14 @@ export default function DataToken(){
 
           <div className="flex justify-between pt-[2%]">
             <div className="flex flex-col w-full items-center gap-2">
-            <button className="text-center border rounded-lg w-full py-[2%] mt-[1%] bg-[#2F207C]">
-              Watchlist
-            </button>
-            <button className="text-center border rounded-lg w-full py-[2%] mt-[1%] bg-[#2F207C]">
-              Alert
-            </button>
+            <div className="flex w-full items-center gap-2">
+              <button className="text-center border rounded-lg w-full py-[2%] mt-[1%] bg-[#2F207C]">
+                Watchlist
+              </button>
+              <button className="text-center border rounded-lg w-full py-[2%] mt-[1%] bg-[#2F207C]">
+                Alert
+              </button>
+            </div>
             <button className="text-center border rounded-lg w-full py-[2%] mt-[1%] bg-[#2F207C]">
               Trade on unilit
             </button>

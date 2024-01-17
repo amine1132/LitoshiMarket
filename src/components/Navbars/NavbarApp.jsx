@@ -42,7 +42,7 @@ export function NavbarApp({ wallet, setWallet }) {
     h-screen fixed bg-gradient-to-t from-[rgba(86,58,255,0.1)] to-[rgba(255,255,255,0.2)] border-2 border-solid border-indigo-600 rounded-tl-none rounded-tr-2xl rounded-br-2xl rounded-bl-none`}>
     <button onClick={toggleWidth} className="absolute top-4 right-4">{buttonText}</button>
     {/* END BUTTON CHANGE SIZE */}
-        <div className="h-full flex flex-col overflow-y-auto">
+        <div className="h-full overflow-x-hidden flex flex-col overflow-y-auto">
           <div className="h-full flex flex-col gap-10 mt-20">
             <Wallet wallet={wallet} setWallet={setWallet} isButtonActivated={isCollapsed} />
             <Profile wallet={wallet} isButtonActivated={isCollapsed}/>
