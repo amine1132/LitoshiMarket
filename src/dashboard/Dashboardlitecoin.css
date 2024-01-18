@@ -246,12 +246,6 @@ table thead {
     height: 50px;
 }
 
-table td {
-    text-align: center;
-    padding-bottom: 25px;
-    padding-top: 25px;
-}
-
 .select1 {
     background-color: #1e1e1e;
     height: 40px;

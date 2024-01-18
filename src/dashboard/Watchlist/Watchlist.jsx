@@ -24,6 +24,7 @@ import { BsStar } from "react-icons/bs";
 import Bitcoin from "#assets/BitcoinBTC.svg";
 import litecoinltclogo from "#assets/LitecoinLTC.svg";
 import dogecoindogelogo from "#assets/DogecoinDRC.svg";
+import Filtre from '../../utils/Filtre';
 
 const chartOptions = {
   responsive: true,
@@ -91,11 +92,14 @@ function Explorer() {
         "https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/0/1"
       );
       const data = sortedData.data.items;
+      let compteur = 1;
       data.forEach((token) => {
         token.star = <BsStar />;
         token.vol_24h = token.vol_24h * Math.pow(10, -8) * btc_price;
         token.marketcap = token.marketcap * Math.pow(10, -8) * btc_price;
         token.price = token.marketcap / token.max_supply;
+        token.index = compteur;
+        compteur += 1 ;
       });
       // Merge enhanced data with previous data
       setData(data);
@@ -192,6 +196,33 @@ function Explorer() {
   useEffect(() => {
     window.addEventListener("resize", handleResize);
   });
+
+
+
+  // FILTRE
+
+  const [sortOrder,setSortOrder] = useState(null);
+
+  let tokenName = "token";
+  let priceName = "price";
+  let marketCapName = "marketcap";
+  let volumeName = "vol_24h";
+  let supplyName = "max_supply";
+  let _24hName = "change_24h";
+  let indexToken = "index";
+
+  const [Arrows, setArrows] = useState([
+    { name: tokenName, arrow: "" },
+    { name: priceName, arrow: "" },
+    { name: marketCapName, arrow: "" },
+    { name: volumeName, arrow: "" },
+    { name: supplyName, arrow: "" },
+    { name: _24hName, arrow: "" },
+    { name: indexToken, arrow: "" },
+  ]);
+
+  // FIN FILTRE
+
 
   return (
     <div className="max">
@@ -338,13 +369,13 @@ function Explorer() {
                     <table>
                       <thead>
                         <th></th>
-                        <th></th>
-                        <th>Token</th>
-                        <th>Price</th>
-                        <th>24h</th>
-                        <th>24h Volume</th>
-                        <th>Market Cap</th>
-                        <th>Supply</th>
+                        {/* <th className="hoverable" name={indexToken} onClick={() => Filtre(indexToken, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[6].arrow}</th> */}
+                        <th className="hoverable" name={tokenName} onClick={() => Filtre(tokenName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[0].arrow}Token</th>
+                        <th className="hoverable" name={priceName} onClick={() => Filtre(priceName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[1].arrow}Price</th>
+                        <th className="hoverable" name={_24hName} onClick={() => Filtre(_24hName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[5].arrow}24h</th>
+                        <th className="hoverable" name={volumeName} onClick={() => Filtre(volumeName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[3].arrow}24h Volume</th>
+                        <th className="hoverable" name={marketCapName} onClick={() => Filtre(marketCapName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[2].arrow}Market Cap</th>
+                        <th className="hoverable" name={supplyName} onClick={() => Filtre(supplyName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[4].arrow}Supply</th>
                       </thead>
                       <tbody className="semi">
                         {data.map((token, index) => (
@@ -397,9 +428,9 @@ function TickComponent({ tokenData, index }) {
     <>
       <tr>
         <td className="iconoutline">{tokenData.star}</td>
-        <td className="number_table">{index}</td>
+        {/* <td className="number_table">{tokenData.index}</td> */}
         <td className="border_bottom">{tokenData.tick.toUpperCase()}</td>
-        <td className="border_bottom">
+        <td className={tokenData.price ? "text-white-500" : "text-gray-500"}>
           {tokenData.price
             ? parseFloat(tokenData.price).toLocaleString("en-US", {
                 style: "currency",
@@ -412,10 +443,10 @@ function TickComponent({ tokenData, index }) {
         <td
           className={
             tokenData.change_24h && parseFloat(tokenData.change_24h) < 0
-              ? "negative"
+              ? "text-red-500"
               : tokenData.change_24h && parseFloat(tokenData.change_24h) > 0
-              ? "positive"
-              : "na"
+              ? "text-green-500"
+              : "text-gray-500"
           }
         >
           {tokenData.change_24h
@@ -431,7 +462,7 @@ function TickComponent({ tokenData, index }) {
             maximumFractionDigits: 0,
           })}
         </td>
-        <td className="border_bottom">
+        <td className={tokenData.marketcap ? "text-white-500" : "text-gray-500"}>
           {tokenData.marketcap
             ? Number(tokenData.marketcap).toLocaleString("en-US", {
                 style: "currency",

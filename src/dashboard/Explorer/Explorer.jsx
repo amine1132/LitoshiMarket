@@ -349,7 +349,7 @@ function Explorer({ tokenData }) {
                       <table>
                         <thead>
                           <th></th>
-                          <th className="hoverable" name={indexToken} onClick={() => Filtre(indexToken, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[6].arrow}#</th>
+                          {/* <th className="hoverable" name={indexToken} onClick={() => Filtre(indexToken, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[6].arrow}</th> */}
                           <th className="hoverable" name={tokenName} onClick={() => Filtre(tokenName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[0].arrow}Token</th>
                           <th className="hoverable" name={priceName} onClick={() => Filtre(priceName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[1].arrow}Price</th>
                           <th className="hoverable" name={_24hName} onClick={() => Filtre(_24hName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[5].arrow}24h</th>

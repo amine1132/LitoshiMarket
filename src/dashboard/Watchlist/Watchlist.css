@@ -57,6 +57,11 @@
   width: 100%;
   align-items: center;
 }
+table td {
+  text-align: left;
+  padding-bottom: 7px;
+  padding-top: 7px;
+}
 .group1_watchlist p {
   color: rgba(255, 255, 255, 0.6);
 }

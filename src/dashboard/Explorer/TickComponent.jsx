@@ -10,6 +10,7 @@ export default function TickComponent({ tokenData, onTableRowClick }) {
     }
   };
   
+  
 
   return (
     <>
@@ -18,7 +19,7 @@ export default function TickComponent({ tokenData, onTableRowClick }) {
         className="cursor-pointer"
       >
         <td className="iconoutline" >{tokenData.star}</td>
-        <td className="number_table">{tokenData.index}</td>
+        {/* <td className="number_table">{tokenData.index}</td> */}
         <td className="">{tokenData.tick.toUpperCase()}</td>
         <td  onClick={() => CallFiltre } className={tokenData.price ? "text-white-500" : "text-gray-500"}>
           {tokenData.price

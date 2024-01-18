@@ -259,14 +259,8 @@ table {
 
 table thead {
   top: 0;
-  background: #2a2353;
+  /* background: #2a2353; */
   height: 50px;
-}
-
-table td {
-  text-align: center;
-  padding-bottom: 25px;
-  padding-top: 25px;
 }
 
 .select1 {
@@ -945,7 +939,7 @@ table td {
 }
 
 .border_bottom {
-  border-bottom: 1px solid rgba(100, 115, 254, 0.3);
+  /* border-bottom: 1px solid rgba(100, 115, 254, 0.3); */
 }
 
 .scroll_contenu_1 {
