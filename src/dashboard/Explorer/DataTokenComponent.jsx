@@ -2,7 +2,7 @@ export default function DataToken(){
     return(
         <>
 
-          <div className="pl-[5%] mr-[5%] pr-[5%] h-[789px] bg-gradient-to-b from-[rgba(86,58,255,0.35)] via-transparent to-[rgba(128,128,128,0.0735)] rounded-lg overflow-y-auto">
+          <div className="pl-[5%] mr-[5%] pr-[5%] h-[840px] bg-gradient-to-b from-[rgba(86,58,255,0.35)] via-transparent to-[rgba(128,128,128,0.0735)] rounded-lg overflow-y-auto">
 
           <h1 className="pt-[5%]">LITS/LITE</h1>
           <div className="border mt-[1%]"></div>

@@ -7,6 +7,8 @@ import { Wallet } from "./Wallet/Wallet";
 import { Profile } from "./Profile/Profile";
 import { Tokens } from "./Tokens/Tokens";
 import { Footer } from "./Footer/Footer";
+import { Logo } from "../Elements/Logo"
+import { SearchBar } from "../Elements/SearchBar"
 
 import "./NavbarApp.css";
 
@@ -44,10 +46,12 @@ export function NavbarApp({ wallet, setWallet }) {
     {/* END BUTTON CHANGE SIZE */}
         <div className="h-full overflow-x-hidden flex flex-col overflow-y-auto">
           <div className="h-full flex flex-col gap-10 mt-20">
-            <Wallet wallet={wallet} setWallet={setWallet} isButtonActivated={isCollapsed} />
+            <Logo/>
+            <SearchBar isButtonActivated={isCollapsed}/>
             <Profile wallet={wallet} isButtonActivated={isCollapsed}/>
             <Tokens wallet={wallet} isButtonActivated={isCollapsed}/>
           </div>
+          <Wallet wallet={wallet} setWallet={setWallet} isButtonActivated={isCollapsed} />
           <Footer isButtonActivated={isCollapsed}/>
         </div>
       </div>

@@ -477,14 +477,6 @@ function Dashboard({ wallet }) {
                   {/* <button onClick={requestAccounts}>Connect your wallet</button> */}
                   {/* <div className="notif"></div>
                 </div> */}
-                <div className="flex w-[250px] mb-[15px] mt-[30px] border bg-[#2F207C] justify-items-end border-[#2F207C] p-[10px] rounded">
-                  <img src="/src/assets/search.svg" className="" alt="" />
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    className="text-left pl-[5%]"
-                  />
-                </div>
               </div>
             </header>
             <div className="scroll_contenu_1">

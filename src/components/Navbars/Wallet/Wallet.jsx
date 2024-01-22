@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-import logo from "#assets/Calque_1.svg";
 import FooterLogo from "#assets/Footer.svg";
 import Modal from "#components/Modal/Modal";
 import { useSelector, useDispatch } from "react-redux";
@@ -55,9 +54,6 @@ export function Wallet({ wallet, setWallet, isButtonActivated }) {
   }
   return (
     <div className="w-full flex flex-col gap-4 justify-center items-center">
-      <div className="w-full h-1/2 flex justify-center items-center mb-10">
-        <img src={logo} alt="Logo" className="w-[80%] absolute" />
-      </div>
       <button
         onClick={openModal}
         className={`${
