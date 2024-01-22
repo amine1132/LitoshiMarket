@@ -236,7 +236,7 @@ function Explorer() {
                 </div>
               </div>
               <div className="style"></div>
-              <div className="input">
+              {/* <div className="input">
                 <div className="loupe_">
                   <img src={search} alt="" />
                 </div>
@@ -244,9 +244,17 @@ function Explorer() {
                   type="text"
                   placeholder="Token, pair, address..."
                   className="formulaire_2"
-                />
+                /> */}
                 {/* <button onClick={requestAccounts}>Connect your wallet</button> */}
-                <div className="notif"></div>
+                {/* <div className="notif"></div>
+              </div> */}
+              <div className="flex w-[250px] mb-[15px] mt-[30px] border bg-[#2F207C] justify-items-end border-[#2F207C] p-[10px] rounded">
+                <img src="/src/assets/search.svg" className="" alt="" />
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className="text-left pl-[5%]"
+                />
               </div>
             </div>
           </header>
@@ -334,14 +342,14 @@ function Explorer() {
                   <button
                     type="button"
                     onClick={handleTokenButtonClick}
-                    className="tokens"
+                    className="pb-[35px] p-[10px] pr-[15px] pl-[15px]"
                   >
                     Market Cap
                   </button>
                   <button
                     type="button"
                     onClick={handleNFTButtonClick}
-                    className="mint"
+                    className="pb-[35px] p-[10px] pr-[15px] pl-[15px]"
                   >
                     Mint
                   </button>
@@ -367,10 +375,10 @@ function Explorer() {
                 ) : showTokenContent ? (
                   <nav className="topline_1">
                     <table>
-                      <thead>
+                      <thead className="text-xs">
                         <th></th>
                         {/* <th className="hoverable" name={indexToken} onClick={() => Filtre(indexToken, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[6].arrow}</th> */}
-                        <th className="hoverable" name={tokenName} onClick={() => Filtre(tokenName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[0].arrow}Token</th>
+                        <th className="hoverable" name={tokenName} onClick={() => Filtre(tokenName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{/*{Arrows[0].arrow}Token*/}</th>
                         <th className="hoverable" name={priceName} onClick={() => Filtre(priceName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[1].arrow}Price</th>
                         <th className="hoverable" name={_24hName} onClick={() => Filtre(_24hName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[5].arrow}24h</th>
                         <th className="hoverable" name={volumeName} onClick={() => Filtre(volumeName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[3].arrow}24h Volume</th>

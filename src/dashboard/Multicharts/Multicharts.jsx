@@ -452,6 +452,7 @@ function Multicharts({ wallet }) {
   return (
     <>
       <header>
+        
         <div className="top">
           <div className="style">
           <div className="flex w-full ml-[10%]">
@@ -468,7 +469,7 @@ function Multicharts({ wallet }) {
               </div>
             </div>
           </div>
-          <div className="input">
+          {/* <div className="input">
             <div className="loupe_">
               <img src={search} alt="" />
             </div>
@@ -478,7 +479,15 @@ function Multicharts({ wallet }) {
               className="formulaire_2"
             />
             <div className="notif"></div>
-          </div>
+          </div> */}
+            <div className="flex w-[250px] mb-[15px] mt-[30px] border bg-[#2F207C] justify-items-end border-[#2F207C] p-[10px] rounded">
+              <img src="/src/assets/search.svg" className="" alt="" />
+              <input
+                type="text"
+                placeholder="Search"
+                className="text-left pl-[5%]"
+              />
+            </div>
         </div>
       </header>
       <div className="mutlichart_add_flex">

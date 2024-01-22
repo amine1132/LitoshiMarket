@@ -52,7 +52,7 @@ export default function Alerts({ wallet }) {
                     <WelcomeBack/>
                   </div>
                 </div>
-                <div className="style"></div>
+                {/* <div className="style"></div>
                 <div className="input">
                   <div className="loupe_">
                     <img src={search} alt="" />
@@ -61,9 +61,17 @@ export default function Alerts({ wallet }) {
                     type="text"
                     placeholder="Token, pair, address..."
                     className="formulaire_2"
-                  />
+                  /> */}
                   {/* <button onClick={requestAccounts}>Connect your wallet</button> */}
-                  <div className="notif"></div>
+                  {/* <div className="notif"></div>
+                </div> */}
+                <div className="flex w-[250px] mb-[15px] mt-[30px] border bg-[#2F207C] justify-items-end border-[#2F207C] p-[10px] rounded">
+                  <img src="/src/assets/search.svg" className="" alt="" />
+                  <input
+                    type="text"
+                    placeholder="Search"
+                    className="text-left pl-[5%]"
+                  />
                 </div>
               </div>
             </header>
@@ -83,7 +91,7 @@ export default function Alerts({ wallet }) {
                     <p>ORDI/BRC20</p>
                   </div>
                   <div className="flex justify-between items-center">
-                    <AlertsPage />
+                    {/* <AlertsPage /> */}
                     <div className="alert_text">
                       <p className="text-green-500 text-xs font-normal font-semibold leading-normal tracking-tighter flex gap-2">
                         <img src={notification} alt="" />

@@ -37,13 +37,13 @@ export default function Condition_explorer({ Explorer }) {
         <BsArrowRightShort className="text-2xl" />
         {selectedTokenName.toUpperCase()} */}
       </div>
-      <div className="w-full ml-[1%] flex h-full gap-6">
+      <div className="w-full flex h-full gap-6">
         <div className="flex flex-col w-3/4 gap-5">
           <div className="explorer_token_charts rounded-lg h-[610px]">
             <Charts_Tradingview />
           </div>
-          <div className="explorer_token_data rounded-lg h-[210px]">
-            {showNFTContent ? (
+          <div className="explorer_token_data rounded-lg h-[210px] overflow-y-auto">
+            {/* {showNFTContent ? (
               <nav className="topline_1">
                 <table>
                   <thead>
@@ -99,15 +99,41 @@ export default function Condition_explorer({ Explorer }) {
               </nav>
             ) : (
               <div></div>
-            )}
+            )} */}
+                <table className="text-left ml-[2.5%] w-[95%] text-sm">
+                  <thead className="border-b">
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>USD</th>
+                    <th>$LITE</th>
+                    <th>Price</th>
+                    <th>TXN</th>
+                    <th>Supply</th>
+                  </thead>
+                  {
+                    Array.from({ length: 15 }).map((_, index) => (
+                      <tbody key={index} className="semi border-b">
+                        <td className="">d</td>
+                        <td className="">d</td>
+                        <td className="">d</td>
+                        <td className="">d</td>
+                        <td className="">d</td>
+                        <td className="">d</td>
+                        <td className="">d</td>
+                      </tbody>
+                    ))
+                  }
+                </table>
+
           </div>
         </div>
         <div className="flex flex-col w-[35%]">
-          <div className="w-[25%] mb-[15px] ml-[70%] border bg-[#2F207C] justify-items-end border-[#2F207C] p-[5px] rounded">
+          <div className="flex w-[45%] mb-[15px] ml-[50%] border bg-[#2F207C] justify-items-end border-[#2F207C] p-[10px] rounded">
+            <img src="/src/assets/search.svg" className="" alt="" />
             <input
               type="text"
               placeholder="Search"
-              className="text-right pr-[5%]"
+              className="text-left pl-[5%]"
             />
           </div>
           {/* DataToken */}

@@ -196,8 +196,8 @@ function Explorer({ tokenData }) {
 
   // FIN FILTRE
 
-  const buttonsTailWindCssTOP = "tokens p-[2%] pb-[8%] pl-[5%] pr-[5%] whitespace-nowrap"
-  const buttonsTailWindCss2ND = "tokens p-[0.5%] pb-[2%] pl-[1%] pr-[1%]"
+  const buttonsTailWindCssTOP = "tokens pb-[35px] p-[10px] pr-[15px] pl-[15px] whitespace-nowrap"
+  const buttonsTailWindCss2ND = "tokens pb-[35px] p-[10px] pr-[15px] pl-[15px]"
 
   return (
     <div className="max">
@@ -217,10 +217,14 @@ function Explorer({ tokenData }) {
                 <div className="style">
                   <WelcomeMessage/>
                 </div>
-                <div className="input">
-
-                  <div className="notif"></div>
-                </div>
+                <div className="flex w-[250px] mb-[15px] mt-[30px] border bg-[#2F207C] justify-items-end border-[#2F207C] p-[10px] rounded">
+                <img src="/src/assets/search.svg" className="" alt="" />
+                <input
+                  type="text"
+                  placeholder="Search"
+                  className="text-left pl-[5%]"
+                />
+              </div>
               </div>
             </header>
             <div className="scroll_contenu">
@@ -347,10 +351,10 @@ function Explorer({ tokenData }) {
                   ) : showTokenContent ? (
                     <nav className="topline_1">
                       <table>
-                        <thead>
+                        <thead className="text-xs">
                           <th></th>
                           {/* <th className="hoverable" name={indexToken} onClick={() => Filtre(indexToken, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[6].arrow}</th> */}
-                          <th className="hoverable" name={tokenName} onClick={() => Filtre(tokenName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[0].arrow}Token</th>
+                          <th className="hoverable" name={tokenName} onClick={() => Filtre(tokenName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{/*{Arrows[0].arrow}Token*/}</th>
                           <th className="hoverable" name={priceName} onClick={() => Filtre(priceName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[1].arrow}Price</th>
                           <th className="hoverable" name={_24hName} onClick={() => Filtre(_24hName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[5].arrow}24h</th>
                           <th className="hoverable" name={volumeName} onClick={() => Filtre(volumeName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[3].arrow}24h Volume</th>
