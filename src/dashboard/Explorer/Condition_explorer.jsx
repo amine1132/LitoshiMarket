@@ -5,8 +5,9 @@ import Explorer_chart from "../../components/Explorer/Explorer_chart";
 import Modalv2 from "../../components/Explorer/Modalv2";
 import DataToken from "./DataTokenComponent";
 import Charts_Tradingview from "../../components/Chart/Charts_Tradingview";
+import ChartTradingView from "../../components/Chart/ChartTradingView"
 
-export default function Condition_explorer({ Explorer }) {
+export default function Condition_explorer(tokenData) {
   const [selectedTokenName, setSelectedTokenName] = useState("");
   const [showTransactionContent, setShowTransactionContent] = useState(false);
   const [showNFTContent, setShowNFTContent] = useState(false);
@@ -23,9 +24,7 @@ export default function Condition_explorer({ Explorer }) {
   }
   return (
     <>
-      {/* <div className="hidden">
-        Nom du token sélectionné : {selectedTokenName.toUpperCase()}
-      </div> */}
+    <div className="ml-[1.85%]">
       <div className="flex gap-1 items-center mt-2.5 pt-[3%]">
         {/* <BsArrowLeftShort
           className="text-2xl cursor-pointer"
@@ -39,8 +38,8 @@ export default function Condition_explorer({ Explorer }) {
       </div>
       <div className="w-full flex h-full gap-6">
         <div className="flex flex-col w-3/4 gap-5">
-          <div className="explorer_token_charts rounded-lg h-[610px]">
-            <Charts_Tradingview />
+          <div id="chartmescouilles" className="explorer_token_charts rounded-lg h-[610px]">
+            <ChartTradingView data={tokenData} />
           </div>
           <div className="explorer_token_data rounded-lg h-[210px] overflow-y-auto">
             {/* {showNFTContent ? (
@@ -130,11 +129,12 @@ export default function Condition_explorer({ Explorer }) {
         <div className="flex flex-col w-[35%]">
           {/* DataToken */}
 
-          <DataToken />
+          <DataToken Token={tokenData}/>
 
           {/* DataToken end*/}
         </div>
       </div>
+    </div>
     </>
   );
 }

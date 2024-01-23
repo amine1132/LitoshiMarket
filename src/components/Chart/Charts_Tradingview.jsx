@@ -1,7 +1,8 @@
 // TradingViewWidget.jsx
 import React, { useEffect, useRef, memo } from "react";
 
-function TradingViewWidget() {
+function TradingViewWidget({ data }) {
+  console.log(data)
   const container = useRef();
 
   useEffect(() => {

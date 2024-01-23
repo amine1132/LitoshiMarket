@@ -15,7 +15,7 @@ export default function TickComponent({ tokenData, onTableRowClick }) {
   return (
     <>
       <tr
-        onClick={() => onTableRowClick(tokenData.tick)}
+        onClick={() => onTableRowClick(tokenData)}
         className="cursor-pointer"
       >
         <td className="iconoutline" >{tokenData.star}</td>
@@ -35,7 +35,7 @@ export default function TickComponent({ tokenData, onTableRowClick }) {
           className={
             tokenData.change_24h && parseFloat(tokenData.change_24h) < 0
               ? "text-red-500"
-              : tokenData.change_24h && parseFloat(tokenData.change_24h) > 0
+              : tokenData.change_24h && parseFloat(tokenData.change_24h) >= 0
               ? "text-green-500"
               : "text-gray-500"
           }

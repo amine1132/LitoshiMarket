@@ -50,7 +50,7 @@ function Explorer({ tokenData }) {
   const [showNFTContent, setShowNFTContent] = useState(false);
   const [showTokenContent, setShowTokenContent] = useState(false);
   const [isContentCleared, setIsContentCleared] = useState(false);
-  const [selectedTokenName, setSelectedTokenName] = useState("");
+  const [selectedToken, setSelectedToken] = useState(null);
   const [showTransactionContent, setShowTransactionContent] = useState(false);
   const [showMarketCapContent, setShowMarketCapContent] = useState(true);
   const [show24hVolContent, setShow24hVolContent] = useState(false);
@@ -138,8 +138,8 @@ function Explorer({ tokenData }) {
     setShow24hVolContent(true);
   };
 
-  function handleTableRowClick(tokenName) {
-    setSelectedTokenName(tokenName);
+  function handleTableRowClick(token) {
+    setSelectedToken(token);
     setIsContentCleared(true);
   }
 
@@ -202,9 +202,9 @@ function Explorer({ tokenData }) {
   return (
     <div className="max">
       {isContentCleared ? (
-        selectedTokenName ? (
+        selectedToken ? (
           <>
-            <Condition_explorer />
+            <Condition_explorer Token={selectedToken}/>
           </>
         ) : (
           <></>

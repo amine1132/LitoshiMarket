@@ -1,10 +1,12 @@
-export default function DataToken(){
+export default function DataToken(Token){
+  const TokenData = Token.Token.Token
+  console.log(TokenData)
     return(
         <>
 
           <div className="pl-[5%] mr-[5%] pr-[5%] h-[840px] bg-gradient-to-b from-[rgba(86,58,255,0.35)] via-transparent to-[rgba(128,128,128,0.0735)] rounded-lg overflow-y-auto">
 
-          <h1 className="pt-[5%]">LITS/LITE</h1>
+          <h1 className="pt-[5%]">{TokenData.tick+" / "+TokenData.tick.toUpperCase() }</h1>
           <div className="border mt-[1%]"></div>
 
 
@@ -19,11 +21,15 @@ export default function DataToken(){
           <div className="flex justify-between mt-[3%]">
             <div className="border rounded-lg pl-[2%] w-full pr-[8%] py-[2%] mr-[2%]">
               <small className="text-[#563AFF]">Price USD</small>
-              <p>$xx</p>
+              <p className={TokenData.price ? "text-white-500" : "text-gray-500"}>
+                {TokenData.price ? "$" + (Math.round(TokenData.price * 10000) / 10000) : "N/A"}
+              </p>
             </div>
             <div className="border rounded-lg pl-[2%] w-full pr-[8%] py-[2%] ml-[2%]">
               <small className="text-[#563AFF]">Marketcap</small>
-              <p>$0M</p>
+              <p className={TokenData.marketcap ? "text-white-500": "text-gray-500"}>
+                {TokenData.marketcap ? "$" + Math.round(TokenData.marketcap) + "M": "N/A"}
+              </p>
             </div>
           </div>
 
@@ -39,7 +45,10 @@ export default function DataToken(){
             </div>
             <div className="border rounded-lg pl-[2%] w-full pr-[8%] py-[2%]">
               <small className="text-[#563AFF]">24H</small>
-              <p>-X%</p>
+              <p className={TokenData.change_24h ? TokenData.change_24h >= 0 ? "text-green-500" : "text-red-500" : "text-gray-500"}>{
+                TokenData.change_24h ? (parseFloat(TokenData.change_24h) >= 0 ? "+" : "") + parseFloat(TokenData.change_24h).toFixed(2) + "%"
+                : "N/A"
+              }</p>
             </div>
           </div>
 
@@ -47,11 +56,15 @@ export default function DataToken(){
           <div className="flex justify-between mt-[3%]">
               <div className="border rounded-lg pl-[2%] w-full pr-[8%] py-[2%]">
                 <small className="text-[#563AFF]">Holders</small>
-                <p>4500</p>
+                <p className={TokenData.holder_cnt ? "text-white-500"  : "text-gray-500"}>
+                  {TokenData.holder_cnt ? "?"+TokenData.holder_cnt  : "N/A"}
+                </p>
               </div>
               <div className="border rounded-lg pl-[2%] w-full pr-[8%] py-[2%] mx-[4%]">
                 <small className="text-[#563AFF]">TXNS</small>
-                <p>2.50</p>
+                <p className={TokenData.tx_count ? "text-white-500" : "text-gray-500"}>
+                  {TokenData.tx_count ? "?"+TokenData.tx_count: "N/A"}
+                </p>
               </div>
               <div className="border rounded-lg pl-[2%] w-full pr-[8%] py-[2%]">
                 <small className="text-[#563AFF]">Volume</small>
