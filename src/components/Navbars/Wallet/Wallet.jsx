@@ -55,14 +55,13 @@ export function Wallet({ wallet, setWallet, isButtonActivated }) {
   return (
     <div className="w-full flex flex-col gap-4 justify-center items-center">
       <button
-        onClick={openModal}
         className={`${
           isButtonActivated ? null : "border"
         } flex justify-center items-center gap-3 py-3 px-4 text-[#fff]`}
       >
         <img src={FooterLogo} alt="" />
         <Modal
-          modalState={{ modal, setModal }}
+          modalState={{ modal, setModal, closeModal }}
           requestUnisatAccounts={requestUnisatAccounts}
         />
         {isButtonActivated ? null : wallet ? (

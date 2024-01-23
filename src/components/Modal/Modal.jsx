@@ -103,14 +103,6 @@ export default function Modal({ modalState, requestUnisatAccounts }) {
                 <img src={unisat} alt="" className="unisat-modal" />
                 Unisat Wallet
               </button>
-              <button className="modal-connectlite">
-                <img src={litescribe} alt="" className="unisat-modal" />
-                Litescribe Wallet
-              </button>
-              <button className="modal-connectlite">
-                <img src={dogchain} alt="" className="unisat-modal" />
-                Unielon Wallet
-              </button>
               <button className="close-modal" onClick={() => setModal(false)}>
                 <AiOutlineClose />
               </button>
