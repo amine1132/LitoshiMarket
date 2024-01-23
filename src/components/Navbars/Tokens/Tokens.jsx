@@ -12,7 +12,7 @@ export function Tokens({ wallet, isButtonActivated }) {
   const links = [
     {
       text: "BRC-20",
-      img: "/src/assets/dashboard/BitcoinBTC.svg",
+      img: "/src/assets/Navbar/BitcoinBTC.svg",
     },
     {
       text: "LTC-20",
@@ -20,7 +20,7 @@ export function Tokens({ wallet, isButtonActivated }) {
     },
     {
       text: "DRC-20",
-      img: "/src/assets/dashboard/DogecoinDRC.svg",
+      img: "/src/assets/Navbar/DogecoinDRC.svg",
     },
   ];
 
@@ -28,17 +28,17 @@ export function Tokens({ wallet, isButtonActivated }) {
     <div className="w-[85%] mx-auto flex flex-col gap-3">
       <div className="w-full border-b border-[#5b5b5c]">
         <p className="text-[#6b6a6d] text-xs font-bold uppercase">
-        {isButtonActivated ? null : "Tokens and chains"}
+          {isButtonActivated ? null : "Tokens and chains"}
         </p>
       </div>
-    <ul className="ml-0.5 w-full flex flex-col justfy-center items-center gap-2">
-      {links.map((item, index) => (
-        <MenuLink url={item?.url} active={wallet} key={index}>
-          <img src={item?.img} alt="" />
-          {isButtonActivated ? null : item?.text}
-        </MenuLink>
-      ))}
-    </ul>
-  </div>
-);
+      <ul className="ml-0.5 w-full flex flex-col justfy-center items-center gap-2">
+        {links.map((item, index) => (
+          <MenuLink url={item?.url} active={wallet} key={index}>
+            <img src={item?.img} alt="" />
+            {isButtonActivated ? null : item?.text}
+          </MenuLink>
+        ))}
+      </ul>
+    </div>
+  );
 }

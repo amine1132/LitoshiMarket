@@ -69,7 +69,7 @@ p {
   display: flex;
   flex-direction: column;
   width: 100%;
-  height: 1900px;
+  height: auto;
 }
 
 .box_1 {
@@ -616,7 +616,7 @@ table td {
 
 .scroll_contenu {
   overflow-y: auto;
-  height: 1200px;
+  height: auto;
   width: 100%;
   left: 200px;
   overflow-x: hidden;
