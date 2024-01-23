@@ -7,8 +7,8 @@ import { Wallet } from "./Wallet/Wallet";
 import { Profile } from "./Profile/Profile";
 import { Tokens } from "./Tokens/Tokens";
 import { Footer } from "./Footer/Footer";
-import { Logo } from "../Elements/Logo"
-import { SearchBar } from "../Elements/SearchBar"
+import { Logo } from "../Elements/Logo";
+import { SearchBar } from "../Elements/SearchBar";
 
 import "./NavbarApp.css";
 
@@ -27,32 +27,54 @@ export function NavbarApp({ wallet, setWallet }) {
   //   console.log(wallet);
   // }, [wallet]);
 
-  {/* BUTTON CHANGE SIZE */}
+  {
+    /* BUTTON CHANGE SIZE */
+  }
   const [isCollapsed, setCollapsed] = useState(false);
   const buttonText = isCollapsed ? ">>" : "<<";
 
   const toggleWidth = () => {
-      setCollapsed(!isCollapsed);
+    setCollapsed(!isCollapsed);
   };
-  {/* END BUTTON CHANGE SIZE */}
+  {
+    /* END BUTTON CHANGE SIZE */
+  }
 
   return (
     /* BUTTON CHANGE SIZE */
-    <div className={`${isCollapsed ? 'collapsed w-[50px] transition-width duration-300 ease-in-out' : 'w-[240px] transition-width duration-300 ease-in-out'}
-    h-full bg-gradient-to-t from-[rgba(86,58,255,0.1)] to-[rgba(255,255,255,0.2)] border[0.5px-solid-blue] rounded-r-lg`}>
-    <div className={`${isCollapsed ? 'collapsed w-[50px] transition-width duration-300 ease-in-out' : 'w-[200px] transition-width duration-300 ease-in-out'} 
-    h-screen fixed bg-gradient-to-t from-[rgba(86,58,255,0.1)] to-[rgba(255,255,255,0.2)] border-2 border-solid border-indigo-600 rounded-tl-none rounded-tr-2xl rounded-br-2xl rounded-bl-none`}>
-    <button onClick={toggleWidth} className="absolute top-4 right-4">{buttonText}</button>
-    {/* END BUTTON CHANGE SIZE */}
+    <div
+      className={`${
+        isCollapsed
+          ? "collapsed w-[50px] transition-width duration-300 ease-in-out"
+          : "w-[240px] transition-width duration-300 ease-in-out"
+      }
+    h-full bg-gradient-to-t from-[rgba(86,58,255,0.1)] to-[rgba(255,255,255,0.2)] border[0.5px-solid-blue] rounded-r-lg`}
+    >
+      <div
+        className={`${
+          isCollapsed
+            ? "collapsed w-[50px] transition-width duration-300 ease-in-out"
+            : "w-[200px] transition-width duration-300 ease-in-out"
+        } 
+    h-screen fixed bg-gradient-to-t from-[rgba(86,58,255,0.1)] to-[rgba(255,255,255,0.2)] border-2 border-solid border-indigo-600 rounded-tl-none rounded-tr-2xl rounded-br-2xl rounded-bl-none`}
+      >
+        <button onClick={toggleWidth} className="absolute top-4 right-4">
+          {buttonText}
+        </button>
+        {/* END BUTTON CHANGE SIZE */}
         <div className="h-full overflow-x-hidden flex flex-col overflow-y-auto">
           <div className="h-full flex flex-col gap-10 mt-20">
-            <Logo/>
-            <SearchBar isButtonActivated={isCollapsed}/>
-            <Profile wallet={wallet} isButtonActivated={isCollapsed}/>
-            <Tokens wallet={wallet} isButtonActivated={isCollapsed}/>
+            <Logo />
+            <SearchBar isButtonActivated={isCollapsed} />
+            <Profile wallet={wallet} isButtonActivated={isCollapsed} />
+            <Tokens wallet={wallet} isButtonActivated={isCollapsed} />
           </div>
-          <Wallet wallet={wallet} setWallet={setWallet} isButtonActivated={isCollapsed} />
-          <Footer isButtonActivated={isCollapsed}/>
+          <Wallet
+            wallet={wallet}
+            setWallet={setWallet}
+            isButtonActivated={isCollapsed}
+          />
+          <Footer isButtonActivated={isCollapsed} />
         </div>
       </div>
     </div>

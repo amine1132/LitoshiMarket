@@ -51,7 +51,11 @@ export function Profile({ wallet, isButtonActivated }) {
           {isButtonActivated ? null : "Your profile"}
         </p>
       </div>
-      <ul className={`${isButtonActivated ? "ml-1.5" : "ml-0.5"} w-full flex flex-col justfy-center items-center gap-2`}>
+      <ul
+        className={`${
+          isButtonActivated ? "ml-1.5" : "ml-0.5"
+        } w-full flex flex-col justfy-center items-center gap-2`}
+      >
         {links.map((item, index) => (
           <MenuLink url={item?.url} active={wallet} key={index}>
             <img src={item?.img} alt="" />

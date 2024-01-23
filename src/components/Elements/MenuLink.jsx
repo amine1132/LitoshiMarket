@@ -10,10 +10,9 @@ import { useNavigate } from "react-router-dom";
 export function MenuLink({ url, children, active }) {
   // Hooks
   const navigate = useNavigate();
-  if (active)
-    return (
-      <li
-        className={`
+  return (
+    <li
+      className={`
                 w-full
                 flex justfy-center items-center gap-3
                 text-white
@@ -24,15 +23,14 @@ export function MenuLink({ url, children, active }) {
                 hover:bg-[#563aff33]
                 hover:border-[#563aff]
             `}
-        onClick={() => navigate(url)}
-      >
-        {children}
-      </li>
-    );
-  else
-    return (
-      <li
-        className={`
+      onClick={() => navigate(url)}
+    >
+      {children}
+    </li>
+  );
+  return (
+    <li
+      className={`
             w-full
             flex justfy-center items-center gap-3
             text-white
@@ -42,8 +40,8 @@ export function MenuLink({ url, children, active }) {
             border-[#00000000]
             opacity-20
         `}
-      >
-        {children}
-      </li>
-    );
+    >
+      {children}
+    </li>
+  );
 }
