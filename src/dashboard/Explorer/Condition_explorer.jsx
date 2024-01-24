@@ -39,7 +39,7 @@ export default function Condition_explorer(tokenData) {
       <div className="w-full flex h-full gap-6">
         <div className="flex flex-col w-3/4 gap-5">
           <div id="chartmescouilles" className="explorer_token_charts rounded-lg h-[610px]">
-            <ChartTradingView data={tokenData} />
+              <ChartTradingView data={tokenData} />
           </div>
           <div className="explorer_token_data rounded-lg h-[210px] overflow-y-auto">
             {/* {showNFTContent ? (
