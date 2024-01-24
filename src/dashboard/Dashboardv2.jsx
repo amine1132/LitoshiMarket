@@ -23,8 +23,8 @@ export default function Dashboardv2() {
   const [wallet, setWallet] = useState();
 
   useEffect(() => {
-    console.log("wallet");
-    console.log(wallet);
+    // console.log("wallet");
+    // console.log(wallet);
   }, [wallet]);
 
   return (

@@ -1,6 +1,5 @@
 export default function DataToken(Token){
   const TokenData = Token.Token.Token
-  console.log(TokenData)
     return(
         <>
 

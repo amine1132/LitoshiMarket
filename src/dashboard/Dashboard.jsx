@@ -90,8 +90,6 @@ function Dashboard({ wallet }) {
 
   useEffect(() => {
     setFilteredBlockchain(dataFetched);
-    console.log("filter");
-    console.log(filteredBlockchain);
   }, [dataFetched]);
 
   //choose the screen size
@@ -266,7 +264,6 @@ function Dashboard({ wallet }) {
     if (cookieSessionResponse.status === 200) {
       console.log("Cookie Session Created");
       const walletAddress = await requestAccounts();
-      console.log(walletAddress);
 
       const cookie = cookieSessionResponse.headers["set-cookie"];
       console.log(cookieSessionResponse.headers);

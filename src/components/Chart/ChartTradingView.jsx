@@ -1,7 +1,9 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { createChart } from 'lightweight-charts';
+import axios from 'axios';
 
 function ChartTradingView({ data }) {
+
   const chartContainerRef = useRef(null);
   const chartRef = useRef(null);
 
@@ -33,14 +35,13 @@ function ChartTradingView({ data }) {
 
       chart.applyOptions({ width: containerWidth, height: containerHeight });
       chart.timeScale().scrollToPosition(0);
+      chart.timeScale().fitContent();
+      
     };
 
     // Utilisation de ResizeObserver pour détecter les changements de taille du conteneur
     const resizeObserver = new ResizeObserver(updateChartSize);
     resizeObserver.observe(chartContainer);
-
-    // Appeler la fonction de redimensionnement une fois au montage du composant
-    updateChartSize();
 
     if (data && data.prices && data.prices.length > 0) {
       // Assurez-vous que les données sont triées par ordre croissant par rapport au temps
@@ -62,6 +63,10 @@ function ChartTradingView({ data }) {
       }
 
       lineSeries.setData(formattedData);
+
+      // Appeler la fonction de redimensionnement une fois au montage du composant
+      updateChartSize();
+
     } else {
       console.warn('Aucune donnée à afficher.');
     }
@@ -84,6 +89,11 @@ function ChartTradingView({ data }) {
 
     // Enregistrez les références pour pouvoir nettoyer plus tard
     chartRef.current = chart;
+
+    // Utiliser la nouvelle propriété minimumWidth de la version 4.2.0
+    chart.priceScale('right').applyOptions({
+      minimumWidth: 150, // Ajuste cette valeur selon tes besoins
+    });
 
     // Retour de fonction pour nettoyer la charte précédente lors de la prochaine modification
     return () => {

@@ -6,6 +6,7 @@ import Modalv2 from "../../components/Explorer/Modalv2";
 import DataToken from "./DataTokenComponent";
 import Charts_Tradingview from "../../components/Chart/Charts_Tradingview";
 import ChartTradingView from "../../components/Chart/ChartTradingView"
+import ChartPrepare from "../../components/Chart/ChartPrepare"
 
 export default function Condition_explorer(tokenData) {
   const [selectedTokenName, setSelectedTokenName] = useState("");
@@ -39,7 +40,7 @@ export default function Condition_explorer(tokenData) {
       <div className="w-full flex h-full gap-6">
         <div className="flex flex-col w-3/4 gap-5">
           <div id="chartmescouilles" className="explorer_token_charts rounded-lg h-[610px]">
-              <ChartTradingView data={tokenData} />
+              <ChartPrepare Token={tokenData} />
           </div>
           <div className="explorer_token_data rounded-lg h-[210px] overflow-y-auto">
             {/* {showNFTContent ? (
