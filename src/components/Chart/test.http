@@ -1,0 +1,2 @@
+GET https://api.bestinslot.xyz/v3/brc20/activity?ticker=ordi&activity_filter=7&sort_by=ts&order=desc&offset=1000&count=100&last_new_satpoint=a47f806f7fa622a44bc77bc886c8e0646cc61878d412285aa4a297cf2a5ce296:0:0
+x-api-key: xxxx

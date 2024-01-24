@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createChart } from 'lightweight-charts';
-import axios from 'axios';
 
 function ChartTradingView({ data }) {
 
@@ -33,7 +32,9 @@ function ChartTradingView({ data }) {
       const containerHeight = chartContainer.clientHeight;
       const containerWidth = chartContainer.clientWidth;
 
-      chart.applyOptions({ width: containerWidth, height: containerHeight });
+      chart.applyOptions({ width: containerWidth, height: containerHeight, leftPriceScale: {
+        visible: true,
+      }, });
       chart.timeScale().scrollToPosition(0);
       chart.timeScale().fitContent();
       
@@ -92,7 +93,10 @@ function ChartTradingView({ data }) {
 
     // Utiliser la nouvelle propriété minimumWidth de la version 4.2.0
     chart.priceScale('right').applyOptions({
-      minimumWidth: 150, // Ajuste cette valeur selon tes besoins
+      minimumWidth: 100, // Ajuste cette valeur selon tes besoins
+    });
+    chart.priceScale('left').applyOptions({
+      minimumWidth: 100, // Ajuste cette valeur selon tes besoins
     });
 
     // Retour de fonction pour nettoyer la charte précédente lors de la prochaine modification
