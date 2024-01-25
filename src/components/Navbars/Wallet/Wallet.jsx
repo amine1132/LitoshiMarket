@@ -62,10 +62,12 @@ export function Wallet({ wallet, setWallet, isButtonActivated }) {
         } flex justify-left items-center gap-3 px-4 text-[#fff] ${wallet ? "py-1" : "py-3"}`}
       >
         <img src={FooterLogo} alt="" />
+        
         <Modal
           modalState={{ modal, setModal, closeModal }}
           requestUnisatAccounts={requestUnisatAccounts}
         />
+
         <div className="text-left">
           {isButtonActivated ? null : wallet ? <p>Name.Srnme</p> : null}
           <p className="text-xs">

@@ -26,29 +26,6 @@ body {
   color: rgba(255, 255, 255, 0.5);
 }
 
-.top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.top button {
-  border-radius: 12px;
-  background-color: transparent;
-  border-radius: 4px;
-  border: 1px solid #5b5b5c;
-  color: white;
-  padding: 18px 10px;
-  height: 31px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.top p {
-  color: #626262;
-}
-
 .colone {
   display: flex;
   flex-direction: row-reverse;

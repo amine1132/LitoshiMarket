@@ -24,6 +24,7 @@ import "./NavbarApp.css";
 export function NavbarApp({ wallet, setWallet }) {
 
   const BackGroundColor = "#151516";
+  const BackGroundColorButton = "#1E1E1F";
 
   // useEffect(() => {
   //   console.log("wallet");
@@ -60,10 +61,8 @@ export function NavbarApp({ wallet, setWallet }) {
             : "w-[200px] transition-width duration-300 ease-in-out"
         } 
         h-screen bg-[${BackGroundColor}] fixed border-r border-gray-600`}
-      > <div className={`bg-[${BackGroundColor}] absolute top-[45%] pr-[5px] pl-[2px] py-[20px] border-gray-600 border rounded-r border-bg -right-[22px]`}>
-          <button onClick={toggleWidth} className={`text-xs text-gray-600`}>
-            {buttonText}
-          </button>
+      > <div onClick={toggleWidth} style={{ cursor: 'pointer' }} className={`bg-[${BackGroundColorButton}] absolute top-[45%] pr-[5px] pl-[2px] py-[25px] border-gray-600 border rounded-r-lg border-bg -right-[22px]`}>
+              <p className={`text-xs text-gray-600`}>{buttonText}</p>
         </div>
         {/* END BUTTON CHANGE SIZE */}
         <div className="h-full overflow-x-hidden flex flex-col overflow-y-auto">

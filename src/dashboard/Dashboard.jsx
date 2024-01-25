@@ -440,6 +440,9 @@ function Dashboard({ wallet }) {
     console.log(filteredBlockchain);
   }
 
+  const SecondColor = "#1E1E1F";
+  const BackGroundColor = "#151516";
+
   return (
     <>
       <div className="max_1">
@@ -450,230 +453,86 @@ function Dashboard({ wallet }) {
                 <div className="style">
                   <div className="stylev2">
                     <div className="filtre-dashboard">
-
-                      <WelcomeMessage/>
-
                       <Tooltip title="Copy address">
                         <div className="copy" id="copyAddress">
                           <FaRegCopy />
                         </div>
                       </Tooltip>
                     </div>
+                    {/* BOUTON EN HAUT */}
+                    <div className="flex justify-center gap-x-[5%] w-full">
+                      <button className={`px-5 py-2 rounded hover:bg-[${SecondColor}]`}>
+                        Explorer
+                      </button>
+
+                      <button className={`px-5 py-2 rounded hover:bg-[${SecondColor}]`}>
+                        Incubator
+                      </button>
+
+                      <button className={`px-5 py-2 rounded hover:bg-[${SecondColor}]`}>
+                        Tools
+                      </button>
+
+                      <button className={`px-5 py-2 rounded hover:bg-[${SecondColor}]`}>
+                        Early Stage
+                      </button>
+                      {/* FIN BOUTON EN HAUT */}
+                    </div>
+
+                  </div>
+
+                  <div className="flex justify-center mt-10">
+                    {/* PROFIL SECTION */}
+
+                    <div className={`overflow-auto mr-10 p-10 w-[45%] justify-center rounded-3xl bg-[${SecondColor}]`}>
+                      <div className={`flex`}>
+                        <img src="/src/assets/default-avatar.png" className="rounded-full h-[150px]" alt="" />
+                        <div className="pl-5 self-center">
+                          <h1 className="pb-4 text-3xl flex">Yaugourt<img src="/src/assets/color-pencil.png" className="pl-3 pt-2 h-[30px]" alt="" /></h1>
+                          <p className="pl-1 mb-10 flex items-center">
+                            <small>
+                              0x35a6c3ff826406fb7a060c6a1f4896b910680ceb
+                            </small>
+                          <img src="/src/assets/copy.png" className="pl-2 pb-1 h-[24px]" alt="" />
+                          </p>
+                        </div>
+                      </div>
+                      <div className="pt-8">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                      </div>
+                      <div className="flex pt-8 justify-between gap-x-[5%] w-full">
+                        <button className={`w-[220px] py-2 rounded bg-[${BackGroundColor}]`}>
+                          Twitter
+                        </button>
+
+                        <button className={`w-[220px] py-2 rounded bg-[${BackGroundColor}]`}>
+                          Website
+                        </button>
+
+                        <button className={`w-[220px] py-2 rounded bg-[${BackGroundColor}]`}>
+                          Add Location
+                        </button>
+                      </div>
+                    </div>
+                    {/* END PROFIL SECTION */}
+                    {/* CHART SECTION */}
+                    <div className={`overflow-auto p-10 w-[45%] justify-center rounded-3xl bg-[${SecondColor}]`}>
+                      
+                    </div>
+                    {/* END CHART SECTION */}
+
+                  </div>
+
+                  <div className="mt-10 flex justify-center">
+                    <div className={`p-10 w-[92.5%] h-[350px] rounded-3xl bg-[${SecondColor}]`}>
+
+                    </div>
                   </div>
 
                 </div>
-                {/* <div className="input">
-                  <div className="loupe_">
-                    <img src={search} alt="" />
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="Token, pair, address..."
-                    className="formulaire_2"
-                  /> */}
-                  {/* <button onClick={requestAccounts}>Connect your wallet</button> */}
-                  {/* <div className="notif"></div>
-                </div> */}
               </div>
             </header>
-            <div className="scroll_contenu_1">
-              {wallet && (
-
-                // Section profile 
-
-                <div className="groupe_profile">
-                  <img src={profile} alt="" className="profile-image" />
-                  <div className="groupe2_profile">
-                    <h1 className="text-2xl mb-0 ml-2">Name.surname</h1>
-                      <div className="profile_adress flex items-center">
-                        <p>{formatAddress(wallet)}</p>
-                        <button className="ml-3 flex items-center" type="button">
-                          "svg_img_copy"
-                          <img src={web} alt="" />
-                        </button>
-                      </div>
-                      <div className="profile_button">
-                        <button type="button">
-                          {" "}
-                          <img src={test3} alt="" />
-                          Add Twitter
-                        </button>
-                        <button type="button">
-                          {" "}
-                          <img src={web} alt="" />
-                          Add website
-                        </button>
-                        <button type="button">
-                          {" "}
-                          <img src={map} alt="" />
-                          Add localisation
-                        </button>
-                      </div>
-                  </div>
-
-                  {/* split */}
-                  <div className="ml-auto border-r-2 h-[80%] mx-4"></div>
-                  {/* split */}
-                
-                  <div className="mr-[10%]">
-                      <h1 className="text-2xl mb-0">
-                        {wallet && (
-                          <>
-                            {" "}
-                            {overall_balance.toLocaleString("en-US", {
-                              style: "currency",
-                              currency: "USD",
-                            })}
-                          </>
-                        )}
-                      </h1>
-                      <p className="blanc text-sm">Available</p>
-                      <p className="semi text-sm">
-                        {wallet && (
-                          <>
-                            {available_balance.toLocaleString("en-US", {
-                              style: "currency",
-                              currency: "USD",
-                            })}
-                          </>
-                        )}
-                      </p>
-                      {/*product amount data*/}
-                      <p className="blanc text-sm">Transferable</p>
-                      <p className="semi text-sm">
-                        {wallet && (
-                          <>
-                            {(
-                              overall_balance - available_balance
-                            ).toLocaleString("en-US", {
-                              style: "currency",
-                              currency: "USD",
-                            })}
-                          </>
-                        )}
-                      </p>
-                      {/*product amount data*/}
-                  </div>
-                </div>
-
-                // Section profile end
-
-              )}
-              <div className="groupe2">
-                <div className="box3_">
-                  <div className="topv1">
-                    <p className="semi">My Assets</p>
-                    <button type="button" onClick={handleTokenButtonClick}>
-                      Token
-                    </button>
-                    {/*<button type="button" onClick={handleNFTButtonClick}>
-                      NFT
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleTransactionButtonClick}
-                    >
-                      Transaction
-                    </button>*/}
-                  </div>
-                  {wallet && (
-                    <>
-                      {showNFTContent ? (
-                        <div className="nft">
-                          <div className="box">
-                            <div>
-                              <img src={nftImageUrl} alt="" />
-                            </div>
-                            <div className="text_8">
-                              <p className="desc">Moonbird#3688</p>
-                              <p className="desc">0,1 LTC</p>
-                            </div>
-                          </div>
-                          <div className="box">
-                            <div>
-                              <img src={nftImageUrl2} alt="" />
-                            </div>
-                            <div className="text_8">
-                              <p className="desc">Moonbird#3689</p>
-                              <p className="desc">0,1 LTC</p>
-                            </div>
-                          </div>
-                          <div className="box">
-                            <div>
-                              <img src={nftImageUrl3} alt="" />
-                            </div>
-                            <div className="text_8">
-                              <p className="desc">Moonbird#3690</p>
-                              <p className="desc">0,1 LTC</p>
-                            </div>
-                          </div>
-                        </div>
-                      ) : showTokenContent ? (
-                        <nav className="topline">
-                          <table>
-                            <thead>
-                              <tr>
-                                <th>Name</th>
-                                <th>Positions</th>
-                                <th>Price</th>
-                                <th>Vol. 24h</th>
-                                <th>Available</th>
-                                <th>Transferable</th>
-                                <th>Marketcap</th>
-                              </tr>
-                            </thead>
-                            <tbody className="semi">
-                              {isLoading ? (
-                                <div
-                                  style={{
-                                    position: "absolute",
-                                    top: "50%",
-                                    left: "50%",
-                                    transform: "translate(-50%, -50%)",
-                                  }}
-                                >
-                                  Loading ...
-                                </div>
-                              ) : (
-                                <>
-                                  {filteredBlockchain.map((token, index) => (
-                                    <TickComponent
-                                      key={index}
-                                      tokenData={token}
-                                    />
-                                  ))}
-                                </>
-                              )}
-                            </tbody>
-                          </table>
-                        </nav>
-                      ) : showTransactionContent ? (
-                        <nav className="topline">
-                          <table>
-                            <thead>
-                              <tr>
-                                <th>Transaction ID</th>
-                                <th>Time</th>
-                                <th>Content</th>
-                                <th>From</th>
-                                <th>To</th>
-                              </tr>
-                            </thead>
-                            <tbody className="semi">
-                              {filteredBlockchain.map((token, index) => (
-                                <TickComponent3 key={index} tokenData={token} />
-                              ))}
-                            </tbody>
-                          </table>
-                        </nav>
-                      ) : (
-                        <div></div>
-                      )}
-                    </>
-                  )}
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
