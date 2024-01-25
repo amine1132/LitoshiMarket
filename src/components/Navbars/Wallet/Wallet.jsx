@@ -6,6 +6,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { updateUser } from "#stores/components/settingsSlice";
 
 export function Wallet({ wallet, setWallet, isButtonActivated }) {
+  const BorderColor = "#404040";
+
   const [isConnected, setIsConnected] = useState(false);
   const [uniSatAvailable, setUniSatAvailable] = useState(false);
 
@@ -53,22 +55,27 @@ export function Wallet({ wallet, setWallet, isButtonActivated }) {
     return address.substr(0, 5) + "..." + address.substr(address.length - 3);
   }
   return (
-    <div className="w-full flex flex-col gap-4 justify-center items-center">
+    <div className="w-full flex flex-col gap-4 justify-center pb-3 items-center">
       <button
         className={`${
-          isButtonActivated ? null : "border"
-        } flex justify-center items-center gap-3 py-3 px-4 text-[#fff]`}
+          isButtonActivated ? null : "border rounded w-[90%] border-["+BorderColor+"]"
+        } flex justify-left items-center gap-3 px-4 text-[#fff] ${wallet ? "py-1" : "py-3"}`}
       >
         <img src={FooterLogo} alt="" />
         <Modal
           modalState={{ modal, setModal, closeModal }}
           requestUnisatAccounts={requestUnisatAccounts}
         />
-        {isButtonActivated ? null : wallet ? (
-          formatAddress(wallet)
-        ) : (
-          <div></div>
-        )}
+        <div className="text-left">
+          {isButtonActivated ? null : wallet ? <p>Name.Srnme</p> : null}
+          <p className="text-xs">
+          {isButtonActivated ? null : wallet ? (
+            formatAddress(wallet)
+          ) : (
+            <div></div>
+          )}
+          </p>
+        </div>
       </button>
     </div>
   );

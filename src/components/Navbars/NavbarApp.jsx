@@ -22,6 +22,9 @@ import "./NavbarApp.css";
 // ===========================================================
 
 export function NavbarApp({ wallet, setWallet }) {
+
+  const BackGroundColor = "#151516";
+
   // useEffect(() => {
   //   console.log("wallet");
   //   console.log(wallet);
@@ -48,7 +51,7 @@ export function NavbarApp({ wallet, setWallet }) {
           ? "collapsed w-[50px] transition-width duration-300 ease-in-out"
           : "w-[240px] transition-width duration-300 ease-in-out"
       }
-    h-full bg-gradient-to-t from-[rgba(86,58,255,0.1)] to-[rgba(255,255,255,0.2)] border[0.5px-solid-blue] rounded-r-lg`}
+    h-full border[0.5px-solid-blue] rounded-r-lg`}
     >
       <div
         className={`${
@@ -56,25 +59,27 @@ export function NavbarApp({ wallet, setWallet }) {
             ? "collapsed w-[50px] transition-width duration-300 ease-in-out"
             : "w-[200px] transition-width duration-300 ease-in-out"
         } 
-    h-screen fixed bg-gradient-to-t from-[rgba(86,58,255,0.1)] to-[rgba(255,255,255,0.2)] border-2 border-solid border-indigo-600 rounded-tl-none rounded-tr-2xl rounded-br-2xl rounded-bl-none`}
-      >
-        <button onClick={toggleWidth} className="absolute top-4 right-4">
-          {buttonText}
-        </button>
+        h-screen bg-[${BackGroundColor}] fixed border-r border-gray-600`}
+      > <div className={`bg-[${BackGroundColor}] absolute top-[45%] pr-[5px] pl-[2px] py-[20px] border-gray-600 border rounded-r border-bg -right-[22px]`}>
+          <button onClick={toggleWidth} className={`text-xs text-gray-600`}>
+            {buttonText}
+          </button>
+        </div>
         {/* END BUTTON CHANGE SIZE */}
         <div className="h-full overflow-x-hidden flex flex-col overflow-y-auto">
-          <div className="h-full flex flex-col gap-10 mt-20">
+          <div className="h-full flex flex-col mt-[50px] ">
             <Logo />
             <SearchBar isButtonActivated={isCollapsed} />
+            {isCollapsed ? <div className="pb-[5px]"></div> : <div className="pb-[20px]"></div>}
             <Profile wallet={wallet} isButtonActivated={isCollapsed} />
-            <Tokens wallet={wallet} isButtonActivated={isCollapsed} />
+            {/* <Tokens wallet={wallet} isButtonActivated={isCollapsed} /> */}
           </div>
           <Wallet
             wallet={wallet}
             setWallet={setWallet}
             isButtonActivated={isCollapsed}
           />
-          <Footer isButtonActivated={isCollapsed} />
+          {/* <Footer isButtonActivated={isCollapsed} /> */}
         </div>
       </div>
     </div>

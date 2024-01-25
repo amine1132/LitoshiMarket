@@ -1,7 +1,13 @@
 export function SearchBar({isButtonActivated}){
+    const SearchButtonColor = "#1E1E1E";
+    const SearchBorderColor = "#404040";
     return(
-        <div className="mx-auto flex w-[90%] border bg-[#2F207C] border-[#2F207C] p-[10px] rounded">
-            <img src="/src/assets/search.svg" className="" alt="" />
+        <div className={isButtonActivated ? 
+            `mx-auto flex w-[90%] bg-[${SearchButtonColor}] border-[${SearchBorderColor}] p-[10px]` 
+            : 
+            `mx-auto flex w-[90%] bg-[${SearchButtonColor}] border-[${SearchBorderColor}] p-[10px] border rounded`}
+        >
+            <img src="/src/assets/search.svg" className={isButtonActivated ? "pl-[5px]" : ""} alt="" />
             {
                 isButtonActivated ? 
                 null
