@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import "./Dashboard.css";
 import Group_427319828 from "#assets/dashboard/Group_427319828.svg";
 import map from "#assets/dashboard/map.svg";
 import web from "#assets/dashboard/Web.svg";
@@ -32,6 +31,7 @@ import "./Mont/Mont-Bold.otf";
 import "./Mont/Mont-Regular.otf";
 import "./Mont/Mont-SemiBold.otf";
 import WelcomeMessage from "../components/Elements/WelcomeBack";
+import WalletSection from "./Wallet-Dashboard/Wallet-Dashboard"
 
 const chartOptions = {
   responsive: true,
@@ -442,6 +442,8 @@ function Dashboard({ wallet }) {
 
   const SecondColor = "#1E1E1F";
   const BackGroundColor = "#151516";
+  const [isBiggerButtonClicked, setIsBiggerButtonClicked] = React.useState(false);
+  
 
   return (
     <>
@@ -461,19 +463,19 @@ function Dashboard({ wallet }) {
                     </div>
                     {/* BOUTON EN HAUT */}
                     <div className="flex justify-center gap-x-[5%] w-full">
-                      <button className={`px-5 py-2 rounded hover:bg-[${SecondColor}]`}>
+                      <button className={`px-5 py-2 rounded-lg hover:bg-[${SecondColor}]`}>
                         Explorer
                       </button>
 
-                      <button className={`px-5 py-2 rounded hover:bg-[${SecondColor}]`}>
+                      <button className={`px-5 py-2 rounded-lg hover:bg-[${SecondColor}]`}>
                         Incubator
                       </button>
 
-                      <button className={`px-5 py-2 rounded hover:bg-[${SecondColor}]`}>
+                      <button className={`px-5 py-2 rounded-lg hover:bg-[${SecondColor}]`}>
                         Tools
                       </button>
 
-                      <button className={`px-5 py-2 rounded hover:bg-[${SecondColor}]`}>
+                      <button className={`px-5 py-2 rounded-lg hover:bg-[${SecondColor}]`}>
                         Early Stage
                       </button>
                       {/* FIN BOUTON EN HAUT */}
@@ -484,11 +486,11 @@ function Dashboard({ wallet }) {
                   <div className="flex justify-center mt-10">
                     {/* PROFIL SECTION */}
 
-                    <div className={`overflow-auto mr-10 p-10 w-[45%] justify-center rounded-3xl bg-[${SecondColor}]`}>
+                    <div className={`mr-10 p-10 w-[45%] h-[300px] justify-center rounded-3xl bg-[${SecondColor}] ${isBiggerButtonClicked ? 'hidden' : ''}`}>
                       <div className={`flex`}>
-                        <img src="/src/assets/default-avatar.png" className="rounded-full h-[150px]" alt="" />
+                        <img src="/src/assets/default-avatar.png" className="rounded-full h-[100px]" alt="" />
                         <div className="pl-5 self-center">
-                          <h1 className="pb-4 text-3xl flex">Yaugourt<img src="/src/assets/color-pencil.png" className="pl-3 pt-2 h-[30px]" alt="" /></h1>
+                          <h1 className="pb-2 text-2xl flex">Yaugourt<img src="/src/assets/color-pencil.png" className="pl-3 pt-2 h-[30px]" alt="" /></h1>
                           <p className="pl-1 mb-10 flex items-center">
                             <small>
                               0x35a6c3ff826406fb7a060c6a1f4896b910680ceb
@@ -497,39 +499,36 @@ function Dashboard({ wallet }) {
                           </p>
                         </div>
                       </div>
-                      <div className="pt-8">
+                      <div className="pt-[2%] h-[80px] text-sm overflow-auto">
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                       </div>
-                      <div className="flex pt-8 justify-between gap-x-[5%] w-full">
-                        <button className={`w-[220px] py-2 rounded bg-[${BackGroundColor}]`}>
+                      <div className="flex pt-5 justify-between gap-x-[5%] w-full">
+                        <button className={`w-[220px] py-2 rounded-lg bg-[${BackGroundColor}]`}>
                           Twitter
                         </button>
 
-                        <button className={`w-[220px] py-2 rounded bg-[${BackGroundColor}]`}>
+                        <button className={`w-[220px] py-2 rounded-lg bg-[${BackGroundColor}]`}>
                           Website
                         </button>
 
-                        <button className={`w-[220px] py-2 rounded bg-[${BackGroundColor}]`}>
+                        <button className={`w-[220px] py-2 rounded-lg bg-[${BackGroundColor}]`}>
                           Add Location
                         </button>
                       </div>
                     </div>
                     {/* END PROFIL SECTION */}
                     {/* CHART SECTION */}
-                    <div className={`overflow-auto p-10 w-[45%] justify-center rounded-3xl bg-[${SecondColor}]`}>
+                    <div className={`overflow-auto p-10 w-[45%] justify-center rounded-3xl bg-[${SecondColor}] ${isBiggerButtonClicked ? 'hidden' : ''}`}>
                       
                     </div>
                     {/* END CHART SECTION */}
 
                   </div>
 
-                  <div className="mt-10 flex justify-center">
-                    <div className={`p-10 w-[92.5%] h-[350px] rounded-3xl bg-[${SecondColor}]`}>
-
-                    </div>
-                  </div>
-
+                    {/* WALLET SECTION */}
+                    <WalletSection secondColor={SecondColor} backGroundColor={BackGroundColor} isBiggerButtonClicked={isBiggerButtonClicked} setIsBiggerButtonClicked={setIsBiggerButtonClicked}/>
+                    {/* END WALLET SECTION */}
                 </div>
               </div>
             </header>

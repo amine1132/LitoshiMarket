@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
 
 export function MenuLink({ url, children, active }) {
   // Hooks
+  const BackGroundColor = "#151516";
+  const BackGroundColorButton = "#1E1E1F";
   const navigate = useNavigate();
   return (
     <li
@@ -20,8 +22,8 @@ export function MenuLink({ url, children, active }) {
                 p-1
                 border
                 border-[#00000000]
-                hover:bg-[#563aff33]
-                hover:border-[#563aff]
+                hover:bg-[${BackGroundColorButton}]
+                hover:border-[${BackGroundColorButton}]
             `}
       onClick={() => navigate(url)}
     >

@@ -15,7 +15,6 @@
   background-color: #151516;
   height: 100%;
   background: #151516;
-  overflow-x: hidden;
 }
 
 body {
@@ -199,20 +198,11 @@ p {
   margin-left: 24px;
 }
 
-.topline_1 table {
-  border-collapse: collapse;
-  min-width: 100%;
-  table-layout: fixed;
-}
 
 .topline_1 {
   overflow-y: auto;
   overflow-x: hidden;
   height: 450px;
-}
-
-table td {
-  text-align: left;
 }
 
 .topline_1::-webkit-scrollbar {

@@ -216,18 +216,6 @@ p {
     margin-left: 24px;
 }
 
-table {
-    border-collapse: collapse;
-    min-width: 100%;
-    table-layout: fixed;
-}
-
-table thead {
-    position: sticky;
-    top: 0;
-    background: #2a2353;
-    height: 50px;
-}
 
 .select1 {
     background-color: #1e1e1e;
