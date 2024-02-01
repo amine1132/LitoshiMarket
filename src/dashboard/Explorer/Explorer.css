@@ -99,6 +99,11 @@ p {
   margin-bottom: 8px;
 }
 
+.group2 p {
+  font-size: 14px;
+  margin: 0;
+}
+
 .group3 p {
   font-size: 14px;
   margin: 0;
@@ -192,7 +197,6 @@ p {
   border-radius: 10px;
   margin-left: 24px;
 }
-
 
 .topline_1 {
   overflow-y: auto;
@@ -691,11 +695,7 @@ p {
 .explorer_token_data {
   height: 380px;
   width: 100%;
-  background: linear-gradient(
-    0deg,
-    rgba(86, 58, 255, 0.35) -30%,
-    rgba(128, 128, 128, 0.0735) 100%
-  );
+  background: #1e1e1f;
 }
 .explorer_token_table {
   height: 780px;
