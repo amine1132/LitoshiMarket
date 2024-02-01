@@ -32,6 +32,7 @@ import "./Mont/Mont-Regular.otf";
 import "./Mont/Mont-SemiBold.otf";
 import WelcomeMessage from "../components/Elements/WelcomeBack";
 import WalletSection from "./Wallet-Dashboard/Wallet-Dashboard"
+import NavButtons from "../components/Navbars/NavButtons";
 
 const chartOptions = {
   responsive: true,
@@ -462,24 +463,9 @@ function Dashboard({ wallet }) {
                       </Tooltip>
                     </div>
                     {/* BOUTON EN HAUT */}
-                    <div className="flex justify-center gap-x-[5%] w-full">
-                      <button className={`px-5 py-2 rounded-lg hover:bg-[${SecondColor}]`}>
-                        Explorer
-                      </button>
+                    <NavButtons SecondColor={SecondColor}/>
+                    {/* FIN BOUTON EN HAUT */}
 
-                      <button className={`px-5 py-2 rounded-lg hover:bg-[${SecondColor}]`}>
-                        Incubator
-                      </button>
-
-                      <button className={`px-5 py-2 rounded-lg hover:bg-[${SecondColor}]`}>
-                        Tools
-                      </button>
-
-                      <button className={`px-5 py-2 rounded-lg hover:bg-[${SecondColor}]`}>
-                        Early Stage
-                      </button>
-                      {/* FIN BOUTON EN HAUT */}
-                    </div>
 
                   </div>
 

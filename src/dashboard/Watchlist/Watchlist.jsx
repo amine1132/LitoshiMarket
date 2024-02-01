@@ -7,8 +7,8 @@ import addwatch from "#assets/additem.svg";
 import notification from "#assets/notification.svg";
 import search from "#assets/search.svg";
 import WelcomeBack from "../../components/Elements/WelcomeBack"
-
-import "./Watchlist.css";
+import useless_1 from "./useless_1";
+import useless_2 from "./useless_2";
 
 import homme from "#assets/homme.svg";
 import {
@@ -24,7 +24,12 @@ import { BsStar } from "react-icons/bs";
 import Bitcoin from "#assets/BitcoinBTC.svg";
 import litecoinltclogo from "#assets/LitecoinLTC.svg";
 import dogecoindogelogo from "#assets/DogecoinDRC.svg";
-import Filtre from '../../utils/Filtre';
+import NavButtons from "../../components/Navbars/NavButtons";
+import TopButtons from "./TopButtons";
+import CategoryButtons from "./CategoryButtons";
+import MarketCapTable from "./MarketCapTable";
+import TransactionTable from "./TransactionTable";
+import MintTable from "./MintTable";
 
 const chartOptions = {
   responsive: true,
@@ -130,12 +135,14 @@ function Explorer() {
   const handleNFTButtonClick = () => {
     setShowNFTContent(true);
     setBox3Content("Initial Content");
+    setButtonActive("Mint");
   };
 
   const handleTokenButtonClick = () => {
     setShowNFTContent(false);
     setShowTokenContent(true);
     setBox3Content("Token Content");
+    setButtonActive("Market Cap");
   };
 
   const handleGraphButtonClick = () => {
@@ -197,213 +204,35 @@ function Explorer() {
     window.addEventListener("resize", handleResize);
   });
 
-
-
-  // FILTRE
-
-  const [sortOrder,setSortOrder] = useState(null);
-
-  let tokenName = "token";
-  let priceName = "price";
-  let marketCapName = "marketcap";
-  let volumeName = "vol_24h";
-  let supplyName = "max_supply";
-  let _24hName = "change_24h";
-  let indexToken = "index";
-
-  const [Arrows, setArrows] = useState([
-    { name: tokenName, arrow: "" },
-    { name: priceName, arrow: "" },
-    { name: marketCapName, arrow: "" },
-    { name: volumeName, arrow: "" },
-    { name: supplyName, arrow: "" },
-    { name: _24hName, arrow: "" },
-    { name: indexToken, arrow: "" },
-  ]);
-
-  // FIN FILTRE
+  const SecondColor = "#1E1E1F";
+  const BackGroundColor = "#151516";
+  const [buttonActive, setButtonActive] = React.useState("Market Cap");
 
 
   return (
     <div className="max">
-      <div className="colone">
+      <div className="px-[30px]">
         <div className="idk">
           <header>
             <div className="top">
               <div className="style">
                 <div className="stylev2">
-                  <WelcomeBack/>
+                  <NavButtons SecondColor={SecondColor}/>
                 </div>
               </div>
-              <div className="style"></div>
-              {/* <div className="input">
-                <div className="loupe_">
-                  <img src={search} alt="" />
-                </div>
-                <input
-                  type="text"
-                  placeholder="Token, pair, address..."
-                  className="formulaire_2"
-                /> */}
-                {/* <button onClick={requestAccounts}>Connect your wallet</button> */}
-                {/* <div className="notif"></div>
-              </div> */}
+              <useless_2/>
             </div>
           </header>
           <div className="scroll_contenu">
-            <div className="groupe_watchlisttotal">
-              <div className="groupe1_watchlist">
-                <div className="box_1_watchlist">
-                  <div className="group_v1_watchlist">
-                    <div className="group1_watchlist">
-                      <p>24h Volume</p>
-                      {showMarketCapContent ? (
-                        <>
-                          <h1>
-                            {" "}
-                            {Number(totalVols24h).toLocaleString("en-US", {
-                              style: "currency",
-                              currency: "USD",
-                              maximumFractionDigits: 0,
-                            })}
-                          </h1>
-                        </>
-                      ) : show24hVolContent ? (
-                        <div></div>
-                      ) : null}
-                    </div>
-                  </div>
-                  <div></div>
-                </div>
-              </div>
-              <div className="groupe2_watchlist">
-                <div className="box_1_watchlist">
-                  <div className="group_v1_watchlist">
-                    <div className="group1_watchlist">
-                      <p>Marketcap</p>
-                      {showMarketCapContent ? (
-                        <>
-                          <h1>
-                            {" "}
-                            {Number(totalMarketCap).toLocaleString("en-US", {
-                              style: "currency",
-                              currency: "USD",
-                              maximumFractionDigits: 0,
-                            })}
-                          </h1>
-                        </>
-                      ) : show24hVolContent ? (
-                        <div></div>
-                      ) : null}
-                    </div>
-                  </div>
-                  <div></div>
-                </div>
-              </div>
-            </div>
-            <div className="watchlist-flexbutton">
-              <div className="watchlist-buttontop">
-                <button type="">
-                  <img src={arrowright} alt="" />
-                  My BRC
-                </button>
-                <button type="">
-                  <img src={addwatch} alt="" />
-                  New Watchlist
-                </button>
-                <button type="">
-                  <img src={additem} alt="" />
-                  Add pair
-                </button>
-              </div>
-              <div className="watchlist-buttontop2">
-                <button type="">
-                  <img src={notification} alt="" />
-                  Add an alert
-                </button>
-                <button type="">
-                  <img src={Share} alt="" />
-                  Share this watchlist
-                </button>
-              </div>
-            </div>
-            <div className="groupe2">
-              <div className="box3">
-                <div className="topv1_">
-                  <p className="semi">Watchlist</p>
-                  <button
-                    type="button"
-                    onClick={handleTokenButtonClick}
-                    className="pb-[35px] p-[10px] pr-[15px] pl-[15px]"
-                  >
-                    Market Cap
-                  </button>
-                  <button
-                    type="button"
-                    onClick={handleNFTButtonClick}
-                    className="pb-[35px] p-[10px] pr-[15px] pl-[15px]"
-                  >
-                    Mint
-                  </button>
-                </div>
+            <useless_1/>
+            <TopButtons BackGroundColor={BackGroundColor} SecondColor={SecondColor} additem={additem} addwatch={addwatch} arrowright={arrowright} notification={notification} Share={Share}/>
+            <div className={`w-full h-[700px] rounded-lg bg-[${SecondColor}] mb-8`}>
+              <div className="m-8">
+                <CategoryButtons BackGroundColor={BackGroundColor} buttonActive={buttonActive} SecondColor={SecondColor} handleTokenButtonClick={handleTokenButtonClick} handleNFTButtonClick={handleNFTButtonClick}/>
                 <div></div>
-                {showNFTContent ? (
-                  <nav className="topline_1">
-                    <table>
-                      <thead>
-                        <th>Token</th>
-                        <th>Deploy Time</th>
-                        <th>Holders</th>
-                        <th>Transaction</th>
-                        <th>Progress%</th>
-                      </thead>
-                      <tbody className="semi">
-                        {data.map((token, index) => (
-                          <TickComponent2 tokenData={token} index={index + 1} />
-                        ))}
-                      </tbody>
-                    </table>
-                  </nav>
-                ) : showTokenContent ? (
-                  <nav className="topline_1">
-                    <table>
-                      <thead className="text-xs">
-                        <th></th>
-                        {/* <th className="hoverable" name={indexToken} onClick={() => Filtre(indexToken, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[6].arrow}</th> */}
-                        <th className="hoverable" name={tokenName} onClick={() => Filtre(tokenName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{/*{Arrows[0].arrow}Token*/}</th>
-                        <th className="hoverable" name={priceName} onClick={() => Filtre(priceName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[1].arrow}Price</th>
-                        <th className="hoverable" name={_24hName} onClick={() => Filtre(_24hName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[5].arrow}24h</th>
-                        <th className="hoverable" name={volumeName} onClick={() => Filtre(volumeName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[3].arrow}24h Volume</th>
-                        <th className="hoverable" name={marketCapName} onClick={() => Filtre(marketCapName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[2].arrow}Market Cap</th>
-                        <th className="hoverable" name={supplyName} onClick={() => Filtre(supplyName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[4].arrow}Supply</th>
-                      </thead>
-                      <tbody className="semi">
-                        {data.map((token, index) => (
-                          <TickComponent tokenData={token} index={index + 1} />
-                        ))}
-                      </tbody>
-                    </table>
-                  </nav>
-                ) : showTransactionContent ? (
-                  <nav className="topline_1">
-                    <table>
-                      <thead>
-                        <tr>
-                          <th className="user">User</th>
-                          <th>Net worth</th>
-                          <th>Top token</th>
-                        </tr>
-                      </thead>
-                      <tbody className="semi">
-                        {data.map((token, index) => (
-                          <TickComponent3 key={index} tokenData={token} />
-                        ))}
-                      </tbody>
-                    </table>
-                  </nav>
-                ) : (
-                  <div></div>
-                )}
+                {buttonActive === "Mint" && <MintTable data={data} BackGroundColor={BackGroundColor}/>}
+                {buttonActive === "Market Cap" && <MarketCapTable data={data} setData={setData} BackGroundColor={BackGroundColor}/>}
+                {showTransactionContent && <TransactionTable data={data} />}
               </div>
             </div>
           </div>
@@ -411,152 +240,6 @@ function Explorer() {
         <div className="ellipse"></div>
       </div>
     </div>
-  );
-}
-
-function TickComponent({ tokenData, index }) {
-  const formatBalance = (balance) => {
-    if (balance >= 1000000) {
-      const millions = (balance / 1000000).toFixed(0);
-      return millions + "M";
-    } else {
-      return balance.toString();
-    }
-  };
-
-  return (
-    <>
-      <tr>
-        <td className="iconoutline">{tokenData.star}</td>
-        {/* <td className="number_table">{tokenData.index}</td> */}
-        <td className="border_bottom">{tokenData.tick.toUpperCase()}</td>
-        <td className={tokenData.price ? "text-white-500" : "text-gray-500"}>
-          {tokenData.price
-            ? parseFloat(tokenData.price).toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-                minimumFractionDigits: 2,
-                maximumFractionDigits: 8,
-              })
-            : "N/A"}
-        </td>
-        <td
-          className={
-            tokenData.change_24h && parseFloat(tokenData.change_24h) < 0
-              ? "text-red-500"
-              : tokenData.change_24h && parseFloat(tokenData.change_24h) > 0
-              ? "text-green-500"
-              : "text-gray-500"
-          }
-        >
-          {tokenData.change_24h
-            ? (parseFloat(tokenData.change_24h) >= 0 ? "+" : "") +
-              parseFloat(tokenData.change_24h).toFixed(2) +
-              "%"
-            : "N/A"}
-        </td>
-        <td className="border_bottom">
-          {Number(tokenData.vol_24h).toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-            maximumFractionDigits: 0,
-          })}
-        </td>
-        <td className={tokenData.marketcap ? "text-white-500" : "text-gray-500"}>
-          {tokenData.marketcap
-            ? Number(tokenData.marketcap).toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-                maximumFractionDigits: 0,
-              })
-            : "N/A"}
-        </td>
-        <td className="border_bottom">{formatBalance(tokenData.max_supply)}</td>
-      </tr>
-    </>
-  );
-}
-
-function TickComponent2({ tokenData, index }) {
-  const formatBalance = (balance) => {
-    if (balance >= 1000000) {
-      const millions = (balance / 1000000).toFixed(0);
-      return millions + "M";
-    } else {
-      return balance.toString();
-    }
-  };
-
-  return (
-    <>
-      <tr>
-        <td className="border_bottom">{tokenData.tick.toUpperCase()}</td>
-        <td className="border_bottom">25 May 2023 22:38:40</td>
-        <td
-          className={
-            tokenData.change_24h && parseFloat(tokenData.change_24h) < 0
-              ? "negative"
-              : tokenData.change_24h && parseFloat(tokenData.change_24h) > 0
-              ? "positive"
-              : "na"
-          }
-        >
-          {tokenData.change_24h
-            ? (parseFloat(tokenData.change_24h) >= 0 ? "+" : "") +
-              parseFloat(tokenData.change_24h).toFixed(2) +
-              "%"
-            : "N/A"}
-        </td>
-        <td className="border_bottom">
-          {Number(tokenData.vol_24h).toLocaleString("en-US", {
-            style: "currency",
-            currency: "USD",
-            maximumFractionDigits: 0,
-          })}
-        </td>
-        <td className="border_bottombar">
-          <div>100%</div>
-          <div className="progressbar"></div>
-        </td>
-      </tr>
-    </>
-  );
-}
-
-function TickComponent3({ tokenData, index }) {
-  const formatBalance = (balance) => {
-    if (balance >= 1000000) {
-      const millions = (balance / 1000000).toFixed(0);
-      return millions + "M";
-    } else {
-      return balance.toString();
-    }
-  };
-
-  return (
-    <>
-      <tr>
-        <td className="border_bottomprofil">
-          {" "}
-          <img src={homme} alt="" />
-          <span>bc1pq4es...4skewgrv</span>
-        </td>
-        <td className="border_bottom">
-          {tokenData.marketcap
-            ? Number(tokenData.marketcap).toLocaleString("en-US", {
-                style: "currency",
-                currency: "USD",
-                maximumFractionDigits: 0,
-              })
-            : "N/A"}
-        </td>
-        <td className="border_bottomtoptoken">
-          {" "}
-          <img src={Bitcoin} alt="" />
-          99%{" "}
-        </td>
-      </tr>
-    </>
   );
 }
 

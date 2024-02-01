@@ -22,6 +22,9 @@ import litecoinltclogo from "#assets/LitecoinLTC.svg";
 import dogecoindogelogo from "#assets/DogecoinDRC.svg";
 import AlertsPage from "../../components/Explorer/AlertsPage";
 import WelcomeBack from "../../components/Elements/WelcomeBack";
+import NavButtons from "../../components/Navbars/NavButtons";
+import CaseAlert from "./CaseAlert";
+import AddCaseAlert from "./AddCaseAlert";
 
 export default function Alerts({ wallet }) {
   const [isOver1000Px, setIsOver1000Px] = useState(true);
@@ -40,16 +43,19 @@ export default function Alerts({ wallet }) {
     window.addEventListener("resize", handleResize);
   });
 
+  const SecondColor = "#1E1E1F";
+  const BackGroundColor = "#151516";
+
   return (
     <>
-      <div className="max">
-        <div className="colone">
-          <div className="idk">
+      <div className="max_1">
+        <div className="px-[30px]">
+          <div className="idk_1">
             <header>
               <div className="top">
                 <div className="style">
                   <div className="stylev2">
-                    <WelcomeBack/>
+                    <NavButtons SecondColor={SecondColor}/>
                   </div>
                 </div>
                 {/* <div className="style"></div>
@@ -67,46 +73,22 @@ export default function Alerts({ wallet }) {
                 </div> */}
               </div>
             </header>
-            <div className="scroll_contenu">
-              <div className="watchlist-flexbutton">
+            {/* <div className="scroll_contenu">
+              <div className="watchlist-flexbutton flex flex-col justify-center">
                 <div className="watchlist-buttontop">
-                  <button type="">
+                  {/* <button type="">
                     {" "}
                     <img src={scroll} alt="" />
                     Recently created
-                  </button>
-                </div>
-              </div>
-              <div className="groupe2">
-                <div className="alerts_content">
-                  <div className="alerts_title">
-                    <p>ORDI/BRC20</p>
-                  </div>
-                  <div className="flex justify-between items-center">
-                    {/* <AlertsPage /> */}
-                    <div className="alert_text">
-                      <p className="text-green-500 text-xs font-normal font-semibold leading-normal tracking-tighter flex gap-2">
-                        <img src={notification} alt="" />
-                        ACTIVE
-                      </p>
-                      <p>
-                        Alert me when price{" "}
-                        <span className="text-green-500 text-16 font-normal font-extrabold leading-normal tracking-wider">
-                          goes over $12.512
-                        </span>
-                      </p>
-                      <p className="text-white text-opacity-50 text-sm font-normal font-semibold leading-normal tracking-tighter">
-                        Created 6 minutes ago
-                      </p>
-                    </div>
-                    <div className="flex gap-5">
-                      <img src={edit} alt="" className="cursor-pointer" />
-                      <img src={trash} alt="" className="cursor-pointer" />
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+                  </button> */}
+                {/* </div>
+              </div> */}
+              <CaseAlert SecondColor={SecondColor} notification={notification} edit={edit} trash={trash}/>
+            {/* </div> */}
+
+            <AddCaseAlert SecondColor={SecondColor}/>
+
+
           </div>
           <div className="ellipse"></div>
         </div>

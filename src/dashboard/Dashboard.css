@@ -141,19 +141,9 @@ p {
   font-family: Montsemi;
 }
 
-.group2 {
-  margin-top: 16px;
-  margin-bottom: 8px;
-}
-
 .group3 {
   margin-top: 16px;
   margin-bottom: 8px;
-}
-
-.group2 p {
-  font-size: 14px;
-  margin: 0;
 }
 
 .group3 p {
@@ -867,17 +857,17 @@ p {
 
 .negative {
   color: #d84b4b;
-  border-bottom: 1px solid rgba(100, 115, 254, 0.3);
+
 }
 
 .positive {
   color: #53d258;
-  border-bottom: 1px solid rgba(100, 115, 254, 0.3);
+
 }
 
 .na {
   color: white;
-  border-bottom: 1px solid rgba(100, 115, 254, 0.3);
+
 }
 
 .chart-legend li span {
