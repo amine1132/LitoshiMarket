@@ -1,12 +1,12 @@
-function CategoryButtons({BackGroundColor, buttonActive, SecondColor, handleTokenButtonClick, handleNFTButtonClick}) {
+function CategoryButtons({BackGroundColor, buttonActive, SecondColor, handleMarketCapButtonClick, handleMintButtonClick}) {
     return(
         <div className={``}>
-            <h1 className="text-xl mb-3.5 pt-5">Watchlist</h1>
+            <h1 className="text-xl mb-3.5 pt-5">Top Market Cap / Cryptocurrency Prices</h1>
             <div className={`mb-4 bg-[${BackGroundColor}] flex w-[296px] rounded-lg`}>
                 <div className={`m-1 rounded ${buttonActive === "Market Cap" ? `bg-[${SecondColor}]`: `hover:bg-[${SecondColor}]`}`}>
                     <button
                     type="button"
-                    onClick={handleTokenButtonClick}
+                    onClick={handleMarketCapButtonClick}
                     className={`m-1.5 mx-4 w-[110px]`}
                     >
                     Market Cap
@@ -15,7 +15,7 @@ function CategoryButtons({BackGroundColor, buttonActive, SecondColor, handleToke
                 <div className={`my-1 rounded ${buttonActive === "Mint" ? `bg-[${SecondColor}]`: `hover:bg-[${SecondColor}]`}`}>
                     <button
                     type="button"
-                    onClick={handleNFTButtonClick}
+                    onClick={handleMintButtonClick}
                     className={`m-1.5 mx-4 w-[110px]`}
                     >
                     Mint

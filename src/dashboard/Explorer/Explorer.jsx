@@ -9,6 +9,10 @@ import TickComponent3 from "./TickComponent3";
 import Condition_explorer from "./Condition_explorer";
 import Filtre from '../../utils/Filtre';
 import WelcomeMessage from '../../components/Elements/WelcomeBack'
+import NavButtons from "../../components/Navbars/NavButtons";
+import CategoryButtons from "./CategoryButtons";
+import MarketCapTable from "./MarketCapTable";
+import MintTable from "./MintTable";
 
 const chartOptions = {
   responsive: true,
@@ -113,24 +117,21 @@ function Explorer({ tokenData }) {
     fetchData();
   }, []);
 
-  const handleNFTButtonClick = () => {
+  const handleMintButtonClick = () => {
     setShowNFTContent(true);
     setBox3Content("Initial Content");
+    setButtonActive("Mint");
   };
 
-  const handleTokenButtonClick = () => {
+  const handleMarketCapButtonClick = () => {
     setShowNFTContent(false);
     setShowTokenContent(true);
     setBox3Content("Token Content");
+    setButtonActive("Market Cap");
   };
 
   const handleGraphButtonClick = () => {
     setIsGraphContent(!isGraphContent);
-  };
-
-  const handleMarketCapButtonClick = () => {
-    setShowMarketCapContent(true);
-    setShow24hVolContent(false);
   };
 
   const handle24hVolButtonClick = () => {
@@ -172,6 +173,8 @@ function Explorer({ tokenData }) {
     setIsFilled(!isFilled);
   };
 
+
+
   // FILTRE
 
   const [sortOrder,setSortOrder] = useState(null);
@@ -196,8 +199,9 @@ function Explorer({ tokenData }) {
 
   // FIN FILTRE
 
-  const buttonsTailWindCssTOP = "tokens pb-[35px] p-[10px] pr-[15px] pl-[15px] whitespace-nowrap"
-  const buttonsTailWindCss2ND = "tokens pb-[35px] p-[10px] pr-[15px] pl-[15px]"
+  const SecondColor = "#1E1E1F";
+  const BackGroundColor = "#151516";
+  const [buttonActive, setButtonActive] = React.useState("Market Cap");
 
   return (
     <div className="max">
@@ -212,178 +216,22 @@ function Explorer({ tokenData }) {
       ) : (
         <div className="colone">
           <div className="idk">
-            <header>
-              <div className="top">
-                <div className="style">
-                  <WelcomeMessage/>
+          <header>
+            <div className="top">
+              <div className="style">
+                <div className="stylev2">
+                  <NavButtons SecondColor={SecondColor}/>
                 </div>
               </div>
-            </header>
+            </div>
+          </header>
             <div className="scroll_contenu">
-              <div className="groupe1">
-                <div className="box_1 ">
-                  <div className="group_v1">
-                    <div className="group1_">
-                      <p>Total</p>
-
-                      <div className="flex">
-
-                      {showMarketCapContent ? (
-                        <>
-                          <h1 className="text-2xl">
-                            Market Cap :{" "}
-                            {Number(totalMarketCap).toLocaleString("en-US", {
-                              style: "currency",
-                              currency: "USD",
-                              maximumFractionDigits: 0,
-                            })}
-                          </h1>
-                        </>
-                      ) : show24hVolContent ? (
-                        <div></div>
-                      ) : null}
-                      
-                      {/* <h1 className="text-xl">$250,000</h1> */}
-                      </div>
-
-                        <div className="flex pt-[2%]">
-                          <button
-                            type="button"
-                            onClick={handleTokenButtonClick}
-                            className={buttonsTailWindCssTOP}
-                          >
-                            Market Cap
-                          </button>
-                          <button
-                            type="button"
-                            onClick={handleTokenButtonClick}
-                            className={buttonsTailWindCssTOP}
-                          >
-                            24h Vol
-                          </button>
-                          <button
-                            type="button"
-                            onClick={handleTokenButtonClick}
-                            className={buttonsTailWindCssTOP}
-                          >
-                            Dominance
-                          </button>
-                          <button
-                            type="button"
-                            onClick={handleTokenButtonClick}
-                            className={buttonsTailWindCssTOP}
-                          >
-                            Coins
-                          </button>
-                        </div>
-
-                    </div>
-                    <div className="group2_">
-                      <div className="blur">
-                        <div className="argent_">$243,600</div>
-                        <img src={Group5333} alt="" className="graph533" />
-                      </div>
-                    </div>
-                  </div>
+              <div className={`w-full h-[775px] rounded-lg bg-[${SecondColor}] mb-8`}>
+                <div className="mx-8">
+                  <CategoryButtons BackGroundColor={BackGroundColor} buttonActive={buttonActive} SecondColor={SecondColor} handleMarketCapButtonClick={handleMarketCapButtonClick} handleMintButtonClick={handleMintButtonClick}/>
                   <div></div>
-                </div>
-              </div>
-              <div className="groupe2">
-                <div className="box3">
-                  <div className="topv1_">
-                    <p className="semi">
-                      Top Market Cap / Cryptocurrency Prices
-                    </p>
-                    <button
-                      type="button"
-                      onClick={handleTokenButtonClick}
-                      className={buttonsTailWindCss2ND}
-                    >
-                      Market Cap
-                    </button>
-                    <button
-                      type="button"
-                      onClick={handleTokenButtonClick}
-                      className={buttonsTailWindCss2ND}
-                    >
-                      Mint
-                    </button>
-                    {/*<button
-                    type="button"
-                    onClick={handleNFTButtonClick}
-                    className="mint"
-                  >
-                    Mint
-                  </button>
-                  <button type="button" onClick={handleTransactionButtonClick}>
-                    Profile
-                  </button>*/}
-                  </div>
-                  <div></div>
-                  {showNFTContent ? (
-                    <nav className="topline_1">
-                      <table>
-                        <thead>
-                          <th>Token</th>
-                          <th>Deploy Time</th>
-                          <th>Holders</th>
-                          <th>Transaction</th>
-                          <th>Progress%</th>
-                        </thead>
-                        <tbody className="semi">
-                          {data.map((token, index) => (
-                            <TickComponent2
-                              tokenData={token}
-                              index={index + 1}
-                            />
-                          ))}
-                        </tbody>
-                      </table>
-                    </nav>
-                  ) : showTokenContent ? (
-                    <nav className="topline_1">
-                      <table>
-                        <thead className="text-xs">
-                          <th></th>
-                          {/* <th className="hoverable" name={indexToken} onClick={() => Filtre(indexToken, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[6].arrow}</th> */}
-                          <th className="hoverable" name={tokenName} onClick={() => Filtre(tokenName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{/*{Arrows[0].arrow}Token*/}</th>
-                          <th className="hoverable" name={priceName} onClick={() => Filtre(priceName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[1].arrow}Price</th>
-                          <th className="hoverable" name={_24hName} onClick={() => Filtre(_24hName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[5].arrow}24h</th>
-                          <th className="hoverable" name={volumeName} onClick={() => Filtre(volumeName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[3].arrow}24h Volume</th>
-                          <th className="hoverable" name={marketCapName} onClick={() => Filtre(marketCapName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[2].arrow}Market Cap</th>
-                          <th className="hoverable" name={supplyName} onClick={() => Filtre(supplyName, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[4].arrow}Supply</th>
-                        </thead>
-                        <tbody className="semi">
-                          {data.map((token, index) => (
-                            <TickComponent
-                              onTableRowClick={handleTableRowClick}
-                              tokenData={token}
-                              index={index + 1}
-                            />
-                          ))}
-                        </tbody>
-                      </table>
-                    </nav>
-                  ) : showTransactionContent ? (
-                    <nav className="topline_1">
-                      <table>
-                        <thead>
-                          <tr>
-                            <th className="user">User</th>
-                            <th>Net worth</th>
-                            <th>Top token</th>
-                          </tr>
-                        </thead>
-                        <tbody className="semi">
-                          {data.map((token, index) => (
-                            <TickComponent3 key={index} tokenData={token} />
-                          ))}
-                        </tbody>
-                      </table>
-                    </nav>
-                  ) : (
-                    <div></div>
-                  )}
+                  {buttonActive === "Mint" && <MintTable data={data} BackGroundColor={BackGroundColor}/>}
+                  {buttonActive === "Market Cap" && <MarketCapTable data={data} setData={setData} BackGroundColor={BackGroundColor} SecondColor={SecondColor}/>}
                 </div>
               </div>
             </div>
@@ -393,8 +241,5 @@ function Explorer({ tokenData }) {
     </div>
   );
 }
-<TickComponent />;
-<TickComponent2 />;
-<TickComponent3 />;
 
 export default Explorer;

@@ -67,7 +67,7 @@ export function NavbarApp({ wallet, setWallet }) {
         {/* END BUTTON CHANGE SIZE */}
         <div className="h-full overflow-x-hidden flex flex-col overflow-y-auto">
           <div className="h-full flex flex-col mt-[50px] ">
-            <Logo />
+            <Logo isCollapsed={isCollapsed}/>
             <SearchBar isButtonActivated={isCollapsed} />
             {isCollapsed ? <div className="pb-[5px]"></div> : <div className="pb-[20px]"></div>}
             <Profile wallet={wallet} isButtonActivated={isCollapsed} />
