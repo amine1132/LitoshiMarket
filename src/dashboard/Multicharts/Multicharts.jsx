@@ -22,7 +22,7 @@ import Addchart from "../../components/Multicharts/Modal";
 import { FaRegCopy } from "react-icons/fa";
 import { Tooltip } from "@mui/material";
 import Modalchart from "../../components/Multicharts/Modal";
-import WelcomeBack from "../../components/Elements/WelcomeBack";
+import NavButtons from "../../components/Navbars/NavButtons";
 
 const chartOptions = {
   responsive: true,
@@ -455,12 +455,10 @@ function Multicharts({ wallet }) {
         
         <div className="top">
           <div className="style">
-          <div className="flex w-full ml-[10%]">
-                  <WelcomeBack/>
-          </div>
             <div className="stylev2">
+            <NavButtons/>
               <div className="filtre-dashboard">
-                
+
                 <Tooltip title="Copy address">
                   <div className="copy" id="copyAddress">
                     <FaRegCopy />
