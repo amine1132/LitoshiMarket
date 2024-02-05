@@ -4,7 +4,7 @@ import Pagination from './Pagination';
 import generateNFTElements from './NftGesture'
 import ActivityColumns from './ActivityColumns'
 
-function WalletSection({ secondColor, backGroundColor, isBiggerButtonClicked, setIsBiggerButtonClicked }) {
+function WalletSection({isBiggerButtonClicked, setIsBiggerButtonClicked }) {
   
   // Gestion NFT
   const [selectedNFTPage, setSelectedNFTPage] = React.useState(1);
@@ -76,20 +76,20 @@ function WalletSection({ secondColor, backGroundColor, isBiggerButtonClicked, se
 
   return (
     <div className={`${isBiggerButtonClicked ? '' : 'mt-10'} flex justify-center`}>
-      <div className={`px-10 p-5 w-[92.5%] rounded-3xl bg-[${secondColor}] ${isBiggerButtonClicked ? 'h-[790px]' : 'h-[450px]'} ${selectedButton === "NFT" && isBiggerButtonClicked && "overflow-auto"}`}>
+      <div className={`px-10 p-5 w-[92.5%] rounded-3xl bg-[#1E1E1F] ${isBiggerButtonClicked ? 'h-[790px]' : 'h-[450px]'} ${selectedButton === "NFT" && isBiggerButtonClicked && "overflow-auto"}`}>
         <div className="flex justify-between">
           <h1 className="text-lg">Wallet</h1>
           <button onClick={handleBiggerButtonClick}><img src={`${sizeButtonSrc}`} className="h-[24px]" alt="" /></button>
         </div>
         <div className='flex items-center'>
-          <div className={`w-[270px] p-[0.3%] h-[45px] rounded-lg flex justify-center mt-4 bg-[${backGroundColor}]`}>
-            <button className={`w-[90px] rounded-md ${selectedButton === "Token" ? `bg-[${secondColor}]` : `hover:bg-[${secondColor}]`}`} onClick={() => handleButtonClick("Token")}>
+          <div className={`w-[270px] p-[0.3%] h-[45px] rounded-lg flex justify-center mt-4 bg-[#151516]`}>
+            <button className={`w-[90px] rounded-md ${selectedButton === "Token" ? `bg-[#1E1E1F]` : `hover:bg-[#1E1E1F]`}`} onClick={() => handleButtonClick("Token")}>
               Token
             </button>
-            <button className={`w-[90px] mx-1 rounded-md ${selectedButton === "NFT" ? `bg-[${secondColor}]` : `hover:bg-[${secondColor}]`}`} onClick={() => handleButtonClick("NFT")}>
+            <button className={`w-[90px] mx-1 rounded-md ${selectedButton === "NFT" ? `bg-[#1E1E1F]` : `hover:bg-[#1E1E1F]`}`} onClick={() => handleButtonClick("NFT")}>
               NFT
             </button>
-            <button className={`w-[90px] rounded-md ${selectedButton === "Activity" ? `bg-[${secondColor}]` : `hover:bg-[${secondColor}]`}`} onClick={() => handleButtonClick("Activity")}>
+            <button className={`w-[90px] rounded-md ${selectedButton === "Activity" ? `bg-[#1E1E1F]` : `hover:bg-[#1E1E1F]`}`} onClick={() => handleButtonClick("Activity")}>
               Activity
             </button>
           </div>
@@ -98,8 +98,8 @@ function WalletSection({ secondColor, backGroundColor, isBiggerButtonClicked, se
 
           {selectedButton === "Token" && (
             <>
-              <Columns data={data} currentPage={currentPage} itemsPerPage={itemsPerPageToken} backgroundColor={backGroundColor} />
-              <Pagination currentPage={currentPage} totalPages={totalPagesToken} setCurrentPage={setCurrentPage} backgroundColor={backGroundColor} />
+              <Columns data={data} currentPage={currentPage} itemsPerPage={itemsPerPageToken}/>
+              <Pagination currentPage={currentPage} totalPages={totalPagesToken} setCurrentPage={setCurrentPage}/>
             </>
           )}
 
@@ -107,22 +107,22 @@ function WalletSection({ secondColor, backGroundColor, isBiggerButtonClicked, se
           {selectedButton === "NFT" && !isBiggerButtonClicked && (
               <>
                 <div className='flex mt-4 mb-[1.2%] w-[100%] justify-left flex-wrap'>
-                    {generateNFTElements(NbNFT, isBiggerButtonClicked, selectedNFTPage, itemsPerPageNFT, backGroundColor)}
+                    {generateNFTElements(NbNFT, isBiggerButtonClicked, selectedNFTPage, itemsPerPageNFT)}
                 </div>
-                <Pagination currentPage={selectedNFTPage} totalPages={totalPagesNFT} setCurrentPage={handleNFTPageChange} backgroundColor={backGroundColor} />
+                <Pagination currentPage={selectedNFTPage} totalPages={totalPagesNFT} setCurrentPage={handleNFTPageChange}/>
               </>
           )}
           {selectedButton === "NFT" && isBiggerButtonClicked && (
             <div className='flex mt-4 mb-[1.2%] justify-left flex-wrap'>
-                {generateNFTElements(NbNFT, isBiggerButtonClicked, selectedNFTPage, itemsPerPageNFT, backGroundColor)}
+                {generateNFTElements(NbNFT, isBiggerButtonClicked, selectedNFTPage, itemsPerPageNFT)}
             </div>
           )}
 
 
           {selectedButton === "Activity" && (
             <>
-            <div className={`${!isBiggerButtonClicked ? "mb-[24px]" : "h-[617px]"}`}><ActivityColumns data={dataActivity} currentPage={currentPage} itemsPerPage={itemsPerPageToken} backgroundColor={backGroundColor} /></div>
-              <Pagination currentPage={currentPage} totalPages={totalPagesActivity} setCurrentPage={setCurrentPage} backgroundColor={backGroundColor} />
+            <div className={`${!isBiggerButtonClicked ? "mb-[24px]" : "h-[617px]"}`}><ActivityColumns data={dataActivity} currentPage={currentPage} itemsPerPage={itemsPerPageToken}/></div>
+              <Pagination currentPage={currentPage} totalPages={totalPagesActivity} setCurrentPage={setCurrentPage} />
             </>
           )}
 

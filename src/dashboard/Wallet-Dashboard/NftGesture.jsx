@@ -1,7 +1,7 @@
-function generateNFTElements(count, isBiggerButtonClicked, selectedNFTPage, itemsPerPageNFT, backGroundColor){
+function generateNFTElements(count, isBiggerButtonClicked, selectedNFTPage, itemsPerPageNFT){
     return Array.from({ length: count }, (_, index) => (
         <div className={isBiggerButtonClicked ? 'w-[20%] mb-4' : 'w-[20%]'}>
-            <div key={index} className={`rounded-lg h-[250px] w-[200px] bg-[${backGroundColor}]`}>
+            <div key={index} className={`rounded-lg h-[250px] w-[200px] bg-[#151516]`}>
                 {/* Contenu de la div NFT */}
             </div>
         </div>

@@ -1,4 +1,4 @@
-function Pagination({ currentPage, totalPages, setCurrentPage, backgroundColor }) {
+function Pagination({ currentPage, totalPages, setCurrentPage }) {
     return (
       <div className="text-right">
         <button

@@ -231,7 +231,7 @@ function Explorer({ tokenData }) {
                   <CategoryButtons BackGroundColor={BackGroundColor} buttonActive={buttonActive} SecondColor={SecondColor} handleMarketCapButtonClick={handleMarketCapButtonClick} handleMintButtonClick={handleMintButtonClick}/>
                   <div></div>
                   {buttonActive === "Mint" && <MintTable data={data} BackGroundColor={BackGroundColor}/>}
-                  {buttonActive === "Market Cap" && <MarketCapTable data={data} setData={setData} BackGroundColor={BackGroundColor} SecondColor={SecondColor}/>}
+                  {buttonActive === "Market Cap" && <MarketCapTable data={data} setData={setData} BackGroundColor={BackGroundColor} SecondColor={SecondColor} onTableRowClick={handleTableRowClick}/>}
                 </div>
               </div>
             </div>

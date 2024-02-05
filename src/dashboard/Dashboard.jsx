@@ -441,8 +441,8 @@ function Dashboard({ wallet }) {
     console.log(filteredBlockchain);
   }
 
-  const SecondColor = "#1E1E1F";
-  const BackGroundColor = "#151516";
+  // const SecondColor = "#1E1E1F";
+  // const BackGroundColor = "#151516";
   const [isBiggerButtonClicked, setIsBiggerButtonClicked] = React.useState(false);
   
 
@@ -463,7 +463,7 @@ function Dashboard({ wallet }) {
                       </Tooltip>
                     </div>
                     {/* BOUTON EN HAUT */}
-                    <NavButtons SecondColor={SecondColor}/>
+                    <NavButtons/>
                     {/* FIN BOUTON EN HAUT */}
 
 
@@ -472,7 +472,7 @@ function Dashboard({ wallet }) {
                   <div className="flex justify-center mt-10">
                     {/* PROFIL SECTION */}
 
-                    <div className={`mr-10 p-10 w-[45%] h-[300px] justify-center rounded-3xl bg-[${SecondColor}] ${isBiggerButtonClicked ? 'hidden' : ''}`}>
+                    <div className={`mr-10 p-10 w-[45%] h-[300px] justify-center rounded-3xl bg-[#1E1E1F] ${isBiggerButtonClicked ? 'hidden' : ''}`}>
                       <div className={`flex`}>
                         <img src="/src/assets/default-avatar.png" className="rounded-full h-[100px]" alt="" />
                         <div className="pl-5 self-center">
@@ -490,22 +490,22 @@ function Dashboard({ wallet }) {
                           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                       </div>
                       <div className="flex pt-5 justify-between gap-x-[5%] w-full">
-                        <button className={`w-[220px] py-2 rounded-lg bg-[${BackGroundColor}]`}>
+                        <button className={`w-[220px] py-2 rounded-lg bg-[#151516]`}>
                           Twitter
                         </button>
 
-                        <button className={`w-[220px] py-2 rounded-lg bg-[${BackGroundColor}]`}>
+                        <button className={`w-[220px] py-2 rounded-lg bg-[#151516]`}>
                           Website
                         </button>
 
-                        <button className={`w-[220px] py-2 rounded-lg bg-[${BackGroundColor}]`}>
+                        <button className={`w-[220px] py-2 rounded-lg bg-[#151516]`}>
                           Add Location
                         </button>
                       </div>
                     </div>
                     {/* END PROFIL SECTION */}
                     {/* CHART SECTION */}
-                    <div className={`overflow-auto p-10 w-[45%] justify-center rounded-3xl bg-[${SecondColor}] ${isBiggerButtonClicked ? 'hidden' : ''}`}>
+                    <div className={`overflow-auto p-10 w-[45%] justify-center rounded-3xl bg-[#1E1E1F] ${isBiggerButtonClicked ? 'hidden' : ''}`}>
                       
                     </div>
                     {/* END CHART SECTION */}
@@ -513,7 +513,7 @@ function Dashboard({ wallet }) {
                   </div>
 
                     {/* WALLET SECTION */}
-                    <WalletSection secondColor={SecondColor} backGroundColor={BackGroundColor} isBiggerButtonClicked={isBiggerButtonClicked} setIsBiggerButtonClicked={setIsBiggerButtonClicked}/>
+                    <WalletSection isBiggerButtonClicked={isBiggerButtonClicked} setIsBiggerButtonClicked={setIsBiggerButtonClicked}/>
                     {/* END WALLET SECTION */}
                 </div>
               </div>

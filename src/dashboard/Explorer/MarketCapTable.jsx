@@ -3,7 +3,7 @@ import React from "react";
 import FromatBalance from "./FormatBalance"
 import Pagination from './Pagination';
 
-function MarketCapTable({ data, setData, BackGroundColor, SecondColor}){
+function MarketCapTable({ data, setData, BackGroundColor, SecondColor, onTableRowClick}){
   console.log(data);
     // FILTRE
     const [sortOrder,setSortOrder] = React.useState(null);
@@ -61,7 +61,7 @@ function MarketCapTable({ data, setData, BackGroundColor, SecondColor}){
         <tbody className="semi">
 
           {currentItems.map((token, index) => (
-            <tr className="h-[40px]">
+            <tr className="h-[40px] cursor-pointer" onClick={() => onTableRowClick(token)}>
               {/* <td className="iconoutline">{token.star}</td> */}
               {/* <td className="number_table">{token.index}</td> */}
               <td className={`pl-8 ${index != itemsPerPage-1 && `border-b border-[${BackGroundColor}]`}`}>{token.tick.toUpperCase()}</td>
