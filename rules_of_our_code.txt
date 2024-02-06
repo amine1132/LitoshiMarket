@@ -1,0 +1,7 @@
+COMPOSANT PRICIPAUX (exemple : DASHBOARD, WATCHLIST)
+Composant Secondaires (exemple : )
+F_fonctionDansUnComposant (exemple : F_formatBalance)
+X-composant-inutile-ou-obsolete (exemple : X-old-dashboard-return)
+
+PrimaryColor = "#151516";
+SecondColor = "#1E1E1F";
