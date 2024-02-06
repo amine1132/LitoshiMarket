@@ -10,40 +10,6 @@ import WalletSection from "./Wallet-Dashboard/Wallet-Dashboard"
 import NavButtons from "../components/Navbars/NavButtons";
 import ProfileDashBoard from "./ProfileDashboard";
 
-const chartOptions = {
-  responsive: true,
-  maintainAspectRatio: false,
-  plugins: {
-    legend: {
-      display: true,
-      position: "left",
-      family: "MontRegular",
-      labels: {
-        color: "white",
-        usePointStyle: true,
-        pointStyle: "rect",
-        padding: 17, // Spacing between labels
-        borderWidth: 10,
-        font: {
-          size: 16, // Change the size of caption text
-          family: "MontRegular",
-        },
-      },
-    },
-    layout: {
-      padding: {
-        left: 200, // Doughnut left spacing
-      },
-    },
-  },
-  cutout: 80,
-  elements: {
-    arc: {
-      borderWidth: 2, // Edge thickness
-    },
-  },
-};
-
 function Dashboard({ wallet }) {
   const [uniSatAvailable, setUniSatAvailable] = useState(false);
   const [filteredBlockchain, setFilteredBlockchain] = useState();

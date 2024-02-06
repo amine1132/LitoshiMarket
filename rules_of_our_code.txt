@@ -1,5 +1,4 @@
-COMPOSANT PRICIPAUX (exemple : DASHBOARD, WATCHLIST)
-Composant Secondaires (exemple : )
+COMPOSANTS PRICIPAUX ET SECONDAIRES (exemple : DASHBOARD, WATCHLIST)
 F_fonctionDansUnComposant (exemple : F_formatBalance)
 X-composant-inutile-ou-obsolete (exemple : X-old-dashboard-return)
 

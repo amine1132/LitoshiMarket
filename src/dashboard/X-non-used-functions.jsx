@@ -1,10 +1,36 @@
+import axios from "axios";
+import Group_427319828 from "#assets/dashboard/Group_427319828.svg";
+import map from "#assets/dashboard/map.svg";
+import web from "#assets/dashboard/Web.svg";
+import newgraph from "#assets/dashboard/newgraph.svg";
+import search from "#assets/dashboard/search.svg";
+import profile from "#assets/dashboard/Profile.svg";
+import test3 from "#assets/dashboard/test3.svg";
+import Chart, { Chart as ChartJS, defaults } from "chart.js/auto";
+import Explorer from "./Explorer/Explorer";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Link,
+  useNavigate,
+  Outlet,
+  useMatch,
+} from "react-router-dom";
+import Bitcoin from "#assets/dashboard/BitcoinBTC.svg";
+import dogecoindogelogo from "#assets/dashboard/DogecoinDRC.svg";
+import litecoinltclogo from "#assets/dashboard/LitecoinLTC.svg";
+import Agreecookies from "./Cookies";
+import NFT from "#assets/dashboard/Nft.png";
+import WelcomeMessage from "../components/Elements/WelcomeBack";
+
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 const moitieSuperieure = donnees.slice(0, Math.ceil(donnees.length / 2));
 const moitieInferieure = donnees.slice(Math.ceil(donnees.length / 2));
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-// !! INSIDE DASHBOARD FUNCTION
+
 const [data, setData] = useState([]);
 const [chartData, setChartData] = useState(null);
 const [copied, setCopied] = useState(false);
@@ -16,17 +42,11 @@ const [showTransactionContent, setShowTransactionContent] = useState(false);
 const [isGraphContent, setIsGraphContent] = useState(false);
 const [box3Content, setBox3Content] = useState("Token Content");
 const [isLoading, setIsLoading] = useState(true);
+const [uniSatAvailable, setUniSatAvailable] = useState(false);
 const [isConnected, setIsConnected] = useState(false);
 const [isLoggedOut, setIsLoggedOut] = useState(false);
-
-const nftImageUrl =
-"https://ordinalslite.com/content/e43b3f3f1c88468127196f46909b1be7fde7d3d173c4c4ceb94abcbceea542d7i0";
-const nftImageUrl2 =
-"https://ordinalslite.com/content/78e5fc19ef198cb37d430075fa226a11ed9df72a3513b262ddd8b07792725112i0";
-const nftImageUrl3 =
-"https://ordinalslite.com/content/a883bd5330b441d537deb4340431d37890425e38f1411c69a46b516eea8d0aa0i0";
-const nftImageUrl4 =
-"https://ordinalslite.com/content/e43b3f3f1c88468127196f46909b1be7fde7d3d173c4c4ceb94abcbceea542d7i0";
+const [filteredBlockchain, setFilteredBlockchain] = useState();
+const [isOver1000Px, setIsOver1000Px] = useState(true);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -44,6 +64,42 @@ function handleFilterClick(blockchain) {
   }
   console.log(filteredBlockchain);
 }
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+const chartOptions = {
+  responsive: true,
+  maintainAspectRatio: false,
+  plugins: {
+    legend: {
+      display: true,
+      position: "left",
+      family: "MontRegular",
+      labels: {
+        color: "white",
+        usePointStyle: true,
+        pointStyle: "rect",
+        padding: 17, // Spacing between labels
+        borderWidth: 10,
+        font: {
+          size: 16, // Change the size of caption text
+          family: "MontRegular",
+        },
+      },
+    },
+    layout: {
+      padding: {
+        left: 200, // Doughnut left spacing
+      },
+    },
+  },
+  cutout: 80,
+  elements: {
+    arc: {
+      borderWidth: 2, // Edge thickness
+    },
+  },
+};
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -480,7 +480,7 @@ function Multicharts({ wallet }) {
           </div> */}
         </div>
       </header>
-      <div className="mutlichart_add_flex">
+      <div className="mutlichart_add_flex px-10">
         <Addchart setSelectedResult={setSelectedResult} />
       </div>
     </>
