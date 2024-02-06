@@ -1,17 +1,15 @@
 .addanewchart {
   border-radius: 16px;
-  background: linear-gradient(
-    0deg,
-    rgba(86, 58, 255, 0.25) 0%,
-    rgba(128, 128, 128, 0.07) 100%
-  );
+  background: #1e1e1f;
   height: 332px;
   width: 390px;
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: column-reverse;
+  gap: 10px;
 }
+
 .chart_flex {
   display: flex;
   height: 332px;
@@ -19,11 +17,7 @@
 }
 .chart_flex li {
   border-radius: 16px;
-  background: linear-gradient(
-    0deg,
-    rgba(86, 58, 255, 0.25) 0%,
-    rgba(128, 128, 128, 0.07) 100%
-  );
+  background: #1e1e1f;
   height: 332px;
   width: 200px;
   display: flex;
