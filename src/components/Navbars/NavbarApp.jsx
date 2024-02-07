@@ -21,7 +21,7 @@ import "./NavbarApp.css";
 //  Navbar
 // ===========================================================
 
-export function NavbarApp({ wallet, setWallet }) {
+export function NavbarApp({ wallet, setWallet, blurState }) {
 
   const BackGroundColor = "#151516";
   const BackGroundColorButton = "#1E1E1F";
@@ -52,7 +52,7 @@ export function NavbarApp({ wallet, setWallet }) {
           ? "collapsed w-[50px] transition-width duration-300 ease-in-out"
           : "w-[240px] transition-width duration-300 ease-in-out"
       }
-    h-full border[0.5px-solid-blue] rounded-r-lg`}
+    h-full border[0.5px-solid-blue] rounded-r-lg ${blurState && "blur"}`}
     >
       <div
         className={`${

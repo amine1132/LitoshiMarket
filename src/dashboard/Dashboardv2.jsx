@@ -21,6 +21,7 @@ import { RoutesLogged } from "#routes/RoutesLogged";
 
 export default function Dashboardv2() {
   const [wallet, setWallet] = useState();
+  const [blurState, setBlurState] = useState(false);
 
   useEffect(() => {
     // console.log("wallet");
@@ -33,11 +34,11 @@ export default function Dashboardv2() {
         <BrowserRouter>
           <Routes>
             <Route
-              element={<RoutesLogged wallet={wallet} setWallet={setWallet} />}
+              element={<RoutesLogged wallet={wallet} setWallet={setWallet} blurState={blurState} />}
             >
               <Route path="/*" element={<Dashboard wallet={wallet} />} />
               <Route path="/explorer" element={<Explorer />} />
-              <Route path="/watchlist" element={<Watchlist />} />
+              <Route path="/watchlist" element={<Watchlist setBlurState={setBlurState} blurState={blurState}/>} />
               <Route path="/multicharts" element={<Multicharts />} />
               <Route path="/alerts" element={<Alerts />} />
             </Route>

@@ -14,8 +14,11 @@ import CategoryButtons from "./CategoryButtons";
 import MarketCapTable from "./MarketCapTable";
 import TransactionTable from "./TransactionTable";
 import MintTable from "./MintTable";
+import ShareWatchList from "./ShareMyList";
+import NewList from "./NewList";
+import ShareWatchListSM from "./ShareMyListSMnext";
 
-function Explorer() {
+function Watchlist({setBlurState, blurState}) {
   const [data, setData] = useState([]);
   const [totalMarketCap, setTotalMarketCap] = useState(0.0);
   const [totalVols24h, setTotalVols24h] = useState(0.0);
@@ -110,9 +113,44 @@ function Explorer() {
   const [buttonActive, setButtonActive] = React.useState("Market Cap");
 
 
+
+  {/* pop ups */}
+  const [showShareWatchList, setShowShareWatchList] = useState(false);
+  const [showManageList, setShowManageList] = useState(false);
+
+  const toggleSetShowShareWatchList = () => {
+    const state = !showShareWatchList
+    setShowShareWatchList(state);
+    setBlurState(state);
+
+    setShowManageList(false);
+  };
+
+  const toggleSetShowManageList = () => {
+    const state = !showManageList
+    setShowManageList(state);
+    setBlurState(state);
+
+    setShowShareWatchList(false);
+  };
+  {/* end pop ups */}
+
+
+
   return (
+    <>
+    {/* pop ups */}
+    {showShareWatchList && (
+      <ShareWatchList toggleSetShowShareWatchList={toggleSetShowShareWatchList} SecondColor={SecondColor}/>
+    )}
+    {showManageList && (
+      <NewList toggleSetShowManageList={toggleSetShowManageList} SecondColor={SecondColor}/>
+    )}
+
+    {/* end pop ups */}
+
     <div className="max">
-      <div className="px-[30px]">
+      <div className={`px-[30px] duration-300 ${blurState && "blur"}`}>
         <div className="idk">
           <header>
             <div className="top">
@@ -126,7 +164,11 @@ function Explorer() {
           </header>
           <div className="scroll_contenu">
             <useless_1/>
-            <TopButtons BackGroundColor={BackGroundColor} SecondColor={SecondColor} additem={additem} addwatch={addwatch} arrowright={arrowright} notification={notification} Share={Share}/>
+
+            <TopButtons BackGroundColor={BackGroundColor} SecondColor={SecondColor} 
+            additem={additem} addwatch={addwatch} arrowright={arrowright} notification={notification} Share={Share} 
+            toggleSetShowShareWatchList={toggleSetShowShareWatchList} toggleSetShowManageList={toggleSetShowManageList}/>
+
             <div className={`w-full h-[700px] rounded-lg bg-[${SecondColor}] mb-8`}>
               <div className="m-8">
                 <CategoryButtons BackGroundColor={BackGroundColor} buttonActive={buttonActive} SecondColor={SecondColor} handleTokenButtonClick={handleTokenButtonClick} handleNFTButtonClick={handleNFTButtonClick}/>
@@ -141,7 +183,8 @@ function Explorer() {
         <div className="ellipse"></div>
       </div>
     </div>
+    </>
   );
 }
 
-export default Explorer;
+export default Watchlist;

@@ -9,7 +9,7 @@ import { NavbarApp } from "#components/Navbars";
 //  Route
 // ===========================================================
 
-export const RoutesLogged = ({ wallet, setWallet }) => {
+export const RoutesLogged = ({ wallet, setWallet, blurState }) => {
   // Hooks
   const navigate = useNavigate();
   const location = useLocation();
@@ -21,8 +21,8 @@ export const RoutesLogged = ({ wallet, setWallet }) => {
   }, [user]);
 
   return (
-    <div className="w-full h-full flex overflow-hidden">
-        <NavbarApp wallet={wallet} setWallet={setWallet} />
+    <div className={`w-full h-full flex overflow-hidden`}>
+        <NavbarApp wallet={wallet} setWallet={setWallet} blurState={blurState}/>
       <div className="w-[100%] h-full ">
         <Outlet
           context={{
