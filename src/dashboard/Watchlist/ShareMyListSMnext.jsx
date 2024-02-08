@@ -1,7 +1,7 @@
 export default function ShareWatchListSMNext({SecondColor, toggleSetShowShareWatchList, handleMyBRCButtonClick}) {
     return (
-    <div className="bg-black bg-opacity-50 fixed inset-0 flex z-10">
-        <div className={`h-[320px] w-[720px] ml-[14%] mt-[11%] p-8 rounded-xl bg-[${SecondColor}]`}>
+    <div className="bg-black bg-opacity-50 fixed inset-0 flex justify-center z-10">
+        <div className={`h-[320px] w-[720px] self-center p-8 rounded-xl bg-[${SecondColor}]`}>
             <div className="flex justify-between">
                 <div className="flex">
                     <button onClick={() => handleMyBRCButtonClick(null)}>

@@ -1,7 +1,7 @@
 export default function NewList({toggleSetShowManageList, SecondColor}) {
     return(
-        <div className="bg-black bg-opacity-50 fixed inset-0 flex z-10">
-            <div className={`h-[220px] w-[720px] ml-[14%] mt-[11%] p-8 rounded-xl bg-[${SecondColor}]`}>
+        <div className="bg-black bg-opacity-50 fixed inset-0 justify-center flex z-10">
+            <div className={`h-[220px] w-[720px] self-center p-8 rounded-xl bg-[${SecondColor}]`}>
                 <div className="flex justify-between">
                     <p className="">Manage my list</p>
                     <button onClick={toggleSetShowManageList} className={`rounded-lg`}>
