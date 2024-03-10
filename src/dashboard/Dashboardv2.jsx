@@ -22,6 +22,7 @@ import { RoutesLogged } from "#routes/RoutesLogged";
 export default function Dashboardv2() {
   const [wallet, setWallet] = useState();
   const [blurState, setBlurState] = useState(false);
+  const [searchState, setSearchState] = useState(false);
 
   useEffect(() => {
     // console.log("wallet");
@@ -34,13 +35,13 @@ export default function Dashboardv2() {
         <BrowserRouter>
           <Routes>
             <Route
-              element={<RoutesLogged wallet={wallet} setWallet={setWallet} blurState={blurState} />}
+              element={<RoutesLogged wallet={wallet} setWallet={setWallet} setBlurState={setBlurState} blurState={blurState} setSearchState={setSearchState} />}
             >
-              <Route path="/*" element={<Dashboard wallet={wallet} />} />
-              <Route path="/explorer" element={<Explorer />} />
-              <Route path="/watchlist" element={<Watchlist setBlurState={setBlurState} blurState={blurState}/>} />
-              <Route path="/multicharts" element={<Multicharts />} />
-              <Route path="/alerts" element={<Alerts />} />
+              <Route path="/*" element={<Dashboard wallet={wallet} blurState={blurState} searchState={searchState} setBlurState={setBlurState} setSearchState={setSearchState}/>} />
+              <Route path="/explorer" element={<Explorer setBlurState={setBlurState} blurState={blurState} searchState={searchState} setSearchState={setSearchState} />} />
+              <Route path="/watchlist" element={<Watchlist setBlurState={setBlurState} blurState={blurState} searchState={searchState} setSearchState={setSearchState}/>} />
+              <Route path="/multicharts" element={<Multicharts setBlurState={setBlurState} blurState={blurState} searchState={searchState} setSearchState={setSearchState} />} />
+              <Route path="/alerts" element={<Alerts setBlurState={setBlurState} blurState={blurState} searchState={searchState} setSearchState={setSearchState} />} />
             </Route>
           </Routes>
         </BrowserRouter>

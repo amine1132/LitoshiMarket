@@ -9,8 +9,9 @@ import "./Mont/Mont-SemiBold.otf";
 import WalletSection from "./Wallet-Dashboard/Wallet-Dashboard"
 import NavButtons from "../components/Navbars/NavButtons";
 import ProfileDashBoard from "./ProfileDashboard";
+import SearchPopUp from "../components/SearchPopUp/SearchPopUp";
 
-function Dashboard({ wallet }) {
+function Dashboard({ wallet, blurState, searchState, setBlurState, setSearchState }) {
   const [uniSatAvailable, setUniSatAvailable] = useState(false);
   const [filteredBlockchain, setFilteredBlockchain] = useState();
   const [isOver1000Px, setIsOver1000Px] = useState(true);
@@ -91,10 +92,17 @@ function Dashboard({ wallet }) {
   // const BackGroundColor = "#151516";
   const [isBiggerButtonClicked, setIsBiggerButtonClicked] = React.useState(false);
   
+  const handleSearchPopUp = () => {
+    setSearchState(false);
+    setBlurState(false);
+  }
 
   return (
     <>
-      <div className="max_1">
+    {searchState && (
+      <SearchPopUp handleSearchPopUp={handleSearchPopUp}/>
+    )}
+      <div className={`max_1 duration-300 ${blurState && "blur"}`}>
         <div className="colone">
           <div className="idk_1">
             <header>

@@ -16,9 +16,9 @@ import TransactionTable from "./TransactionTable";
 import MintTable from "./MintTable";
 import ShareWatchList from "./ShareMyList";
 import NewList from "./NewList";
-import ShareWatchListSM from "./ShareMyListSMnext";
+import SearchPopUp from "../../components/SearchPopUp/SearchPopUp";
 
-function Watchlist({setBlurState, blurState}) {
+function Watchlist({setBlurState, blurState, searchState, setSearchState}) {
   const [data, setData] = useState([]);
   const [totalMarketCap, setTotalMarketCap] = useState(0.0);
   const [totalVols24h, setTotalVols24h] = useState(0.0);
@@ -133,6 +133,11 @@ function Watchlist({setBlurState, blurState}) {
 
     setShowShareWatchList(false);
   };
+
+  const handleSearchPopUp = () => {
+    setSearchState(false);
+    setBlurState(false);
+  }
   {/* end pop ups */}
 
 
@@ -147,6 +152,9 @@ function Watchlist({setBlurState, blurState}) {
       <NewList toggleSetShowManageList={toggleSetShowManageList} SecondColor={SecondColor}/>
     )}
 
+    {searchState && (
+      <SearchPopUp handleSearchPopUp={handleSearchPopUp}/>
+    )}
     {/* end pop ups */}
 
     <div className="max">

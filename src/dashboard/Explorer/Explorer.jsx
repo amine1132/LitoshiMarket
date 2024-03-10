@@ -10,9 +10,10 @@ import NavButtons from "../../components/Navbars/NavButtons";
 import CategoryButtons from "./CategoryButtons";
 import MarketCapTable from "./MarketCapTable";
 import MintTable from "./MintTable";
+import SearchPopUp from "../../components/SearchPopUp/SearchPopUp";
 
 
-function Explorer({ tokenData }) {
+function Explorer({ tokenData, blurState, searchState, setBlurState, setSearchState }) {
   const [data, setData] = useState([]);
   const [totalMarketCap, setTotalMarketCap] = useState(0.0);
   const [totalVols24h, setTotalVols24h] = useState(0.0);
@@ -96,8 +97,17 @@ function Explorer({ tokenData }) {
   const BackGroundColor = "#151516";
   const [buttonActive, setButtonActive] = React.useState("Market Cap");
 
+  const handleSearchPopUp = () => {
+    setSearchState(false);
+    setBlurState(false);
+  }
+
   return (
-    <div className="max">
+  <>
+    {searchState && (
+      <SearchPopUp handleSearchPopUp={handleSearchPopUp}/>
+    )}
+    <div className={`max duration-300 ${blurState && "blur"}`}>
       {isContentCleared ? (
         selectedToken ? (
           <>
@@ -132,6 +142,7 @@ function Explorer({ tokenData }) {
         </div>
       )}
     </div>
+    </>
   );
 }
 

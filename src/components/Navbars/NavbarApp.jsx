@@ -21,10 +21,15 @@ import "./NavbarApp.css";
 //  Navbar
 // ===========================================================
 
-export function NavbarApp({ wallet, setWallet, blurState }) {
+export function NavbarApp({ wallet, setWallet, blurState, setBlurState, setSearchState }) {
 
   const BackGroundColor = "#151516";
   const BackGroundColorButton = "#1E1E1F";
+
+  const handleBlurState = () => {
+    setBlurState(!blurState);
+    setSearchState(true);
+  }
 
   // useEffect(() => {
   //   console.log("wallet");
@@ -68,7 +73,11 @@ export function NavbarApp({ wallet, setWallet, blurState }) {
         <div className="h-full overflow-x-hidden flex flex-col overflow-y-auto">
           <div className="h-full flex flex-col mt-[50px] ">
             <Logo isCollapsed={isCollapsed}/>
-            <SearchBar isButtonActivated={isCollapsed} />
+
+            <button onClick={handleBlurState}>
+              <SearchBar isButtonActivated={isCollapsed} />
+            </button>
+
             {isCollapsed ? <div className="pb-[5px]"></div> : <div className="pb-[20px]"></div>}
             <Profile wallet={wallet} isButtonActivated={isCollapsed} />
             {/* <Tokens wallet={wallet} isButtonActivated={isCollapsed} /> */}

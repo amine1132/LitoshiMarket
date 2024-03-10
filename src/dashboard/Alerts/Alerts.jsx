@@ -6,8 +6,9 @@ import "./Alerts.css";
 import NavButtons from "../../components/Navbars/NavButtons";
 import CaseAlert from "./CaseAlert";
 import AddCaseAlert from "./AddCaseAlert";
+import SearchPopUp from "../../components/SearchPopUp/SearchPopUp";
 
-export default function Alerts({ wallet }) {
+export default function Alerts({ wallet, blurState, searchState, setBlurState, setSearchState }) {
   const [isOver1000Px, setIsOver1000Px] = useState(true);
 
   //choose the screen size
@@ -27,9 +28,17 @@ export default function Alerts({ wallet }) {
   const SecondColor = "#1E1E1F";
   const BackGroundColor = "#151516";
 
+  const handleSearchPopUp = () => {
+    setSearchState(false);
+    setBlurState(false);
+  }
+
   return (
     <>
-      <div className="max_1">
+      {searchState && (
+        <SearchPopUp handleSearchPopUp={handleSearchPopUp}/>
+      )}
+      <div className={`max_1 duration-300 ${blurState && "blur"}`}>
         <div className="px-[30px]">
           <div className="idk_1">
             <header>

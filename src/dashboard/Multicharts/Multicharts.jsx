@@ -23,6 +23,7 @@ import { FaRegCopy } from "react-icons/fa";
 import { Tooltip } from "@mui/material";
 import Modalchart from "../../components/Multicharts/Modal";
 import NavButtons from "../../components/Navbars/NavButtons";
+import SearchPopUp from "../../components/SearchPopUp/SearchPopUp";
 
 const chartOptions = {
   responsive: true,
@@ -58,7 +59,7 @@ const chartOptions = {
   },
 };
 
-function Multicharts({ wallet }) {
+function Multicharts({ wallet, blurState, searchState, setBlurState, setSearchState }) {
   const [data, setData] = useState([]);
   const [dataType, setDataType] = useState("");
   const [isSelectorVisible, setIsSelectorVisible] = useState(false);
@@ -449,39 +450,48 @@ function Multicharts({ wallet }) {
     console.log(filteredBlockchain);
   }
 
+  const handleSearchPopUp = () => {
+    setSearchState(false);
+    setBlurState(false);
+  }
+
   return (
     <>
-      <header>
-        
-        <div className="top">
-          <div className="style">
-            <div className="stylev2">
-            <NavButtons/>
-              <div className="filtre-dashboard">
+      {searchState && (
+        <SearchPopUp handleSearchPopUp={handleSearchPopUp}/>
+      )}
+        <div className={`h-full duration-300 ${blurState && "blur"}`}>
+          <header>
+            <div className={`top`}>
+              <div className="style">
+                <div className="stylev2">
+                <NavButtons/>
+                  <div className="filtre-dashboard">
 
-                <Tooltip title="Copy address">
-                  <div className="copy" id="copyAddress">
-                    <FaRegCopy />
+                    <Tooltip title="Copy address">
+                      <div className="copy" id="copyAddress">
+                        <FaRegCopy />
+                      </div>
+                    </Tooltip>
                   </div>
-                </Tooltip>
+                </div>
               </div>
+              {/* <div className="input">
+                <div className="loupe_">
+                  <img src={search} alt="" />
+                </div>
+                <input
+                  type="text"
+                  placeholder="Token, pair, address..."
+                  className="formulaire_2"
+                />
+                <div className="notif"></div>
+              </div> */}
             </div>
-          </div>
-          {/* <div className="input">
-            <div className="loupe_">
-              <img src={search} alt="" />
-            </div>
-            <input
-              type="text"
-              placeholder="Token, pair, address..."
-              className="formulaire_2"
-            />
-            <div className="notif"></div>
-          </div> */}
+          </header>
+        <div className={`mutlichart_add_flex px-10`}>
+          <Addchart setSelectedResult={setSelectedResult} />
         </div>
-      </header>
-      <div className="mutlichart_add_flex px-10">
-        <Addchart setSelectedResult={setSelectedResult} />
       </div>
     </>
   );
