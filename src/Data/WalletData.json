@@ -1,0 +1,98 @@
+[
+  {
+    "ticker": "sbtc",
+    "overall_balance": "162000.000000000000",
+    "available_balance": "162000.000000000000",
+    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "image_url": null,
+    "min_listed_unit_price": 69.224
+  },
+  {
+    "ticker": "base",
+    "overall_balance": "30000000.000000000000",
+    "available_balance": "30000000.000000000000",
+    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "image_url": null,
+    "min_listed_unit_price": 0.12216
+  },
+  {
+    "ticker": "taro",
+    "overall_balance": "35000.000000000000",
+    "available_balance": "35000.000000000000",
+    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "image_url": null,
+    "min_listed_unit_price": 12.216
+  },
+  {
+    "ticker": "rcsv",
+    "overall_balance": "10.0000000000000000",
+    "available_balance": "10.0000000000000000",
+    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "image_url": null,
+    "min_listed_unit_price": 1169.682
+  },
+  {
+    "ticker": "oshb",
+    "overall_balance": "23.0000000000000000",
+    "available_balance": "23.0000000000000000",
+    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "image_url": null,
+    "min_listed_unit_price": 5598.8982
+  },
+  {
+    "ticker": "oxbt",
+    "overall_balance": "8000.0000000000000000",
+    "available_balance": "0.000000000000000000000000000000000000",
+    "transferrable_balance": "8000.0000000000000000",
+    "image_url": null,
+    "min_listed_unit_price": 24.432
+  },
+  {
+    "ticker": "ghsy",
+    "overall_balance": "11111.000000000000",
+    "available_balance": "11111.000000000000",
+    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "image_url": null,
+    "min_listed_unit_price": 600.62
+  },
+  {
+    "ticker": "trvs",
+    "overall_balance": "50000000.000000000000",
+    "available_balance": "50000000.000000000000",
+    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "image_url": null,
+    "min_listed_unit_price": 0.03249456
+  },
+  {
+    "ticker": "stst",
+    "overall_balance": "30500.000000000000",
+    "available_balance": "30500.000000000000",
+    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "image_url": null,
+    "min_listed_unit_price": 264.68
+  },
+  {
+    "ticker": "nima",
+    "overall_balance": "24000000000.00000000",
+    "available_balance": "24000000000.00000000",
+    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "image_url": null,
+    "min_listed_unit_price": null
+  },
+  {
+    "ticker": "unct",
+    "overall_balance": "159389977.00000000",
+    "available_balance": "159389977.00000000",
+    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "image_url": null,
+    "min_listed_unit_price": 0.033594
+  },
+  {
+    "ticker": "utok",
+    "overall_balance": "110854279.00000000",
+    "available_balance": "110854279.00000000",
+    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "image_url": null,
+    "min_listed_unit_price": 0.015778994901531736
+  }
+]

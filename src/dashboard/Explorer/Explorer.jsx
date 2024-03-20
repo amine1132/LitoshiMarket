@@ -10,10 +10,16 @@ import NavButtons from "../../components/Navbars/NavButtons";
 import CategoryButtons from "./CategoryButtons";
 import MarketCapTable from "./MarketCapTable";
 import MintTable from "./MintTable";
+import NFTtable from "./NFTtable";
 import SearchPopUp from "../../components/SearchPopUp/SearchPopUp";
 
-
-function Explorer({ tokenData, blurState, searchState, setBlurState, setSearchState }) {
+function Explorer({
+  tokenData,
+  blurState,
+  searchState,
+  setBlurState,
+  setSearchState,
+}) {
   const [data, setData] = useState([]);
   const [totalMarketCap, setTotalMarketCap] = useState(0.0);
   const [totalVols24h, setTotalVols24h] = useState(0.0);
@@ -37,7 +43,12 @@ function Explorer({ tokenData, blurState, searchState, setBlurState, setSearchSt
 
       // Sort by flight_24h and retrieve extended data for each token
       const sortedData = await axios.get(
-        "https://brc20api.bestinslot.xyz/v1/get_brc20_tickers_info/vol_24h/desc/0/1"
+        "https://api.bestinslot.xyz/v3/brc20/tickers?sort_by=remaining_supply&order=asc&offset=0&count=100&minting_status=not_complete",
+        {
+          headers: {
+            "x-api-key": "7baf026f-47c6-46e4-aa71-b11d032de9b9",
+          },
+        }
       );
       const data = sortedData.data.items;
       let compteur = 1;
@@ -47,7 +58,7 @@ function Explorer({ tokenData, blurState, searchState, setBlurState, setSearchSt
         token.marketcap = token.marketcap * Math.pow(10, -8) * btc_price;
         token.price = token.marketcap / token.max_supply;
         token.index = compteur;
-        compteur += 1 ;
+        compteur += 1;
       });
       // Merge enhanced data with previous data
       setData(data);
@@ -81,6 +92,17 @@ function Explorer({ tokenData, blurState, searchState, setBlurState, setSearchSt
     setButtonActive("Mint");
   };
 
+  const handleNFTButtonClick = () => {
+    setShowNFTContent(true);
+    setBox3Content("Initial Content");
+    setButtonActive("NFT");
+  };
+
+  const handleProfileButtonClick = () => {
+    setShowNFTContent(true);
+    setBox3Content("Initial Content");
+    setButtonActive("Profile");
+  };
   const handleMarketCapButtonClick = () => {
     setShowNFTContent(false);
     setShowTokenContent(true);
@@ -100,48 +122,75 @@ function Explorer({ tokenData, blurState, searchState, setBlurState, setSearchSt
   const handleSearchPopUp = () => {
     setSearchState(false);
     setBlurState(false);
-  }
+  };
 
   return (
-  <>
-    {searchState && (
-      <SearchPopUp handleSearchPopUp={handleSearchPopUp}/>
-    )}
-    <div className={`max duration-300 ${blurState && "blur"}`}>
-      {isContentCleared ? (
-        selectedToken ? (
-          <>
-            <Condition_explorer Token={selectedToken}/>
-          </>
+    <>
+      {searchState && <SearchPopUp handleSearchPopUp={handleSearchPopUp} />}
+      <div className={`max duration-300 ${blurState && "blur"}`}>
+        {isContentCleared ? (
+          selectedToken ? (
+            <>
+              <Condition_explorer Token={selectedToken} />
+            </>
+          ) : (
+            <></>
+          )
         ) : (
-          <></>
-        )
-      ) : (
-        <div className="colone">
-          <div className="idk">
-          <header>
-            <div className="top">
-              <div className="style">
-                <div className="stylev2">
-                  <NavButtons SecondColor={SecondColor}/>
+          <div className="colone">
+            <div className="idk">
+              <header>
+                <div className="top">
+                  <div className="style">
+                    <div className="stylev2">
+                      <NavButtons SecondColor={SecondColor} />
+                    </div>
+                  </div>
                 </div>
-              </div>
-            </div>
-          </header>
-            <div className="scroll_contenu">
-              <div className={`w-full h-[775px] rounded-lg bg-[${SecondColor}] mb-8`}>
-                <div className="mx-8">
-                  <CategoryButtons BackGroundColor={BackGroundColor} buttonActive={buttonActive} SecondColor={SecondColor} handleMarketCapButtonClick={handleMarketCapButtonClick} handleMintButtonClick={handleMintButtonClick}/>
-                  <div></div>
-                  {buttonActive === "Mint" && <MintTable data={data} BackGroundColor={BackGroundColor}/>}
-                  {buttonActive === "Market Cap" && <MarketCapTable data={data} setData={setData} BackGroundColor={BackGroundColor} SecondColor={SecondColor} onTableRowClick={handleTableRowClick}/>}
+              </header>
+              <div className="scroll_contenu">
+                <div
+                  className={`w-full h-[775px] rounded-lg bg-[${SecondColor}] mb-8`}
+                >
+                  <div className="mx-8">
+                    <CategoryButtons
+                      BackGroundColor={BackGroundColor}
+                      buttonActive={buttonActive}
+                      SecondColor={SecondColor}
+                      handleMarketCapButtonClick={handleMarketCapButtonClick}
+                      handleMintButtonClick={handleMintButtonClick}
+                      handleNFTButtonClick={handleNFTButtonClick}
+                      handleProfileButtonClick={handleProfileButtonClick}
+                    />
+                    <div></div>
+                    {buttonActive === "Mint" && (
+                      <MintTable
+                        data={data}
+                        BackGroundColor={BackGroundColor}
+                      />
+                    )}
+                    {buttonActive === "Market Cap" && (
+                      <MarketCapTable
+                        data={data}
+                        setData={setData}
+                        BackGroundColor={BackGroundColor}
+                        SecondColor={SecondColor}
+                        onTableRowClick={handleTableRowClick}
+                      />
+                    )}
+                    {buttonActive === "NFT" && (
+                      <NFTtable data={data} BackGroundColor={BackGroundColor} />
+                    )}
+                    {buttonActive === "Profile" && (
+                      <NFTtable data={data} BackGroundColor={BackGroundColor} />
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
     </>
   );
 }
