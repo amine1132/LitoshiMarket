@@ -6,7 +6,7 @@
     "block_height": 794786,
     "sale_price": 5960100,
     "new_satpoint": "99df0d8511c7f32e70aeb50b7d76e13a5c7a8f853287c3f3267352d0c471878f:1:0",
-    "ts": "2023-06-17T17:57:13.000Z",
+    "ts": "2023-06-17 17:57:13",
     "marketplace_type": "magiceden",
     "tx_id": "99df0d8511c7f32e70aeb50b7d76e13a5c7a8f853287c3f3267352d0c471878f"
   },
@@ -17,7 +17,7 @@
     "block_height": 794784,
     "sale_price": 5808811,
     "new_satpoint": "65f91366ad71174e6941450935071390bc27448cfdbdee5afab8f155db7f86fb:2:0",
-    "ts": "2023-06-17T17:27:32.000Z",
+    "ts": "2023-06-17 17:27:32",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "65f91366ad71174e6941450935071390bc27448cfdbdee5afab8f155db7f86fb"
   },
@@ -26,9 +26,9 @@
     "from_wallet": "bc1par0t76nmjf55wp0rpzu58p97mzz6tf3cd67js077a2qx5ez8knlqfnccjq",
     "to_wallet": "bc1pjn2md9p4f0fqa78pf49p5kg8n67w2lkr2rx3gsk78s75epexkz6s0flpwd",
     "block_height": 794778,
-    "sale_price": 6159100,
+    "sale_price": -1,
     "new_satpoint": "b566900111ada5870500d3b6d9fbdc776100e5750cd79d37419c5a51d882fef6:1:0",
-    "ts": "2023-06-17T16:40:07.000Z",
+    "ts": "2023-06-17 16:40:07",
     "marketplace_type": "magiceden",
     "tx_id": "b566900111ada5870500d3b6d9fbdc776100e5750cd79d37419c5a51d882fef6"
   },
@@ -37,9 +37,9 @@
     "from_wallet": "bc1pdlgfjm8r8qfv6suyr5yxgvjd0gkpuq6eanuuv7nnx0erwhd0684qj8cf7y",
     "to_wallet": "bc1par0t76nmjf55wp0rpzu58p97mzz6tf3cd67js077a2qx5ez8knlqfnccjq",
     "block_height": 794769,
-    "sale_price": 5181225,
+    "sale_price": null,
     "new_satpoint": "1b7b44875b673aeb43b36b1cdcb6f0ab6baa8aa7d8852c4417acf6c21cb5c652:1:0",
-    "ts": "2023-06-17T15:42:27.000Z",
+    "ts": "2023-06-17 15:42:27",
     "marketplace_type": "magiceden",
     "tx_id": "1b7b44875b673aeb43b36b1cdcb6f0ab6baa8aa7d8852c4417acf6c21cb5c652"
   },
@@ -48,9 +48,9 @@
     "from_wallet": "bc1par0t76nmjf55wp0rpzu58p97mzz6tf3cd67js077a2qx5ez8knlqfnccjq",
     "to_wallet": "bc1qldf8r6wjrx3wd75gzgza6mmn6hlrk85as9qcqq",
     "block_height": 794759,
-    "sale_price": 4965100,
+    "sale_price": -1,
     "new_satpoint": "ec8db660be883e3cdb901fd61d63257a9329663794ab168dea448ceb2e92107d:1:0",
-    "ts": "2023-06-17T14:42:56.000Z",
+    "ts": "2023-06-17 14:42:56",
     "marketplace_type": "magiceden",
     "tx_id": "ec8db660be883e3cdb901fd61d63257a9329663794ab168dea448ceb2e92107d"
   },
@@ -59,9 +59,9 @@
     "from_wallet": "bc1pac2spgn4kfzv2yjhd73gjtn684089tx7f3e0cqm968qyzv52rf0skwj40a",
     "to_wallet": "bc1par0t76nmjf55wp0rpzu58p97mzz6tf3cd67js077a2qx5ez8knlqfnccjq",
     "block_height": 794751,
-    "sale_price": 4189000,
+    "sale_price": null,
     "new_satpoint": "15d2f6f2dc996e3b73a0cf63f6f2106995ec07091b53dfb6a8fa51c6f7de61a7:1:0",
-    "ts": "2023-06-17T12:38:03.000Z",
+    "ts": "2023-06-17 12:38:03",
     "marketplace_type": "magiceden",
     "tx_id": "15d2f6f2dc996e3b73a0cf63f6f2106995ec07091b53dfb6a8fa51c6f7de61a7"
   },
@@ -72,7 +72,7 @@
     "block_height": 794617,
     "sale_price": 4969080,
     "new_satpoint": "0b42e6486c407ede49440cd68be52ea7bdb62724b0c76d1b73cdf036cee377fb:1:0",
-    "ts": "2023-06-16T13:12:31.000Z",
+    "ts": "2023-06-16 13:12:31",
     "marketplace_type": "magiceden",
     "tx_id": "0b42e6486c407ede49440cd68be52ea7bdb62724b0c76d1b73cdf036cee377fb"
   },
@@ -83,7 +83,7 @@
     "block_height": 794543,
     "sale_price": 4388000,
     "new_satpoint": "af672534a90753851ce7fc26043a85b2fd3f65c92f19dec1609042d71c2ab4f0:1:0",
-    "ts": "2023-06-16T02:26:14.000Z",
+    "ts": "2023-06-16 02:26:14",
     "marketplace_type": "magiceden",
     "tx_id": "af672534a90753851ce7fc26043a85b2fd3f65c92f19dec1609042d71c2ab4f0"
   },
@@ -94,7 +94,7 @@
     "block_height": 794295,
     "sale_price": 5522300,
     "new_satpoint": "deb3e8d811b357ba965ee7fcb93c3b1b31dee7a4287d73b9ea72ab0349e90961:1:0",
-    "ts": "2023-06-14T09:13:48.000Z",
+    "ts": "2023-06-14T09:13:48",
     "marketplace_type": "magiceden",
     "tx_id": "deb3e8d811b357ba965ee7fcb93c3b1b31dee7a4287d73b9ea72ab0349e90961"
   },
@@ -105,7 +105,7 @@
     "block_height": 794283,
     "sale_price": 4985000,
     "new_satpoint": "46b4f7f766b9705a311ab8d4f25eda09bbb4a4bb36699af864475e154070205c:1:0",
-    "ts": "2023-06-14T06:09:51.000Z",
+    "ts": "2023-06-14T06:09:51",
     "marketplace_type": "magiceden",
     "tx_id": "46b4f7f766b9705a311ab8d4f25eda09bbb4a4bb36699af864475e154070205c"
   },
@@ -116,7 +116,7 @@
     "block_height": 794105,
     "sale_price": 5123305,
     "new_satpoint": "1ae5a4f62cc2747ba4beee16430402d7986c3e463d76eaf79f799c428962e8b2:1:0",
-    "ts": "2023-06-12T23:32:29.000Z",
+    "ts": "2023-06-12T23:32:29",
     "marketplace_type": "magiceden",
     "tx_id": "1ae5a4f62cc2747ba4beee16430402d7986c3e463d76eaf79f799c428962e8b2"
   },
@@ -127,7 +127,7 @@
     "block_height": 794091,
     "sale_price": 4676550,
     "new_satpoint": "8beb8c9bae29c7fd43928e226808098dbb315a8fdbf06a03da2e70caae184dd2:1:0",
-    "ts": "2023-06-12T21:49:57.000Z",
+    "ts": "2023-06-12T21:49:57",
     "marketplace_type": "magiceden",
     "tx_id": "8beb8c9bae29c7fd43928e226808098dbb315a8fdbf06a03da2e70caae184dd2"
   },
@@ -138,7 +138,7 @@
     "block_height": 793654,
     "sale_price": 6855600,
     "new_satpoint": "5b8194254609374e552051e9bd3b5f8dbcb788686447891f5eece5e6a5c6b15d:1:0",
-    "ts": "2023-06-10T02:41:13.000Z",
+    "ts": "2023-06-10T02:41:13",
     "marketplace_type": "magiceden",
     "tx_id": "5b8194254609374e552051e9bd3b5f8dbcb788686447891f5eece5e6a5c6b15d"
   },
@@ -149,7 +149,7 @@
     "block_height": 793347,
     "sale_price": 7661550,
     "new_satpoint": "bce70ce1ac5d9a2a575f73a28d89def9d3504af3b5ff36c9b835a7993ba1bc14:1:0",
-    "ts": "2023-06-08T05:50:45.000Z",
+    "ts": "2023-06-08T05:50:45",
     "marketplace_type": "magiceden",
     "tx_id": "bce70ce1ac5d9a2a575f73a28d89def9d3504af3b5ff36c9b835a7993ba1bc14"
   },
@@ -160,7 +160,7 @@
     "block_height": 792713,
     "sale_price": 252969,
     "new_satpoint": "97b31037d63b4a377c928f47327e9e6b1e2dc27d04b7aa079f30f90ad0bd4d82:2:0",
-    "ts": "2023-06-03T17:26:46.000Z",
+    "ts": "2023-06-03T17:26:46",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "97b31037d63b4a377c928f47327e9e6b1e2dc27d04b7aa079f30f90ad0bd4d82"
   },
@@ -171,7 +171,7 @@
     "block_height": 792524,
     "sale_price": 855750,
     "new_satpoint": "746cd986cee635e699a66e8e8841cba20d8c681857d504993a3694cc293d729f:1:0",
-    "ts": "2023-06-02T09:50:50.000Z",
+    "ts": "2023-06-02T09:50:50",
     "marketplace_type": "magiceden",
     "tx_id": "746cd986cee635e699a66e8e8841cba20d8c681857d504993a3694cc293d729f"
   },
@@ -182,7 +182,7 @@
     "block_height": 792516,
     "sale_price": 895550,
     "new_satpoint": "0ac1b4c2262b488b9acb33d1a4fa0cbdef26854844e8bbdf9e2326b307af24f2:1:0",
-    "ts": "2023-06-02T08:35:09.000Z",
+    "ts": "2023-06-02T08:35:09",
     "marketplace_type": "magiceden",
     "tx_id": "0ac1b4c2262b488b9acb33d1a4fa0cbdef26854844e8bbdf9e2326b307af24f2"
   },
@@ -193,7 +193,7 @@
     "block_height": 792513,
     "sale_price": 903510,
     "new_satpoint": "25af9154456a66746c49065288fdc2817a175e205bb0a343223e1969d51d2108:1:0",
-    "ts": "2023-06-02T08:03:23.000Z",
+    "ts": "2023-06-02T08:03:23",
     "marketplace_type": "magiceden",
     "tx_id": "25af9154456a66746c49065288fdc2817a175e205bb0a343223e1969d51d2108"
   },
@@ -204,7 +204,7 @@
     "block_height": 792507,
     "sale_price": 815950,
     "new_satpoint": "973394d2119f49d00a903344a2d42c11ec50567c44bd9077b41f06d833c6030f:1:0",
-    "ts": "2023-06-02T07:38:03.000Z",
+    "ts": "2023-06-02T07:38:03",
     "marketplace_type": "magiceden",
     "tx_id": "973394d2119f49d00a903344a2d42c11ec50567c44bd9077b41f06d833c6030f"
   },
@@ -215,7 +215,7 @@
     "block_height": 792503,
     "sale_price": 791075,
     "new_satpoint": "650b8fd1c28765f51bd3af8332f72e0b5f2275fc3ecad0af2f35701c9021b88b:1:0",
-    "ts": "2023-06-02T06:43:26.000Z",
+    "ts": "2023-06-02T06:43:26",
     "marketplace_type": "magiceden",
     "tx_id": "650b8fd1c28765f51bd3af8332f72e0b5f2275fc3ecad0af2f35701c9021b88b"
   },
@@ -226,7 +226,7 @@
     "block_height": 792497,
     "sale_price": 783115,
     "new_satpoint": "d96e7f38ca685c630c7dad62d6ff63236cf722cea07208f8c7a0b3555e88f32c:1:0",
-    "ts": "2023-06-02T06:02:46.000Z",
+    "ts": "2023-06-02T06:02:46",
     "marketplace_type": "magiceden",
     "tx_id": "d96e7f38ca685c630c7dad62d6ff63236cf722cea07208f8c7a0b3555e88f32c"
   },
@@ -237,7 +237,7 @@
     "block_height": 792495,
     "sale_price": 835850,
     "new_satpoint": "0afc3d427064a1050e0258f757940c88a63bd4094dc332b6f4988c44b9db2df5:1:0",
-    "ts": "2023-06-02T05:54:49.000Z",
+    "ts": "2023-06-02T05:54:49",
     "marketplace_type": "magiceden",
     "tx_id": "0afc3d427064a1050e0258f757940c88a63bd4094dc332b6f4988c44b9db2df5"
   },
@@ -248,7 +248,7 @@
     "block_height": 792495,
     "sale_price": 865700,
     "new_satpoint": "60b777ff9fe5454629f2a405e478b7b82a8fadbe419132e80dbf2508ae73fc04:1:0",
-    "ts": "2023-06-02T05:54:49.000Z",
+    "ts": "2023-06-02T05:54:49",
     "marketplace_type": "magiceden",
     "tx_id": "60b777ff9fe5454629f2a405e478b7b82a8fadbe419132e80dbf2508ae73fc04"
   },
@@ -259,7 +259,7 @@
     "block_height": 792493,
     "sale_price": 706500,
     "new_satpoint": "8245799e16696e73f6f5144e9d6b6d6f598e7e89fffd1cd9d39d41d823af9a16:1:0",
-    "ts": "2023-06-02T05:21:55.000Z",
+    "ts": "2023-06-02T05:21:55",
     "marketplace_type": "magiceden",
     "tx_id": "8245799e16696e73f6f5144e9d6b6d6f598e7e89fffd1cd9d39d41d823af9a16"
   },
@@ -270,7 +270,7 @@
     "block_height": 792490,
     "sale_price": 672670,
     "new_satpoint": "3fd1df8f9b69d16b6a0e2aea5430aced3c40fe6dbdcf6134b1fdf86df800129d:1:0",
-    "ts": "2023-06-02T05:02:51.000Z",
+    "ts": "2023-06-02T05:02:51",
     "marketplace_type": "magiceden",
     "tx_id": "3fd1df8f9b69d16b6a0e2aea5430aced3c40fe6dbdcf6134b1fdf86df800129d"
   },
@@ -281,7 +281,7 @@
     "block_height": 792479,
     "sale_price": 1054750,
     "new_satpoint": "da4ea55a6502df0262e288275c8427bdbd658776314acccc7548a64e3ee952e8:1:0",
-    "ts": "2023-06-02T03:33:36.000Z",
+    "ts": "2023-06-02T03:33:36",
     "marketplace_type": "magiceden",
     "tx_id": "da4ea55a6502df0262e288275c8427bdbd658776314acccc7548a64e3ee952e8"
   },
@@ -292,7 +292,7 @@
     "block_height": 792479,
     "sale_price": 695555,
     "new_satpoint": "b04c74f4b51bc92fd1a3f0f2a927cda479afd6f8d2ea1a17c792f9ed62d1d8ca:1:0",
-    "ts": "2023-06-02T03:33:36.000Z",
+    "ts": "2023-06-02T03:33:36",
     "marketplace_type": "magiceden",
     "tx_id": "b04c74f4b51bc92fd1a3f0f2a927cda479afd6f8d2ea1a17c792f9ed62d1d8ca"
   },
@@ -303,7 +303,7 @@
     "block_height": 792470,
     "sale_price": 636850,
     "new_satpoint": "81f38f56d68390b80f12351f5b183561e749ebb60e0d64d6877e93844c5c949d:1:0",
-    "ts": "2023-06-02T03:00:29.000Z",
+    "ts": "2023-06-02T03:00:29",
     "marketplace_type": "magiceden",
     "tx_id": "81f38f56d68390b80f12351f5b183561e749ebb60e0d64d6877e93844c5c949d"
   },
@@ -314,7 +314,7 @@
     "block_height": 792469,
     "sale_price": 557250,
     "new_satpoint": "829ef796b14ae0a8128554bc1e5670f4d07e1a9e4d515988ff76decb5ac692a0:1:0",
-    "ts": "2023-06-02T02:12:27.000Z",
+    "ts": "2023-06-02T02:12:27",
     "marketplace_type": "magiceden",
     "tx_id": "829ef796b14ae0a8128554bc1e5670f4d07e1a9e4d515988ff76decb5ac692a0"
   },
@@ -325,7 +325,7 @@
     "block_height": 792466,
     "sale_price": 703486,
     "new_satpoint": "e6f2ec3af81698fb3c6308ca7be1dfed6b7803360ef211ec23631e49c83b3908:1:0",
-    "ts": "2023-06-02T01:48:01.000Z",
+    "ts": "2023-06-02T01:48:01",
     "marketplace_type": "magiceden",
     "tx_id": "e6f2ec3af81698fb3c6308ca7be1dfed6b7803360ef211ec23631e49c83b3908"
   },
@@ -336,7 +336,7 @@
     "block_height": 792465,
     "sale_price": 280546,
     "new_satpoint": "7fcad2b4c0b65230e8de3c8f194d399434269948357cb68efa904c44f9751686:1:0",
-    "ts": "2023-06-02T01:40:47.000Z",
+    "ts": "2023-06-02T01:40:47",
     "marketplace_type": "magiceden",
     "tx_id": "7fcad2b4c0b65230e8de3c8f194d399434269948357cb68efa904c44f9751686"
   },
@@ -347,7 +347,7 @@
     "block_height": 792384,
     "sale_price": 1283600,
     "new_satpoint": "5e6a972ee8a8a9ed2aea82ef0523ca78a5de172176ee98020497318f0a13dd65:1:0",
-    "ts": "2023-06-01T13:39:55.000Z",
+    "ts": "2023-06-01T13:39:55",
     "marketplace_type": "magiceden",
     "tx_id": "5e6a972ee8a8a9ed2aea82ef0523ca78a5de172176ee98020497318f0a13dd65"
   },
@@ -358,7 +358,7 @@
     "block_height": 792345,
     "sale_price": 8649964,
     "new_satpoint": "cb06d3599bf29459eaa72b3e72d3e23d05afcb429b1bda55b17132cf5152aeb5:2:0",
-    "ts": "2023-06-01T06:48:11.000Z",
+    "ts": "2023-06-01T06:48:11",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "cb06d3599bf29459eaa72b3e72d3e23d05afcb429b1bda55b17132cf5152aeb5"
   },
@@ -369,7 +369,7 @@
     "block_height": 792333,
     "sale_price": 9114250,
     "new_satpoint": "1fe9e8f3136758621406f62108637743192dad811060c87c342b043ad75d20d2:1:0",
-    "ts": "2023-06-01T03:48:26.000Z",
+    "ts": "2023-06-01T03:48:26",
     "marketplace_type": "magiceden",
     "tx_id": "1fe9e8f3136758621406f62108637743192dad811060c87c342b043ad75d20d2"
   },
@@ -380,7 +380,7 @@
     "block_height": 792327,
     "sale_price": 9710539,
     "new_satpoint": "10fc07bb29da7290cf478ba7828957f264bc7557627bc91460c9b5e6978d1991:2:0",
-    "ts": "2023-06-01T02:40:20.000Z",
+    "ts": "2023-06-01T02:40:20",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "10fc07bb29da7290cf478ba7828957f264bc7557627bc91460c9b5e6978d1991"
   },
@@ -391,7 +391,7 @@
     "block_height": 792197,
     "sale_price": 1890550,
     "new_satpoint": "e17b562ca0023645f1d0b78873c9bc0eff40409b887ee9b03fce89b3a3c94324:1:0",
-    "ts": "2023-05-31T04:24:53.000Z",
+    "ts": "2023-05-31T04:24:53",
     "marketplace_type": "magiceden",
     "tx_id": "e17b562ca0023645f1d0b78873c9bc0eff40409b887ee9b03fce89b3a3c94324"
   },
@@ -402,7 +402,7 @@
     "block_height": 792194,
     "sale_price": 1502500,
     "new_satpoint": "40e1f5f8ed1bdefc3ed1d8d95ba98285f5266d71f64bf48964b74f5699853fd2:1:0",
-    "ts": "2023-05-31T03:49:09.000Z",
+    "ts": "2023-05-31T03:49:09",
     "marketplace_type": "magiceden",
     "tx_id": "40e1f5f8ed1bdefc3ed1d8d95ba98285f5266d71f64bf48964b74f5699853fd2"
   },
@@ -413,7 +413,7 @@
     "block_height": 792140,
     "sale_price": 1502500,
     "new_satpoint": "57e8f3b7f5b401f19fc76bc867d803a5e7221f6ca84487375788f9411dee1616:1:0",
-    "ts": "2023-05-30T19:32:58.000Z",
+    "ts": "2023-05-30T19:32:58",
     "marketplace_type": "magiceden",
     "tx_id": "57e8f3b7f5b401f19fc76bc867d803a5e7221f6ca84487375788f9411dee1616"
   },
@@ -424,7 +424,7 @@
     "block_height": 792102,
     "sale_price": 398050,
     "new_satpoint": "afe90e7d11e825b216c001e74ac1cc98bf46cc7577eed35d5f32aa7e61c9e139:1:0",
-    "ts": "2023-05-30T12:18:47.000Z",
+    "ts": "2023-05-30T12:18:47",
     "marketplace_type": "magiceden",
     "tx_id": "afe90e7d11e825b216c001e74ac1cc98bf46cc7577eed35d5f32aa7e61c9e139"
   },
@@ -435,7 +435,7 @@
     "block_height": 792045,
     "sale_price": 2597000,
     "new_satpoint": "c76e4c2a802945f58aee865ea432632b1a8cb3c8fb5bcc77e4fb459e39427a61:1:0",
-    "ts": "2023-05-30T04:09:54.000Z",
+    "ts": "2023-05-30T04:09:54",
     "marketplace_type": "magiceden",
     "tx_id": "c76e4c2a802945f58aee865ea432632b1a8cb3c8fb5bcc77e4fb459e39427a61"
   },
@@ -446,7 +446,7 @@
     "block_height": 791899,
     "sale_price": 9960000,
     "new_satpoint": "c6fb878324a7a6f8e7cb4826350b628c60c1c65efd93d483289c27399a8a9e78:1:0",
-    "ts": "2023-05-29T07:15:39.000Z",
+    "ts": "2023-05-29T07:15:39",
     "marketplace_type": "magiceden",
     "tx_id": "c6fb878324a7a6f8e7cb4826350b628c60c1c65efd93d483289c27399a8a9e78"
   },
@@ -457,7 +457,7 @@
     "block_height": 791897,
     "sale_price": 2069650,
     "new_satpoint": "b1a840a8a5ab44bfe1d592c048d9baba6438f11d1e8170fadcef09bbab381da3:1:0",
-    "ts": "2023-05-29T07:01:50.000Z",
+    "ts": "2023-05-29T07:01:50",
     "marketplace_type": "magiceden",
     "tx_id": "b1a840a8a5ab44bfe1d592c048d9baba6438f11d1e8170fadcef09bbab381da3"
   },
@@ -468,7 +468,7 @@
     "block_height": 791892,
     "sale_price": 11170046,
     "new_satpoint": "1622e2772f224a56e4c211bfc51c8f9e56b57d81516ef3c4eda93aae6c7be086:2:0",
-    "ts": "2023-05-29T06:10:46.000Z",
+    "ts": "2023-05-29T06:10:46",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "1622e2772f224a56e4c211bfc51c8f9e56b57d81516ef3c4eda93aae6c7be086"
   },
@@ -479,7 +479,7 @@
     "block_height": 791755,
     "sale_price": 1945985,
     "new_satpoint": "5c5157c464af811da938f74cccf57c11bfb12a80cbf5d09cb7bf653abfc18a5e:2:0",
-    "ts": "2023-05-28T08:38:58.000Z",
+    "ts": "2023-05-28T08:38:58",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "5c5157c464af811da938f74cccf57c11bfb12a80cbf5d09cb7bf653abfc18a5e"
   },
@@ -490,7 +490,7 @@
     "block_height": 791746,
     "sale_price": 2318400,
     "new_satpoint": "0da582b821c7995f90d10361de8569a9025aea586157bca554d95e74583c32ff:1:0",
-    "ts": "2023-05-28T06:46:42.000Z",
+    "ts": "2023-05-28T06:46:42",
     "marketplace_type": "magiceden",
     "tx_id": "0da582b821c7995f90d10361de8569a9025aea586157bca554d95e74583c32ff"
   },
@@ -501,7 +501,7 @@
     "block_height": 791457,
     "sale_price": -1,
     "new_satpoint": "8bb5c9d2fd9368d3a4e67e460890a84b2fa135d55a1fa175db7516c87b23a343:0:0",
-    "ts": "2023-05-26T07:36:28.000Z",
+    "ts": "2023-05-26T07:36:28",
     "marketplace_type": "",
     "tx_id": "8bb5c9d2fd9368d3a4e67e460890a84b2fa135d55a1fa175db7516c87b23a343"
   },
@@ -512,7 +512,7 @@
     "block_height": 790991,
     "sale_price": null,
     "new_satpoint": "7c1f37b9dcfecfc1203e05ebae67c60721b06c982cbacdb76fa62a77faa706b5:0:0",
-    "ts": "2023-05-23T05:19:52.000Z",
+    "ts": "2023-05-23T05:19:52",
     "marketplace_type": "",
     "tx_id": "7c1f37b9dcfecfc1203e05ebae67c60721b06c982cbacdb76fa62a77faa706b5"
   },
@@ -523,7 +523,7 @@
     "block_height": 790958,
     "sale_price": null,
     "new_satpoint": "c2d6be11e861a0808a2df3077dabccf68d9a931e0a9663f09db6ae9887c136de:0:0",
-    "ts": "2023-05-23T00:06:10.000Z",
+    "ts": "2023-05-23T00:06:10",
     "marketplace_type": "",
     "tx_id": "c2d6be11e861a0808a2df3077dabccf68d9a931e0a9663f09db6ae9887c136de"
   },
@@ -534,7 +534,7 @@
     "block_height": 790571,
     "sale_price": 340550,
     "new_satpoint": "134b7f51aa41088b937c30223dded9370818948d0b9fd05a488441ba9a938be6:2:0",
-    "ts": "2023-05-20T08:53:14.000Z",
+    "ts": "2023-05-20T08:53:14",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "134b7f51aa41088b937c30223dded9370818948d0b9fd05a488441ba9a938be6"
   },
@@ -545,7 +545,7 @@
     "block_height": 790563,
     "sale_price": null,
     "new_satpoint": "2506d91d5f9827da5aa604dcf38918317ad58e884be269e823706ebd330758cf:0:0",
-    "ts": "2023-05-20T07:30:37.000Z",
+    "ts": "2023-05-20T07:30:37",
     "marketplace_type": "",
     "tx_id": "2506d91d5f9827da5aa604dcf38918317ad58e884be269e823706ebd330758cf"
   },
@@ -556,7 +556,7 @@
     "block_height": 790563,
     "sale_price": null,
     "new_satpoint": "8c052c1ed781ec974c78df5412f4816b95c8cc2519d8a146fa207806ac4a219f:0:0",
-    "ts": "2023-05-20T07:30:37.000Z",
+    "ts": "2023-05-20T07:30:37",
     "marketplace_type": "",
     "tx_id": "8c052c1ed781ec974c78df5412f4816b95c8cc2519d8a146fa207806ac4a219f"
   },
@@ -567,7 +567,7 @@
     "block_height": 790561,
     "sale_price": 302689,
     "new_satpoint": "6e51d78aa87574193332c5af7849ee42d1725db263bc7456cc28eca1340bbbc9:2:0",
-    "ts": "2023-05-20T07:14:51.000Z",
+    "ts": "2023-05-20T07:14:51",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "6e51d78aa87574193332c5af7849ee42d1725db263bc7456cc28eca1340bbbc9"
   },
@@ -578,7 +578,7 @@
     "block_height": 790559,
     "sale_price": 637346,
     "new_satpoint": "969752ff934fc5b439317782adeecefd845c7670ac939268d5501d170579d5d6:1:0",
-    "ts": "2023-05-20T06:52:49.000Z",
+    "ts": "2023-05-20T06:52:49",
     "marketplace_type": "magiceden",
     "tx_id": "969752ff934fc5b439317782adeecefd845c7670ac939268d5501d170579d5d6"
   },
@@ -589,7 +589,7 @@
     "block_height": 790501,
     "sale_price": 786596,
     "new_satpoint": "f72e040b7880ce931b169f332a20cb4d77f2856a91086626ad2e92c0aa43c440:1:0",
-    "ts": "2023-05-19T18:46:25.000Z",
+    "ts": "2023-05-19T18:46:25",
     "marketplace_type": "magiceden",
     "tx_id": "f72e040b7880ce931b169f332a20cb4d77f2856a91086626ad2e92c0aa43c440"
   },
@@ -600,7 +600,7 @@
     "block_height": 790195,
     "sale_price": 885425,
     "new_satpoint": "f493649a7458cf273b87c92315d968b6bca3b99b395cbf81498403dc06cfafc5:2:0",
-    "ts": "2023-05-17T16:38:37.000Z",
+    "ts": "2023-05-17T16:38:37",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "f493649a7458cf273b87c92315d968b6bca3b99b395cbf81498403dc06cfafc5"
   },
@@ -611,7 +611,7 @@
     "block_height": 790179,
     "sale_price": 776646,
     "new_satpoint": "1a82f5b4217b3bd9189caa5359ea4932f62523c11709ebc2a660dccd9b5a3066:1:0",
-    "ts": "2023-05-17T14:49:53.000Z",
+    "ts": "2023-05-17T14:49:53",
     "marketplace_type": "magiceden",
     "tx_id": "1a82f5b4217b3bd9189caa5359ea4932f62523c11709ebc2a660dccd9b5a3066"
   },
@@ -622,7 +622,7 @@
     "block_height": 790179,
     "sale_price": 806496,
     "new_satpoint": "45573823846cf28ffebbbecc3b019b791603de628dfc3106d0e782388f67cd72:1:0",
-    "ts": "2023-05-17T14:49:53.000Z",
+    "ts": "2023-05-17T14:49:53",
     "marketplace_type": "magiceden",
     "tx_id": "45573823846cf28ffebbbecc3b019b791603de628dfc3106d0e782388f67cd72"
   },
@@ -633,7 +633,7 @@
     "block_height": 790174,
     "sale_price": 729759,
     "new_satpoint": "c8e8368198890fe979845b32b295883b34f5975c6721d23e9620ce0f73e404c6:2:0",
-    "ts": "2023-05-17T14:08:56.000Z",
+    "ts": "2023-05-17T14:08:56",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "c8e8368198890fe979845b32b295883b34f5975c6721d23e9620ce0f73e404c6"
   },
@@ -644,7 +644,7 @@
     "block_height": 790142,
     "sale_price": 631485,
     "new_satpoint": "7ee94c786a99959398da9fc4a8d4950ae54f5496c77951433cc3fa166053806a:2:0",
-    "ts": "2023-05-17T09:32:39.000Z",
+    "ts": "2023-05-17T09:32:39",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "7ee94c786a99959398da9fc4a8d4950ae54f5496c77951433cc3fa166053806a"
   },
@@ -655,7 +655,7 @@
     "block_height": 790107,
     "sale_price": 486493,
     "new_satpoint": "e30bbaeb8b11cd2fd9745025b6c52e63e8ae3f00a7bb7bc3629c3d2751711260:2:0",
-    "ts": "2023-05-17T04:25:50.000Z",
+    "ts": "2023-05-17T04:25:50",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "e30bbaeb8b11cd2fd9745025b6c52e63e8ae3f00a7bb7bc3629c3d2751711260"
   },
@@ -666,7 +666,7 @@
     "block_height": 790107,
     "sale_price": 486493,
     "new_satpoint": "6bb36620c60ba9dc6f7c96ea0d2eae87a80bf123e1c9c9d297a20608463bd2dd:2:0",
-    "ts": "2023-05-17T04:25:50.000Z",
+    "ts": "2023-05-17T04:25:50",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "6bb36620c60ba9dc6f7c96ea0d2eae87a80bf123e1c9c9d297a20608463bd2dd"
   },
@@ -677,7 +677,7 @@
     "block_height": 790073,
     "sale_price": 125509,
     "new_satpoint": "f3de74372630b951cbb5d2f485f1c75490aa12ab2703b3b3c9b1e707ebd4753e:2:0",
-    "ts": "2023-05-16T23:36:36.000Z",
+    "ts": "2023-05-16T23:36:36",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "f3de74372630b951cbb5d2f485f1c75490aa12ab2703b3b3c9b1e707ebd4753e"
   },
@@ -688,7 +688,7 @@
     "block_height": 790057,
     "sale_price": 661633,
     "new_satpoint": "646eb5bbc768716d0ba635bd142f027771739204f1cd9f27b24bc1ffc35f9aac:2:0",
-    "ts": "2023-05-16T20:39:33.000Z",
+    "ts": "2023-05-16T20:39:33",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "646eb5bbc768716d0ba635bd142f027771739204f1cd9f27b24bc1ffc35f9aac"
   },
@@ -699,7 +699,7 @@
     "block_height": 790043,
     "sale_price": 73565,
     "new_satpoint": "41aaf86d392bcb79fe013f23c8c5e94725bc6000f857c53abb9297a545ce9bf9:2:0",
-    "ts": "2023-05-16T18:24:14.000Z",
+    "ts": "2023-05-16T18:24:14",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "41aaf86d392bcb79fe013f23c8c5e94725bc6000f857c53abb9297a545ce9bf9"
   },
@@ -710,7 +710,7 @@
     "block_height": 790043,
     "sale_price": 904896,
     "new_satpoint": "2b1de10884b9e3d1de6e42563aa9fce570224ff7e551a5129831248d92a23806:2:0",
-    "ts": "2023-05-16T18:24:14.000Z",
+    "ts": "2023-05-16T18:24:14",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "2b1de10884b9e3d1de6e42563aa9fce570224ff7e551a5129831248d92a23806"
   },
@@ -721,7 +721,7 @@
     "block_height": 790030,
     "sale_price": null,
     "new_satpoint": "feb73c30a2b4b921a5ed1e8fb29a11b28f45502189868f656781e687db1f3485:0:0",
-    "ts": "2023-05-16T16:25:33.000Z",
+    "ts": "2023-05-16T16:25:33",
     "marketplace_type": "",
     "tx_id": "feb73c30a2b4b921a5ed1e8fb29a11b28f45502189868f656781e687db1f3485"
   },
@@ -732,7 +732,7 @@
     "block_height": 789968,
     "sale_price": 1070284,
     "new_satpoint": "7e3e094cdbbdf0d14852ce1f4f94dcdd9ae1c46a5baf0057e4da432df091679c:2:0",
-    "ts": "2023-05-16T07:11:46.000Z",
+    "ts": "2023-05-16T07:11:46",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "7e3e094cdbbdf0d14852ce1f4f94dcdd9ae1c46a5baf0057e4da432df091679c"
   },
@@ -743,7 +743,7 @@
     "block_height": 789938,
     "sale_price": 855077,
     "new_satpoint": "7693bb675fe8539a94826de77b52c131463d33f3f186ed981e7ce7ff0bbd3105:2:0",
-    "ts": "2023-05-16T02:09:47.000Z",
+    "ts": "2023-05-16T02:09:47",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "7693bb675fe8539a94826de77b52c131463d33f3f186ed981e7ce7ff0bbd3105"
   },
@@ -754,7 +754,7 @@
     "block_height": 789915,
     "sale_price": 778383,
     "new_satpoint": "8a856c7da86cfdacf395d6361c737be7e36b868025c1ec95e9f9f2292dc1413e:2:0",
-    "ts": "2023-05-15T22:01:32.000Z",
+    "ts": "2023-05-15T22:01:32",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "8a856c7da86cfdacf395d6361c737be7e36b868025c1ec95e9f9f2292dc1413e"
   },
@@ -765,7 +765,7 @@
     "block_height": 789913,
     "sale_price": 778407,
     "new_satpoint": "ccb8e5eefcb7a41fcb2f2fb41f33f17947253769ad118328cb0095b122ef85bb:2:0",
-    "ts": "2023-05-15T21:33:15.000Z",
+    "ts": "2023-05-15T21:33:15",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "ccb8e5eefcb7a41fcb2f2fb41f33f17947253769ad118328cb0095b122ef85bb"
   },
@@ -776,7 +776,7 @@
     "block_height": 789912,
     "sale_price": 827037,
     "new_satpoint": "c2f580977138a8ef5e0280bd6a22c088bcf7933197b6d38e789c23ed64a36e2d:2:0",
-    "ts": "2023-05-15T21:25:46.000Z",
+    "ts": "2023-05-15T21:25:46",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "c2f580977138a8ef5e0280bd6a22c088bcf7933197b6d38e789c23ed64a36e2d"
   },
@@ -787,7 +787,7 @@
     "block_height": 789911,
     "sale_price": 710200,
     "new_satpoint": "c8d2ce5d0bc41f2cc8cbec134c752a3b402693327787a45b14dffdf40f18c981:2:0",
-    "ts": "2023-05-15T21:24:12.000Z",
+    "ts": "2023-05-15T21:24:12",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "c8d2ce5d0bc41f2cc8cbec134c752a3b402693327787a45b14dffdf40f18c981"
   },
@@ -798,7 +798,7 @@
     "block_height": 789906,
     "sale_price": 1642500,
     "new_satpoint": "5fee1524ac5f9dd6e602a558e307cefeb01d078cbe132c05e3ba9159a9a267b4:1:0",
-    "ts": "2023-05-15T20:31:38.000Z",
+    "ts": "2023-05-15T20:31:38",
     "marketplace_type": "unisat",
     "tx_id": "5fee1524ac5f9dd6e602a558e307cefeb01d078cbe132c05e3ba9159a9a267b4"
   },
@@ -809,7 +809,7 @@
     "block_height": 789893,
     "sale_price": null,
     "new_satpoint": "5c840f2fd170bb0914694c370e3c843ea721b92c67acfb55145bd9fc22fda331:0:0",
-    "ts": "2023-05-15T18:11:33.000Z",
+    "ts": "2023-05-15T18:11:33",
     "marketplace_type": "",
     "tx_id": "5c840f2fd170bb0914694c370e3c843ea721b92c67acfb55145bd9fc22fda331"
   },
@@ -820,7 +820,7 @@
     "block_height": 789890,
     "sale_price": -1,
     "new_satpoint": "929dd1aaeee2d0a3ef0fd91253498cd1889dc27d694792792933984227259e0b:0:0",
-    "ts": "2023-05-15T17:47:32.000Z",
+    "ts": "2023-05-15T17:47:32",
     "marketplace_type": "",
     "tx_id": "929dd1aaeee2d0a3ef0fd91253498cd1889dc27d694792792933984227259e0b"
   },
@@ -831,7 +831,7 @@
     "block_height": 789850,
     "sale_price": null,
     "new_satpoint": "2001d10774a22255d01ecfe35ddee2510734f895b8ee6feb9878b537854f3383:0:0",
-    "ts": "2023-05-15T12:08:08.000Z",
+    "ts": "2023-05-15T12:08:08",
     "marketplace_type": "",
     "tx_id": "2001d10774a22255d01ecfe35ddee2510734f895b8ee6feb9878b537854f3383"
   },
@@ -842,7 +842,7 @@
     "block_height": 789819,
     "sale_price": 1824524,
     "new_satpoint": "f1ddb0e5342902b73dfd6efb719c0cc9ebf85fdf19f1c85f60861695fae80dec:2:0",
-    "ts": "2023-05-15T07:19:29.000Z",
+    "ts": "2023-05-15T07:19:29",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "f1ddb0e5342902b73dfd6efb719c0cc9ebf85fdf19f1c85f60861695fae80dec"
   },
@@ -853,7 +853,7 @@
     "block_height": 789325,
     "sale_price": 1950000,
     "new_satpoint": "94be4354a32c9c4c29480b980618e2718215c0e7966974d212af21a0536a8685:1:0",
-    "ts": "2023-05-12T01:30:58.000Z",
+    "ts": "2023-05-12T01:30:58",
     "marketplace_type": "unisat",
     "tx_id": "94be4354a32c9c4c29480b980618e2718215c0e7966974d212af21a0536a8685"
   },
@@ -864,7 +864,7 @@
     "block_height": 789321,
     "sale_price": null,
     "new_satpoint": "64143bb033de8c19183f782f0fd27d1c21cdbd15028c43a8c5b4ea30aeb1cfcf:0:0",
-    "ts": "2023-05-12T00:39:49.000Z",
+    "ts": "2023-05-12T00:39:49",
     "marketplace_type": "",
     "tx_id": "64143bb033de8c19183f782f0fd27d1c21cdbd15028c43a8c5b4ea30aeb1cfcf"
   },
@@ -875,7 +875,7 @@
     "block_height": 789314,
     "sale_price": -1,
     "new_satpoint": "49413ba4c76701d79fa66ac46986514756a7590e87695f10a66a8a946df27d1f:0:0",
-    "ts": "2023-05-11T23:28:49.000Z",
+    "ts": "2023-05-11T23:28:49",
     "marketplace_type": "",
     "tx_id": "49413ba4c76701d79fa66ac46986514756a7590e87695f10a66a8a946df27d1f"
   },
@@ -886,7 +886,7 @@
     "block_height": 789304,
     "sale_price": null,
     "new_satpoint": "1a7ce07ba32c3b8ec8d6f5974ca242e4f4139e4054756fabf0e198d7f5ad5e43:0:0",
-    "ts": "2023-05-11T21:53:20.000Z",
+    "ts": "2023-05-11T21:53:20",
     "marketplace_type": "",
     "tx_id": "1a7ce07ba32c3b8ec8d6f5974ca242e4f4139e4054756fabf0e198d7f5ad5e43"
   },
@@ -897,7 +897,7 @@
     "block_height": 789303,
     "sale_price": 1860000,
     "new_satpoint": "e0ffc9a564de9959bc7286614e22905d1be9df167d27477dcb719703caa1a65b:1:0",
-    "ts": "2023-05-11T21:30:56.000Z",
+    "ts": "2023-05-11T21:30:56",
     "marketplace_type": "unisat",
     "tx_id": "e0ffc9a564de9959bc7286614e22905d1be9df167d27477dcb719703caa1a65b"
   },
@@ -908,7 +908,7 @@
     "block_height": 789043,
     "sale_price": -1,
     "new_satpoint": "8de8c6fcf706e61efb485ff62431b5d2aca06d9bf8cea5e1143169a69c7b7792:0:0",
-    "ts": "2023-05-10T07:22:57.000Z",
+    "ts": "2023-05-10T07:22:57",
     "marketplace_type": "",
     "tx_id": "8de8c6fcf706e61efb485ff62431b5d2aca06d9bf8cea5e1143169a69c7b7792"
   },
@@ -919,7 +919,7 @@
     "block_height": 788970,
     "sale_price": null,
     "new_satpoint": "2780d5710b2a88e47fa8f7f2a7d407a505155c1f7a9a7d14713d44366bbdd473:0:0",
-    "ts": "2023-05-09T19:13:41.000Z",
+    "ts": "2023-05-09T19:13:41",
     "marketplace_type": "",
     "tx_id": "2780d5710b2a88e47fa8f7f2a7d407a505155c1f7a9a7d14713d44366bbdd473"
   },
@@ -930,7 +930,7 @@
     "block_height": 788967,
     "sale_price": 2977369,
     "new_satpoint": "fed20e1e15247587d0865d7787ba2045c0a4365cb4c695bf74926e6d873b2a9b:2:0",
-    "ts": "2023-05-09T18:32:02.000Z",
+    "ts": "2023-05-09T18:32:02",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "fed20e1e15247587d0865d7787ba2045c0a4365cb4c695bf74926e6d873b2a9b"
   },
@@ -941,7 +941,7 @@
     "block_height": 788820,
     "sale_price": -1,
     "new_satpoint": "69219d09171a601fbcdc3533373175ed6600e09530a7705eeb8e551e1ad73c84:0:0",
-    "ts": "2023-05-08T18:45:19.000Z",
+    "ts": "2023-05-08T18:45:19",
     "marketplace_type": "",
     "tx_id": "69219d09171a601fbcdc3533373175ed6600e09530a7705eeb8e551e1ad73c84"
   },
@@ -952,7 +952,7 @@
     "block_height": 788814,
     "sale_price": null,
     "new_satpoint": "6708901e49caecd8dd75a120547fe9e318ca46f43b7bf17f3837a15259c71000:0:0",
-    "ts": "2023-05-08T17:33:32.000Z",
+    "ts": "2023-05-08T17:33:32",
     "marketplace_type": "",
     "tx_id": "6708901e49caecd8dd75a120547fe9e318ca46f43b7bf17f3837a15259c71000"
   },
@@ -963,7 +963,7 @@
     "block_height": 788660,
     "sale_price": 7297504,
     "new_satpoint": "07cfa9401c91a6abde81d8b33a5d2886f59669e6349dcf903a907c17d5f68932:2:0",
-    "ts": "2023-05-07T17:41:14.000Z",
+    "ts": "2023-05-07T17:41:14",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "07cfa9401c91a6abde81d8b33a5d2886f59669e6349dcf903a907c17d5f68932"
   },
@@ -974,7 +974,7 @@
     "block_height": 788590,
     "sale_price": 3203049,
     "new_satpoint": "10033f332e29ab2b8c48408159a64834e172f1c6eaaaf7b7701877dc3118c8c1:2:0",
-    "ts": "2023-05-07T03:24:28.000Z",
+    "ts": "2023-05-07T03:24:28",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "10033f332e29ab2b8c48408159a64834e172f1c6eaaaf7b7701877dc3118c8c1"
   },
@@ -985,7 +985,7 @@
     "block_height": 788573,
     "sale_price": -1,
     "new_satpoint": "3e50782c6714647e8b268f981fea0edcaad8582c43e62ad93d1a5b4853481a78:0:0",
-    "ts": "2023-05-07T00:48:55.000Z",
+    "ts": "2023-05-07T00:48:55",
     "marketplace_type": "",
     "tx_id": "3e50782c6714647e8b268f981fea0edcaad8582c43e62ad93d1a5b4853481a78"
   },
@@ -996,7 +996,7 @@
     "block_height": 788559,
     "sale_price": -1,
     "new_satpoint": "ff40949567660a78093336568fca8c58e2b5d80ba259d3a492a0142968bf1e81:0:0",
-    "ts": "2023-05-06T21:35:52.000Z",
+    "ts": "2023-05-06T21:35:52",
     "marketplace_type": "",
     "tx_id": "ff40949567660a78093336568fca8c58e2b5d80ba259d3a492a0142968bf1e81"
   },
@@ -1007,7 +1007,7 @@
     "block_height": 788555,
     "sale_price": null,
     "new_satpoint": "39dec802d85326e9760b10fc2af55c0da2acf842637a0144a4abd306969f08ac:0:0",
-    "ts": "2023-05-06T21:07:51.000Z",
+    "ts": "2023-05-06T21:07:51",
     "marketplace_type": "",
     "tx_id": "39dec802d85326e9760b10fc2af55c0da2acf842637a0144a4abd306969f08ac"
   },
@@ -1018,7 +1018,7 @@
     "block_height": 788553,
     "sale_price": null,
     "new_satpoint": "73770c5278c0c13d342fce2edc8a5b280ed3e226e1536e77267900b4558ce1ed:0:0",
-    "ts": "2023-05-06T19:53:49.000Z",
+    "ts": "2023-05-06T19:53:49",
     "marketplace_type": "",
     "tx_id": "73770c5278c0c13d342fce2edc8a5b280ed3e226e1536e77267900b4558ce1ed"
   },
@@ -1029,7 +1029,7 @@
     "block_height": 788552,
     "sale_price": null,
     "new_satpoint": "9cba76250f6736a75e59aa4d701747491940fb011af6259fbe2c555fa418fec4:0:0",
-    "ts": "2023-05-06T19:53:01.000Z",
+    "ts": "2023-05-06T19:53:01",
     "marketplace_type": "",
     "tx_id": "9cba76250f6736a75e59aa4d701747491940fb011af6259fbe2c555fa418fec4"
   },
@@ -1040,7 +1040,7 @@
     "block_height": 788469,
     "sale_price": 194593,
     "new_satpoint": "172eabdfc656b1935e64b17895d7f7fe6cab78084c1858604f1c7f4e5df7ddc5:2:0",
-    "ts": "2023-05-06T07:52:29.000Z",
+    "ts": "2023-05-06T07:52:29",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "172eabdfc656b1935e64b17895d7f7fe6cab78084c1858604f1c7f4e5df7ddc5"
   },
@@ -1051,7 +1051,7 @@
     "block_height": 788467,
     "sale_price": 1001772,
     "new_satpoint": "967bf99ca529eb96f23fef1ca609b1fcc51a89616dd67686170b588cc0643921:2:0",
-    "ts": "2023-05-06T07:47:37.000Z",
+    "ts": "2023-05-06T07:47:37",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "967bf99ca529eb96f23fef1ca609b1fcc51a89616dd67686170b588cc0643921"
   },
@@ -1062,7 +1062,7 @@
     "block_height": 788353,
     "sale_price": -1,
     "new_satpoint": "cd122654b89c863d8dd96154be1943a4b4d6fd70e9dd7c7262ad7ba48e5ed2c4:0:0",
-    "ts": "2023-05-05T09:29:35.000Z",
+    "ts": "2023-05-05T09:29:35",
     "marketplace_type": "",
     "tx_id": "cd122654b89c863d8dd96154be1943a4b4d6fd70e9dd7c7262ad7ba48e5ed2c4"
   },
@@ -1073,7 +1073,7 @@
     "block_height": 788336,
     "sale_price": 2510331,
     "new_satpoint": "b4dcbe5d7c454d778134d08708af80303c49e03dc3e2a06fd4a57e462e8b0f72:2:0",
-    "ts": "2023-05-05T07:06:05.000Z",
+    "ts": "2023-05-05T07:06:05",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "b4dcbe5d7c454d778134d08708af80303c49e03dc3e2a06fd4a57e462e8b0f72"
   },
@@ -1084,7 +1084,7 @@
     "block_height": 788333,
     "sale_price": 1362195,
     "new_satpoint": "d673206845ec5fead1a5a01aed522d58f65dde394fe8e1922afc08684c038b75:2:0",
-    "ts": "2023-05-05T06:23:41.000Z",
+    "ts": "2023-05-05T06:23:41",
     "marketplace_type": "ordinals_wallet",
     "tx_id": "d673206845ec5fead1a5a01aed522d58f65dde394fe8e1922afc08684c038b75"
   }

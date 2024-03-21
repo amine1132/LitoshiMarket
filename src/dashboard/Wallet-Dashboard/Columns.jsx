@@ -42,10 +42,10 @@ function Columns({ data, currentPage, itemsPerPage, backgroundColor }) {
               <td className="pl-10 py-4">{item.ticker}</td>
               <td className="pl-10 py-4">{item.overall_balance}</td>
               <td className="pl-10 py-4">{item.data3}</td>
-              <td className="pl-10 py-4">{item.data4}</td>
+              <td className="pl-10 py-4">{item.vol_1d}</td>
               <td className="pl-10 py-4">{item.available_balance}</td>
               <td className="pl-10 py-4">{item.transferrable_balance}</td>
-              <td className="pl-10 py-4">{item.data7}</td>
+              <td className="pl-10 py-4">{item.marketcap}</td>
             </tr>
           ))}
         </tbody>
