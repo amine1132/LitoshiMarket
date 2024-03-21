@@ -18,7 +18,7 @@ function ActivityColumns({ data, currentPage, itemsPerPage, backgroundColor }) {
             >
               <td className={"text-gray-600 w-[150px]"}>
                 <p>{item.ts}</p>
-                <p>{item.inscription_id}</p>
+                <p>{item.from_wallet}</p>
               </td>
               <td className="flex text-gray-600 text-left">
                 <img
@@ -32,8 +32,8 @@ function ActivityColumns({ data, currentPage, itemsPerPage, backgroundColor }) {
               </td>
               <td className="py-4 text-right">{item.data3}</td>
               <td className="py-4 text-right">
-                <p className="inline text-gray-600">{item.data4} </p>
-                {item.data5}
+                <p className="inline text-gray-600">{item.type_of_money} </p>
+                {item.Gas}
               </td>
             </tr>
           ))}

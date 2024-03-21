@@ -133,7 +133,7 @@ function WalletSection({ isBiggerButtonClicked, setIsBiggerButtonClicked }) {
           </div>
           {selectedButton === "Activity" && (
             <p className="mt-3 ml-20">
-              500 <small>transactions</small>
+              8 <small>transactions</small>
             </p>
           )}
         </div>
