@@ -51,7 +51,7 @@ function ProfileDashBoard({ isBiggerButtonClicked }) {
           </h1>
           <p className="pl-1 mb-10 flex items-center">
             <small id="adress">
-              0x35a6c3ff826406fb7a060c6a1f4896b910680ceb
+              bc1p9ckplx7pesuh396he7nk0qzxrhyewd2ytrz9s2444dkl2c8gerdsrq7xjd
             </small>
             <img
               src="/src/assets/copy.png"

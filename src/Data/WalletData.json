@@ -1,9 +1,9 @@
 [
   {
     "ticker": "sbtc",
-    "overall_balance": "162000.000000000000",
-    "available_balance": "162000.000000000000",
-    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "overall_balance": "162000",
+    "available_balance": "162000",
+    "transferrable_balance": "0.00",
     "image_url": null,
     "marketcap": 1453704000,
     "vol_1d": 209970,
@@ -11,9 +11,9 @@
   },
   {
     "ticker": "base",
-    "overall_balance": "30000000.000000000000",
-    "available_balance": "30000000.000000000000",
-    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "overall_balance": "30000000",
+    "available_balance": "30000000",
+    "transferrable_balance": "0.",
     "image_url": null,
     "marketcap": 234140000,
     "vol_1d": 350000,
@@ -21,9 +21,9 @@
   },
   {
     "ticker": "taro",
-    "overall_balance": "35000.000000000000",
-    "available_balance": "35000.000000000000",
-    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "overall_balance": "35000",
+    "available_balance": "35000",
+    "transferrable_balance": "0.00",
     "image_url": null,
     "marketcap": 268752000,
     "vol_1d": 0,
@@ -31,9 +31,9 @@
   },
   {
     "ticker": "rcsv",
-    "overall_balance": "10.0000000000000000",
-    "available_balance": "10.0000000000000000",
-    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "overall_balance": "10",
+    "available_balance": "10",
+    "transferrable_balance": "0.00",
     "image_url": null,
     "marketcap": 24563322000,
     "vol_1d": 0,
@@ -41,12 +41,12 @@
   },
   {
     "ticker": "oshb",
-    "overall_balance": "23.0000000000000000",
-    "available_balance": "23.0000000000000000",
-    "transferrable_balance": "0.000000000000000000000000000000000000",
+    "overall_balance": "23",
+    "available_balance": "23",
+    "transferrable_balance": "0.00",
     "image_url": null,
-    "marketcap": 50395682.698199995,
+    "marketcap": 50395682,
     "vol_1d": 0,
-    "min_listed_unit_price": 5598.8982
+    "min_listed_unit_price": 5598
   }
 ]
