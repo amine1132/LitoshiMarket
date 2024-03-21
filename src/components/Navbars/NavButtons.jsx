@@ -1,5 +1,5 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
 function NavButtons() {
   const navigate = useNavigate();
@@ -9,25 +9,26 @@ function NavButtons() {
 
     // Vérifie si l'URL est différente de l'URL actuelle avant de naviguer
     if (url !== currentPath) {
-      navigate("/"+url);
+      navigate("/" + url);
     }
   };
 
   return (
     <div className="flex justify-center gap-x-[5%] w-full">
-      <button onClick={() => handleButtonClick('explorer')} className={`px-5 py-2 rounded-lg hover:bg-[#1E1E1F]`}>
+      <button
+        onClick={() => handleButtonClick("explorer")}
+        className={`px-5 py-2 rounded-lg hover:bg-[#1E1E1F]`}
+      >
         Explorer
       </button>
 
-      <button onClick={() => handleButtonClick('incubator')} className="px-5 py-2 rounded-lg hover:bg-[#1E1E1F]">
+      <button className="px-5 py-2 rounded-lg hover:bg-[#1E1E1F]">
         Incubator
       </button>
 
-      <button onClick={() => handleButtonClick('tools')} className="px-5 py-2 rounded-lg hover:bg-[#1E1E1F]">
-        Tools
-      </button>
+      <button className="px-5 py-2 rounded-lg hover:bg-[#1E1E1F]">Tools</button>
 
-      <button onClick={() => handleButtonClick('early-stage')} className="px-5 py-2 rounded-lg hover:bg-[#1E1E1F]">
+      <button className="px-5 py-2 rounded-lg hover:bg-[#1E1E1F]">
         Early Stage
       </button>
     </div>
