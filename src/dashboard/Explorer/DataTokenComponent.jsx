@@ -9,7 +9,7 @@ export default function DataToken(Token) {
     <>
       <div className="pl-[5%] mr-[5%] pr-[5%] h-[840px] bg-[#1E1E1F] rounded-lg overflow-y-auto">
         <h1 className="pt-[5%]">
-          {TokenData.tick + " / " + TokenData.tick.toUpperCase()}
+          {TokenData.ticker + " / " + TokenData.ticker}
         </h1>
         <div className="border mt-[1%]"></div>
 
