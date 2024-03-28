@@ -5,8 +5,9 @@ import Explorer_chart from "../../components/Explorer/Explorer_chart";
 import Modalv2 from "../../components/Explorer/Modalv2";
 import DataToken from "./DataTokenComponent";
 import Charts_Tradingview from "../../components/Chart/Charts_Tradingview";
-import ChartTradingView from "../../components/Chart/ChartTradingView"
-import ChartPrepare from "../../components/Chart/ChartPrepare"
+import ChartTradingView from "../../components/Chart/ChartTradingView";
+import ChartPrepare from "../../components/Chart/ChartPrepare";
+import NavButtons from "../../components/Navbars/NavButtons";
 
 export default function Condition_explorer(tokenData) {
   const [selectedTokenName, setSelectedTokenName] = useState("");
@@ -25,25 +26,20 @@ export default function Condition_explorer(tokenData) {
   }
   return (
     <>
-    <div className="ml-[1.85%]">
-      <div className="flex gap-1 items-center mt-2.5 pt-[3%]">
-        {/* <BsArrowLeftShort
-          className="text-2xl cursor-pointer"
-          onClick={() => setIsContentCleared("")}
-        />
-        <p>Bitcoin</p>
-        <BsArrowRightShort className="text-2xl" />
-        <p>Explorer</p>
-        <BsArrowRightShort className="text-2xl" />
-        {selectedTokenName.toUpperCase()} */}
+      <div className="mt-[40px]">
+        <NavButtons />
       </div>
-      <div className="w-full flex h-full gap-6">
-        <div className="flex flex-col w-3/4 gap-5">
-          <div id="chartmescouilles" className="explorer_token_charts rounded-lg h-[610px]">
+      <div className="ml-[1.85%]">
+        <div className="w-full flex h-full gap-[60px] mt-5">
+          <div className="flex flex-col w-3/4 gap-5">
+            <div
+              id="chartmescouilles"
+              className="explorer_token_charts rounded-lg h-[610px]"
+            >
               <ChartPrepare Token={tokenData} />
-          </div>
-          <div className="explorer_token_data rounded-lg h-[210px] overflow-y-auto">
-            {/* {showNFTContent ? (
+            </div>
+            <div className="explorer_token_data rounded-lg h-[190px] overflow-y-auto">
+              {/* {showNFTContent ? (
               <nav className="topline_1">
                 <table>
                   <thead>
@@ -100,42 +96,42 @@ export default function Condition_explorer(tokenData) {
             ) : (
               <div></div>
             )} */}
-                <table className="text-left ml-[2.5%] w-[95%] text-sm">
-                  <thead className="border-b">
-                    <th>Date</th>
-                    <th>Type</th>
-                    <th>USD</th>
-                    <th>$LITE</th>
-                    <th>Price</th>
-                    <th>TXN</th>
-                    <th>Supply</th>
-                  </thead>
-                  {
-                    Array.from({ length: 15 }).map((_, index) => (
-                      <tbody key={index} className="semi border-b">
-                        <td className="">d</td>
-                        <td className="">d</td>
-                        <td className="">d</td>
-                        <td className="">d</td>
-                        <td className="">d</td>
-                        <td className="">d</td>
-                        <td className="">d</td>
-                      </tbody>
-                    ))
-                  }
-                </table>
+              <table className="text-left ml-[2.5%] w-[95%] text-sm">
+                <thead className="  border-[#FFFFFF] border-opacity-20 border-b">
+                  <th>Date</th>
+                  <th>Type</th>
+                  <th>USD</th>
+                  <th>$LITE</th>
+                  <th>Price</th>
+                  <th>TXN</th>
+                  <th>BTC</th>
+                </thead>
+                {Array.from({ length: 10 }).map((_, index) => (
+                  <tbody
+                    key={index}
+                    className="semi   border-[#FFFFFF] border-opacity-20 border-b"
+                  >
+                    <td className="">d</td>
+                    <td className="">d</td>
+                    <td className="">d</td>
+                    <td className="">d</td>
+                    <td className="">d</td>
+                    <td className="">d</td>
+                    <td className="">d</td>
+                  </tbody>
+                ))}
+              </table>
+            </div>
+          </div>
+          <div className="flex flex-col w-[20%] ">
+            {/* DataToken */}
 
+            <DataToken Token={tokenData} />
+
+            {/* DataToken end*/}
           </div>
         </div>
-        <div className="flex flex-col w-[35%]">
-          {/* DataToken */}
-
-          <DataToken Token={tokenData}/>
-
-          {/* DataToken end*/}
-        </div>
       </div>
-    </div>
     </>
   );
 }

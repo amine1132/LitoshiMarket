@@ -55,7 +55,7 @@ function MarketCapTable({
             {/* <th></th> */}
             {/* <th className="hoverable" name={col_0} onClick={() => Filtre(col_0, setData, data, sortOrder,setSortOrder, Arrows, setArrows)}>{Arrows[0].arrow}</th> */}
             <th
-              className={`pl-8 hoverable bg-[#151516] rounded-l-lg`}
+              className={`pl-8 hoverable bg-[#151516] rounded-l-lg text-white`}
               name={col_1}
               onClick={() =>
                 Filtre(
@@ -72,7 +72,7 @@ function MarketCapTable({
               {Arrows[1].arrow}Name
             </th>
             <th
-              className={`hoverable bg-[#151516]`}
+              className={`hoverable bg-[#151516] text-white`}
               name={col_2}
               onClick={() =>
                 Filtre(
@@ -89,7 +89,7 @@ function MarketCapTable({
               {Arrows[2].arrow}Position
             </th>
             <th
-              className={`hoverable bg-[#151516]`}
+              className={`hoverable bg-[#151516] text-white`}
               name={col_3}
               onClick={() =>
                 Filtre(
@@ -106,7 +106,7 @@ function MarketCapTable({
               {Arrows[3].arrow}Price
             </th>
             <th
-              className={`hoverable bg-[#151516]`}
+              className={`hoverable bg-[#151516] text-white`}
               name={col_4}
               onClick={() =>
                 Filtre(
@@ -123,7 +123,7 @@ function MarketCapTable({
               {Arrows[4].arrow}24h
             </th>
             <th
-              className={`hoverable bg-[#151516]`}
+              className={`hoverable bg-[#151516] text-white`}
               name={col_5}
               onClick={() =>
                 Filtre(
@@ -140,7 +140,7 @@ function MarketCapTable({
               {Arrows[5].arrow}Available
             </th>
             <th
-              className={`hoverable bg-[#151516]`}
+              className={`hoverable bg-[#151516] text-white`}
               name={col_6}
               onClick={() =>
                 Filtre(
@@ -157,7 +157,7 @@ function MarketCapTable({
               {Arrows[6].arrow}Transferable
             </th>
             <th
-              className={`hoverable bg-[#151516] rounded-r-lg`}
+              className={`hoverable bg-[#151516] rounded-r-lg text-white`}
               name={col_7}
               onClick={() =>
                 Filtre(
@@ -285,7 +285,7 @@ function MarketCapTable({
                   className={`${
                     token.marketcap ? "text-white-500" : "text-gray-500"
                   } ${
-                    index != itemsPerPage - 1 && `border-b border-[#151516]`
+                    index != itemsPerPage - 1 && `border-b  border-[#151516]`
                   }`}
                 >
                   {token.marketcap
