@@ -1,4 +1,5 @@
 import Wallet from "../../Data/WalletData.json";
+import React, { useState, useEffect } from "react";
 
 function formatMarketCap(value) {
     if (value >= 1000000000) {
@@ -8,6 +9,15 @@ function formatMarketCap(value) {
     } else {
         return value.toString();
     }
+}
+
+export function useTokenCount() {
+    const [tokenCount, setTokenCount] = useState(0);
+
+    useEffect(() => {
+        setTokenCount(Wallet.length);
+    }, []);
+    return tokenCount;
 }
 
 function Columns({ data, currentPage, itemsPerPage, backgroundColor }) {
@@ -69,12 +79,11 @@ function Columns({ data, currentPage, itemsPerPage, backgroundColor }) {
                             </td>
 
                             <td className="pl-10 py-4">
-                                $
                                 {parseFloat(item.available_balance) > 1000000
                                     ? `${(parseFloat(item.available_balance) / 1000000).toFixed(0)}M`
                                     : parseFloat(item.available_balance).toLocaleString().replace(/\s/g, ",")}
                             </td>
-                            <td className="pl-10 py-4">${item.transferrable_balance}</td>
+                            <td className="pl-10 py-4">{item.transferrable_balance}</td>
                             <td className="pl-10 py-4">{formatMarketCap(item.marketcap)}</td>
                         </tr>
                     ))}

@@ -9,7 +9,7 @@ function generateNFTElements(count, isBiggerButtonClicked, selectedNFTPage, item
         isBiggerButtonClicked ? 0 : (selectedNFTPage - 1) * itemsPerPageNFT,
         isBiggerButtonClicked ? count : selectedNFTPage * itemsPerPageNFT
     );
-    console.log(Nftdata);
+
     return slicedData.map((NFT, index) => (
         <div className={isBiggerButtonClicked ? "w-[20%] mb-4" : "w-[20%]"} key={index}>
             <div className={`rounded-lg h-[250px] max-w-[240px] bg-[#151516] relative`}>
@@ -17,7 +17,7 @@ function generateNFTElements(count, isBiggerButtonClicked, selectedNFTPage, item
 
                 <img className="nft_image" src={NFT.content_url} />
 
-                <p className="absolute top-[85%] font-bold z-10">{NFT.inscription_name}</p>
+                <p className="absolute top-[85%] font-bold z-10 ml-2">{NFT.inscription_name}</p>
             </div>
         </div>
     ));

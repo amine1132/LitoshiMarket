@@ -4,8 +4,12 @@ import Pagination from "./Pagination";
 import generateNFTElements from "./NftGesture";
 import ActivityColumns from "./ActivityColumns";
 import wallet from "../../assets/dashboard/wallet2.svg";
+import { useTransactionCount } from "../Wallet-Dashboard/ActivityColumns";
+import { useTokenCount } from "../Wallet-Dashboard/Columns";
 
 function WalletSection({ isBiggerButtonClicked, setIsBiggerButtonClicked }) {
+    const transactionCount = useTransactionCount();
+    const tokencount = useTokenCount();
     // Gestion NFT
     const [selectedNFTPage, setSelectedNFTPage] = React.useState(1);
     const [itemsPerPageNFT, setItemsPerPageNFT] = React.useState(5);
@@ -27,9 +31,9 @@ function WalletSection({ isBiggerButtonClicked, setIsBiggerButtonClicked }) {
 
     // Gestion Token
     const [currentPage, setCurrentPage] = React.useState(1);
-    const [itemsPerPageToken, setItemsPerPageToken] = React.useState(4);
+    const [itemsPerPageToken, setItemsPerPageToken] = React.useState(5);
 
-    const data = Array.from({ length: 50 }, (_, index) => ({
+    const data = Array.from({ length: tokencount }, (_, index) => ({
         data1: `Mot ${index + 1}`,
         data2: `Mot ${index + 2}`,
         data3: `Mot ${index + 3}`,
@@ -41,7 +45,7 @@ function WalletSection({ isBiggerButtonClicked, setIsBiggerButtonClicked }) {
 
     const tableSizeToken = {
         false: 10,
-        true: 4,
+        true: 5,
     };
 
     const sizeButtonSrc = isBiggerButtonClicked ? "/src/assets/smaller.png" : "/src/assets/bigger.png";
@@ -58,9 +62,9 @@ function WalletSection({ isBiggerButtonClicked, setIsBiggerButtonClicked }) {
     // Fin Gestion Token
 
     // Activity
-    const [itemsPerPageActivity, setItemsPerPageActivity] = React.useState(4);
+    const [itemsPerPageActivity, setItemsPerPageActivity] = React.useState(5);
 
-    const dataActivity = Array.from({ length: 25 }, (_, index) => ({
+    const dataActivity = Array.from({ length: transactionCount }, (_, index) => ({
         data1: `Mot ${index + 1}`,
         data2: `Mot ${index + 2}`,
         data3: `Mot ${index + 3}`,
@@ -78,7 +82,7 @@ function WalletSection({ isBiggerButtonClicked, setIsBiggerButtonClicked }) {
         <div className={`${isBiggerButtonClicked ? "" : "mt-10"} flex justify-center`}>
             <div
                 className={`px-10 p-5 w-[92.5%] rounded-3xl bg-[#1E1E1F] ${
-                    isBiggerButtonClicked ? "h-[790px]" : "h-[450px]"
+                    isBiggerButtonClicked ? "h-[790px]" : "h-[500px]"
                 } ${selectedButton === "NFT" && isBiggerButtonClicked && "overflow-auto"}`}
             >
                 <div className="flex justify-between">
@@ -117,7 +121,7 @@ function WalletSection({ isBiggerButtonClicked, setIsBiggerButtonClicked }) {
                             Activity
                         </button>
                     </div>
-                    {selectedButton === "Activity" && <p className="mt-3 ml-20">8 transactions</p>}
+                    {selectedButton === "Activity" && <p className="mt-3 ml-20">{transactionCount} transactions</p>}
                 </div>
 
                 {selectedButton === "Token" && (

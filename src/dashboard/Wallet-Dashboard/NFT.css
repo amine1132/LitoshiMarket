@@ -7,3 +7,7 @@
 .border-t {
     border-color: #151516;
 }
+
+.transaction td {
+    padding: 7px 0px;
+}

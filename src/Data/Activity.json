@@ -1,8 +1,8 @@
 [
   {
     "inscription_id": "8185f39cde49067e86daaa3b96ffb5473ec980666c2942023bdcb9299dec31adi0",
-    "from_wallet": "bc1p[...]fnccjq",
-    "to_wallet": "bc1p[...]e6zt8p",
+    "from_wallet": "bc1par0t76nmjf55wp0rpzu58p97mzz6tf3cd67js077a2qx5ez8knlqfnccjq",
+    "to_wallet": "bc1pt6w52hhc6j95jlrdtwm34n8f25pkljg8jku593td9urmaw2e3xjse6zt8p",
     "block_height": 794786,
     "sale_price": 5960100,
     "new_satpoint": "99df0d8511c7f32e70aeb50b7d76e13a5c7a8f853287c3f3267352d0c471878f:1:0",
@@ -14,8 +14,8 @@
   },
   {
     "inscription_id": "8185f39cde49067e86daaa3b96ffb5473ec980666c2942023bdcb9299dec31adi0",
-    "from_wallet": "bc1p[...]yar3m7",
-    "to_wallet": "bc1p[...]fnccjq",
+    "from_wallet": "bc1pz28vndyuvt7e7lmgpay6mrp3v0hkm7r4h7wrxakx7dkj5g5vx95syar3m7",
+    "to_wallet": "bc1par0t76nmjf55wp0rpzu58p97mzz6tf3cd67js077a2qx5ez8knlqfnccjq",
     "block_height": 794784,
     "sale_price": 5808811,
     "new_satpoint": "65f91366ad71174e6941450935071390bc27448cfdbdee5afab8f155db7f86fb:2:0",
@@ -27,8 +27,8 @@
   },
   {
     "inscription_id": "ee47c1152af20fef1c5afecd6073331effbb65405adfedbbc74ef05cc5adb3c9i0",
-    "from_wallet": "bc1p[...]fnccjq",
-    "to_wallet": "bc1p[...]0flpwd",
+    "from_wallet": "bc1par0t76nmjf55wp0rpzu58p97mzz6tf3cd67js077a2qx5ez8knlqfnccjq",
+    "to_wallet": "bc1pjn2md9p4f0fqa78pf49p5kg8n67w2lkr2rx3gsk78s75epexkz6s0flpwd",
     "block_height": 794778,
     "sale_price": -1,
     "new_satpoint": "b566900111ada5870500d3b6d9fbdc776100e5750cd79d37419c5a51d882fef6:1:0",
@@ -40,8 +40,8 @@
   },
   {
     "inscription_id": "ee47c1152af20fef1c5afecd6073331effbb65405adfedbbc74ef05cc5adb3c9i0",
-    "from_wallet": "bc1p[...]j8cf7y",
-    "to_wallet": "bc1p[...]fnccjq",
+    "from_wallet": "bc1pdlgfjm8r8qfv6suyr5yxgvjd0gkpuq6eanuuv7nnx0erwhd0684qj8cf7y",
+    "to_wallet": "bc1par0t76nmjf55wp0rpzu58p97mzz6tf3cd67js077a2qx5ez8knlqfnccjq",
     "block_height": 794769,
     "sale_price": null,
     "new_satpoint": "1b7b44875b673aeb43b36b1cdcb6f0ab6baa8aa7d8852c4417acf6c21cb5c652:1:0",
@@ -53,8 +53,8 @@
   },
   {
     "inscription_id": "2a0510b325e8738eb58b01c08fb1446975db1b10d30999b447cad88d56cb2c18i0",
-    "from_wallet": "bc1p[...]fnccjq",
-    "to_wallet": "bc1q[...]9qcqq",
+    "from_wallet": "bc1par0t76nmjf55wp0rpzu58p97mzz6tf3cd67js077a2qx5ez8knlqfnccjq",
+    "to_wallet": "bc1qldf8r6wjrx3wd75gzgza6mmn6hlrk85as9qcqq",
     "block_height": 794759,
     "sale_price": -1,
     "new_satpoint": "ec8db660be883e3cdb901fd61d63257a9329663794ab168dea448ceb2e92107d:1:0",
@@ -66,8 +66,8 @@
   },
   {
     "inscription_id": "2a0510b325e8738eb58b01c08fb1446975db1b10d30999b447cad88d56cb2c18i0",
-    "from_wallet": "bc1p[...]kwj40a",
-    "to_wallet": "bc1p[...]fnccjq",
+    "from_wallet": "bc1pac2spgn4kfzv2yjhd73gjtn684089tx7f3e0cqm968qyzv52rf0skwj40a",
+    "to_wallet": "bc1par0t76nmjf55wp0rpzu58p97mzz6tf3cd67js077a2qx5ez8knlqfnccjq",
     "block_height": 794751,
     "sale_price": null,
     "new_satpoint": "15d2f6f2dc996e3b73a0cf63f6f2106995ec07091b53dfb6a8fa51c6f7de61a7:1:0",
@@ -79,8 +79,8 @@
   },
   {
     "inscription_id": "91c5cc6cd5dba73d5d2a7d14f33c98448ad146681a992c096a01b621a9253babi0",
-    "from_wallet": "bc1p[...]fnccjq",
-    "to_wallet": "bc1p[...]xz97jh",
+    "from_wallet": "bc1par0t76nmjf55wp0rpzu58p97mzz6tf3cd67js077a2qx5ez8knlqfnccjq",
+    "to_wallet": "bc1p69y59qld53zs35xmgm8vq5wnd5ap0x0ez6quj8fq2py0xjx7fu4qxz97jh",
     "block_height": 794617,
     "sale_price": 4969080,
     "new_satpoint": "0b42e6486c407ede49440cd68be52ea7bdb62724b0c76d1b73cdf036cee377fb:1:0",
@@ -92,8 +92,8 @@
   },
   {
     "inscription_id": "91c5cc6cd5dba73d5d2a7d14f33c98448ad146681a992c096a01b621a9253babi0",
-    "from_wallet": "bc1p[...]334xsr",
-    "to_wallet": "bc1p[...]fnccjq",
+    "from_wallet": "bc1p3vns5jrsw4tlpec2naevchfwrm7mhr73a0wx6lvdcd8flk9msr5q334xsr",
+    "to_wallet": "bc1par0t76nmjf55wp0rpzu58p97mzz6tf3cd67js077a2qx5ez8knlqfnccjq",
     "block_height": 794543,
     "sale_price": 4388000,
     "new_satpoint": "af672534a90753851ce7fc26043a85b2fd3f65c92f19dec1609042d71c2ab4f0:1:0",
