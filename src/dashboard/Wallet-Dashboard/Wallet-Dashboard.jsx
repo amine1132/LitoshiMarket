@@ -6,8 +6,8 @@ import ActivityColumns from "./ActivityColumns";
 import wallet from "../../assets/dashboard/wallet2.svg";
 import { useTransactionCount } from "../Wallet-Dashboard/ActivityColumns";
 import { useTokenCount } from "../Wallet-Dashboard/Columns";
-import smaller from "../../assets/dashboard/smaller.png";
-import bigger from "../../assets/dashboard/bigger.png";
+import smaller from "../../assets/smaller.png";
+import bigger from "../../assets/bigger.png";
 
 function WalletSection({ isBiggerButtonClicked, setIsBiggerButtonClicked }) {
   const transactionCount = useTransactionCount();
