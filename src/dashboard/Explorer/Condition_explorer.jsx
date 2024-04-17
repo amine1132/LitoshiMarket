@@ -38,8 +38,9 @@ export default function Condition_explorer(tokenData) {
             >
               <ChartPrepare Token={tokenData} />
             </div>
-            <div className="explorer_token_data rounded-lg h-[190px] overflow-y-auto">
-              {/* {showNFTContent ? (
+            <div className="flex">
+              <div className="explorer_token_data rounded-lg h-[190px] overflow-y-auto">
+                {/* {showNFTContent ? (
               <nav className="topline_1">
                 <table>
                   <thead>
@@ -96,31 +97,100 @@ export default function Condition_explorer(tokenData) {
             ) : (
               <div></div>
             )} */}
-              <table className="text-left ml-[2.5%] w-[95%] text-sm">
-                <thead className="  border-[#FFFFFF] border-opacity-20 border-b">
-                  <th>Date</th>
-                  <th>Type</th>
-                  <th>USD</th>
-                  <th>$LITE</th>
-                  <th>Price</th>
-                  <th>TXN</th>
-                  <th>BTC</th>
-                </thead>
-                {Array.from({ length: 10 }).map((_, index) => (
-                  <tbody
-                    key={index}
-                    className="semi   border-[#FFFFFF] border-opacity-20 border-b"
-                  >
-                    <td className="">d</td>
-                    <td className="">d</td>
-                    <td className="">d</td>
-                    <td className="">d</td>
-                    <td className="">d</td>
-                    <td className="">d</td>
-                    <td className="">d</td>
+                <table className="text-left ml-[2.5%] w-[95%] text-sm">
+                  <thead className="  border-[#FFFFFF] border-opacity-20 border-b">
+                    <th>Price</th>
+                    <th>Amount</th>
+                    <th>Total</th>
+                  </thead>
+                  {Array.from({ length: 10 }).map((_, index) => (
+                    <tbody
+                      key={index}
+                      className="semi   border-[#FFFFFF] border-opacity-20 border-b"
+                    >
+                      <td className="">d</td>
+                      <td className="">d</td>
+                      <td className="">d</td>
+                    </tbody>
+                  ))}
+                </table>
+              </div>
+              <div className="explorer_token_data rounded-lg h-[190px] overflow-y-auto">
+                {/* {showNFTContent ? (
+              <nav className="topline_1">
+                <table>
+                  <thead>
+                    <th>Token</th>
+                    <th>Deploy Time</th>
+                    <th>Holders</th>
+                    <th>Transaction</th>
+                    <th>Progress%</th>
+                  </thead>
+                  <tbody className="semi">
+                    {data.map((token, index) => (
+                      <TickComponent2 tokenData={token} index={index + 1} />
+                    ))}
                   </tbody>
-                ))}
-              </table>
+                </table>
+              </nav>
+            ) : showTokenContent ? (
+              <nav className="topline_1">
+                <table>
+                  <thead>
+                    <th>Date</th>
+                    <th></th>
+                    <th>Type</th>
+                    <th>USD</th>
+                    <th>$LITE</th>
+                    <th>Price</th>
+                    <th>TXN</th>
+                    <th>Supply</th>
+                  </thead>
+                  <tbody className="semi">
+                    {data.map((token, index) => (
+                      <TickComponent tokenData={token} index={index + 1} />
+                    ))}
+                  </tbody>
+                </table>
+              </nav>
+            ) : showTransactionContent ? (
+              <nav className="topline_1">
+                <table>
+                  <thead>
+                    <tr>
+                      <th className="user">User</th>
+                      <th>Net worth</th>
+                      <th>Top token</th>
+                    </tr>
+                  </thead>
+                  <tbody className="semi">
+                    {data.map((token, index) => (
+                      <TickComponent3 key={index} tokenData={token} />
+                    ))}
+                  </tbody>
+                </table>
+              </nav>
+            ) : (
+              <div></div>
+            )} */}
+                <table className="text-left ml-[2.5%] w-[95%] text-sm">
+                  <thead className="  border-[#FFFFFF] border-opacity-20 border-b">
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Total </th>
+                  </thead>
+                  {Array.from({ length: 10 }).map((_, index) => (
+                    <tbody
+                      key={index}
+                      className="semi   border-[#FFFFFF] border-opacity-20 border-b"
+                    >
+                      <td className="">d</td>
+                      <td className="">d</td>
+                      <td className="">d</td>
+                    </tbody>
+                  ))}
+                </table>
+              </div>
             </div>
           </div>
           <div className="flex flex-col w-[20%] ">
