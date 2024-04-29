@@ -10,9 +10,14 @@ import NavButtons from "../../components/Navbars/NavButtons";
 import CaseAlert from "./CaseAlert";
 import AddCaseAlert from "./AddCaseAlert";
 import SearchPopUp from "../../components/SearchPopUp/SearchPopUp";
+import AddAlertModal from "./AddAlertModal"; // Importez votre composant modal
 
-export default function Alerts({ wallet, blurState, searchState, setBlurState, setSearchState }) {
+export default function Alerts({ wallet, blurState, searchState, setBlurState, setSearchState, addNewAlert }) {
     const [isOver1000Px, setIsOver1000Px] = useState(true);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const toggleModal = () => {
+        setIsModalOpen(!isModalOpen);
+    };
 
     //choose the screen size
     const handleResize = () => {
@@ -26,7 +31,10 @@ export default function Alerts({ wallet, blurState, searchState, setBlurState, s
     // create an event listener
     useEffect(() => {
         window.addEventListener("resize", handleResize);
-    });
+        return () => {
+            window.removeEventListener("resize", handleResize);
+        };
+    }, []);
 
     const SecondColor = "#1E1E1F";
     const BackGroundColor = "#151516";
@@ -35,6 +43,7 @@ export default function Alerts({ wallet, blurState, searchState, setBlurState, s
         setSearchState(false);
         setBlurState(false);
     };
+    const [alerts, setAlerts] = useState([]);
 
     return (
         <>
@@ -52,7 +61,12 @@ export default function Alerts({ wallet, blurState, searchState, setBlurState, s
                             </div>
                         </header>
                         <CaseAlert SecondColor={SecondColor} notification={notifgreen} edit={pencil} trash={trashred} />
-                        <AddCaseAlert SecondColor={SecondColor} />
+
+                        {isModalOpen && <AddAlertModal onClose={toggleModal} addNewAlert={addNewAlert} />}
+                        {!isModalOpen && <AddCaseAlert SecondColor={SecondColor} onOpenModal={toggleModal} />}
+                        {alerts.map((alert, index) => (
+                            <CaseAlert SecondColor={SecondColor} notification={notifgreen} edit={pencil} trash={trashred} />
+                        ))}
                     </div>
                     <div className="ellipse"></div>
                 </div>

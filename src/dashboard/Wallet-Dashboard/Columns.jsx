@@ -57,32 +57,13 @@ function Columns({ data, currentPage, itemsPerPage, backgroundColor }) {
                     {currentData.map((item, index) => (
                         <tr key={index} className={index === 0 ? null : `border-t border-t-[#151516]`}>
                             <td className="pl-10 py-4">{item.ticker.toUpperCase()}</td>
-                            <td className={`pl-10 py-4 `}>
-                                {parseFloat(item.overall_balance) > 1000000
-                                    ? `${(parseFloat(item.overall_balance) / 1000000).toFixed(0)}M`
-                                    : parseFloat(item.overall_balance).toLocaleString().replace(/\s/g, ",")}
-                            </td>
+                            <td className={`pl-10 py-4 `}>{formatMarketCap(item.overall_balance)}</td>
 
                             <td className="pl-10 py-4">${item.min_listed_unit_price}</td>
-                            <td
-                                className={`pl-10 py-4 ${
-                                    parseFloat(item.vol_1d) > 0
-                                        ? "text-green-500"
-                                        : parseFloat(item.vol_1d) < 0
-                                        ? "text-red-500"
-                                        : ""
-                                }`}
-                            >
-                                {parseFloat(item.vol_1d) !== 0
-                                    ? (parseFloat(item.vol_1d) / 10000).toFixed(1) + "%"
-                                    : "0%"}
+                            <td className={`pl-10 py-4 ${parseFloat(item.vol_1d) > 0 ? "text-green-500" : parseFloat(item.vol_1d) < 0 ? "text-red-500" : ""}`}>
+                                {parseFloat(item.vol_1d) !== 0 ? (parseFloat(item.vol_1d) / 10000).toFixed(1) + "%" : "0%"}
                             </td>
-
-                            <td className="pl-10 py-4">
-                                {parseFloat(item.available_balance) > 1000000
-                                    ? `${(parseFloat(item.available_balance) / 1000000).toFixed(0)}M`
-                                    : parseFloat(item.available_balance).toLocaleString().replace(/\s/g, ",")}
-                            </td>
+                            <td className="pl-10 py-4">{formatMarketCap(item.available_balance)}</td>
                             <td className="pl-10 py-4">{item.transferrable_balance}</td>
                             <td className="pl-10 py-4">{formatMarketCap(item.marketcap)}</td>
                         </tr>

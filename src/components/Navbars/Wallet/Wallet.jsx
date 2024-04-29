@@ -56,20 +56,14 @@ export function Wallet({ wallet, setWallet, isButtonActivated }) {
     }
     return (
         <div className="w-full flex flex-col gap-4 justify-center pb-3 items-center">
-            <button
-                className={`${
-                    isButtonActivated ? null : "border rounded w-[90%] border-[" + BorderColor + "]"
-                } flex justify-left items-center gap-3 px-4 text-[#fff] ${wallet ? "py-1" : "py-3"}`}
-            >
+            <button className={`${isButtonActivated ? null : "border rounded w-[90%] border-[" + BorderColor + "]"} flex justify-left items-center gap-3 px-4 text-[#fff] ${wallet ? "py-1" : "py-3"}`}>
                 <img src={FooterLogo} alt="" />
 
                 <Modal modalState={{ modal, setModal, closeModal }} requestUnisatAccounts={requestUnisatAccounts} />
 
                 <div className="text-left">
                     {isButtonActivated ? null : wallet ? <p>Name.Srnme</p> : null}
-                    <p className="text-xs">
-                        {isButtonActivated ? null : wallet ? formatAddress(wallet) : <span></span>}
-                    </p>
+                    <p className="text-xs">{isButtonActivated ? null : wallet ? formatAddress(wallet) : <span></span>}</p>
                 </div>
             </button>
         </div>
